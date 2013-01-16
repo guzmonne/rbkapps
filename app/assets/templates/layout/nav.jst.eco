@@ -1,0 +1,47 @@
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+</a>
+<ul class="nav">
+    <li class="divider-vertical"></li>
+    <li id="li-home">
+        <a class="brand" id="nav-home" href="#">RBK Apps</a>
+    </li>
+    <li class="divider-vertical"></li>
+</ul>
+<% unless @user.get('name') == null : %>
+<div class="pull-right" style="text-align: right;" >
+    Bienvenido <strong><%= @user.get('name') %></strong> a AoS<br>
+    <strong ><a href="#" id="sign-out">Cerrar Sesion</a></strong>
+</div>
+<% end %>
+<div class="nav-collapse collapse">
+    <ul class="nav">
+        <li class="dropdown" id="li-drop-user">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="nav-drop-user">
+                <i class="icon-user"></i>
+                Usuario
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li>
+                    <a href="#" id="nav-user">
+                        Cambiar de Usuario
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="nav-new-user">
+                        <i class="icon-plus"></i>
+                        <i class="icon-user"></i>
+                        Nuevo Usuario
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="divider-vertical"></li>
+        <li id="li-clients">
+            <a href="#" id="nav-clients">Pedidos</a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,37 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "RBKApps" %></title>
+  <meta name="description" content="Aplicaciones para RBK">
+  <meta name="author" content="Guzman Monne">
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body role="content" id="container">
+    <div role="data-container" id="data">
+      <%= yield %>
+    </div>
+    <header class="navbar navbar-fixed-top" id="nav-layout">
+
+    </header>
+    <div id="content-layout" role="main">
+
+    </div>
+    <!-- Login Form Modal -->
+    <div id="login-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Iniciar Sesion</h3>
+      </div>
+      <div class="modal-body">
+        <p>Formulario</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary">Entrar</button>
+      </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+class UsersController < ApplicationController
+  respond_to :json
+
+  def index
+    respond_with User.all
+  end
+
+  def show
+    respond_with User.find_by_remember_token(params["remember_token"])
+  end
+
+  def create
+    respond_with User.create(params["user"])
+  end
+
+  def update
+    respond_with User.update(params["id"], params["user"])
+  end
+end
