@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
   respond_to :json
   def create
-    user = User.find_by_email(params["session"]["email"].downcase)
-    if user && user.authenticate(params["session"]["password"])
-      respond_with user
+    user = User.find_by_email(params["email"].downcase)
+    if user && user.authenticate(params["password"])
+      respond_with(user, location: nil)
     else
       respond_with('error', :status => 401, :location => nil)
     end

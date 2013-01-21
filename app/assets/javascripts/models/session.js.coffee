@@ -16,5 +16,5 @@ class App.Models.Session extends Backbone.Model
   load: ->
     @set
       user_id: $.cookie('user_id')
-      access_token: $.cookie('access_token')
+      remember_token: $.cookie('remember_token')
 

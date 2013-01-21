@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_secure_password
   attr_accessible :name,
                   :email,
                   :cellphone,
@@ -9,7 +10,6 @@ class User < ActiveRecord::Base
                   :position,
                   :remember_token,
                   :team_id
-  has_secure_password
   before_save do |user|
     user.email = email.downcase
     user.name  = name.titleize

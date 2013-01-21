@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: rbkapps_development
   pool: 5
-  host: localhost
+  host: 192.168.1.201
   port: 5433
   username: postgres
   password: Adm1nR33b0k

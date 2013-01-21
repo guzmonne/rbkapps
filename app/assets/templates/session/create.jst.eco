@@ -1,0 +1,31 @@
+<!-- Login Form Modal -->
+<form id="create-session" class="form-horizontal">
+    <div id="create-session-modal"
+         class="modal hide fade"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel"
+         aria-hidden="true"
+         data-backdrop="static">
+        <div class="modal-header">
+            <h3>Iniciar Sesion</h3>
+        </div>
+        <div class="modal-body">
+            <div id="notice"></div>
+            <div class="control-group" id="control_email">
+                <label class="control-label" for="email">e-mail</label>
+                <div class="controls">
+                    <input type="email" id="email" placeholder="e-mail">
+                </div>
+            </div>
+            <div class="control-group" id="control_password">
+                <label class="control-label" for="password">Password</label>
+                <div class="controls">
+                    <input type="password" id="password" placeholder="password">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="submit-create-session" class="btn btn-primary btn-block btn-large">Iniciar Sesion</button>
+        </div>
+    </div>
+</form>

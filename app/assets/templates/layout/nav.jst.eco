@@ -10,12 +10,10 @@
     </li>
     <li class="divider-vertical"></li>
 </ul>
-<% unless @user.get('name') == null : %>
-<div class="pull-right" style="text-align: right;" >
-    Bienvenido <strong><%= @user.get('name') %></strong> a AoS<br>
+<div class="pull-right align-right">
+    Bienvenido <strong><%= @user.get('name') %></strong> a RBK Apps<br>
     <strong ><a href="#" id="sign-out">Cerrar Sesion</a></strong>
 </div>
-<% end %>
 <div class="nav-collapse collapse">
     <ul class="nav">
         <li class="dropdown" id="li-drop-user">
@@ -40,8 +38,8 @@
             </ul>
         </li>
         <li class="divider-vertical"></li>
-        <li id="li-clients">
-            <a href="#" id="nav-clients">Pedidos</a>
+        <li id="li-requests">
+            <a href="#" id="nav-clients">SdeC</a>
         </li>
     </ul>
 </div>
