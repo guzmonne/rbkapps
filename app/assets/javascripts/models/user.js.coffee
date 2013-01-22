@@ -25,8 +25,24 @@ class App.Models.User extends Backbone.Model
       dataType: 'json'
       success: (data) =>
         $('#change-password-modal').modal('toggle')
-        $('body').removeClass('modal-open');
-        $('.modal-backdrop').remove();
         App.vent.trigger 'changePassword:success'
+      error: (user, status, response) ->
+        alert "Los datos no coinciden. Verífique sus datos"
+
+  changeData: (attributes) ->
+    $.ajax
+      url: "/api/users/#{@id}"
+      data: attributes
+      type: 'PUT'
+      dataType: 'json'
+      success: (data) =>
+        $('#change-password-modal').modal('toggle')
+        @set
+          name: data.name
+          email: data.email
+          phone: data.phone
+          cellphone: data.cellphone
+          position: data.position
+        App.vent.trigger 'changeData:success'
       error: (user, status, response) ->
         alert "Los datos no coinciden. Verífique sus datos"

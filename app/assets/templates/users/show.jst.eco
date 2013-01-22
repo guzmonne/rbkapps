@@ -62,7 +62,7 @@
                 </div>
                 <br>
                 <div>
-                    <a id="update-data" class="btn btn-primary btn-large btn-block">
+                    <a id="update-data" class="btn btn-primary btn-large btn-block disabled">
                         Editar Datos
                     </a>
                 </div>
@@ -70,7 +70,7 @@
         </div>
     </div>
 </div>
-<!-- Login Form Modal -->
+<!-- Change Password Form Modal -->
 <form id="change-password" class="form-horizontal">
     <div id="change-password-modal"
          class="modal hide fade"
@@ -81,7 +81,7 @@
             <h3>Cambiar Contraseña</h3>
         </div>
         <div class="modal-body">
-            <div id="notice"></div>
+            <div id="password-notice"></div>
             <div class="control-group" id="control-password">
                 <label class="control-label" for="password">Nueva Contraseña</label>
                 <div class="controls">
@@ -96,8 +96,55 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button id="submit-change-password" class="btn btn-primary btn-block btn-large">Cambiar Contraseña</button>
+            <button id="submit-change-password" class="btn btn-primary btn-block btn-large ">Cambiar Contraseña</button>
         </div>
     </div>
 </form>
-
+<!-- Login Form Modal -->
+<form id="change-data" class="form-horizontal">
+    <div id="change-data-modal"
+         class="modal hide fade"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-header">
+            <h3>Editar Datos de Usuario</h3>
+        </div>
+        <div class="modal-body">
+            <div id="data-notice"></div>
+            <div class="control-group" id="control-name">
+                <label class="control-label" for="name">Nombre:</label>
+                <div class="controls">
+                    <input type="text" id="name" placeholder="Nombre" value="<%= @user.get('name') %>">
+                </div>
+            </div>
+            <div class="control-group" id="control-email">
+                <label class="control-label" for="email">E-mail:</label>
+                <div class="controls">
+                    <input type="email" id="email" placeholder="E-mail" value="<%= @user.get('email') %>">
+                </div>
+            </div>
+            <div class="control-group" id="control-phone">
+                <label class="control-label" for="phone">Telefono:</label>
+                <div class="controls">
+                    <input type="text" id="phone" placeholder="Telefono" value="<%= @user.get('phone') %>">
+                </div>
+            </div>
+            <div class="control-group" id="control-cellphone">
+                <label class="control-label" for="email">Celular:</label>
+                <div class="controls">
+                    <input type="text" id="cellphone" placeholder="Celular" value="<%= @user.get('cellphone') %>">
+                </div>
+            </div>
+            <div class="control-group" id="control-position">
+                <label class="control-label" for="position">Cargo:</label>
+                <div class="controls">
+                    <input type="text" id="position" placeholder="Cargo" value="<%= @user.get('position') %>">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="submit-change-data" class="btn btn-primary btn-block btn-large">Actualizar Datos</button>
+        </div>
+    </div>
+</form>
