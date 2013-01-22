@@ -4,22 +4,25 @@ window.App =
   Views: {}
   Routers: {}
 
-  vent: _.extend({}, Backbone.Events)
+  vent: null
   user: null
   contentViews: []
   appendedViews: []
 
   initialize: ->
-    new App.Routers.Nav
+    new App.Routers.Nav()
+    new App.Routers.User()
 
+    @vent = _.extend({}, Backbone.Events)
     @user = new App.Models.User()
-
-    Backbone.history.start(pushState: true)
+    App.start()
+    Backbone.history.start({pushState: true})
 
   start: ->
     @session = new App.Models.Session()
     if @session.load().authenticated()
-      @user.set('id', $.cookie('user_id')).fetch({success: => @setNav()})
+      @user.set('id', $.cookie('user_id'))
+      @user.fetch({success: => @setNav()})
     else
       view = new App.Views.SessionCreate(model: @session)
       $('#content-layout').html(view.render().el)
@@ -46,16 +49,17 @@ window.App =
       closeView(oldView)
     @appendedViews = []
 
-  closeView: (view) ->
+  closeView: (view) =>
     view.unbind()
     view.remove()
 
-  renderContentView: (view) ->
-    $('#content').append(view.render().el)
+  renderContentView: (view) =>
+    $('#content-layout').append(view.render().el)
 
   renderContentViews: (renderViews) ->
     for view in renderViews
       @renderContentView(view)
+    return 1
 
   setAndRenderContentViews: (views, everybody = false) ->
     @start()
@@ -73,5 +77,5 @@ window.App =
 
 $(document).ready ->
   App.initialize()
-  App.start()
+
 

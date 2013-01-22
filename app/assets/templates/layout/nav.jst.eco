@@ -37,9 +37,25 @@
                 </li>
             </ul>
         </li>
-        <li class="divider-vertical"></li>
-        <li id="li-requests">
-            <a href="#" id="nav-clients">SdeC</a>
+        <li class="dropdown" id="li-drop-request">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="nav-drop-request">
+                Solicitudes
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li>
+                    <a href="#" id="nav-purchase-request">
+                        <i class="icon-plus"></i>
+                        Nueva Solicitud de Compra
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="nav-service-request">
+                        <i class="icon-plus"></i>
+                        Nuevo Solicitud de Servicio
+                    </a>
+                </li>
+            </ul>
         </li>
     </ul>
 </div>

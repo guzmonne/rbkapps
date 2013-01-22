@@ -21,9 +21,10 @@ class App.Views.SessionCreate extends Backbone.View
       type: 'POST'
       dataType: 'json'
       success: (data) =>
-        $('#create-session-modal').modal('hide')
-        console.log data.id, data.remember_token
+        $('#create-session-modal').modal('toggle')
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
         @model.save({'id': data.id, 'remember_token': data.remember_token})
-        App.start()
+        Backbone.history.navigate('home', trigger = true)
       error: (user, status, response) ->
         alert "Email o Contraseña incorrecta. Verífique sus datos"
