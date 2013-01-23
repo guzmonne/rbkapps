@@ -15,6 +15,53 @@
             <input type="email" id="email" placeholder="E-mail"><br>
         </div>
     </div>
+    <div class="control-group" id="control-password">
+        <label class="control-label" for="password">Contraseña</label>
+        <div class="controls">
+            <input type="password" id="password" placeholder="Contraseña"><br>
+        </div>
+    </div>
+    <div class="control-group" id="control-password_confirmation">
+        <label class="control-label" for="password_confirmation">Repetir Contraseña</label>
+        <div class="controls">
+            <input type="password" id="password_confirmation" placeholder="Repetir Contraseña"><br>
+        </div>
+    </div>
+    <div class="control-group" id="control-phone">
+        <label class="control-label" for="phone">Telefono</label>
+        <div class="controls">
+            <input type="text" id="phone" placeholder="Telefono"><br>
+        </div>
+    </div>
+    <div class="control-group" id="control-cellphone">
+        <label class="control-label" for="cellphone">Celular</label>
+        <div class="controls">
+            <input type="text" id="cellphone" placeholder="Celular"><br>
+        </div>
+    </div>
+    <div class="control-group" id="control-position">
+        <label class="control-label" for="position">Cargo</label>
+        <div class="controls">
+            <input type="text" id="position" placeholder="Cargo"><br>
+        </div>
+    </div>
+    <div class="control-group" id="control-team_id">
+        <label class="control-label" for="team_id">ID de Equipo</label>
+        <div class="controls">
+            <input type="number" id="team_id" placeholder="ID de Equipo"><br>
+        </div>
+    </div>
+    <div class="control-group" id="control-location_id">
+        <label class="control-label" for="location_id">ID de Local</label>
+        <div class="controls">
+            <input type="number" id="location_id" placeholder="ID de Local"><br>
+        </div>
+    </div>
+    <div class="control-group" id="control-admin">
+        <label class="checkbox inline">
+            <input type="checkbox" id="admin" value = "true"> admin?
+        </label>
+    </div>
     <div class="form-actions">
         <button id="submit-create-user" class="btn btn-primary btn-large">Crear Usuario</button>
     </div>

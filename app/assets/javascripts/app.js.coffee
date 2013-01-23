@@ -3,6 +3,7 @@ window.App =
   Collections: {}
   Views: {}
   Routers: {}
+  Mixins: {}
 
   vent: null
   users: null

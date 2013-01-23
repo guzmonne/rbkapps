@@ -1,0 +1,4 @@
+<div class="alert alert-block alert-<%= @type %> fade in" id="<%= @id %>">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= @message %>
+</div>

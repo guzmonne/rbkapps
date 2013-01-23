@@ -47,3 +47,14 @@ class App.Models.User extends Backbone.Model
         App.vent.trigger 'changeData:success'
       error: (user, status, response) ->
         alert "Los datos no coinciden. Verífique sus datos"
+
+  save: (attributes, options) ->
+    $.ajax
+      url: "/api/users"
+      data: attributes
+      type: 'POST'
+      dataType: 'json'
+      success: (data) =>
+        options.success
+      error: (user, status, response) ->
+        options.error(user, status, response)
