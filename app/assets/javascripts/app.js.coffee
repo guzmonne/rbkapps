@@ -5,27 +5,31 @@ window.App =
   Routers: {}
 
   vent: null
+  users: null
   user: null
+  session: null
+  navView: null
   contentViews: []
   appendedViews: []
 
   initialize: ->
-    new App.Routers.Nav()
-    new App.Routers.User()
-
     @vent = _.extend({}, Backbone.Events)
     @user = new App.Models.User()
+    @users = new App.Collections.Users()
+    @users.reset($('#user-container').data('users'))
+    @session = new App.Models.Session()
     App.start()
+    new App.Routers.Nav()
+    new App.Routers.User()
     Backbone.history.start({pushState: true})
 
   start: ->
-    @session = new App.Models.Session()
     if @session.load().authenticated()
-      @user.set('id', $.cookie('user_id'))
-      @user.fetch({success: => @setNav()})
+      @user = @users.get($.cookie('user_id')) if @user.get('id') == null
+      @setNav()
     else
-      view = new App.Views.SessionCreate(model: @session)
-      $('#content-layout').html(view.render().el)
+      @closeViews() unless @contentVie
+      Backbone.history.navigate('sign_in', trigger: true)
 
   setNav: ->
     @navView = new App.Views.Nav(model: @user)
@@ -41,12 +45,12 @@ window.App =
 
   closeViews: ->
     for oldView in @contentViews
-      closeView(oldView)
+      @closeView(oldView)
     @contentViews = []
 
   closeAppendedViews: ->
     for oldView in @appendedViews
-      closeView(oldView)
+      @closeView(oldView)
     @appendedViews = []
 
   closeView: (view) =>

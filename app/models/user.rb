@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
                   :phone,
                   :position,
                   :remember_token,
-                  :team_id
+                  :team_id,
+                  :admin
   before_save do |user|
     user.email = email.downcase
     user.name  = name.titleize

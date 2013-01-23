@@ -12,6 +12,7 @@ class App.Models.User extends Backbone.Model
     location_id: null
     team_id: null
     remember_token: null
+    admin: false
 
   changePasword: (credentials) ->
     attributes =

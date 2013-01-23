@@ -11,7 +11,7 @@
     <li class="divider-vertical"></li>
 </ul>
 <div class="pull-right align-right">
-    Bienvenido <strong><%= @user.get('name') %></strong> a RBK Apps<br>
+    <strong><%= @user.get('name') %></strong> - RBK Apps<br>
     <strong ><a href="#" id="sign-out">Cerrar Sesion</a></strong>
 </div>
 <div class="nav-collapse collapse">
@@ -25,7 +25,8 @@
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                 <li>
                     <a href="#" id="nav-user">
-                        Cambiar de Usuario
+                        <i class="icon-user"></i>
+                        Datos del Usuario
                     </a>
                 </li>
                 <li>

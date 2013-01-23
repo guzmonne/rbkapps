@@ -1,31 +1,21 @@
-<!-- Login Form Modal -->
+<div class="hero-unit">
+    <h1>Bienvenido a RBK Apps</h1>
+</div>
 <form id="create-session" class="form-horizontal">
-    <div id="create-session-modal"
-         class="modal hide fade"
-         tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel"
-         aria-hidden="true"
-         data-backdrop="static">
-        <div class="modal-header">
-            <h3>Iniciar Sesion</h3>
+    <div id="notice"></div>
+    <div class="control-group" id="control-email">
+        <label class="control-label" for="email">E-mail</label>
+        <div class="controls">
+            <input type="email" id="email" placeholder="E-mail">
         </div>
-        <div class="modal-body">
-            <div id="notice"></div>
-            <div class="control-group" id="control_email">
-                <label class="control-label" for="email">e-mail</label>
-                <div class="controls">
-                    <input type="email" id="email" placeholder="e-mail">
-                </div>
-            </div>
-            <div class="control-group" id="control_password">
-                <label class="control-label" for="password">Password</label>
-                <div class="controls">
-                    <input type="password" id="password" placeholder="password">
-                </div>
-            </div>
+    </div>
+    <div class="control-group" id="control-password">
+        <label class="control-label" for="password">Contraseña</label>
+        <div class="controls">
+            <input type="password" id="password" placeholder="Contraseña"><br>
         </div>
-        <div class="modal-footer">
-            <button id="submit-create-session" class="btn btn-primary btn-block btn-large">Iniciar Sesion</button>
-        </div>
+    </div>
+    <div class="form-actions">
+        <button id="submit-create-user" class="btn btn-primary btn-large">Iniciar Sesión</button>
     </div>
 </form>
