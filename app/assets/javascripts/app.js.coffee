@@ -14,6 +14,7 @@ window.App =
 
   initialize: ->
     @vent = _.extend({}, Backbone.Events)
+    @navView = new App.Views.Nav()
     @user = new App.Models.User()
     @users = new App.Collections.Users()
     @users.reset($('#user-container').data('users'))
@@ -27,9 +28,6 @@ window.App =
     if @session.load().authenticated()
       @user = @users.get($.cookie('user_id')) if @user.get('id') == null
       @setNav()
-    else
-      @closeViews() unless @contentVie
-      Backbone.history.navigate('sign_in', trigger: true)
 
   setNav: ->
     @navView = new App.Views.Nav(model: @user)
@@ -66,7 +64,8 @@ window.App =
     return 1
 
   setAndRenderContentViews: (views, everybody = false) ->
-    @start()
+    unless everybody == true
+      return Backbone.history.navigate('sign_in', trigger: true) unless @session.load().authenticated()
     renderViews = @setContentViews(views)
     @renderContentViews(renderViews)
 

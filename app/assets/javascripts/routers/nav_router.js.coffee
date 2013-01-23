@@ -5,5 +5,5 @@ class App.Routers.Nav extends Backbone.Router
   signIn: ->
     view = new App.Views.SessionCreate()
     App.closeView(App.navView) unless App.navView == null
-    App.setAndRenderContentViews([view])
+    App.setAndRenderContentViews([view], true)
     this

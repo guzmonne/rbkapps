@@ -23,6 +23,7 @@ class App.Views.SessionCreate extends Backbone.View
       success: (data) =>
         App.session.save({'id': data.id, 'remember_token': data.remember_token})
         App.user = App.users.get(data.id)
+        App.start()
         Backbone.history.navigate('home', trigger = true)
       error: (user, status, response) ->
         alert "Email o Contraseña incorrecta. Verífique sus datos"

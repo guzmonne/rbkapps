@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="044e0a91-8a4a-4ab7-93a4-af1de8015a06" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/users.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/users/create.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/templates/users/create.jst.eco" />
-      <change type="DELETED" beforePath="C:\Users\gmonne.RBKURUGUAY\RubymineProjects\rbkapps\db\migrate\20130115202836_create_users.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\gmonne.RBKURUGUAY\RubymineProjects\rbkapps\db\migrate\20130121190742_remove_location_team_from_users.rb" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/app.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/app.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/models/user.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/models/user.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/routers/nav_router.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/routers/nav_router.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/routers/user_router.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/routers/user_router.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/layouts/nav.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/layouts/nav.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/session/create.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/session/create.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/session/create.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/session/create.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/users/show.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/users/show.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/main/index.html.erb" afterPath="$PROJECT_DIR$/app/views/main/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
     </list>
     <ignored path="rbkapps.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,19 +28,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="user_router.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routers/user_router.js.coffee">
+      <file leaf-file-name="nav.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/layouts/nav.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="7" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nav_router.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routers/nav_router.js.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="31" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0">
+            <state line="9" column="30" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -63,7 +40,7 @@
       <file leaf-file-name="app.js.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/app.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="38" selection-start="713" selection-end="713" vertical-scroll-proportion="0.14775726">
+            <state line="32" column="46" selection-start="761" selection-end="761" vertical-scroll-proportion="0.7279597">
               <folding />
             </state>
           </provider>
@@ -97,8 +74,8 @@
         <option value="$PROJECT_DIR$/app/assets/templates/users/create.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/templates/session/create.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/views/layouts/nav.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/session/create.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/session/create.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/routers/nav_router.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/app.js.coffee" />
       </list>
@@ -112,10 +89,10 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
-    <option name="y" value="1" />
-    <option name="width" value="1364" />
-    <option name="height" value="736" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -921,18 +898,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="1" width="1364" height="736" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18409091" sideWeight="0.6828479" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20814133" sideWeight="0.67333335" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20530303" sideWeight="0.6828479" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32724252" sideWeight="0.49758455" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32666665" sideWeight="0.49114332" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3171521" sideWeight="0.49114332" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1067,13 +1044,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/session/create.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="38" selection-start="793" selection-end="793" vertical-scroll-proportion="0.83375317">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="47" selection-start="466" selection-end="466" vertical-scroll-proportion="0.15363881">
@@ -1081,30 +1051,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/layouts/nav.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="30" selection-start="252" selection-end="252" vertical-scroll-proportion="-0.13602015">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routers/user_router.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="7" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0">
+        <state line="16" column="7" selection-start="331" selection-end="331" vertical-scroll-proportion="0.6146096">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routers/nav_router.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="31" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0">
+        <state line="7" column="41" selection-start="234" selection-end="234" vertical-scroll-proportion="0.29974812">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/session/create.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="19" selection-start="646" selection-end="646" vertical-scroll-proportion="1.070529">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/layouts/nav.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="30" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/app.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="38" selection-start="713" selection-end="713" vertical-scroll-proportion="0.14775726">
+        <state line="32" column="46" selection-start="761" selection-end="761" vertical-scroll-proportion="0.7279597">
           <folding />
         </state>
       </provider>
