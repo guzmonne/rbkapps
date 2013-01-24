@@ -18,7 +18,7 @@ class App.Mixins.Form
     return @flash(type: type, message: message, id: flashId)
 
   showInForm: (attribute, message) ->
-    $('#control_'+ attribute).addClass('error')
+    $('#control-'+ attribute).addClass('error')
     $('#' + attribute).after("<span class=\"help-inline\">#{message}</span>")
 
   uniqueId: (length=8) ->

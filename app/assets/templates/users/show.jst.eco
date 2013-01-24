@@ -1,8 +1,4 @@
 <div class="hero-unit">
-    <h1>Bienvenido <%= @user.get('name') %></h1>
-    <p>a RBK Apps</p>
-</div>
-<div class="page-header">
     <h1>Datos del Usuario</h1>
 </div>
 <div class="row-fluid">

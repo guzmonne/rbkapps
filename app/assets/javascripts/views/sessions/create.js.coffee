@@ -1,5 +1,5 @@
 class App.Views.SessionCreate extends Backbone.View
-  template: JST['session/create']
+  template: JST['sessions/create']
   name: "SessionCreate"
 
   events:

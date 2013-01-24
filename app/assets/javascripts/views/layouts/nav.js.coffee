@@ -10,7 +10,11 @@ class App.Views.Nav extends Backbone.View
     'click #nav-new-user': 'createUser'
 
   render: ->
-    $(@el).html(@template(user: @model))
+    console.log @model
+    if @model.get('admin') ==  true
+      $(@el).html(@template(user: @model)).find('.admin-only').removeClass('hide')
+    else
+      $(@el).html(@template(user: @model))
     this
 
   home: (e) ->

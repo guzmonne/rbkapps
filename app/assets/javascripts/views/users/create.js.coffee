@@ -6,6 +6,7 @@ class App.Views.UserCreate extends Backbone.View
 
   events:
     'click #submit-create-user': 'createUser'
+    'click #clear-form': 'cleanForm'
 
   initialize: ->
     @model = new App.Models.User()
@@ -18,6 +19,7 @@ class App.Views.UserCreate extends Backbone.View
 
   createUser: (e) ->
     e.preventDefault()
+    @formHelper.removeValidations()
     attributes =
       user:
         name: $('#name').val()
@@ -29,21 +31,25 @@ class App.Views.UserCreate extends Backbone.View
         location_id: $('#location_id').val()
         password: $('#password').val()
         password_confirmation: $('#password_confirmation').val()
-        admin: $('#admin').val()
+        admin: if $('#admin').attr("checked") then true else false
     @model.save(attributes, {success: @handleSuccess, error: @handleError})
 
-  handleSuccess: =>
+  handleSuccess: (data, status, response) =>
     @formHelper.cleanForm('#create-user')
     @formHelper.displayFlash('success', 'El Usuario se ha creado con exito')
-    App.users.add(@model, {silent: true})
+    @model.set(data)
+    console.log @model
+    App.users.add(@model)
 
-  handleError: (client, response) =>
+  handleError: (data, status, response) =>
+    console.log $.parseJSON(data.responseText).errors, data, data.status
     @formHelper.displayFlash("error","Por favor verifique sus datos.")
-    if response.status == 422
-      errors = $.parseJSON(response.responseText).errors
+    if data.status == 422
+      errors = $.parseJSON(data.responseText).errors
       for attribute, messages of errors
-        @formHelper.showInForm(attribute,message) for message in messages
+        @formHelper.showInForm(attribute, message) for message in messages
 
-
-
-
+  cleanForm: (e) ->
+    e.preventDefault()
+    @formHelper.cleanForm('#create-user')
+    @formHelper.removeValidations()

@@ -17,13 +17,13 @@ class User < ActiveRecord::Base
   end
   before_save :create_remember_token
 
-  validates :name, presence: true
+  validates :name, presence: {:message => "no puede quedar en blanco"}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true,
-            format: { with: VALID_EMAIL_REGEX },
-            uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  validates :email, presence: {:message => "no puede quedar en blanco"},
+            format: { with: VALID_EMAIL_REGEX, :message => "e-mail invalido" },
+            uniqueness: { case_sensitive: false, :message => "la direccion ya esta en uso" }
+  validates :password, length: { minimum: 6, :message => "debe tener por lo menos 6 caracteres" }
+  validates :password_confirmation, presence: {:message => "no puede quedar en blanco"}
 
   private
 

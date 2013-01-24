@@ -29,6 +29,7 @@ window.App =
     if @session.load().authenticated()
       @user = @users.get($.cookie('user_id')) if @user.get('id') == null
       @setNav()
+    this
 
   setNav: ->
     @navView = new App.Views.Nav(model: @user)

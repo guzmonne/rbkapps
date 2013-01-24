@@ -30,31 +30,13 @@ class App.Models.User extends Backbone.Model
       error: (user, status, response) ->
         alert "Los datos no coinciden. Verífique sus datos"
 
-  changeData: (attributes) ->
-    $.ajax
-      url: "/api/users/#{@id}"
-      data: attributes
-      type: 'PUT'
-      dataType: 'json'
-      success: (data) =>
-        $('#change-password-modal').modal('toggle')
-        @set
-          name: data.name
-          email: data.email
-          phone: data.phone
-          cellphone: data.cellphone
-          position: data.position
-        App.vent.trigger 'changeData:success'
-      error: (user, status, response) ->
-        alert "Los datos no coinciden. Verífique sus datos"
-
   save: (attributes, options) ->
     $.ajax
       url: "/api/users"
       data: attributes
       type: 'POST'
       dataType: 'json'
-      success: (data) =>
-        options.success
-      error: (user, status, response) ->
-        options.error(user, status, response)
+      success: (data, status, response) ->
+        options.success(data, status, response)
+      error: (data, status, response) ->
+        options.error(data, status, response)

@@ -29,7 +29,7 @@
                         Datos del Usuario
                     </a>
                 </li>
-                <li>
+                <li class="admin-only hide">
                     <a href="#" id="nav-new-user">
                         <i class="icon-plus"></i>
                         <i class="icon-user"></i>

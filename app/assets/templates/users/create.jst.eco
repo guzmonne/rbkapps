@@ -58,11 +58,14 @@
         </div>
     </div>
     <div class="control-group" id="control-admin">
-        <label class="checkbox inline">
-            <input type="checkbox" id="admin" value = "true"> admin?
-        </label>
+        <div class="controls">
+            <label class="checkbox">
+                <input type="checkbox" id="admin" value = true> admin?
+            </label>
+        </div>
     </div>
     <div class="form-actions">
         <button id="submit-create-user" class="btn btn-primary btn-large">Crear Usuario</button>
+        <button id="clear-form" class="btn btn-primary btn-large btn-inverse">Cancelar</button>
     </div>
 </form>
