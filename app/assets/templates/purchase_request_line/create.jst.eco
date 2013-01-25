@@ -7,7 +7,7 @@
     </tr>
 </thead>
 <tbody id="purchase-request-lines">
-    <tr>
+    <tr id="purchase-request-form-row">
         <form id="add-new-line-form">
             <td class="span7">
                 <input type="text" id="description" class="span12" placeholder="Descripcion">

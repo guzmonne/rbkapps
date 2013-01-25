@@ -5,6 +5,6 @@ class App.Routers.PurchaseRequest extends Backbone.Router
 
   create: ->
     purchase_request = new App.Models.PurchaseRequest()
-    purchaseRequestView = new App.Views.PurchaseRequestCreate()
+    purchaseRequestView = new App.Views.PurchaseRequestCreate(model: purchase_request)
     App.setAndRenderContentViews([purchaseRequestView])
     this

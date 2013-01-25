@@ -4,7 +4,7 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
   name: 'CreatePurchaseRequest'
 
   events:
-    'submit #create-session': 'createPurchaseRequest'
+    'click #submit-create-purchase-request': 'createPurchaseRequest'
     'click #add-new-line': 'addNewLine'
 
   initialize: ->
@@ -19,9 +19,14 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
     this
 
   createPurchaseRequest: (e) ->
-    attributes = $('#create-purchase-request').serialize()
-    console.log attributes
-    console.log $('#create-purchase-request')
+    e.preventDefault()
+    attributes =
+      purchase_request:
+        sector:     $('#sector').val()
+        deliver_at: $('#deliver_at').val()
+        use:        $('#use').val()
+        team_id:    $('#team_id').val()
+
 
   addNewLine: (e) ->
     e.preventDefault()
@@ -34,7 +39,7 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
     showView = new App.Views.PurchaseRequestLineShow(model: model)
     App.pushToAppendedViews(showView)
     @formHelper.cleanForm('#add-new-line-form')
-    $('tbody').prepend(showView.render().el)
+    $('#purchase-request-form-row').before(showView.render().el)
     $('#description').focus()
     @collection.add(model)
     console.log @collection, @collection.length
