@@ -4,6 +4,8 @@ Rbkapps::Application.routes.draw do
   scope "api" do
     resources :users
     resources :sessions
+    resources :purchase_requests
+    resources :purchase_request_lines
   end
 
   match '*path', to: 'main#index'

@@ -1,0 +1,9 @@
+
+    <td class="span7"><%= @model.get('description') %></td>
+    <td class="span2"><%= @model.get('unit') %></td>
+    <td class="span2"><%= @model.get('quantity') %></td>
+    <td class="span1">
+        <button id="remove-line" class="btn btn-block btn-danger" data-cid="<%= @model.cid %>">
+            <i class="icon-minus icon-white"></i>
+        </button>
+    </td>

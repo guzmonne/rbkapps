@@ -23,6 +23,7 @@ window.App =
     App.start()
     new App.Routers.Nav()
     new App.Routers.User()
+    new App.Routers.PurchaseRequest()
     Backbone.history.start({pushState: true})
 
   start: ->

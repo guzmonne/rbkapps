@@ -8,9 +8,9 @@ class App.Views.Nav extends Backbone.View
     'click #sign-out':  'signOut'
     'click #nav-user': 'home'
     'click #nav-new-user': 'createUser'
+    'click #nav-purchase-request': 'createPurchaseRequest'
 
   render: ->
-    console.log @model
     if @model.get('admin') ==  true
       $(@el).html(@template(user: @model)).find('.admin-only').removeClass('hide')
     else
@@ -32,5 +32,10 @@ class App.Views.Nav extends Backbone.View
   createUser: (e) ->
     e.preventDefault()
     Backbone.history.navigate 'users/new', trigger:true
+    this
+
+  createPurchaseRequest: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate 'purchase_request/new', trigger: true
     this
 

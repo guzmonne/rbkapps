@@ -1,0 +1,33 @@
+<thead>
+    <tr>
+        <th>Descripcion</th>
+        <th>Unidad</th>
+        <th>Cantidad</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody id="purchase-request-lines">
+    <tr>
+        <form id="add-new-line-form">
+            <td class="span7">
+                <input type="text" id="description" class="span12" placeholder="Descripcion">
+            </td>
+            <td class="span2">
+                <select id="unit" class="span12">
+                    <option>Unidades</option>
+                    <option>Metros</option>
+                </select>
+            </td>
+            <td class="span2">
+                <input type="number" id="quantity" class="span12" placeholder="Cantidad" value="1">
+            </td>
+            <td class="span1">
+                <button type="submit" id="add-new-line" class="btn btn-block btn-success">
+                    <i class="icon-plus icon-white"></i>
+                </button>
+            </td>
+        </form>
+    </tr>
+</tbody>
+
+
