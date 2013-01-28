@@ -1,8 +1,6 @@
 class App.Views.PurchaseRequestLineShow extends Backbone.View
   template: JST['purchase_request_line/show']
   tagName: 'tr'
-  id: ->
-    "line-#{@model.cid}"
 
   events:
     'click #remove-line': 'removeLine'

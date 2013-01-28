@@ -47,12 +47,14 @@
                 <li>
                     <a href="#" id="nav-purchase-request">
                         <i class="icon-plus"></i>
+                        <i class="icon-tag"></i>
                         Nueva Solicitud de Compra
                     </a>
                 </li>
                 <li>
                     <a href="#" id="nav-service-request">
                         <i class="icon-plus"></i>
+                        <i class="icon-wrench"></i>
                         Nuevo Solicitud de Servicio
                     </a>
                 </li>

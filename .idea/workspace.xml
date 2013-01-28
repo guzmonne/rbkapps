@@ -2,10 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="044e0a91-8a4a-4ab7-93a4-af1de8015a06" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/show.js.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/templates/purchase_request/show.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/collections/purchase_request_lines.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/purchase_request_lines.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/models/purchase_request_line.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/models/purchase_request_line.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/models/purchase_requests.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/models/purchase_requests.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/routers/purchase_request_router.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/routers/purchase_request_router.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/purchase_request_lines/show.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/purchase_request_lines/show.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/create.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/create.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/purchase_request_line/create.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/purchase_request_line/create.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/purchase_request_lines_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/purchase_request_lines_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/purchase_request.rb" afterPath="$PROJECT_DIR$/app/models/purchase_request.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/purchase_request_line.rb" afterPath="$PROJECT_DIR$/app/models/purchase_request_line.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20130125114627_create_purchase_order_lines.rb" afterPath="$PROJECT_DIR$/db/migrate/20130125114627_create_purchase_order_lines.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
     </list>
     <ignored path="rbkapps.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,37 +41,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="form.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/mixins/form.js.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="22" selection-start="81" selection-end="101" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="create.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/create.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="0" selection-start="913" selection-end="913" vertical-scroll-proportion="0.0">
+            <state line="20" column="37" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="purchase_request_router.js.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="purchase_request_router.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routers/purchase_request_router.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="68" selection-start="328" selection-end="328" vertical-scroll-proportion="0.40106952">
+            <state line="27" column="38" selection-start="887" selection-end="887" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create.jst.eco" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/templates/purchase_request/create.jst.eco">
+      <file leaf-file-name="show.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/show.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="58" selection-start="1324" selection-end="1354" vertical-scroll-proportion="-7.7083335">
+            <state line="15" column="53" selection-start="521" selection-end="521" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="purchase_request_lines.js.coffee" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/purchase_request_lines.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="35" selection-start="106" selection-end="106" vertical-scroll-proportion="0.042372882">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.jst.eco" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/templates/purchase_request_line/show.jst.eco">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/purchase_request_lines/show.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="0" selection-start="124" selection-end="124" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.jst.eco" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/templates/purchase_request/show.jst.eco">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="25" selection-start="1016" selection-end="1016" vertical-scroll-proportion="-20.0">
               <folding />
             </state>
           </provider>
@@ -80,22 +120,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/purchase_request_line_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/purchase_requests_line_controller.rb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/purchase_request_lines.js.coffee/create.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/layouts/nav.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/app.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" />
+        <option value="$PROJECT_DIR$/db/migrate/20130125114627_create_purchase_order_lines.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130128113403_add_team_id_to_purchase_requests.rb" />
+        <option value="$PROJECT_DIR$/app/models/purchase_request.rb" />
         <option value="$PROJECT_DIR$/app/assets/templates/purchase_request/create.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/models/purchase_request_line.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/collections/purchase_request_lines.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/templates/purchase_request_line/line.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/templates/purchase_request_line/show.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/purchase_request_lines/create.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/purchase_request_lines/show.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/templates/purchase_request_line/create.jst.eco" />
+        <option value="$PROJECT_DIR$/app/models/purchase_request_line.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/purchase_request_lines_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/create.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/models/purchase_request_line.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/routers/purchase_request_router.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/templates/purchase_request/show.jst.eco" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/purchase_request_lines/show.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/models/purchase_requests.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/show.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/collections/purchase_request_lines.js.coffee" />
       </list>
     </option>
   </component>
@@ -123,7 +163,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="0" />
+    <option name="STATE" value="1" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -194,6 +234,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -213,6 +271,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -723,7 +803,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="Database.TableEditor.Splitter" value="0.90000004" />
+    <property name="Database.TableEditor.Splitter" value="0.9" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
@@ -736,11 +816,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gmonne.RBKURUGUAY\RubymineProjects\rbkapps\app\assets\templates\purchase_request" />
       <recent name="C:\Users\gmonne.RBKURUGUAY\RubymineProjects\rbkapps\public" />
       <recent name="C:\Users\gmonne.RBKURUGUAY\RubymineProjects\rbkapps\app\assets\stylesheets" />
       <recent name="C:\Users\gmonne.RBKURUGUAY\RubymineProjects\rbkapps\app\assets\images" />
       <recent name="C:\Users\gmonne.RBKURUGUAY\RubymineProjects\rbkapps\img" />
-      <recent name="C:\Users\gmonne.RBKURUGUAY\RubymineProjects\rbkapps\app\assets" />
     </key>
   </component>
   <component name="RunManager" selected="Rails.Development: rbkapps">
@@ -970,7 +1050,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -980,8 +1060,8 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2159091" sideWeight="0.6456311" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3171521" sideWeight="0.5068182" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35436893" sideWeight="0.4878788" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35436893" sideWeight="0.5098485" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35436893" sideWeight="0.4848485" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1046,114 +1126,114 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/users/show.jst.eco">
+    <entry file="file://$PROJECT_DIR$/app/models/purchase_request.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="42" selection-start="132" selection-end="163" vertical-scroll-proportion="0.14285715">
+        <state line="11" column="31" selection-start="293" selection-end="293" vertical-scroll-proportion="0.2782462">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco">
+    <entry file="file://$PROJECT_DIR$/app/controllers/purchase_request_lines_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="60" selection-start="540" selection-end="540" vertical-scroll-proportion="0.6">
+        <state line="16" column="36" selection-start="361" selection-end="361" vertical-scroll-proportion="0.40472177">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/main.css.scss">
+    <entry file="file://$PROJECT_DIR$/app/controllers/purchase_requests_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="12" selection-start="243" selection-end="254" vertical-scroll-proportion="0.0">
+        <state line="4" column="69" selection-start="130" selection-end="130" vertical-scroll-proportion="0.10118044">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/purchase_request_lines.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/users/create.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="54" selection-start="139" selection-end="139" vertical-scroll-proportion="0.080213904">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/purchase_requests.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/sessions/create.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="67" selection-end="131" vertical-scroll-proportion="0.040106952">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/models/purchase_request_line.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="40" selection-start="195" selection-end="195" vertical-scroll-proportion="0.32085562">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/models/purchase_requests.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="67" selection-start="219" selection-end="219" vertical-scroll-proportion="0.5213904">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/app.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="51" selection-start="382" selection-end="416" vertical-scroll-proportion="0.80213904">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/mixins/form.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="22" selection-start="81" selection-end="101" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/purchase_request_line/show.jst.eco">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/purchase_request_lines/show.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="9" selection-start="341" selection-end="341" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/purchase_request_line/create.jst.eco">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="34" selection-start="203" selection-end="203" vertical-scroll-proportion="0.15714286">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/purchase_request_lines/create.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="8" selection-start="265" selection-end="265" vertical-scroll-proportion="0.32085562">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/templates/purchase_request/create.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="58" selection-start="1324" selection-end="1354" vertical-scroll-proportion="-7.7083335">
+        <state line="0" column="0" selection-start="0" selection-end="1562" vertical-scroll-proportion="-0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/create.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/models/purchase_request_line.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="913" selection-end="913" vertical-scroll-proportion="0.0">
+        <state line="14" column="20" selection-start="358" selection-end="358" vertical-scroll-proportion="0.35413152">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/purchase_requests.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/purchase_request_line/show.jst.eco">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routers/purchase_request_router.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="68" selection-start="328" selection-end="328" vertical-scroll-proportion="0.40106952">
+        <state line="27" column="38" selection-start="887" selection-end="887" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/purchase_request_lines/show.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="124" selection-end="124" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/create.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="37" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/models/purchase_requests.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="0" selection-start="580" selection-end="857" vertical-scroll-proportion="0.61605585">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/purchase_request/show.jst.eco">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="25" selection-start="1016" selection-end="1016" vertical-scroll-proportion="-20.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/show.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="53" selection-start="521" selection-end="521" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/purchase_request_lines.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="35" selection-start="106" selection-end="106" vertical-scroll-proportion="0.042372882">
           <folding />
         </state>
       </provider>

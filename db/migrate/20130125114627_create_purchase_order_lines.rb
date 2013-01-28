@@ -1,6 +1,6 @@
 class CreatePurchaseOrderLines < ActiveRecord::Migration
   def change
-    create_table :purchase_order_lines do |t|
+    create_table :purchase_request_lines do |t|
       t.integer :purchase_request_id
       t.string :description
       t.integer :quantity

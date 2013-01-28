@@ -6,7 +6,8 @@ class PurchaseRequest < ActiveRecord::Base
                   :deliver_at,
                   :sector,
                   :use,
-                  :state
+                  :state,
+                  :team_id
 
   validates :user_id, :presence => {:message => "el pedido de be pertenecer a un usuario"}
   validates :deliver_at, :presence => {:message => "debe aclarar una fecha de entrega"}

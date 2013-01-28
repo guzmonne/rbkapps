@@ -5,4 +5,5 @@ class PurchaseRequestLine < ActiveRecord::Base
                   :description,
                   :unit,
                   :quantity
+
 end
