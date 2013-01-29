@@ -3,6 +3,18 @@ class App.Routers.PurchaseRequest extends Backbone.Router
   routes:
     'purchase_request/show/:id': 'show'
     'purchase_request/new': 'create'
+    'purchase_request/index': 'index'
+
+  index: ->
+    if App.purchaseRequests.length < 2
+      App.purchaseRequests.fetch
+        success: =>
+          view = new App.Views.PurchaseRequestIndex(collection: App.purchaseRequests)
+          App.setAndRenderContentViews([view])
+    else
+      view = new App.Views.PurchaseRequestIndex(collection: App.purchaseRequests)
+      App.setAndRenderContentViews([view])
+    this
 
   create: ->
     purchaseRequest = new App.Models.PurchaseRequest()
@@ -10,18 +22,30 @@ class App.Routers.PurchaseRequest extends Backbone.Router
     App.setAndRenderContentViews([purchaseRequestView])
     this
 
-  show: (id) ->
-    console.log "PurchaseRequest Router - Show ", id
-    @purchaseRequest = new App.Models.PurchaseRequest()
-    @purchaseRequest.set('id', id)
-    @purchaseRequest.fetch({success: @handleSuccess, error: @handleError})
-
-  handleSuccess: (data) =>
-    console.log data
-    console.log @purchaseRequest
-    view = new App.Views.PurchaseRequestShow(model: @purchaseRequest)
-    App.setAndRenderContentViews([view])
+  show: (id) =>
+    if App.purchaseRequests.length < 2
+      App.purchaseRequests.fetch
+        success: =>
+          model = App.purchaseRequests.get(id)
+          console.log "Router", model
+          view = new App.Views.PurchaseRequestShow(model: model)
+          App.setAndRenderContentViews([view])
+    else
+      model = App.purchaseRequests.get(id)
+      console.log "Router", model
+      view = new App.Views.PurchaseRequestShow(model: model)
+      App.setAndRenderContentViews([view])
     this
+
+  # show: ->
+  #   @purchaseRequest = new App.Models.PurchaseRequest()
+  #   @purchaseRequest.set('id', id)
+  #   @purchaseRequest.fetch({success: @handleSuccess, error: @handleError})
+
+  # handleSuccess: (data) =>
+  #  view = new App.Views.PurchaseRequestShow(model: @purchaseRequest)
+  #  App.setAndRenderContentViews([view])
+  #  this
 
   handleError: (data, status, response) =>
     console.log data, status, response

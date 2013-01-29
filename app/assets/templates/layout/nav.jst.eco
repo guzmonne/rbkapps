@@ -45,6 +45,12 @@
             </a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                 <li>
+                    <a href="#" id="nav-index-purchase-request">
+                        <i class="icon-tag"></i>
+                        Solicitudes de Compra
+                    </a>
+                </li>
+                <li>
                     <a href="#" id="nav-purchase-request">
                         <i class="icon-plus"></i>
                         <i class="icon-tag"></i>

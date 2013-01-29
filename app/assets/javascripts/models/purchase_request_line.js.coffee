@@ -1,8 +1,8 @@
 class App.Models.PurchaseRequestLine extends Backbone.Model
   url: ->
     u = "api/purchase_request_lines"
-    if @id or @remember_token
-      u = "#{u}#{@id}"
+    if @id
+      u = "#{u}/#{@id}"
     u
 
   defaults: ->
@@ -24,7 +24,3 @@ class App.Models.PurchaseRequestLine extends Backbone.Model
       data: info
       type: 'POST'
       dataType: 'json'
-      success: (data) =>
-        options.success(data)
-      error: (data, status, response) ->
-        options.error(data, status, response)

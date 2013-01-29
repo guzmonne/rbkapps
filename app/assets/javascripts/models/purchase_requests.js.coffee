@@ -13,6 +13,9 @@ class App.Models.PurchaseRequest extends Backbone.Model
     use: null
     state: null
 
+  initialize: ->
+    @dateHelper = new App.Mixins.Date()
+
   save: (attributes, options) ->
     $.ajax
       url: "/api/purchase_requests"

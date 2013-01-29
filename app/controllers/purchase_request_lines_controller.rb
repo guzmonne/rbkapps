@@ -2,7 +2,8 @@ class PurchaseRequestLinesController < ApplicationController
 
   respond_to :json
   def index
-    respond_with PurchaseRequestLine.all
+    @purchase_request_id = params["purchase_request_id"]
+    respond_with PurchaseRequestLine.find_all_by_purchase_request_id(@purchase_request_id)
   end
 
   def show

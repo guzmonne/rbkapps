@@ -10,6 +10,7 @@ window.App =
   user: null
   session: null
   navView: null
+  purchaseRequests: null
   contentViews: []
   appendedViews: []
 
@@ -20,6 +21,7 @@ window.App =
     @users = new App.Collections.Users()
     @users.reset($('#user-container').data('users'))
     @session = new App.Models.Session()
+    @purchaseRequests = new App.Collections.PurchaseRequests()
     App.start()
     new App.Routers.Nav()
     new App.Routers.User()
@@ -29,6 +31,7 @@ window.App =
   start: ->
     if @session.load().authenticated()
       @user = @users.get($.cookie('user_id')) if @user.get('id') == null
+      @purchaseRequests.user_id = $.cookie('user_id')
       @setNav()
     this
 

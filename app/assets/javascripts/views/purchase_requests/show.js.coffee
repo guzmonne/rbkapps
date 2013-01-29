@@ -5,12 +5,15 @@ class App.Views.PurchaseRequestShow extends Backbone.View
 
   render: ->
     $(@el).html(@template(model: @model))
-    view = new App.Views.PurchaseRequestLineShow
-    App.pushToAppendedViews(view)
+    view = new App.Views.PurchaseRequestLineShow()
     @collection = new App.Collections.PurchaseRequestLines()
-    @collection.fetch({success: @handleSuccess})
-    #find('#purchase-request-lines').html(view.render().el)
+    @collection.purchase_request_id = @model.get('id')
+    @collection.fetch
+      success: (collection) =>
+        collection.each(@renderLine)
     this
 
-    handleSuccess: ->
-      console.log @collection
+  renderLine: (model) ->
+    view = new App.Views.PurchaseRequestLineShow(model: model)
+    App.pushToAppendedViews(view)
+    $('#purchase-request-lines').append(view.render().el).find('.btn-danger').addClass('hide')

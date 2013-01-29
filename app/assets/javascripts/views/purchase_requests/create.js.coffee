@@ -29,27 +29,16 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
         team_id:    $('#team_id').val()
         state:      'Esperando Aprovación'
     @model.save(attributes, {success: @handleSuccess, error: @handleError})
-
+    App.purchaseRequests.add(@model)
+    Backbone.history.navigate("purchase_request/show/#{@model.id}", trigger = true)
 
   handleSuccess: (data) =>
-    console.log data
     @formHelper.cleanForm('#create-purchase-request')
     @collection.each(@saveModel)
-    Backbone.history.navigate("purchase_request/show/#{@model.get('id')}", trigger: true)
-
-  handleError: (data, status, response) =>
-    this
 
   saveModel: (model) =>
     model.set('purchase_request_id', @model.get('id'))
-    model.save({success: @handleSaveModelSuccess, error: @handleSaveModelError})
-    @removeModel(model)
-
-  handleSaveModelSuccess: (data) ->
-    this
-
-  handleSaveModelError: (data, status, response) =>
-    this
+    model.save()
 
   addNewLine: (e) ->
     e.preventDefault()
