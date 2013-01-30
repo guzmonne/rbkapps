@@ -1,9 +1,5 @@
 class App.Routers.User extends Backbone.Router
 
-  initialize: ->
-    #@user = new App.Models.User()
-    #@user.set('id',$.cookie('user_id'))
-
   routes:
     'home': 'show'
     'users/new': 'create'

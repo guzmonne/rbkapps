@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128113403) do
+ActiveRecord::Schema.define(:version => 20130130195823) do
 
   create_table "purchase_request_lines", :force => true do |t|
     t.integer  "purchase_request_id"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(:version => 20130128113403) do
     t.string   "state"
     t.integer  "team_id"
   end
+
+  create_table "teams", :force => true do |t|
+    t.string   "name"
+    t.integer  "supervisor_id"
+    t.integer  "director_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "teams", ["supervisor_id"], :name => "index_teams_on_supervisor_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

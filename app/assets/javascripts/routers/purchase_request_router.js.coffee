@@ -9,7 +9,7 @@ class App.Routers.PurchaseRequest extends Backbone.Router
     'purchase_request/index': 'index'
 
   index: ->
-    if App.purchaseRequests.length < 2
+    if App.purchaseRequests.length == 0
       App.purchaseRequests.fetch
         success: =>
           view = new App.Views.PurchaseRequestIndex(collection: App.purchaseRequests)

@@ -7,6 +7,7 @@ window.App =
 
   vent: null
   users: null
+  teams: null
   user: null
   session: null
   navView: null
@@ -20,12 +21,15 @@ window.App =
     @user = new App.Models.User()
     @users = new App.Collections.Users()
     @users.reset($('#user-container').data('users'))
+    @teams = new App.Collections.Teams()
+    @teams.reset($('#team-container').data('teams'))
     @session = new App.Models.Session()
     @purchaseRequests = new App.Collections.PurchaseRequests()
     App.start()
     new App.Routers.Nav()
     new App.Routers.User()
     new App.Routers.PurchaseRequest()
+    new App.Routers.Teams()
     Backbone.history.start({pushState: true})
 
   start: ->

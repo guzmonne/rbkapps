@@ -10,6 +10,7 @@ class App.Views.Nav extends Backbone.View
     'click #nav-new-user': 'createUser'
     'click #nav-purchase-request': 'createPurchaseRequest'
     'click #nav-index-purchase-request': 'indexPurchaseRequest'
+    'click #nav-team': 'indexTeams'
 
   render: ->
     if @model.get('admin') ==  true
@@ -43,4 +44,9 @@ class App.Views.Nav extends Backbone.View
   indexPurchaseRequest: (e) ->
     e.preventDefault()
     Backbone.history.navigate 'purchase_request/index', trigger: true
+    this
+
+  indexTeams: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate 'teams/index', trigger: true
     this

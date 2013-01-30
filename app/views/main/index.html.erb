@@ -1,1 +1,12 @@
-<%= content_tag "div", nil , id: "user-container", data: {users: User.select("id, name, email, phone, cellphone, position, location_id, team_id, admin")} %>
+<%= content_tag "div",
+                nil ,
+                id: "user-container",
+                data: {
+                        users: User.select("id, name, email, phone, cellphone, position, location_id, team_id, admin")
+                } %>
+<%= content_tag "div",
+                nil ,
+                id: "team-container",
+                data: {
+                        teams: Team.select("id, name, supervisor_id, director_id")
+                } %>

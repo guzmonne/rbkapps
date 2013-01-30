@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   has_many :purchase_requests
+  belongs_to :team
   attr_accessible :name,
                   :email,
                   :cellphone,
