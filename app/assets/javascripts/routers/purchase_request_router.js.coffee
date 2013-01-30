@@ -50,16 +50,3 @@ class App.Routers.PurchaseRequest extends Backbone.Router
         view = new App.Views.PurchaseRequestShow(model: model)
         App.setAndRenderContentViews([view])
     this
-
-  # show: ->
-  #   @purchaseRequest = new App.Models.PurchaseRequest()
-  #   @purchaseRequest.set('id', id)
-  #   @purchaseRequest.fetch({success: @handleSuccess, error: @handleError})
-
-  # handleSuccess: (data) =>
-  #  view = new App.Views.PurchaseRequestShow(model: @purchaseRequest)
-  #  App.setAndRenderContentViews([view])
-  #  this
-
-  handleError: (data, status, response) =>
-    console.log data, status, response

@@ -36,3 +36,27 @@
         </div>
     </div>
 </form>
+<!-- Add new unit Form Modal -->
+<form id="add-new-unit-form" class="form-horizontal">
+    <div id="add-new-unit-modal"
+         class="modal hide fade"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-header">
+            <h3>Agregar Unidad</h3>
+        </div>
+        <div class="modal-body">
+            <div id="unit-notice"></div>
+            <div class="control-group" id="control-unit">
+                <label class="control-label" for="new-unit">Nueva Unidad</label>
+                <div class="controls">
+                    <input type="text" id="new-unit" placeholder="Unidad">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="submit-new-unit" class="btn btn-primary btn-block btn-large ">Aceptar</button>
+        </div>
+    </div>
+</form>

@@ -1,7 +1,10 @@
 <thead>
     <tr>
         <th>Descripcion</th>
-        <th>Unidad</th>
+        <th>
+            Unidad
+            <button class="btn btn-mini btn-success" id="add-new-unit"><i class="icon-plus icon-white"></i></button>
+        </th>
         <th>Cantidad</th>
         <th></th>
     </tr>
@@ -29,5 +32,6 @@
         </form>
     </tr>
 </tbody>
+
 
 

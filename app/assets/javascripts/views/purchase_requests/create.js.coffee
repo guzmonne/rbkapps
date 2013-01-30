@@ -6,6 +6,8 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
   events:
     'click #submit-create-purchase-request': 'createPurchaseRequest'
     'click #add-new-line': 'addNewLine'
+    'click #add-new-unit': 'addNewUnit'
+    'submit #add-new-unit-form': 'addNewUnit'
 
   initialize: ->
     @formHelper = new App.Mixins.Form
@@ -51,9 +53,19 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
     showView = new App.Views.PurchaseRequestLineShow(model: model)
     App.pushToAppendedViews(showView)
     @formHelper.cleanForm('#add-new-line-form')
-    $('#purchase-request-form-row').before(showView.render().el)
+    $('#purchase-request-form-row').after(showView.render().el)
     $('#description').focus()
     @collection.add(model)
 
   removeModel: (model) ->
     @collection.remove(model)
+
+  addNewUnit: (e) ->
+    e.preventDefault()
+    $('#add-new-unit-modal').modal('toggle')
+    newUnit = $('#new-unit').val()
+    if newUnit == "" then return @
+    $('#new-unit').val('')
+    $('#unit').prepend("<option>#{newUnit}</option>")
+    $('#unit').val(newUnit)
+    this
