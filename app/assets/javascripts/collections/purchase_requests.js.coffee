@@ -3,9 +3,6 @@ class App.Collections.PurchaseRequests extends Backbone.Collection
   url: 'api/purchase_requests'
   user_id: null
 
-  initialize: ->
-    @purchaseRequestLines = new App.Collections.PurchaseRequestLines()
-
   fetch: (options) ->
     if @user_id == null then return "La coleccion no tiene definidio un user_id"
     $.ajax

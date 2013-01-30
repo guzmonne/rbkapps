@@ -13,6 +13,7 @@ class App.Collections.PurchaseRequestLines extends Backbone.Collection
     $.ajax
       url: "/api/purchase_request_lines"
       type: 'GET'
+      async: false
       dataType: 'json'
       data: {purchase_request_id: @purchase_request_id}
       success: (data) =>
@@ -21,10 +22,13 @@ class App.Collections.PurchaseRequestLines extends Backbone.Collection
             model = new App.Models.PurchaseRequestLine
             model.set(dataSet)
             @add(model)
+          options.success(@)
         else
           model = new App.Models.PurchaseRequestLine
           model.set(data)
           @add(model)
-        options.success(@)
+          options.success(@)
       error: (data, status, response) ->
         console.log data, status, response
+      complete: ->
+        @

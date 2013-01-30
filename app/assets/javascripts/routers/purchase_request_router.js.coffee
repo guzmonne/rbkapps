@@ -1,5 +1,8 @@
 class App.Routers.PurchaseRequest extends Backbone.Router
 
+  initialize: ->
+    App.vent.on "purchase_requests:show", @setPurchaseOrder, this
+
   routes:
     'purchase_request/show/:id': 'show'
     'purchase_request/new': 'create'
@@ -16,6 +19,9 @@ class App.Routers.PurchaseRequest extends Backbone.Router
       App.setAndRenderContentViews([view])
     this
 
+  setPurchaseOrder: (model) ->
+    Backbone.history.navigate "purchase_request/show/#{model.get('id')}", true
+
   create: ->
     purchaseRequest = new App.Models.PurchaseRequest()
     purchaseRequestView = new App.Views.PurchaseRequestCreate(model: purchaseRequest)
@@ -23,18 +29,26 @@ class App.Routers.PurchaseRequest extends Backbone.Router
     this
 
   show: (id) =>
-    if App.purchaseRequests.length < 2
+    if App.purchaseRequests.length == 0
       App.purchaseRequests.fetch
         success: =>
           model = App.purchaseRequests.get(id)
-          console.log "Router", model
-          view = new App.Views.PurchaseRequestShow(model: model)
-          App.setAndRenderContentViews([view])
+          model.lines.purchase_request_id = model.id
+          model.lines.fetch
+            success: (collection) =>
+              view = new App.Views.PurchaseRequestShow(model: model)
+              App.setAndRenderContentViews([view])
     else
       model = App.purchaseRequests.get(id)
-      console.log "Router", model
-      view = new App.Views.PurchaseRequestShow(model: model)
-      App.setAndRenderContentViews([view])
+      model.lines.purchase_request_id = model.id
+      if model.lines.length == 0
+        model.lines.fetch
+          success: (collection) =>
+            view = new App.Views.PurchaseRequestShow(model: model)
+            App.setAndRenderContentViews([view])
+      else
+        view = new App.Views.PurchaseRequestShow(model: model)
+        App.setAndRenderContentViews([view])
     this
 
   # show: ->

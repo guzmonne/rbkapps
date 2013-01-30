@@ -1,4 +1,9 @@
 class App.Models.PurchaseRequest extends Backbone.Model
+
+  initialize: ->
+    @dateHelper = new App.Mixins.Date()
+    @lines = new App.Collections.PurchaseRequestLines([], {purchase_request_id: @id})
+
   url: ->
     u = "api/purchase_request"
     if @id or @remember_token
@@ -13,14 +18,12 @@ class App.Models.PurchaseRequest extends Backbone.Model
     use: null
     state: null
 
-  initialize: ->
-    @dateHelper = new App.Mixins.Date()
-
   save: (attributes, options) ->
     $.ajax
       url: "/api/purchase_requests"
       data: attributes
       type: 'POST'
+      async: false
       dataType: 'json'
       success: (data) =>
         @set(data)

@@ -6,7 +6,7 @@ class App.Views.PurchaseRequestLineShow extends Backbone.View
     'click #remove-line': 'removeLine'
 
   render: ->
-    $(@el).html(@template(model: @model))
+    $(@el).html(@template(line: @model))
     this
 
   removeLine: (e) ->
