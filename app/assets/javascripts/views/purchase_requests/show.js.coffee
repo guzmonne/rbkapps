@@ -9,9 +9,11 @@ class App.Views.PurchaseRequestShow extends Backbone.View
 
   initialize: ->
     @collectionHelper = new App.Mixins.Collections
+    @model.set('team', App.teams.getNameFromId(@model.get('team_id')))
 
   render: ->
     $(@el).html(@template(model: @model))
+    console.log @model.lines
     @model.lines.each(@renderLine)
     this
 

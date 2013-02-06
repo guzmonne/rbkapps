@@ -29,7 +29,7 @@ class App.Models.PurchaseRequest extends Backbone.Model
         @set(data)
         options.success(data)
       error: (data, status, response) ->
-        options.error(data, status, response)
+        alert data, status, response
 
   fetch: (options) ->
     $.ajax

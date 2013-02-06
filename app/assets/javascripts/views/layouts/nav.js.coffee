@@ -11,6 +11,7 @@ class App.Views.Nav extends Backbone.View
     'click #nav-purchase-request': 'createPurchaseRequest'
     'click #nav-index-purchase-request': 'indexPurchaseRequest'
     'click #nav-team': 'indexTeams'
+    'click #nav-new-team': 'createTeam'
 
   render: ->
     if @model.get('admin') ==  true
@@ -26,8 +27,7 @@ class App.Views.Nav extends Backbone.View
 
   signOut: (e) ->
     e.preventDefault()
-    $.removeCookie('user_id')
-    $.removeCookie('remember_token')
+    App.signOut()
     Backbone.history.navigate 'sign_in', trigger:true
     this
 
@@ -49,4 +49,9 @@ class App.Views.Nav extends Backbone.View
   indexTeams: (e) ->
     e.preventDefault()
     Backbone.history.navigate 'teams/index', trigger: true
+    this
+
+  createTeam: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate 'teams/new', trigger: true
     this

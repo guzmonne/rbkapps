@@ -1,6 +1,6 @@
 <td><%= @model.get('sector') %></td>
 <td><%= @model.get('use') %></td>
-<td><%= @model.get('team_id') %></td>
+<td><%= @model.get('team') %></td>
 <td><%= @model.get('deliver_at') %></td>
 <td><%= @dateHelper.parseRailsDate(@model.get('created_at')) %></td>
 <td><%= @dateHelper.parseRailsDate(@model.get('updated_at')) %></td>

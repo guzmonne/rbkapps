@@ -7,7 +7,8 @@ class App.Views.Team extends Backbone.View
     'click': 'show'
 
   initialize: ->
-    @dateHelper = new App.Mixins.Date
+    @model.set('supervisor', App.users.getNameFromId(@model.get('supervisor_id')))
+    @model.set('director', App.users.getNameFromId(@model.get('director_id')))
 
   render: ->
     $(@el).html(@template(model: @model))

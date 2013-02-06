@@ -1,0 +1,38 @@
+<div class="hero-unit">
+    <h1>Crear Nuevo Equipo</h1>
+</div>
+<form id="create-team" class="form-horizontal">
+    <div id="notice"></div>
+    <div class="control-group" id="control-name">
+        <label class="control-label" for="name">Nombre</label>
+        <div class="controls">
+            <input type="text" id="name" placeholder="Nombre">
+        </div>
+    </div>
+    <div class="control-group" id="control-supervisor">
+        <label class="control-label" for="supervisor">Supervisor</label>
+        <div class="controls">
+            <select id="supervisor">
+                <option>Seleccionar Supervisor</option>
+                <% App.users.each (user) -> : %>
+                <option data-id="<%= user.get('id') %>"><%= user.get('name') %></option>
+                <% end %>
+            </select>
+        </div>
+    </div>
+    <div class="control-group" id="control-director">
+        <label class="control-label" for="director">Gerente</label>
+        <div class="controls">
+            <select id="director">
+                <option>Seleccionar Director</option>
+                <% App.users.each (user) -> : %>
+                <option data-id="<%= user.get('id') %>"><%= user.get('name') %></option>
+                <% end %>
+            </select>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button id="submit-create-team" class="btn btn-primary btn-large">Crear Equipo</button>
+        <button id="clear-form" class="btn btn-primary btn-large btn-inverse">Cancelar</button>
+    </div>
+</form>

@@ -7,6 +7,9 @@ class App.Views.UserShow extends Backbone.View
     'click #update-password': 'changePassword'
     'click #submit-change-password': 'submitChangePassword'
 
+  initialize: ->
+    @model.set('team', App.teams.getNameFromId(@model.get('team_id')))
+
   render: ->
     $(@el).html(@template(user: @model))
     this

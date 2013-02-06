@@ -33,20 +33,20 @@ class App.Routers.PurchaseRequest extends Backbone.Router
       App.purchaseRequests.fetch
         success: =>
           model = App.purchaseRequests.get(id)
-          model.lines.purchase_request_id = model.id
-          model.lines.fetch
-            success: (collection) =>
-              view = new App.Views.PurchaseRequestShow(model: model)
-              App.setAndRenderContentViews([view])
+          model.lines.purchase_request_id = id
+          @fetchLines(model)
     else
       model = App.purchaseRequests.get(id)
-      model.lines.purchase_request_id = model.id
+      model.lines.purchase_request_id = id
       if model.lines.length == 0
-        model.lines.fetch
-          success: (collection) =>
-            view = new App.Views.PurchaseRequestShow(model: model)
-            App.setAndRenderContentViews([view])
+        @fetchLines(model)
       else
         view = new App.Views.PurchaseRequestShow(model: model)
         App.setAndRenderContentViews([view])
     this
+
+  fetchLines: (model) ->
+    model.lines.fetch
+      success: (collection) =>
+        view = new App.Views.PurchaseRequestShow(model: model)
+        App.setAndRenderContentViews([view])

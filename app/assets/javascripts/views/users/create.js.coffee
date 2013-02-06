@@ -20,6 +20,9 @@ class App.Views.UserCreate extends Backbone.View
   createUser: (e) ->
     e.preventDefault()
     @formHelper.removeValidations()
+    if $('#team').val() == "Seleccione un Equipo"
+      $('#control-team_id').addClass('error')
+      return @formHelper.displayFlash('error', 'Seleccione un equipo', 10000)
     attributes =
       user:
         name: $('#name').val()
@@ -27,7 +30,7 @@ class App.Views.UserCreate extends Backbone.View
         phone: $('#phone').val()
         cellphone: $('#cellphone').val()
         position: $('#position').val()
-        team_id: $('#team_id').val()
+        team_id: $('#team').find('option:selected').data('id')
         location_id: $('#location_id').val()
         password: $('#password').val()
         password_confirmation: $('#password_confirmation').val()

@@ -88,6 +88,13 @@ window.App =
   pushToAppendedViews: (view) ->
     @appendedViews.push view
 
+  signOut: ->
+    $.removeCookie('user_id')
+    $.removeCookie('remember_token')
+    @user = new App.Models.User
+    @purchaseRequests = new App.Collections.PurchaseRequests()
+    return @
+
 $(document).ready ->
   App.initialize()
 

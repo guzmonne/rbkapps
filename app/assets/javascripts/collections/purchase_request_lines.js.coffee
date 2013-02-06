@@ -20,15 +20,17 @@ class App.Collections.PurchaseRequestLines extends Backbone.Collection
         if data.length > 1
           for dataSet in data
             model = new App.Models.PurchaseRequestLine
-            model.set(dataSet)
+            model.set('description', dataSet.description)
+            model.set('unit', dataSet.unit)
+            model.set('quantity', dataSet.quantity)
             @add(model)
           options.success(@)
         else
           model = new App.Models.PurchaseRequestLine
-          model.set(data)
+          model.set('description', data.description)
+          model.set('unit', data.unit)
+          model.set('quantity', data.quantity)
           @add(model)
           options.success(@)
       error: (data, status, response) ->
         console.log data, status, response
-      complete: ->
-        @

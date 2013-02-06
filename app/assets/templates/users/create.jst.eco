@@ -46,9 +46,13 @@
         </div>
     </div>
     <div class="control-group" id="control-team_id">
-        <label class="control-label" for="team_id">ID de Equipo</label>
+        <label class="control-label" for="team">Equipo</label>
         <div class="controls">
-            <input type="number" id="team_id" placeholder="ID de Equipo"><br>
+            <select id="team">
+                <option>Seleccione un Equipo</option>
+                <% App.teams.each (team) -> : %>
+                    <option data-id="<%= team.get('id') %>"><%= team.get('name') %></option>
+            </select>
         </div>
     </div>
     <div class="control-group" id="control-location_id">

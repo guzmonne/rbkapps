@@ -28,8 +28,8 @@
         <p><%= @model.get('use') %></p>
     </div>
     <div class="span2">
-        <p><strong>ID de Equipo</strong></p>
-        <p><%= @model.get('team_id') %></p>
+        <p><strong>Equipo</strong></p>
+        <p><%= @model.get('team') %></p>
     </div>
     <div class="span2">
         <p><strong>Estado</strong></p>

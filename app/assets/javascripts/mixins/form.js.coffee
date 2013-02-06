@@ -25,3 +25,7 @@ class App.Mixins.Form
     id = ""
     id += Math.random().toString(36).substr(2) while id.length < length
     id.substr 0, length
+
+  forEachPrint: (array, begin, end) ->
+    for element in array
+      "#{begin} #{element} #{end}"

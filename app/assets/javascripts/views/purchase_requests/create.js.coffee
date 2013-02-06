@@ -22,13 +22,16 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
 
   createPurchaseRequest: (e) ->
     e.preventDefault()
+    if $('#team').val() == "Seleccione un Equipo de la Lista"
+      $('#team').parent().addClass('control-group error')
+      return @formHelper.displayFlash('error', 'Seleccione un equipo de la lista', 10000)
     attributes =
       purchase_request:
         user_id:    App.user.get('id')
         sector:     $('#sector').val()
         deliver_at: $('#deliver_at').val()
         use:        $('#use').val()
-        team_id:    $('#team_id').val()
+        team_id:    $('#team').find('option:selected').data('id')
         state:      'Esperando Aprovación'
     @model.save(attributes, {success: @handleSuccess, error: @handleError})
     App.purchaseRequests.add(@model)

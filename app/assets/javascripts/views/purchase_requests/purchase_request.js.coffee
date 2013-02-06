@@ -8,6 +8,7 @@ class App.Views.PurchaseRequest extends Backbone.View
 
   initialize: ->
     @dateHelper = new App.Mixins.Date
+    @model.set('team', App.teams.getNameFromId(@model.get('team_id')))
 
   render: ->
     $(@el).html(@template(model: @model, dateHelper: @dateHelper))

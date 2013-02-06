@@ -9,7 +9,6 @@ class App.Views.TeamsIndex extends Backbone.View
     this
 
   appendTeam: (model) =>
-    console.log model
     view = new App.Views.Team(model: model)
     App.pushToAppendedViews(view)
     @$('#teams').append(view.render().el)

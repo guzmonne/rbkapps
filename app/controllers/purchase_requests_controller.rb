@@ -2,7 +2,15 @@ class PurchaseRequestsController < ApplicationController
   respond_to :json
   def index
     @user_id = params["user_id"]
-    respond_with PurchaseRequest.find_all_by_user_id(@user_id)
+    @user = User.find(@user_id)
+    @team = Team.find(@user.team_id)
+    if @user.admin == true
+      respond_with PurchaseRequest.all
+    elsif @team.supervisor_id == @user.id
+      respond_with PurchaseRequest.find_all_by_team_id(@team.id)
+    else
+      respond_with PurchaseRequest.find_all_by_user_id(@user_id)
+    end
   end
 
   def show
