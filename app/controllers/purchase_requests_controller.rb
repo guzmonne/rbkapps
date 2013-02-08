@@ -18,7 +18,14 @@ class PurchaseRequestsController < ApplicationController
   end
 
   def create
-    respond_with PurchaseRequest.create(params["purchase_request"])
+    @purchase_request = params["purchase_request"]
+    @purchase_request_lines = params["purchase_request_lines"]
+    @result = PurchaseRequest.create(params["purchase_request"])
+    @purchase_request_lines.each do |line|
+        line["purchase_request_id"] = @result["id"]
+        PurchaseRequestLine.create(line)
+    end
+    respond_with @result
   end
 
   def update

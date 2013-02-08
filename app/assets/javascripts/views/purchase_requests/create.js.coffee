@@ -11,7 +11,6 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
 
   initialize: ->
     @formHelper = new App.Mixins.Form
-    @collection = new App.Collections.PurchaseRequestLines()
     App.vent.on 'removePurchaseRequestLine:success', @removeModel, this
 
   render: ->
@@ -25,25 +24,36 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
     if $('#team').val() == "Seleccione un Equipo de la Lista"
       $('#team').parent().addClass('control-group error')
       return @formHelper.displayFlash('error', 'Seleccione un equipo de la lista', 10000)
-    attributes =
-      purchase_request:
+    @lines = []
+    @model.lines.each (model) =>
+      line =
+          description: model.get('description')
+          unit:        model.get('unit')
+          quantity:    model.get('quantity')
+      @lines.push(line)
+    purchaseRequest =
         user_id:    App.user.get('id')
         sector:     $('#sector').val()
         deliver_at: $('#deliver_at').val()
         use:        $('#use').val()
         team_id:    $('#team').find('option:selected').data('id')
         state:      'Esperando Aprovación'
-    @model.save(attributes, {success: @handleSuccess, error: @handleError})
-    App.purchaseRequests.add(@model)
-    Backbone.history.navigate("purchase_request/show/#{@model.id}", trigger = true)
+    attributes =
+      purchase_request: purchaseRequest
+      purchase_request_lines: @lines
+    @model.save attributes, success: =>
+      App.purchaseRequests.add(@model)
+      Backbone.history.navigate("purchase_request/show/#{@model.id}", trigger = true)
 
   handleSuccess: (data) =>
     @formHelper.cleanForm('#create-purchase-request')
-    @collection.each(@saveModel)
+    @model.lines.each((model) => @saveModel())
 
   saveModel: (model) =>
     model.set('purchase_request_id', @model.get('id'))
     model.save()
+    @model.lines.remove(model)
+    return
 
   addNewLine: (e) ->
     e.preventDefault()
@@ -58,10 +68,10 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
     @formHelper.cleanForm('#add-new-line-form')
     $('#purchase-request-form-row').after(showView.render().el)
     $('#description').focus()
-    @collection.add(model)
+    @model.lines.add(model)
 
   removeModel: (model) ->
-    @collection.remove(model)
+    @model.lines.remove(model)
 
   addNewUnit: (e) ->
     e.preventDefault()
