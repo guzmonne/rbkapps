@@ -20,3 +20,13 @@ body { padding-top: 60px; }
   background-image: linear-gradient(top, #627899, #8ea4b9);
   background-clip: padding-box;
 }
+
+.t_shirt{
+  background-image: url("icon-t_shirt.png");
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 14px;
+  line-height: 14px;
+  vertical-align: text-bottom;
+  width: 14px;
+}

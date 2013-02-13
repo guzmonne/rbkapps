@@ -12,6 +12,7 @@ class App.Views.Nav extends Backbone.View
     'click #nav-index-purchase-request': 'indexPurchaseRequest'
     'click #nav-team': 'indexTeams'
     'click #nav-new-team': 'createTeam'
+    'click #nav-new-item': 'createItem'
 
   render: ->
     if @model.get('admin') ==  true
@@ -54,4 +55,9 @@ class App.Views.Nav extends Backbone.View
   createTeam: (e) ->
     e.preventDefault()
     Backbone.history.navigate 'teams/new', trigger: true
+    this
+
+  createItem: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate 'items/new', trigger: true
     this

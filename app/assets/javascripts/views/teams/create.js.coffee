@@ -12,7 +12,6 @@ class App.Views.TeamCreate extends Backbone.View
     @formHelper = new App.Mixins.Form()
 
   render: ->
-    render: ->
     $(@el).html(@template(team: @model))
     this
 

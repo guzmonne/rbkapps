@@ -1,0 +1,130 @@
+<div class="hero-unit">
+    <h1>Crear Nuevo Artículo</h1>
+</div>
+<form id="create-item" class="form-horizontal">
+    <div id="notice"></div>
+    <div class="control-group" id="control-name">
+        <label class="control-label" for="name">Nombre de Artículo</label>
+        <div class="controls">
+            <input type="text" id="name" placeholder="Nombre de Artículo">
+        </div>
+    </div>
+    <div class="control-group" id="control-brand">
+        <label class="control-label" for="brand">Marca</label>
+        <div class="controls">
+            <select id="brand">
+                <option>Seleccione una Marca</option>
+                <% @brands.forEach (brand) -> : %>
+                    <option><%= brand %></option>
+                <% end %>
+            </select>
+            <button class="btn btn-mini btn-success" id="add-new-brand">
+                <i class="icon-plus icon-white"></i>
+            </button>
+        </div>
+    </div>
+    <div class="control-group" id="control-season">
+        <label class="control-label" for="season">Temporada</label>
+        <div class="controls">
+            <select id="season">
+                <option>Seleccione una Temporada</option>
+                <% App.items.each (item) -> : %>
+                    <option><%= item.get('season') %></option>
+                <% end %>
+            </select>
+            <button class="btn btn-mini btn-success" id="add-new-season">
+                <i class="icon-plus icon-white"></i>
+            </button>
+        </div>
+    </div>
+    <div class="control-group" id="control-entry">
+        <label class="control-label" for="entry">Rubro</label>
+        <div class="controls">
+            <select id="entry">
+                <option>Seleccione un Rubro</option>
+                <% App.items.each (item) -> : %>
+                    <option><%= item.get('entry') %></option>
+                <% end %>
+            </select>
+            <button class="btn btn-mini btn-success" id="add-new-entry">
+                <i class="icon-plus icon-white"></i>
+            </button>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button id="submit-create-item" class="btn btn-primary btn-large">Crear Artículo</button>
+        <button id="clear-form" class="btn btn-primary btn-large btn-inverse">Cancelar</button>
+    </div>
+</form>
+<!-- Add new brand -->
+<form id="add-new-brand-form" class="form-horizontal">
+    <div id="add-new-brand-modal"
+         class="modal hide fade"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-header">
+            <h3>Agregar Marca</h3>
+        </div>
+        <div class="modal-body">
+            <div id="unit-notice"></div>
+            <div class="control-group" id="modal-control-brand">
+                <label class="control-label" for="new-brand">Nueva Marca</label>
+                <div class="controls">
+                    <input type="text" id="new-brand" placeholder="Marca">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="submit-new-brand" class="btn btn-primary btn-block btn-large ">Aceptar</button>
+        </div>
+    </div>
+</form>
+<!-- Add new season -->
+<form id="add-new-season-form" class="form-horizontal">
+    <div id="add-new-season-modal"
+         class="modal hide fade"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-header">
+            <h3>Agregar Temporada</h3>
+        </div>
+        <div class="modal-body">
+            <div id="season-notice"></div>
+            <div class="control-group" id="modal-control-season">
+                <label class="control-label" for="new-season">Nueva Temporada</label>
+                <div class="controls">
+                    <input type="text" id="new-season" placeholder="Temporada">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="submit-new-season" class="btn btn-primary btn-block btn-large ">Aceptar</button>
+        </div>
+    </div>
+</form>
+<!-- Add new entry -->
+<form id="add-new-entry-form" class="form-horizontal">
+    <div id="add-new-entry-modal"
+         class="modal hide fade"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-header">
+            <h3>Agregar Rubro</h3>
+        </div>
+        <div class="modal-body">
+            <div id="entry-notice"></div>
+            <div class="control-group" id="modal-control-entry">
+                <label class="control-label" for="new-entry">Nuevo Rubro</label>
+                <div class="controls">
+                    <input type="text" id="new-entry" placeholder="Rubro">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="submit-new-entry" class="btn btn-primary btn-block btn-large ">Aceptar</button>
+        </div>
+    </div>
+</form>

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130131202656) do
+ActiveRecord::Schema.define(:version => 20130213142935) do
+
+  create_table "items", :force => true do |t|
+    t.string   "brand"
+    t.string   "season"
+    t.string   "entry"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "purchase_request_lines", :force => true do |t|
     t.integer  "purchase_request_id"

@@ -12,6 +12,7 @@ window.App =
   session: null
   navView: null
   purchaseRequests: null
+  items: null
   contentViews: []
   appendedViews: []
 
@@ -25,11 +26,13 @@ window.App =
     @teams.reset($('#team-container').data('teams'))
     @session = new App.Models.Session()
     @purchaseRequests = new App.Collections.PurchaseRequests()
+    @items = new App.Collections.Items()
     App.start()
     new App.Routers.Nav()
     new App.Routers.User()
     new App.Routers.PurchaseRequest()
     new App.Routers.Teams()
+    new App.Routers.Item()
     Backbone.history.start({pushState: true})
 
   start: ->
@@ -78,12 +81,6 @@ window.App =
       return Backbone.history.navigate('sign_in', trigger: true) unless @session.load().authenticated()
     renderViews = @setContentViews(views)
     @renderContentViews(renderViews)
-
-  signOut: ->
-    $.removeCookie('remember_token')
-    $.removeCookie('user_id')
-    @start()
-    this
 
   pushToAppendedViews: (view) ->
     @appendedViews.push view

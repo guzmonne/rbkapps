@@ -29,3 +29,13 @@ class App.Mixins.Form
   forEachPrint: (array, begin, end) ->
     for element in array
       "#{begin} #{element} #{end}"
+
+  modalToSelect: (modal, attribute, destination) =>
+    $(modal).modal('toggle')
+    $(modal).on('shown', => $(attribute).focus() )
+    newAttribute = $(attribute).val()
+    if newAttribute == "" then return @
+    $(attribute).val('')
+    $(destination).append("<option>#{newAttribute}</option>")
+    $(destination).val(newAttribute)
+    this

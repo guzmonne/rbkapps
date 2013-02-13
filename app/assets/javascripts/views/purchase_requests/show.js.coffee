@@ -13,7 +13,6 @@ class App.Views.PurchaseRequestShow extends Backbone.View
 
   render: ->
     $(@el).html(@template(model: @model))
-    console.log @model.lines
     @model.lines.each(@renderLine)
     this
 

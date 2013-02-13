@@ -65,7 +65,7 @@
                 </li>
             </ul>
         </li>
-        <li class="dropdown admin-only" id="li-drop-team">
+        <li class="dropdown admin-only hide" id="li-drop-team">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="nav-drop-team">
                 Equipo
                 <b class="caret"></b>
@@ -82,6 +82,27 @@
                         <i class="icon-plus"></i>
                         <i class="icon-briefcase"></i>
                         Nuevo Equipo
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown admin-only comex-only hide" id="li-drop-comex">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="nav-drop-comex">
+                COMEX
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li>
+                    <a href="#" id="nav-item">
+                        <i class="t_shirt"></i>
+                        Artículos
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="nav-new-item">
+                        <i class="icon-plus"></i>
+                        <i class="t_shirt"></i>
+                        Nuevo Artículo
                     </a>
                 </li>
             </ul>
