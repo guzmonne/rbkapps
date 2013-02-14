@@ -1,4 +1,4 @@
-<div class="wll">
+<div class="well">
     <h1>Crear Nuevo Equipo</h1>
 </div>
 <form id="create-team" class="form-horizontal">

@@ -8,6 +8,7 @@ Rbkapps::Application.routes.draw do
     resources :purchase_request_lines
     resources :teams
     resources :items
+    resources :deliveries
   end
 
   match '*path', to: 'main#index'

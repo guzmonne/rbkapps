@@ -52,6 +52,7 @@
                 <option>Seleccione un Equipo</option>
                 <% App.teams.each (team) -> : %>
                     <option data-id="<%= team.get('id') %>"><%= team.get('name') %></option>
+                <% end %>
             </select>
         </div>
     </div>
