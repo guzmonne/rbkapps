@@ -1,4 +1,4 @@
-<div class="hero-unit">
+<div class="wll">
     <h1>Crear Nuevo Equipo</h1>
 </div>
 <form id="create-team" class="form-horizontal">

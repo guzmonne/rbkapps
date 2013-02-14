@@ -1,4 +1,4 @@
-<div class="hero-unit">
+<div class="well">
     <h1>Crear Nuevo Usuario</h1>
 </div>
 <form id="create-user" class="form-horizontal">

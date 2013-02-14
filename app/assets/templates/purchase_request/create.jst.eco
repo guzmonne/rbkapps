@@ -1,4 +1,4 @@
-<div class="hero-unit">
+<div class="well">
     <h1>Crear Nueva  Solicitud de Compra</h1>
 </div>
 <form id="create-purchase-request">

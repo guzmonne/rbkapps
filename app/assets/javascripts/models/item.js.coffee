@@ -1,5 +1,5 @@
 class App.Models.Item extends Backbone.Model
-  urlRoot: 'api/items'
+  urlRoot: '/api/items'
 
   defaults : ->
     name: null

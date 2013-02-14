@@ -1,4 +1,4 @@
-<div class="hero-unit">
+<div class="well">
     <h1>Crear Nuevo Artículo</h1>
 </div>
 <form id="create-item" class="form-horizontal">
@@ -28,8 +28,8 @@
         <div class="controls">
             <select id="season">
                 <option>Seleccione una Temporada</option>
-                <% App.items.each (item) -> : %>
-                    <option><%= item.get('season') %></option>
+                <% @seasons.forEach (season) -> : %>
+                    <option><%= season %></option>
                 <% end %>
             </select>
             <button class="btn btn-mini btn-success" id="add-new-season">
@@ -42,8 +42,8 @@
         <div class="controls">
             <select id="entry">
                 <option>Seleccione un Rubro</option>
-                <% App.items.each (item) -> : %>
-                    <option><%= item.get('entry') %></option>
+                <% @entries.forEach (entry) -> : %>
+                    <option><%= entry %></option>
                 <% end %>
             </select>
             <button class="btn btn-mini btn-success" id="add-new-entry">

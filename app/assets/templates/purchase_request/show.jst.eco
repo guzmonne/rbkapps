@@ -1,4 +1,4 @@
-<div class="hero-unit">
+<div class="well">
     <h1>
         Solicitud de Compra #<%= @model.get('id') %>
     </h1>

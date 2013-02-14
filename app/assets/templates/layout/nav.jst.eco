@@ -92,13 +92,13 @@
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <li>
+                <li class="hover-white">
                     <a href="#" id="nav-item">
                         <i class="t_shirt"></i>
                         Artículos
                     </a>
                 </li>
-                <li>
+                <li class="hover-white">
                     <a href="#" id="nav-new-item">
                         <i class="icon-plus"></i>
                         <i class="t_shirt"></i>

@@ -4,15 +4,17 @@ class App.Views.Nav extends Backbone.View
   className: "navbar-inner"
 
   events:
-    'click #nav-home': 'home'
-    'click #sign-out':  'signOut'
-    'click #nav-user': 'home'
-    'click #nav-new-user': 'createUser'
-    'click #nav-purchase-request': 'createPurchaseRequest'
-    'click #nav-index-purchase-request': 'indexPurchaseRequest'
-    'click #nav-team': 'indexTeams'
-    'click #nav-new-team': 'createTeam'
-    'click #nav-new-item': 'createItem'
+    'click #nav-home'                   : 'home'
+    'click #sign-out'                   : 'signOut'
+    'click #nav-user'                   : 'home'
+    'click #nav-new-user'               : 'createUser'
+    'click #nav-purchase-request'       : 'createPurchaseRequest'
+    'click #nav-index-purchase-request' : 'indexPurchaseRequest'
+    'click #nav-team'                   : 'indexTeams'
+    'click #nav-new-team'               : 'createTeam'
+    'click #nav-new-item'               : 'createItem'
+    'click #nav-item'                   : 'indexItem'
+    'hover .hover-white'                : 'whiteShirt'
 
   render: ->
     if @model.get('admin') ==  true
@@ -60,4 +62,13 @@ class App.Views.Nav extends Backbone.View
   createItem: (e) ->
     e.preventDefault()
     Backbone.history.navigate 'items/new', trigger: true
+    this
+
+  indexItem: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate 'items/index', trigger: true
+    this
+
+  whiteShirt: (e) ->
+    $(e.currentTarget).find('i').toggleClass('t_shirt-white')
     this
