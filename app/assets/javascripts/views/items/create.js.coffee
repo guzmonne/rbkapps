@@ -51,7 +51,7 @@ class App.Views.ItemCreate extends Backbone.View
     if $('#entry').val() == "Seleccione un Rubro" then return @formHelper.showInForm('entry', 'no puede quedar en blanco')
     attributes =
       item:
-        name  : $('#name').val()
+        code  : $('#code').val()
         brand : $('#brand').val()
         season: $('#season').val()
         entry : $('#entry').val()

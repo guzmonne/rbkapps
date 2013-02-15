@@ -9,7 +9,7 @@
             <thead>
             <tr>
                 <th>Id</th>
-                <th>Nombre</th>
+                <th>Codigo</th>
                 <th>Marca</th>
                 <th>Temporada</th>
                 <th>Rubro</th>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130214173423) do
+ActiveRecord::Schema.define(:version => 20130215142917) do
 
   create_table "deliveries", :force => true do |t|
     t.string   "courier"
@@ -45,9 +45,9 @@ ActiveRecord::Schema.define(:version => 20130214173423) do
     t.string   "brand"
     t.string   "season"
     t.string   "entry"
-    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "code"
   end
 
   create_table "purchase_request_lines", :force => true do |t|

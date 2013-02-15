@@ -44,12 +44,12 @@
             </div>
 
 
-            <div class="input-prepend">
+            <div class="input-prepend hide" id="cargo2">
                 <span class="add-on">$</span>
                 <input type="text" id="cargo_cost2" placeholder="Flete 2" class="span10">
             </div>
 
-            <div class="input-prepend">
+            <div class="input-prepend hide" id="cargo3">
                 <span class="add-on">$</span>
                 <input type="text" id="cargo_cost3" placeholder="Flete 3" class="span10">
             </div>
@@ -144,17 +144,20 @@
                     <label>Marca</label>
                     <select id="brand">
                         <option>Seleccione una Marca</option>
+                        <% @brands.forEach (brand) -> : %>
+                            <option><%= brand %></option>
+                        <% end %>
                     </select>
                 </div>
                 <div class="span3">
-                    <label>Envío de Factura</label>
+                    <label>Temporada</label>
                     <select id="season">
                         <option>Seleccione una Temporada</option>
                     </select>
                 </div>
                 <div class="span3">
-                    <label>Nombre de Artículo</label>
-                    <select id="name">
+                    <label>Codigo de Artículo</label>
+                    <select id="code">
                         <option>Seleccione un Artículo</option>
                     </select>
                 </div>

@@ -1,5 +1,5 @@
 <td><%= @model.get('id') %></td>
-<td><%= @model.get('name') %></td>
+<td><%= @model.get('code') %></td>
 <td><%= @model.get('brand') %></td>
 <td><%= @model.get('season') %></td>
 <td><%= @model.get('entry') %></td>

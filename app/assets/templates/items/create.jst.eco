@@ -3,10 +3,10 @@
 </div>
 <form id="create-item" class="form-horizontal">
     <div id="notice"></div>
-    <div class="control-group" id="control-name">
-        <label class="control-label" for="name">Nombre de Artículo</label>
+    <div class="control-group" id="control-code">
+        <label class="control-label" for="code">Codigo de Artículo</label>
         <div class="controls">
-            <input type="text" id="name" placeholder="Nombre de Artículo">
+            <input type="text" id="code" placeholder="Nombre de Artículo">
         </div>
     </div>
     <div class="control-group" id="control-brand">

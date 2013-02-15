@@ -1,10 +1,10 @@
 class Item < ActiveRecord::Base
-  attr_accessible :name,
+  attr_accessible :code,
                   :brand,
                   :season,
                   :entry
 
-  validates :name, presence: {:message => "no puede quedar en blanco"}
+  validates :code, presence: {:message => "no puede quedar en blanco"}
   validates :brand, presence: {:message => "no puede quedar en blanco"}
   validates :season, presence: {:message => "no puede quedar en blanco"}
   validates :entry, presence: {:message => "no puede quedar en blanco"}
