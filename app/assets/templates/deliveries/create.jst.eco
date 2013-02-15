@@ -1,0 +1,245 @@
+<div class="well">
+    <h1>Crear Nuevo Envío</h1>
+</div>
+<form id="create-delivery" class="form-horizontal">
+<div id="notice"></div>
+    <div class="control-group" id="control-courier">
+        <label class="control-label label-grey" for="courier">Courier</label>
+        <div class="controls">
+            <select id="courier">
+                <option>Seleccione una Empresa</option>
+                <option>DHL</option>
+                <option>FedEx</option>
+                <option>UPS</option>
+            </select>
+            <img src="/assets/rails.png" id="courier-logo" style="height: 30px;">
+        </div>
+    </div>
+    <div class="control-group" id="control-dispatch">
+        <label class="control-label label-grey" for="dispatch">Trámite</label>
+        <div class="controls">
+            <select id="dispatch">
+                <option>Seleccione una Opción</option>
+                <option>MONO</option>
+                <option>DUA</option>
+                <option>LIBERADO</option>
+            </select>
+        </div>
+    </div>
+    <div class="control-group" id="control-guide">
+        <label class="control-label label-grey" for="guide">Guía</label>
+        <div class="controls">
+            <input type="text" id="guide" placeholder="Guía">
+            <input type="text" id="guide2" placeholder="Guía 2" class="hide">
+            <input type="text" id="guide3" placeholder="Guía 3" class="hide">
+        </div>
+    </div>
+    <div class="control-group" id="control-cargo">
+        <label class="control-label label-grey" for="cargo_cost">Flete</label>
+        <div class="controls">
+
+            <div class="input-prepend">
+                <span class="add-on">$</span>
+                <input type="text" id="cargo_cost" placeholder="Flete" class="span10">
+            </div>
+
+
+            <div class="input-prepend">
+                <span class="add-on">$</span>
+                <input type="text" id="cargo_cost2" placeholder="Flete 2" class="span10">
+            </div>
+
+            <div class="input-prepend">
+                <span class="add-on">$</span>
+                <input type="text" id="cargo_cost3" placeholder="Flete 3" class="span10">
+            </div>
+
+            <div class="input-prepend">
+                <span class="add-on">$</span>
+                <input type="text" id="dispatch_cost" placeholder="G. despacho" class="span10">
+            </div>
+
+            <div class="input-prepend">
+                <span class="add-on">$</span>
+                <input type="text" id="dua_cost" placeholder="G. DUA" class="span10">
+            </div>
+
+        </div>
+    </div>
+    <div class="control-group" id="control-supplier">
+        <label class="control-label label-grey" for="supplier">Proveedor</label>
+        <div class="controls">
+            <select id="supplier">
+                <option>Seleccione un Proveedor</option>
+                <% @suppliers.forEach (supplier) -> : %>
+                    <option><%= supplier %></option>
+                <% end %>
+            </select>
+            <button class="btn btn-mini btn-success" id="add-new-supplier">
+                <i class="icon-plus icon-white"></i>
+            </button>
+        </div>
+    </div>
+    <div class="control-group" id="control-origin">
+        <label class="control-label label-grey" for="origin">Origen</label>
+        <div class="controls">
+            <select id="origin">
+                <option>Lugar de Origen</option>
+                <% @origins.forEach (origin) -> : %>
+                    <option><%= origin %></option>
+                <% end %>
+            </select>
+            <button class="btn btn-mini btn-success" id="add-new-origin">
+                <i class="icon-plus icon-white"></i>
+            </button>
+        </div>
+    </div>
+    <div class="control-group" id="control-origin_date">
+        <label class="control-label label-grey" for="origin_date">Fechas</label>
+        <div class="controls">
+            <div class="row-fluid">
+                 <div class="span4">
+                    <label>Salida de Origen</label>
+                    <input id="origin_date" type="date" class="input-small">
+                </div>
+                <div class="span4">
+                    <label>Llegada a Uruguay</label>
+                    <input id="arrival_date" type="date" class="input-small">
+                </div>
+                <div class="span4">
+                    <label>Entrega</label>
+                    <input id="delivery_date" type="date" class="input-small">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="control-group" id="control-status">
+        <label class="control-label label-grey" for="origin_date">Datos de Estado</label>
+        <div class="controls">
+            <div class="row-fluid">
+                <div class="span4">
+                    <label>Estado</label>
+                    <select id="status">
+                        <option>PENDIENTE</option>
+                        <option>PROCESO</option>
+                        <option>ENTREGADO</option>
+                    </select>
+                </div>
+                <div class="span4">
+                    <label>Envío de Factura</label>
+                    <input id="invoice_delivery_date" type="date" class="input-small">
+                </div>
+                <div class="span4">
+                    <label>Doc. Courier</label>
+                    <input id="doc_courier_date" type="date" class="input-small">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="control-group" id="control-item">
+        <label class="control-label label-grey">Artículo</label>
+        <div class="controls">
+            <div class="row-fluid">
+                <div class="span3">
+                    <label>Marca</label>
+                    <select id="brand">
+                        <option>Seleccione una Marca</option>
+                    </select>
+                </div>
+                <div class="span3">
+                    <label>Envío de Factura</label>
+                    <select id="season">
+                        <option>Seleccione una Temporada</option>
+                    </select>
+                </div>
+                <div class="span3">
+                    <label>Nombre de Artículo</label>
+                    <select id="name">
+                        <option>Seleccione un Artículo</option>
+                    </select>
+                </div>
+                <div class="span3">
+                    <label>Rubro</label>
+                    <input id="entry" type="text" placeholder="Rubro" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="control-group" id="control-invoice">
+        <label class="control-label label-grey">Totales</label>
+        <div class="controls">
+            <div class="row-fluid">
+                <div class="span4">
+                    <label>Número de Factura</label>
+                    <input id="invoice_number" type="number" placeholder="Número de Factura">
+                </div>
+                <div class="span4">
+                    <label>Total FOB</label>
+                    <div class="input-prepend">
+                        <span class="add-on">USD</span>
+                        <input id="fob_total_cost" type="text">
+                    </div>
+                </div>
+                <div class="span4">
+                    <label>Total unidades</label>
+                    <div class="input-prepend">
+                        <span class="add-on">USD</span>
+                        <input id="total_units_cost" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button id="submit-create-delivery" class="btn btn-primary btn-large">Crear Envío</button>
+        <button id="clear-form" class="btn btn-primary btn-large btn-inverse">Cancelar</button>
+    </div>
+</form>
+<!-- Add new supplier -->
+<form id="add-new-supplier-form" class="form-horizontal">
+    <div id="add-new-supplier-modal"
+         class="modal hide fade"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-header">
+            <h3>Agregar Proveedor</h3>
+        </div>
+        <div class="modal-body">
+            <div id="supplier-notice"></div>
+            <div class="control-group" id="modal-control-supplier">
+                <label class="control-label" for="new-supplier">Nuevo Proveedor</label>
+                <div class="controls">
+                    <input type="text" id="new-supplier" placeholder="Proveedor">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="submit-new-supplier" class="btn btn-primary btn-block btn-large ">Aceptar</button>
+        </div>
+    </div>
+</form>
+<!-- Add new supplier -->
+<form id="add-new-origin-form" class="form-horizontal">
+    <div id="add-new-origin-modal"
+         class="modal hide fade"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-header">
+            <h3>Agregar Origen</h3>
+        </div>
+        <div class="modal-body">
+            <div id="origin-notice"></div>
+            <div class="control-group" id="modal-control-origin">
+                <label class="control-label" for="new-supplier">Nuevo Origen</label>
+                <div class="controls">
+                    <input type="text" id="new-origin" placeholder="Origen">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="submit-new-origin" class="btn btn-primary btn-block btn-large ">Aceptar</button>
+        </div>
+    </div>
+</form>

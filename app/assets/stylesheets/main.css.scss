@@ -40,3 +40,23 @@ body { padding-top: 60px; }
   vertical-align: text-bottom;
   width: 14px;
 }
+
+.label-grey{
+  font-size: 14px;
+  font-weight: bold;
+
+  background-image: linear-gradient(left , rgb(133,133,133) 1%, rgb(179,179,179) 48%, rgb(255,255,255) 85%);
+  background-image: -o-linear-gradient(left , rgb(133,133,133) 1%, rgb(179,179,179) 48%, rgb(255,255,255) 85%);
+  background-image: -moz-linear-gradient(left , rgb(133,133,133) 1%, rgb(179,179,179) 48%, rgb(255,255,255) 85%);
+  background-image: -webkit-linear-gradient(left , rgb(133,133,133) 1%, rgb(179,179,179) 48%, rgb(255,255,255) 85%);
+  background-image: -ms-linear-gradient(left , rgb(133,133,133) 1%, rgb(179,179,179) 48%, rgb(255,255,255) 85%);
+
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0.01, rgb(133,133,133)),
+    color-stop(0.48, rgb(179,179,179)),
+    color-stop(0.85, rgb(255,255,255))
+  );
+}

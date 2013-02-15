@@ -13,6 +13,7 @@ window.App =
   navView: null
   purchaseRequests: null
   items: null
+  deliveries: null
   contentViews: []
   appendedViews: []
 
@@ -27,12 +28,14 @@ window.App =
     @session = new App.Models.Session()
     @purchaseRequests = new App.Collections.PurchaseRequests()
     @items = new App.Collections.Items()
+    @deliveries = new App.Collections.Deliveries()
     App.start()
     new App.Routers.Nav()
     new App.Routers.User()
     new App.Routers.PurchaseRequest()
     new App.Routers.Teams()
     new App.Routers.Item()
+    new App.Routers.Delivery()
     Backbone.history.start({pushState: true})
 
   start: ->

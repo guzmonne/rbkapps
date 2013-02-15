@@ -92,10 +92,23 @@
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li>
+                    <a href="#" id="nav-deliveries">
+                        <i class="icon-plane"></i>
+                        Envios
+                    </a>
+                </li>
                 <li class="hover-white">
                     <a href="#" id="nav-item">
                         <i class="t_shirt"></i>
                         Artículos
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="nav-new-delivery">
+                        <i class="icon-plus"></i>
+                        <i class="icon-plane"></i>
+                        Nuevo Envío
                     </a>
                 </li>
                 <li class="hover-white">

@@ -15,6 +15,8 @@ class App.Views.Nav extends Backbone.View
     'click #nav-new-item'               : 'createItem'
     'click #nav-item'                   : 'indexItem'
     'hover .hover-white'                : 'whiteShirt'
+    'click #nav-deliveries'             : 'deliveriesIndex'
+    'click #nav-new-delivery'           : 'deliveryCreate'
 
   render: ->
     if @model.get('admin') ==  true
@@ -71,4 +73,14 @@ class App.Views.Nav extends Backbone.View
 
   whiteShirt: (e) ->
     $(e.currentTarget).find('i').toggleClass('t_shirt-white')
+    this
+
+  deliveriesIndex: (e) ->
+    e.preventDefault()
+    alert "Nothing here yet..."
+    this
+
+  deliveryCreate: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate 'deliveries/new', trigger: true
     this
