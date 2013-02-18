@@ -2,6 +2,7 @@ class App.Routers.Delivery extends Backbone.Router
   routes:
     'deliveries/new'  : 'create'
     'deliveries/index': 'index'
+    'deliveries/:id'  : 'show'
 
   create: ->
     if App.user.get("comex") == true or App.user.get("admin") == true
@@ -28,4 +29,9 @@ class App.Routers.Delivery extends Backbone.Router
           return this
     else
       Backbone.history.navigate('home', trigger: true)
+    this
+
+  show: ->
+    view = new App.Views.DeliveryShow()
+    App.setAndRenderContentViews([view])
     this

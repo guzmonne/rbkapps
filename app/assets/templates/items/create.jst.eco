@@ -6,7 +6,7 @@
     <div class="control-group" id="control-code">
         <label class="control-label" for="code">Codigo de Artículo</label>
         <div class="controls">
-            <input type="text" id="code" placeholder="Nombre de Artículo">
+            <input type="text" id="code" placeholder="Codigo de Artículo">
         </div>
     </div>
     <div class="control-group" id="control-brand">

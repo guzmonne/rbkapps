@@ -9,6 +9,7 @@ Rbkapps::Application.routes.draw do
     resources :teams
     resources :items
     resources :deliveries
+    resources :invoices
   end
 
   match '*path', to: 'main#index'

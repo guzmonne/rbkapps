@@ -10,7 +10,14 @@ class DeliveriesController < ApplicationController
   end
 
   def create
-    respond_with Delivery.create(params["delivery"])
+    @delivery = params["delivery"]
+    @invoices = params["invoices"]
+    @result = Delivery.create(@delivery)
+    @invoices.each do |invoice|
+      invoice["delivery_id"] = @result["id"]
+      Invoice.create(invoice)
+    end
+    respond_with @result
   end
 
   def update

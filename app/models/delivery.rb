@@ -17,8 +17,6 @@ class Delivery < ActiveRecord::Base
                   :status,
                   :invoice_delivery_date,
                   :doc_courier_date,
-                  :invoice_number,
-                  :fob_total_cost,
-                  :total_units_cost
+                  :item_id
 
 end

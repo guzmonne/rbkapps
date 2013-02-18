@@ -13,13 +13,19 @@ class App.Views.DeliveryCreate extends Backbone.View
     'change #brand'             : 'changeBrand'
     'change #season'            : 'changeSeason'
     'change #code'              : 'changeCode'
+    'click #add-new-invoice'    : 'addNewInvoice'
+    'keydown :input'            : 'keyDownManager'
+    'submit #create-delivery'   : 'createDelivery'
+    'click #clear-form'         : 'clearForm'
 
   initialize: ->
     @model = new App.Models.Delivery()
+    @collection = new App.Collections.Invoices()
     @suppliers   = App.deliveries.pluckDistinct('supplier')
     @origins     = App.deliveries.pluckDistinct('origin')
-    @brands     = App.items.pluckDistinct('brand')
+    @brands      = App.items.pluckDistinct('brand')
     @formHelper = new App.Mixins.Form()
+    App.vent.on('removeInvoice:success', (model) => @collection.remove(model))
 
   render: ->
     $(@el).html(@template(suppliers: @suppliers, origins: @origins, brands: @brands))
@@ -94,3 +100,109 @@ class App.Views.DeliveryCreate extends Backbone.View
     $(id).append("<option>#{text}</option>")
     $(id).val(text)
     this
+
+  addNewInvoice: (e) ->
+    e.preventDefault()
+    model = new App.Models.Invoice()
+    attributes =
+      invoice_number: $('#invoice_number').val()
+      fob_total_cost: $('#fob_total_cost').val()
+      total_units   : $('#total_units').val()
+    model.set(attributes)
+    $('#invoice_number').val('')
+    $('#fob_total_cost').val('')
+    $('#total_units').val('1')
+    invoiceView =  new App.Views.Invoice(model: model)
+    App.pushToAppendedViews(invoiceView)
+    # @formHelper.cleanForm('#add-new-invoice-form')
+    $('#invoice-form-row').after(invoiceView.render().el)
+    $('#invoice_number').focus()
+    @collection.add(model)
+    this
+
+  keyDownManager: (e) ->
+    console.log e.keyCode, e.currentTarget
+    switch e.keyCode
+      when 13
+        switch e.currentTarget.id
+          when "invoice_number", "total_units", "fob_total_cost"
+            @addNewInvoice(e)
+            $('#invoice_number').focus()
+            break
+          when "new-supplier"
+            @addNewSupplier(e)
+            $('#origin').focus()
+            break
+          when "new-origin"
+            @addNewOrigin(e)
+            $('#origin_date').focus()
+            break
+          else
+            e.preventDefault()
+      when 9
+        switch e.currentTarget.id
+          when "supplier"
+            e.preventDefault()
+            $('#origin').focus()
+            break
+          when "origin"
+            e.preventDefault()
+            $('#origin_date').focus()
+            break
+          when "total_units"
+            e.preventDefault()
+            $('#invoice_number').focus()
+            break
+      when 107
+        switch e.currentTarget.id
+          when "supplier"
+            e.preventDefault()
+            @addNewSupplier(e)
+          when "origin"
+            e.preventDefault()
+            @addNewOrigin(e)
+    this
+
+  createDelivery: (e) ->
+    e.preventDefault()
+    delivery =
+      courier           : $('#courier').val()
+      dispatch          : $('#dispatch').val()
+      guide             : $('#guide').val()
+      guide2            : $('#guide2').val()
+      guide3            : $('#guide3').val()
+      cargo_cost        : $('#cargo_cost').val()
+      cargo_cost2       : $('#cargo_cost2').val()
+      cargo_cost3       : $('#cargo_cost3').val()
+      dispatch_cost     : $('#dispatch_cost').val()
+      dua_cost          : $('#dua_cost').val()
+      supplier          : $('#supplier').val()
+      origin            : $('#origin').val()
+      origin_date       : $('#origin_date').val()
+      arrival_date      : $('#arrival_date').val()
+      delivery_date     : $('#delivery_date').val()
+      status            : $('#status').val()
+      doc_courier_date  : $('#doc_courier_date').val()
+      item_id           : App.items.where({code: $('#code').val() })[0].get('id')
+    invoices = []
+    @collection.each (model) =>
+      invoice =
+        invoice_number  : model.get('invoice_number')
+        fob_total_cost  : model.get('fob_total_cost')
+        total_units     : model.get('total_units')
+      invoices.push(invoice)
+    attributes =
+      delivery: delivery
+      invoices: invoices
+    @model.save attributes, success: =>
+      App.deliveries.add(@model)
+      Backbone.history.navigate "deliveries/#{@model.id}", trigger: true
+    this
+
+  clearForm: (e = null) ->
+    @formHelper('#create-delivery')
+    this
+
+
+
+

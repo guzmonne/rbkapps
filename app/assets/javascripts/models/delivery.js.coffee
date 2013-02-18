@@ -20,7 +20,4 @@ class App.Models.Delivery extends Backbone.Model
     status                : null
     invoice_delivery_date : null
     doc_courier_date      : null
-    invoice_number        : null
-    fob_total_cost        : null
-    total_units_cost      : null
 
