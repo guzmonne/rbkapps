@@ -23,11 +23,13 @@
       <w>delever</w>
       <w>descripcion</w>
       <w>despacho</w>
+      <w>editar</w>
       <w>empresa</w>
       <w>entrega</w>
       <w>enviar</w>
       <w>envios</w>
       <w>envío</w>
+      <w>envíos</w>
       <w>equipos</w>
       <w>estado</w>
       <w>estar</w>
@@ -51,6 +53,7 @@
       <w>opcion</w>
       <w>opción</w>
       <w>origen</w>
+      <w>orígen</w>
       <w>pedido</w>
       <w>pendiente</w>
       <w>pertenecer</w>
@@ -73,6 +76,7 @@
       <w>telefono</w>
       <w>temporada</w>
       <w>totales</w>
+      <w>tramite</w>
       <w>trámite</w>
       <w>ubicación</w>
       <w>ultima</w>

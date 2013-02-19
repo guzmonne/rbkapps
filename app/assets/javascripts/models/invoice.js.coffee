@@ -5,3 +5,4 @@ class App.Models.Invoice extends Backbone.Model
     invoice_number: null
     fob_total_cost: null
     total_units: null
+    delivery_id: null

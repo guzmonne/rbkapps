@@ -1,6 +1,9 @@
 class App.Models.Delivery extends Backbone.Model
   urlRoot: '/api/deliveries'
 
+  initialize: (model) ->
+    @invoices = new App.Collections.Invoices()
+
   defaults:  ->
     courier               : null
     dispatch              : null
@@ -20,4 +23,5 @@ class App.Models.Delivery extends Backbone.Model
     status                : null
     invoice_delivery_date : null
     doc_courier_date      : null
+
 

@@ -1,0 +1,11 @@
+<td><%= @model.get('courier') %></td>
+<td><%= @model.get('dispatch') %></td>
+<td><%= @model.get('guide') %></td>
+<td>$<%= @model.get('cargo_cost') %></td>
+<td><%= @model.get('supplier') %></td>
+<td><%= @model.get('origin') %></td>
+<td><%= @model.get('status') %></td>
+<td><%= @model.get('item_code') %></td>
+<td><%= @model.get('origin_date') %></td>
+<td><%= @model.get('arrival_date') %></td>
+<td><%= @model.get('delivery_date') %></td>

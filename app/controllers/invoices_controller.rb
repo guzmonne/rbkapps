@@ -2,7 +2,7 @@ class InvoicesController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Invoice.all
+    respond_with Invoice.find_all_by_delivery_id(params["delivery_id"])
   end
 
   def show

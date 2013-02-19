@@ -77,7 +77,7 @@ class App.Views.Nav extends Backbone.View
 
   deliveriesIndex: (e) ->
     e.preventDefault()
-    alert "Nothing here yet..."
+    Backbone.history.navigate 'deliveries/index', trigger: true
     this
 
   deliveryCreate: (e) ->

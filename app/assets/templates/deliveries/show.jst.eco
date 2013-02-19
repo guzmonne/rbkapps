@@ -1,3 +1,249 @@
-<h1 class="well">
-    Nothing here yet!
-</h1>
+<div class="well">
+    <h1>Envío #<%= @model.get('id') %> - <%= @model.get('status') %></h1>
+</div>
+<form id="create-delivery" class="form-horizontal">
+<div id="notice"></div>
+<div class="control-group" id="control-courier">
+    <label class="control-label label-grey" for="courier">Courier</label>
+    <div class="controls">
+        <input type="text" id="courier" placeholder="Flete" value="<%= @model.get('courier') %>" readonly>
+        <img src="/assets/<%= @model.get('courier') %>.png" id="courier-logo" style="height: 30px;">
+    </div>
+</div>
+<div class="control-group" id="control-dispatch">
+    <label class="control-label label-grey" for="dispatch">Trámite</label>
+    <div class="controls">
+        <input type="text" id="dispatch" placeholder="Flete" value="<%= @model.get('dispatch') %>" readonly>
+    </div>
+</div>
+<div class="control-group" id="control-guide">
+    <label class="control-label label-grey" for="guide">Guía</label>
+    <div class="controls">
+        <input type="text" id="guide" placeholder="Guía" value="<%= @model.get('guide') %>" readonly>
+        <input type="text"
+               id="guide2"
+               placeholder="Guía 2"
+               <% unless @model.get('dispatch') == "DUA" : %> class="hide" <% end %>
+               value="<%= @model.get('guide2') %>"
+               readonly>
+        <input type="text"
+               id="guide3"
+               placeholder="Guía 3"
+               <% unless @model.get('dispatch') == "DUA" : %> class="hide" <% end %>
+               value="<%= @model.get('guide3') %>"
+               readonly>
+    </div>
+</div>
+<div class="control-group" id="control-cargo">
+    <label class="control-label label-grey" for="cargo_cost">Flete</label>
+    <div class="controls">
+
+        <div class="input-prepend">
+            <label>Flete 1</label>
+            <span class="add-on">$</span>
+            <input type="text"
+                   id="cargo_cost"
+                   placeholder="Flete"
+                   class="span10"
+                   value="<%= @model.get('cargo_cost') %>"
+                   readonly>
+        </div>
+
+        <div class="input-prepend <% unless @model.get('dispatch') == "DUA" : %> hide <% end %>" id="cargo2">
+        <label>Flete 2</label>
+        <span class="add-on">$</span>
+            <input type="text"
+                   id="cargo_cost2"
+                   placeholder="Flete 2"
+                   class="span10"
+                   value="<%= @model.get('cargo_cost2') %>"
+                   readonly>
+        </div>
+
+
+        <div class="input-prepend <% unless @model.get('dispatch') == "DUA" : %> hide <% end %>" id="cargo3">
+            <label>Flete 3</label>
+            <span class="add-on">$</span>
+            <input type="text"
+                   id="cargo_cost3"
+                   placeholder="Flete 3"
+                   class="span10"
+                   value="<%= @model.get('cargo_cost3') %>"
+                   readonly>
+        </div>
+
+        <div class="input-prepend">
+            <label>G. despacho</label>
+            <span class="add-on">$</span>
+            <input type="text"
+                   id="dispatch_cost"
+                   placeholder="G. despacho"
+                   class="span10"
+                   value="<%= @model.get('dispatch_cost') %>"
+                   readonly>
+        </div>
+
+        <div class="input-prepend">
+            <label>G.DUA</label>
+            <span class="add-on">$</span>
+            <input type="text"
+                   id="dua_cost"
+                   placeholder="G. DUA"
+                   class="span10"
+                   value="<%= @model.get('dua_cost') %>"
+                   readonly>
+        </div>
+
+    </div>
+</div>
+<div class="control-group" id="control-supplier">
+    <label class="control-label label-grey" for="supplier">Proveedor</label>
+    <div class="controls">
+        <input type="text" id="supplier" placeholder="Flete" value="<%= @model.get('supplier') %>" readonly>
+    </div>
+</div>
+<div class="control-group" id="control-origin">
+    <label class="control-label label-grey" for="origin">Origen</label>
+    <div class="controls">
+        <input type="text" id="origin" placeholder="Flete" value="<%= @model.get('origin') %>" readonly>
+    </div>
+</div>
+<div class="control-group" id="control-origin_date">
+    <label class="control-label label-grey" for="origin_date">Fechas</label>
+    <div class="controls">
+        <div class="row-fluid">
+            <div class="span4">
+                <label>Salida de Origen</label>
+                <input id="origin_date"
+                       type="date"
+                       class="input-small"
+                       value="<%= @model.get('origin_date') %>" readonly>
+            </div>
+            <div class="span4">
+                <label>Llegada a Uruguay</label>
+                <input id="arrival_date"
+                       type="date"
+                       class="input-small"
+                       value="<%= @model.get('arrival_date') %>" readonly>
+            </div>
+            <div class="span4">
+                <label>Entrega</label>
+                <input id="delivery_date"
+                       type="date"
+                       class="input-small"
+                       value="<%= @model.get('delivery_date') %>" readonly>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="control-group" id="control-status">
+    <label class="control-label label-grey" for="origin_date">Datos de Estado</label>
+    <div class="controls">
+        <div class="row-fluid">
+
+            <div class="span4">
+                <label>Estado</label>
+                <input type="text" id="status" placeholder="Flete" value="<%= @model.get('status') %>" readonly>
+            </div>
+            <div class="span4">
+                <label>Envío de Factura</label>
+                <input id="invoice_delivery_date"
+                       type="date"
+                       class="input-small"
+                       value="<%= @model.get('invoice_delivery_date') %>"
+                       readonly>
+            </div>
+            <div class="span4">
+                <label>Doc. Courier</label>
+                <input id="doc_courier_date"
+                       type="date"
+                       class="input-small"
+                       value="<%= @model.get('doc_courier_date') %>"
+                       readonly>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="control-group" id="control-@model">
+    <label class="control-label label-grey">Artículo</label>
+    <div class="controls">
+        <div class="row-fluid">
+            <div class="span3">
+                <label>Marca</label>
+                <input type="text" id="brand" placeholder="Flete" value="<%= @item.get('brand') %>" readonly>
+            </div>
+            <div class="span3">
+                <label>Temporada</label>
+                <input type="text" id="season" placeholder="Flete" value="<%= @item.get('season') %>" readonly>
+            </div>
+            <div class="span3">
+                <label>Codigo de Artículo</label>
+                <input type="text" id="code" placeholder="Flete" value="<%= @item.get('code') %>" readonly>
+            </div>
+            <div class="span3">
+                <label>Rubro</label>
+                <input type="text" id="entry" placeholder="Flete" value="<%= @item.get('entry') %>" readonly>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="control-group" id="control-invoices">
+    <label class="control-label label-grey">Facturas</label>
+    <div class="controls">
+        <div class="row-fluid" id="invoices-table">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Numero de Factura</th>
+                    <th>Total FOB</th>
+                    <th>Total Unidades</th>
+                </tr>
+                </thead>
+                <tbody id="invoices">
+                    <tr id="invoice-form-row">
+                        <td class="span4">
+                            <input type="text"
+                                   id="invoice_number"
+                                   class="span12"
+                                   placeholder="Numero de Factura">
+                        </td>
+                        <td class="span4">
+                            <div class="input-prepend">
+                                <span class="add-on">USD</span>
+                                <input type="text"
+                                       id="fob_total_cost"
+                                       placeholder="Total FOB"
+                                       class="span12">
+                            </div>
+                        </td>
+                        <td class="span3">
+                            <input type="number"
+                                   id="total_units"
+                                   class="span12"
+                                   placeholder="Total Unidades"
+                                   value="1">
+                        </td>
+                        <td class="span1">
+                            <button type="submit"
+                                    id="add-new-invoice"
+                                    class="btn btn-block btn-success">
+                                <i class="icon-plus icon-white"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="form-actions">
+    <button id="edit-delivery" class="btn btn-primary btn-large pull-right">
+        <i class="icon-pencil icon-white"></i>
+        Editar Envío
+    </button>
+    <button id="save-delivery" class="btn btn-success btn-large btn-inverse" disabled>
+        Guardar Cambios
+    </button>
+    <button id="clear-form" class="btn btn-primary btn-large btn-inverse">Cancelar</button>
+</div>
+</form>

@@ -20,12 +20,13 @@ class App.Views.DeliveryCreate extends Backbone.View
 
   initialize: ->
     @model = new App.Models.Delivery()
-    @collection = new App.Collections.Invoices()
+    # @collection = new App.Collections.Invoices()
     @suppliers   = App.deliveries.pluckDistinct('supplier')
     @origins     = App.deliveries.pluckDistinct('origin')
     @brands      = App.items.pluckDistinct('brand')
     @formHelper = new App.Mixins.Form()
-    App.vent.on('removeInvoice:success', (model) => @collection.remove(model))
+  # App.vent.on('removeInvoice:success', (model) => @collection.remove(model))
+    App.vent.on('removeInvoice:success', (model) => @model.invoices.remove(model))
 
   render: ->
     $(@el).html(@template(suppliers: @suppliers, origins: @origins, brands: @brands))
@@ -114,10 +115,10 @@ class App.Views.DeliveryCreate extends Backbone.View
     $('#total_units').val('1')
     invoiceView =  new App.Views.Invoice(model: model)
     App.pushToAppendedViews(invoiceView)
-    # @formHelper.cleanForm('#add-new-invoice-form')
     $('#invoice-form-row').after(invoiceView.render().el)
     $('#invoice_number').focus()
-    @collection.add(model)
+    # @collection.add(model)
+    @model.invoices.add(model)
     this
 
   keyDownManager: (e) ->
@@ -185,7 +186,8 @@ class App.Views.DeliveryCreate extends Backbone.View
       doc_courier_date  : $('#doc_courier_date').val()
       item_id           : App.items.where({code: $('#code').val() })[0].get('id')
     invoices = []
-    @collection.each (model) =>
+    #@collection.each (model) =>
+    @model.invoices.each (model) =>
       invoice =
         invoice_number  : model.get('invoice_number')
         fob_total_cost  : model.get('fob_total_cost')
@@ -196,7 +198,7 @@ class App.Views.DeliveryCreate extends Backbone.View
       invoices: invoices
     @model.save attributes, success: =>
       App.deliveries.add(@model)
-      Backbone.history.navigate "deliveries/#{@model.id}", trigger: true
+      Backbone.history.navigate "deliveries/show/#{@model.id}", trigger: true
     this
 
   clearForm: (e = null) ->
