@@ -38,6 +38,7 @@ class App.Views.InvoiceIndex extends Backbone.View
       invoice_number: $('#invoice_number').val()
       fob_total_cost: $('#fob_total_cost').val()
       total_units   : $('#total_units').val()
+      user_id       : App.user.get('id')
     model.save(attributes)
     $('#invoice_number').val('')
     $('#fob_total_cost').val('')

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218172612) do
+ActiveRecord::Schema.define(:version => 20130221150537) do
 
   create_table "deliveries", :force => true do |t|
     t.string   "courier"
@@ -34,10 +34,15 @@ ActiveRecord::Schema.define(:version => 20130218172612) do
     t.date     "doc_courier_date"
     t.datetime "created_at",                                          :null => false
     t.datetime "updated_at",                                          :null => false
-    t.integer  "item_id"
+    t.integer  "user_id"
   end
 
   add_index "deliveries", ["guide"], :name => "index_deliveries_on_guide"
+
+  create_table "deliveries_items", :id => false, :force => true do |t|
+    t.integer "delivery_id"
+    t.integer "item_id"
+  end
 
   create_table "invoices", :force => true do |t|
     t.string   "invoice_number"
@@ -46,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20130218172612) do
     t.integer  "delivery_id"
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
+    t.integer  "user_id"
   end
 
   create_table "items", :force => true do |t|
@@ -55,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20130218172612) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "code"
+    t.integer  "user_id"
   end
 
   create_table "purchase_request_lines", :force => true do |t|

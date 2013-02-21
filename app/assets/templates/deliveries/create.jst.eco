@@ -29,41 +29,49 @@
     <div class="control-group" id="control-guide">
         <label class="control-label label-grey" for="guide">Guía</label>
         <div class="controls">
-            <input type="text" id="guide" placeholder="Guía">
-            <input type="text" id="guide2" placeholder="Guía 2" class="hide">
-            <input type="text" id="guide3" placeholder="Guía 3" class="hide">
+            <input type="text" id="guide" placeholder="Guía" class="hide dispatch MONO DUA LIBERADO">
+            <input type="text" id="guide2" placeholder="Guía 2" class="hide dispatch DUA">
+            <input type="text" id="guide3" placeholder="Guía 3" class="hide dispatch DUA">
         </div>
     </div>
     <div class="control-group" id="control-cargo">
         <label class="control-label label-grey" for="cargo_cost">Flete</label>
-        <div class="controls">
-
-            <div class="input-prepend">
-                <span class="add-on">$</span>
-                <input type="text" id="cargo_cost" placeholder="Flete" class="span10">
+        <div class="controls  form-inline">
+            <div class="hide dispatch MONO DUA LIBERADO">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    <input type="text" id="cargo_cost" placeholder="Flete" class="span10">
+                </div>
+                <label>Flete</label>
             </div>
-
-
-            <div class="input-prepend hide" id="cargo2">
-                <span class="add-on">$</span>
-                <input type="text" id="cargo_cost2" placeholder="Flete 2" class="span10">
+            <div class="hide dispatch DUA">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    <input type="text" id="cargo_cost2" placeholder="Flete 2" class="span10">
+                </div>
+                <label>Flete 2</label>
             </div>
-
-            <div class="input-prepend hide" id="cargo3">
-                <span class="add-on">$</span>
-                <input type="text" id="cargo_cost3" placeholder="Flete 3" class="span10">
+            <div class="hide dispatch DUA">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    <input type="text" id="cargo_cost3" placeholder="Flete 3" class="span10">
+                </div>
+                <label>Flete 3</label>
             </div>
-
-            <div class="input-prepend">
-                <span class="add-on">$</span>
-                <input type="text" id="dispatch_cost" placeholder="G. despacho" class="span10">
+            <div class="hide dispatch MONO DUA">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    <input type="text" id="dispatch_cost" placeholder="G. despacho" class="span10">
+                </div>
+                <label>G. despacho</label>
             </div>
-
-            <div class="input-prepend">
-                <span class="add-on">$</span>
-                <input type="text" id="dua_cost" placeholder="G. DUA" class="span10">
+            <div class=" hide dispatch MONO DUA">
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    <input type="text" id="DUA_cost" placeholder="G. DUA" class="span10">
+                </div>
+                <label>G. DUA</label>
             </div>
-
         </div>
     </div>
     <div class="control-group" id="control-supplier">

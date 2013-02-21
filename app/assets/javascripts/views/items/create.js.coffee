@@ -51,17 +51,18 @@ class App.Views.ItemCreate extends Backbone.View
     if $('#entry').val() == "Seleccione un Rubro" then return @formHelper.showInForm('entry', 'no puede quedar en blanco')
     attributes =
       item:
-        code  : $('#code').val()
-        brand : $('#brand').val()
-        season: $('#season').val()
-        entry : $('#entry').val()
+        code    : $('#code').val()
+        brand   : $('#brand').val()
+        season  : $('#season').val()
+        entry   : $('#entry').val()
+        user_id : App.user.get('id')
     @model.save attributes, {success: @handleSuccess, error: @handleError}
     this
 
   handleSuccess: (data, status, response) =>
     @cleanForm()
     @formHelper.displayFlash('success', 'El Artículo se ha creado con exito')
-    App.items.add @model
+    App.items.add @model                                                deliveries
     console.log @model
     this
 

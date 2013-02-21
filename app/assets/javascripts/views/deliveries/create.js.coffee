@@ -60,22 +60,10 @@ class App.Views.DeliveryCreate extends Backbone.View
     this
 
   toggleGuides: (e) ->
+    $('.dispatch').hide()
     dispatch = $('#dispatch').val()
-    if dispatch == "DUA"
-      $('#guide2').removeClass('hide')
-      $('#guide3').removeClass('hide')
-      $('#cargo2').removeClass('hide')
-      $('#cargo3').removeClass('hide')
-      return this
-    else
-      if $('#guide2').hasClass('hide')
-        return this
-      else
-        $('#guide2').addClass('hide')
-        $('#guide3').addClass('hide')
-        $('#cargo2').addClass('hide')
-        $('#cargo3').addClass('hide')
-        return this
+    $('.' + dispatch).fadeIn('fast')
+    this
 
   addNewSupplier: (e) ->
     e.preventDefault()
@@ -249,7 +237,6 @@ class App.Views.DeliveryCreate extends Backbone.View
       delivery_date     : $('#delivery_date').val()
       status            : $('#status').val()
       doc_courier_date  : $('#doc_courier_date').val()
-      item_id           : App.items.where({code: $('#code').val() })[0].get('id')
     invoices = []
     @model.invoices.each (model) =>
       invoice =
