@@ -1,5 +1,9 @@
-<td><%= @model.get('id') %></td>
 <td><%= @model.get('code') %></td>
 <td><%= @model.get('brand') %></td>
 <td><%= @model.get('season') %></td>
 <td><%= @model.get('entry') %></td>
+<td class="span1">
+    <button id="remove-item" class="btn btn-mini btn-danger" data-cid="<%= @model.cid %>">
+        <i class="icon-minus icon-white"></i>
+    </button>
+</td>

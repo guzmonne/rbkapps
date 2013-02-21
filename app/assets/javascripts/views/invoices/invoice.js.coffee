@@ -3,6 +3,10 @@ class App.Views.Invoice extends Backbone.View
   tagName: 'tr'
   name: 'Invoice'
 
+  initialize: ->
+    @fH = new App.Mixins.Form
+    @model.set('fob_total_cost', @fH.correctDecimal(@model.get('fob_total_cost')))
+
   events:
     'click #remove-invoice': 'removeInvoice'
 

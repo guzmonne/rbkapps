@@ -3,6 +3,9 @@ class App.Views.DeliveryIndex extends Backbone.View
   className: 'span12'
   name: 'IndexDelivery'
 
+  events:
+    'click #new-delivery'   : 'newDelivery'
+
   render: ->
     $(@el).html(@template())
     App.deliveries.each(@appendDelivery)
@@ -13,4 +16,9 @@ class App.Views.DeliveryIndex extends Backbone.View
     view = new App.Views.Delivery(model: model)
     App.pushToAppendedViews(view)
     @$('#deliveries').append(view.render().el)
+    this
+
+  newDelivery: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate 'deliveries/new', trigger: true
     this

@@ -14,21 +14,23 @@ window.App =
   purchaseRequests: null
   items: null
   deliveries: null
+  invoices: null
   contentViews: []
   appendedViews: []
 
   initialize: ->
-    @vent = _.extend({}, Backbone.Events)
-    @navView = new App.Views.Nav()
-    @user = new App.Models.User()
-    @users = new App.Collections.Users()
+    @vent =           _.extend({}, Backbone.Events)
+    @navView          = new App.Views.Nav()
+    @user             = new App.Models.User()
+    @users            = new App.Collections.Users()
     @users.reset($('#user-container').data('users'))
-    @teams = new App.Collections.Teams()
+    @teams            = new App.Collections.Teams()
     @teams.reset($('#team-container').data('teams'))
-    @session = new App.Models.Session()
+    @session          = new App.Models.Session()
     @purchaseRequests = new App.Collections.PurchaseRequests()
-    @items = new App.Collections.Items()
-    @deliveries = new App.Collections.Deliveries()
+    @items            = new App.Collections.Items()
+    @deliveries       = new App.Collections.Deliveries()
+    @invoices         = new App.Collections.Invoices()
     App.start()
     new App.Routers.Nav()
     new App.Routers.User()
@@ -36,6 +38,7 @@ window.App =
     new App.Routers.Teams()
     new App.Routers.Item()
     new App.Routers.Delivery()
+    new App.Routers.Invoice()
     Backbone.history.start({pushState: true})
 
   start: ->

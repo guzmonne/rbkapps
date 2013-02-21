@@ -104,6 +104,12 @@
                         Artículos
                     </a>
                 </li>
+                <li class="hover-white">
+                    <a href="#" id="nav-invoice">
+                        <i class="icon-list-alt"></i>
+                        Facturas
+                    </a>
+                </li>
                 <li>
                     <a href="#" id="nav-new-delivery">
                         <i class="icon-plus"></i>

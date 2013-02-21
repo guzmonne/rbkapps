@@ -1,8 +1,8 @@
-<td class="span4"><%= @invoice.get('invoice_number') %></td>
-<td class="span4"><%= @invoice.get('fob_total_cost') %></td>
-<td class="span3"><%= @invoice.get('total_units') %></td>
-<td class="span1">
-    <button id="remove-invoice" class="btn btn-block btn-danger" data-cid="<%= @invoice.cid %>">
+<td><%= @invoice.get('invoice_number') %></td>
+<td>USD <%= @invoice.get('fob_total_cost') %></td>
+<td><%= @invoice.get('total_units') %></td>
+<td class="span1" id="remove-invoice-model">
+    <button id="remove-invoice" class="btn btn-mini btn-danger" data-cid="<%= @invoice.cid %>">
         <i class="icon-minus icon-white"></i>
     </button>
 </td>

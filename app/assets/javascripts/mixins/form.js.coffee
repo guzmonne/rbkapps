@@ -39,3 +39,14 @@ class App.Mixins.Form
     $(destination).append("<option>#{newAttribute}</option>")
     $(destination).val(newAttribute)
     this
+
+  correctDecimal: (decimal) ->
+    if decimal == null or "" then return "0.00"
+    if decimal.split('.')[1] == undefined then return "#{decimal}.00"
+    i = decimal.split('.')[1].length - 2
+    if i == 0 then return decimal
+    if i == -1
+      return "#{decimal}0"
+    if i > 0
+      return decimal.substring(0, decimal.length - i)
+    this

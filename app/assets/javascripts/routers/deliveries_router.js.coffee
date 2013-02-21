@@ -8,8 +8,8 @@ class App.Routers.Delivery extends Backbone.Router
     if App.user.get("comex") == true or App.user.get("admin") == true
       if App.items.length == 0
         App.items.fetch success: =>
-          if App.deliveries.length == 0
-            App.deliveries.fetch success: =>
+          if App.invoices.length == 0
+            App.invoices.fetch success: =>
               view = new App.Views.DeliveryCreate()
               App.setAndRenderContentViews([view])
               return this
@@ -18,11 +18,11 @@ class App.Routers.Delivery extends Backbone.Router
             App.setAndRenderContentViews([view])
             return this
       else
-        if App.deliveries.length == 0
-          App.deliveries.fetch success: =>
-          view = new App.Views.DeliveryCreate()
-          App.setAndRenderContentViews([view])
-          return this
+        if App.invoices.length == 0
+          App.invoices.fetch success: =>
+            view = new App.Views.DeliveryCreate()
+            App.setAndRenderContentViews([view])
+            return this
         else
           view = new App.Views.DeliveryCreate()
           App.setAndRenderContentViews([view])

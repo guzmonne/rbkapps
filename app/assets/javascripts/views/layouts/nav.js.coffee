@@ -17,6 +17,7 @@ class App.Views.Nav extends Backbone.View
     'hover .hover-white'                : 'whiteShirt'
     'click #nav-deliveries'             : 'deliveriesIndex'
     'click #nav-new-delivery'           : 'deliveryCreate'
+    'click #nav-invoice'                : 'invoiceIndex'
 
   render: ->
     if @model.get('admin') ==  true
@@ -84,3 +85,7 @@ class App.Views.Nav extends Backbone.View
     e.preventDefault()
     Backbone.history.navigate 'deliveries/new', trigger: true
     this
+
+  invoiceIndex: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate 'invoices/index', trigger: true

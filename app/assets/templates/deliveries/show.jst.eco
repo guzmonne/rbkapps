@@ -1,5 +1,16 @@
 <div class="well">
-    <h1>Envío #<%= @model.get('id') %> - <%= @model.get('status') %></h1>
+    <div class="row-fluid">
+        <div class="span6">
+            <h1>Envío #<%= @model.get('id') %> - <%= @model.get('status') %></h1>
+        </div>
+        <div class="span6">
+            <div class="btn-group" data-toggle="buttons-radio">
+                <button class="btn btn-large"><img src="/assets/plane.png" height="60px"></button>
+                <button class="btn">Middle</button>
+                <button class="btn">Right</button>
+            </div>
+        </div>
+    </div>
 </div>
 <form id="create-delivery" class="form-horizontal">
 <div id="notice"></div>
