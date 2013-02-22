@@ -5,7 +5,7 @@ class Item < ActiveRecord::Base
                   :brand,
                   :season,
                   :entry,
-                  :delivery_id
+                  :user_id
 
   validates :code, presence: {:message => "no puede quedar en blanco"}
   validates :brand, presence: {:message => "no puede quedar en blanco"}

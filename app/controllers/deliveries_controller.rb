@@ -10,14 +10,25 @@ class DeliveriesController < ApplicationController
   end
 
   def create
-    @delivery = params["delivery"]
     @invoices = params["invoices"]
-    @result = Delivery.create(@delivery)
+    @items = params["items"]
+    @edit_invoices = params["editInvoices"]
+    @edit_items = params["editItems"]
+    @delivery = Delivery.create(params["delivery"])
     @invoices.each do |invoice|
-      invoice["delivery_id"] = @result["id"]
+      invoice["delivery_id"] = @delivery["id"]
       Invoice.create(invoice)
     end
-    respond_with @result
+    @items.each do |item|
+      @delivery.items.push Item.create(item)
+    end
+    @edit_invoices.each do |invoice_id|
+      Invoice.update(invoice_id, {delivery_id: @delivery.id})
+    end
+    @edit_items.each do |item_id|
+      @delivery.items.push Item.find(item_id)
+    end
+    respond_with @delivery
   end
 
   def update

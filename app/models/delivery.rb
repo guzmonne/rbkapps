@@ -1,6 +1,6 @@
 class Delivery < ActiveRecord::Base
   has_and_belongs_to_many :items
-
+  has_many :invoices
   attr_accessible :courier,
                   :dispatch,
                   :guide,
@@ -19,6 +19,6 @@ class Delivery < ActiveRecord::Base
                   :status,
                   :invoice_delivery_date,
                   :doc_courier_date,
-                  :item_id
+                  :user_id
 
 end

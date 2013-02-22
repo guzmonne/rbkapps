@@ -3,6 +3,9 @@ class App.Views.Item extends Backbone.View
   tagName: 'tr'
   name: 'Item'
 
+  initialize: ->
+    App.vent.on 'delivery:create:success', => @remove()
+
   events:
     'click #remove-item': 'removeItem'
 

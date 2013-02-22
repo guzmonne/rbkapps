@@ -219,6 +219,10 @@ class App.Views.DeliveryCreate extends Backbone.View
 
   createDelivery: (e) ->
     e.preventDefault()
+    invoices = []
+    items = []
+    editItems = []
+    editInvoices = []
     delivery =
       courier           : $('#courier').val()
       dispatch          : $('#dispatch').val()
@@ -237,23 +241,49 @@ class App.Views.DeliveryCreate extends Backbone.View
       delivery_date     : $('#delivery_date').val()
       status            : $('#status').val()
       doc_courier_date  : $('#doc_courier_date').val()
-    invoices = []
+      user_id           : App.user.id
     @model.invoices.each (model) =>
-      invoice =
-        invoice_number  : model.get('invoice_number')
-        fob_total_cost  : model.get('fob_total_cost')
-        total_units     : model.get('total_units')
-      invoices.push(invoice)
+      if model.isNew()
+        invoice =
+          invoice_number  : model.get('invoice_number')
+          fob_total_cost  : model.get('fob_total_cost')
+          total_units     : model.get('total_units')
+          user_id         : App.user.id
+        invoices.push(invoice)
+      else
+        editInvoices.push(model.id)
+    @model.items.each (model) =>
+      if model.isNew()
+        item =
+          code    : model.get('code')
+          brand   : model.get('brand')
+          season  : model.get('season')
+          entry   : model.get('entry')
+          user_id         : App.user.id
+        items.push(item)
+      else
+        editItems.push(model.id)
     attributes =
-      delivery: delivery
-      invoices: invoices
+      delivery    : delivery
+      invoices    : invoices
+      items       : items
+      editItems   : editItems
+      editInvoices: editInvoices
+
     @model.save attributes, success: =>
+      App.vent.trigger "delivery:create:success"
       App.deliveries.add(@model)
-      Backbone.history.navigate "deliveries/show/#{@model.id}", trigger: true
+      @formHelper.cleanForm('#create-delivery')
+      @formHelper.displayFlash("success", "El envío se ha creado con exito", 20000)
+      @model.items = new App.Collections.Items
+      @model.invoices = new App.Collections.Invoices
+      @changeCourierIcon()
+      $('#courier').focus()
+      App.closeAppendedViews()
     this
 
-  clearForm: (e = null) ->
-    @formHelper('#create-delivery')
+  clearForm: (e = null) =>
+    @formHelper.cleanForm('#create-delivery')
     this
 
   searchItems: (e) ->

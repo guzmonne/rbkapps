@@ -6,6 +6,7 @@ class App.Views.Invoice extends Backbone.View
   initialize: ->
     @fH = new App.Mixins.Form
     @model.set('fob_total_cost', @fH.correctDecimal(@model.get('fob_total_cost')))
+    App.vent.on 'delivery:create:success', => @remove()
 
   events:
     'click #remove-invoice': 'removeInvoice'

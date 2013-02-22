@@ -5,7 +5,7 @@ window.App =
   Routers: {}
   Mixins: {}
 
-  vent: null
+  vent: _.extend({}, Backbone.Events)
   users: null
   teams: null
   user: null
@@ -19,7 +19,6 @@ window.App =
   appendedViews: []
 
   initialize: ->
-    @vent =           _.extend({}, Backbone.Events)
     @navView          = new App.Views.Nav()
     @user             = new App.Models.User()
     @users            = new App.Collections.Users()
