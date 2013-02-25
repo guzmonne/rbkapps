@@ -25,4 +25,21 @@ class App.Models.Delivery extends Backbone.Model
     invoice_delivery_date : null
     doc_courier_date      : null
 
-
+  fetchSubCollections: (options) ->
+    if @invoices.length == 0
+      @invoices.fetch data: {delivery_id: @id}, success: =>
+        if @items.length == 0
+          @items.fetch data: {delivery_id: @id}, success: =>
+            if options.success then return options.success(@invoices, @items)
+            return this
+        else
+          if options.success then return options.success(@invoices, @items)
+          return this
+    else
+      if @items.length == 0
+        @items.fetch data: {delivery_id: @id}, success: =>
+          if options.success then return options.success(@invoices, @items)
+          return this
+      else
+        if options.success then return options.success(@invoices, @items)
+        return this

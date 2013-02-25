@@ -2,7 +2,12 @@ class ItemsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Item.all
+    if params["delivery_id"]
+      @delivery = Delivery.find(params["delivery_id"])
+      respond_with @delivery.items
+    else
+      respond_with Item.all
+    end
   end
 
   def show

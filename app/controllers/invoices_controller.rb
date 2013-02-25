@@ -3,7 +3,8 @@ class InvoicesController < ApplicationController
 
   def index
     if params["delivery_id"]
-      respond_with Invoice.find_all_by_delivery_id(params["delivery_id"])
+      @delivery = Delivery.find(params["delivery_id"])
+      respond_with @delivery.invoices
     else
       respond_with Invoice.all
     end

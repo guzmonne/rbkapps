@@ -68,7 +68,7 @@
             <div class=" hide dispatch MONO DUA">
                 <div class="input-prepend">
                     <span class="add-on">$</span>
-                    <input type="text" id="DUA_cost" placeholder="G. DUA" class="span10">
+                    <input type="text" id="dua_cost" placeholder="G. DUA" class="span10">
                 </div>
                 <label>G. DUA</label>
             </div>

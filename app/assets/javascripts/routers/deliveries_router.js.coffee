@@ -55,11 +55,6 @@ class App.Routers.Delivery extends Backbone.Router
       Backbone.history.navigate('home', trigger: true)
     this
 
-  show: ->
-    view = new App.Views.DeliveryShow()
-    App.setAndRenderContentViews([view])
-    this
-
   index: ->
     if App.user.get("comex") == true or App.user.get("admin") == true
       if App.items.length == 0
@@ -91,32 +86,40 @@ class App.Routers.Delivery extends Backbone.Router
         if App.deliveries.length == 0
           App.deliveries.fetch success: =>
             model = App.deliveries.get(id)
-            item = new App.Models.Item()
-            item.id = model.get('item_id')
-            item.fetch success: =>
-              if model.invoices.length == 0
-                model.invoices.fetch data: {delivery_id: model.id}, success: =>
-                  view = new App.Views.DeliveryShow(model: model, item: item)
-                  App.setAndRenderContentViews([view])
-                  return this
+            if App.invoices.length == 0
+              App.invoices.fetch success: =>
+              if App.items.length == 0
+                App.items.fetch success: =>
+                  return @showModel(model)
               else
-                view = new App.Views.DeliveryShow(model: model, item: item)
-                App.setAndRenderContentViews([view])
-                return this
+                return @showModel(model)
+            else
+              if App.items.length == 0
+                App.items.fetch success: =>
+                  return @showModel(model)
+              else
+                return @showModel(model)
         else
           model = App.deliveries.get(id)
-          item = new App.Models.Item()
-          item.id = model.get('item_id')
-          item.fetch success: =>
-            if model.invoices.length == 0
-              model.invoices.fetch data: {delivery_id: model.id}, success: =>
-                view = new App.Views.DeliveryShow(model: model, item: item)
-                App.setAndRenderContentViews([view])
-                return this
+          if App.invoices.length == 0
+            App.invoices.fetch success: =>
+            if App.items.length == 0
+              App.items.fetch success: =>
+                return @showModel(model)
             else
-              view = new App.Views.DeliveryShow(model: model, item: item)
-              App.setAndRenderContentViews([view])
-              return this
+              return @showModel(model)
+          else
+            if App.items.length == 0
+              App.items.fetch success: =>
+                return @showModel(model)
+            else
+              return @showModel(model)
     else
       Backbone.history.navigate('home', trigger: true)
     this
+
+  showModel: (model) ->
+    model.fetchSubCollections success: =>
+      view = new App.Views.DeliveryShow(model: model)
+      App.setAndRenderContentViews([view])
+      return this

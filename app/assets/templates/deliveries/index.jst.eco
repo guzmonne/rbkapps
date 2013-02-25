@@ -19,7 +19,6 @@
                     <th>Proveedor</th>
                     <th>Orígen</th>
                     <th>Estado</th>
-                    <th>Codigo de Artículo</th>
                     <th>Salida de Orígen</th>
                     <th>Llegada al Uruguay</th>
                 </tr>

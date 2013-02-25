@@ -12,7 +12,6 @@ class App.Views.DeliveryIndex extends Backbone.View
     this
 
   appendDelivery: (model) =>
-    model.set('item_code', App.items.get(model.get('item_id')).get('code') )
     view = new App.Views.Delivery(model: model)
     App.pushToAppendedViews(view)
     @$('#deliveries').append(view.render().el)

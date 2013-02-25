@@ -4,32 +4,32 @@ class App.Views.DeliveryCreate extends Backbone.View
   className: 'span12'
 
   events:
-    'change #courier'             : 'changeCourierIcon'
-    'change #dispatch'            : 'toggleGuides'
-    'click #add-new-supplier'     : 'addNewSupplier'
-    'click #submit-new-supplier'  : 'addNewSupplier'
-    'click #add-new-origin'       : 'addNewOrigin'
-    'click #submit-new-origin'    : 'addNewOrigin'
-    'click #add-new-invoice'      : 'addNewInvoice'
-    'click #add-new-item'         : 'addNewItem'
-    'keydown :input'              : 'keyDownManager'
-    'submit #create-delivery'     : 'createDelivery'
-    'click #clear-form'           : 'clearForm'
-    'click #toggle-items-form'    : 'toggleItemsForm'
-    'click #close-item-form'      : 'toggleItemsForm'
-    'click #toggle-invoice-form'  : 'toggleInvoiceForm'
-    'click #close-invoice-form'   : 'toggleInvoiceForm'
-    'click #add-new-brand'        : 'addNewItemElement'
-    'click #add-new-season'       : 'addNewItemElement'
-    'click #add-new-entry'        : 'addNewItemElement'
-    'click #search-items'         : 'searchItems'
-    'click #close-searched-item'  : 'searchItems'
-    'change #searched-item-code'  : 'displaySearchedItem'
-    'click #add-searched-item'    : 'addSearchedItem'
-    'click #search-invoices'      : 'searchInvoices'
-    'click #close-searched-invoice'          : 'searchInvoices'
+    'change #courier'                          : 'changeCourierIcon'
+    'change #dispatch'                         : 'toggleGuides'
+    'click #add-new-supplier'                  : 'addNewSupplier'
+    'click #submit-new-supplier'               : 'addNewSupplier'
+    'click #add-new-origin'                    : 'addNewOrigin'
+    'click #submit-new-origin'                 : 'addNewOrigin'
+    'click #add-new-invoice'                   : 'addNewInvoice'
+    'click #add-new-item'                      : 'addNewItem'
+    'keydown :input'                           : 'keyDownManager'
+    'submit #create-delivery'                  : 'createDelivery'
+    'click #clear-form'                        : 'clearForm'
+    'click #toggle-items-form'                 : 'toggleItemsForm'
+    'click #close-item-form'                   : 'toggleItemsForm'
+    'click #toggle-invoice-form'               : 'toggleInvoiceForm'
+    'click #close-invoice-form'                : 'toggleInvoiceForm'
+    'click #add-new-brand'                     : 'addNewItemElement'
+    'click #add-new-season'                    : 'addNewItemElement'
+    'click #add-new-entry'                     : 'addNewItemElement'
+    'click #search-items'                      : 'searchItems'
+    'click #close-searched-item'               : 'searchItems'
+    'change #searched-item-code'               : 'displaySearchedItem'
+    'click #add-searched-item'                 : 'addSearchedItem'
+    'click #search-invoices'                   : 'searchInvoices'
+    'click #close-searched-invoice'            : 'searchInvoices'
     'change #searched-invoice-invoice_number'  : 'displaySearchedInvoice'
-    'click #add-searched-invoice'            : 'addSearchedInvoice'
+    'click #add-searched-invoice'              : 'addSearchedInvoice'
     'focus #searched-invoice-invoice_number'   : 'typeaheadInvoice'
 
   initialize: ->
@@ -280,6 +280,7 @@ class App.Views.DeliveryCreate extends Backbone.View
       @changeCourierIcon()
       $('#courier').focus()
       App.closeAppendedViews()
+      @toggleGuides()
     this
 
   clearForm: (e = null) =>
