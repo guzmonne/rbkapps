@@ -15,6 +15,7 @@ window.App =
   items: null
   deliveries: null
   invoices: null
+  formHelpers: null
   contentViews: []
   appendedViews: []
 
@@ -30,6 +31,8 @@ window.App =
     @items            = new App.Collections.Items()
     @deliveries       = new App.Collections.Deliveries()
     @invoices         = new App.Collections.Invoices()
+    @formHelpers      = new App.Collections.FormHelpers()
+    @formHelpers.reset($('#form_helpers-container').data('form-helpers'))
     App.start()
     new App.Routers.Nav()
     new App.Routers.User()

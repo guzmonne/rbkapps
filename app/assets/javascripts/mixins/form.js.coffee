@@ -37,7 +37,7 @@ class App.Mixins.Form
     if newAttribute == "" then return @
     $(attribute).val('')
     $(destination).append("<option>#{newAttribute}</option>")
-    $(destination).val(newAttribute)
+    $(destination).select2("val", "#{newAttribute}")
     this
 
   correctDecimal: (decimal) ->

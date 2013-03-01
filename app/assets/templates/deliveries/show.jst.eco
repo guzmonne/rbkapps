@@ -1,36 +1,27 @@
 <div class="well">
-    <div class="row-fluid">
-        <div class="span6">
-            <h1>Envío #<%= @model.get('id') %> - <%= @model.get('status') %></h1>
-        </div>
-        <div class="span6">
-            <div class="btn-group" data-toggle="buttons-radio">
-                <button class="btn btn-large"><img src="/assets/plane.png" height="60px"></button>
-                <button class="btn">Middle</button>
-                <button class="btn">Right</button>
-            </div>
-        </div>
-    </div>
+    <h1>Crear Nuevo Envío</h1>
 </div>
 <form id="create-delivery" class="form-horizontal">
 <div id="notice"></div>
 <div class="control-group" id="control-courier">
     <label class="control-label label-grey" for="courier">Courier</label>
     <div class="controls">
-        <input type="text" id="courier" value="<%= @model.get('courier') %>" class="select" readonly>
-        <select id="courier_select" class="hide">
+        <input type="text" id="courier_input" value="<%= @model.get('courier') %>" class="save" readonly>
+        <select id="courier" class="edit">
+            <option>Seleccione una Empresa</option>
             <option>DHL</option>
             <option>FedEx</option>
             <option>UPS</option>
         </select>
-        <img src="/assets/<%= @model.get('courier') %>.png" id="courier-logo" style="height: 30px;">
+        <img src="/assets/rails.png" id="courier-logo" style="height: 30px;">
     </div>
 </div>
 <div class="control-group" id="control-dispatch">
     <label class="control-label label-grey" for="dispatch">Trámite</label>
     <div class="controls">
-        <input type="text" id="dispatch" value="<%= @model.get('dispatch') %>" class="select" readonly>
-        <select id="dispatch_select" class="hide">
+        <input type="text" id="dispatch_input" value="<%= @model.get('dispatch') %>" class="save" readonly>
+        <select id="dispatch" class="edit">
+            <option>Seleccione una Opción</option>
             <option>MONO</option>
             <option>DUA</option>
             <option>LIBERADO</option>
@@ -40,21 +31,9 @@
 <div class="control-group" id="control-guide">
     <label class="control-label label-grey" for="guide">Guía</label>
     <div class="controls">
-        <input type="text"
-               id="guide"
-               value="<%= @model.get('guide') %>"
-               class="hide dispatch MONO DUA LIBERADO"
-               readonly>
-        <input type="text"
-               id="guide2"
-               value="<%= @model.get('guide2') %>"
-               class="hide dispatch DUA"
-               readonly>
-        <input type="text"
-               id="guide3"
-               value="<%= @model.get('guide3') %>"
-               class="hide dispatch DUA"
-               readonly>
+        <input type="text" id="guide" placeholder="Guía" class="hide dispatch MONO DUA LIBERADO save" value="<%= @model.get('guide') %>" readonly>
+        <input type="text" id="guide2" placeholder="Guía 2" class="hide dispatch DUA save" value="<%= @model.get('guide2') %>" readonly>
+        <input type="text" id="guide3" placeholder="Guía 3" class="hide dispatch DUA save" value="<%= @model.get('guide3') %>" readonly>
     </div>
 </div>
 <div class="control-group" id="control-cargo">
@@ -63,55 +42,35 @@
         <div class="hide dispatch MONO DUA LIBERADO">
             <div class="input-prepend">
                 <span class="add-on">$</span>
-                <input type="text"
-                       id="cargo_cost"
-                       value="<%= @model.get('cargo_cost') %>"
-                       class="span10"
-                       readonly>
+                <input type="text" id="cargo_cost" placeholder="Flete" class="span10 save" value="<%= @model.get('cargo_cost') %>" readonly>
             </div>
             <label>Flete</label>
         </div>
         <div class="hide dispatch DUA">
             <div class="input-prepend">
                 <span class="add-on">$</span>
-                <input type="text"
-                       id="cargo_cost2"
-                       value="<%= @model.get('cargo_cost2') %>"
-                       class="span10"
-                       readonly>
+                <input type="text" id="cargo_cost2" placeholder="Flete 2" class="span10 save" value="<%= @model.get('cargo_cost2') %>" readonly>
             </div>
             <label>Flete 2</label>
         </div>
         <div class="hide dispatch DUA">
             <div class="input-prepend">
                 <span class="add-on">$</span>
-                <input type="text"
-                       id="cargo_cost3"
-                       value="<%= @model.get('cargo_cost3') %>"
-                       class="span10"
-                       readonly>
+                <input type="text" id="cargo_cost3" placeholder="Flete 3" class="span10 save" value="<%= @model.get('cargo_cost3') %>" readonly>
             </div>
             <label>Flete 3</label>
         </div>
         <div class="hide dispatch MONO DUA">
             <div class="input-prepend">
                 <span class="add-on">$</span>
-                <input type="text"
-                       id="dispatch_cost"
-                       value="<%= @model.get('dispatch_cost') %>"
-                       class="span10"
-                       readonly>
+                <input type="text" id="dispatch_cost" placeholder="G. despacho" class="span10 save" value="<%= @model.get('cargo_cost3') %>" readonly>
             </div>
             <label>G. despacho</label>
         </div>
-        <div class="hide dispatch MONO DUA">
+        <div class=" hide dispatch MONO DUA">
             <div class="input-prepend">
                 <span class="add-on">$</span>
-                <input type="text"
-                       id="DUA_cost"
-                       value="<%= @model.get('dua_cost') %>"
-                       class="span10"
-                       readonly>
+                <input type="text" id="dua_cost" placeholder="G. DUA" class="span10 save" value="<%= @model.get('cargo_cost3') %>" readonly>
             </div>
             <label>G. DUA</label>
         </div>
@@ -120,13 +79,20 @@
 <div class="control-group" id="control-supplier">
     <label class="control-label label-grey" for="supplier">Proveedor</label>
     <div class="controls">
-        <input type="text" id="supplier" value="<%= @model.get('supplier') %>" class="select" readonly>
-        <select id="supplier_select" class="hide">
-            <% @suppliers.forEach (supplier) -> : %>
-            <option><%= supplier %></option>
-            <% end %>
+        <input type="text" id="supplier_input" value="<%= @model.get('supplier') %>" readonly>
+        <select id="supplier">
+            <div class="input-append dropdown combobox">
+                <input class="span2" type="text"><button class="btn" data-toggle="dropdown"><i class="caret"></i></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Item One</a></li>
+                    <li><a href="#">Item Two</a></li>
+                    <li><a href="#">Item Three</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Item After Divider</a></li>
+                </ul>
+            </div>
         </select>
-        <button class="btn btn-mini btn-success hide" id="add-new-supplier">
+        <button class="btn btn-mini btn-success" id="add-new-supplier">
             <i class="icon-plus icon-white"></i>
         </button>
     </div>
@@ -134,13 +100,14 @@
 <div class="control-group" id="control-origin">
     <label class="control-label label-grey" for="origin">Origen</label>
     <div class="controls">
-        <input type="text" id="origin" value="<%= @model.get('origin') %>" class="select" readonly>
-        <select id="origin_select" class="hide">
-            <% @origins.forEach (origin) -> : %>
+        <input type="text" id="origin_input" value="<%= @model.get('supplier') %>" readonly>
+        <select id="origin">
+            <option>Lugar de Origen</option>
+                <% @origins.forEach (origin) -> : %>
             <option><%= origin %></option>
             <% end %>
         </select>
-        <button class="btn btn-mini btn-success hide" id="add-new-origin">
+        <button class="btn btn-mini btn-success" id="add-new-origin">
             <i class="icon-plus icon-white"></i>
         </button>
     </div>
@@ -151,27 +118,14 @@
         <div class="row-fluid">
             <div class="span4">
                 <label>Salida de Origen</label>
-                <input id="origin_date"
-                       type="date"
-                       class="input-small"
-                       value="<%= @model.get('origin_date') %>"
-                       readonly>
+                <input id="origin_date" type="date" class="input-small" value="<%= @model.get('origin_date') %>"readonly>
             </div>
             <div class="span4">
                 <label>Llegada a Uruguay</label>
-                <input id="arrival_date"
-                       type="date"
-                       class="input-small"
-                       value="<%= @model.get('arrival_date') %>"
-                       readonly>
-            </div>
+                <input id="arrival_date" type="date" class="input-small" value="<%= @model.get('arrival_date') %>" readonly>
             <div class="span4">
                 <label>Entrega</label>
-                <input id="delivery_date"
-                       type="date"
-                       class="input-small"
-                       value="<%= @model.get('delivery_date') %>"
-                       readonly>
+                <input id="delivery_date" type="date" class="input-small" value="<%= @model.get('delivery_date') %>" readonly>
             </div>
         </div>
     </div>
@@ -182,23 +136,21 @@
         <div class="row-fluid">
             <div class="span4">
                 <label>Estado</label>
-                <input type="text" id="status" value="<%= @model.get('status') %>" readonly>
+                <input type="text" id="status_input" value="<%= @model.get('status') %>" readonly>
+                <select id="status">
+                    <option>PENDIENTE</option>
+                    <option>PROCESO</option>
+                    <option>ENTREGADO</option>
+                    <option>CERRADO</option>
+                </select>
             </div>
             <div class="span4">
                 <label>Envío de Factura</label>
-                <input id="invoice_delivery_date"
-                       type="date"
-                       class="input-small"
-                       value="<%= @model.get('invoice_delivery_date') %>"
-                       readonly>
+                <input id="invoice_delivery_date" type="date" class="input-small" value="<%= @model.get('invoice_delivery_date') %>" readonly>
             </div>
             <div class="span4">
                 <label>Doc. Courier</label>
-                <input id="doc_courier_date"
-                       type="date"
-                       class="input-small"
-                       value="<%= @model.get('doc_courier_date') %>"
-                       readonly>
+                <input id="doc_courier_date" type="date" class="input-small" value="<%= @model.get('invoice_delivery_date') %>" readonly>
             </div>
         </div>
     </div>
@@ -215,19 +167,19 @@
                     <th>Temporada</th>
                     <th>Rubro</th>
                     <th class="span1">
-                        <button class="hide btn btn-mini btn-success" id="toggle-items-form">
+                        <button class="btn btn-mini btn-success" id="toggle-items-form">
                             <i class="icon-plus icon-white"></i>
                         </button>
                     </th>
                     <th class="span1">
-                        <button class="hide btn btn-mini btn-info" id="search-items">
+                        <button class="btn btn-mini btn-info hide" id="search-items">
                             <i class="icon-search icon-white"></i>
                         </button>
                     </th>
                 </tr>
                 </thead>
                 <tbody id="items">
-                <tr id="item-search-row" class="hide">
+                <tr id="item-search-row" class="shown">
                     <td class="span4">
                         <input type="text"
                                id="searched-item-code"
@@ -341,19 +293,19 @@
                     <th>Total FOB</th>
                     <th>Total Unidades</th>
                     <th class="span1">
-                        <button class="hide btn btn-mini btn-success" id="toggle-invoice-form">
+                        <button class="btn btn-mini btn-success" id="toggle-invoice-form">
                             <i class="icon-plus icon-white"></i>
                         </button>
                     </th>
                     <th class="span1">
-                        <button class="hide btn btn-mini btn-info" id="search-invoices">
+                        <button class="btn btn-mini btn-info hide" id="search-invoices">
                             <i class="icon-search icon-white"></i>
                         </button>
                     </th>
                 </tr>
                 </thead>
                 <tbody id="invoices">
-                <tr id="invoice-search-row" class="hide">
+                <tr id="invoice-search-row" class="shown">
                     <td class="span4">
                         <input type="text"
                                id="searched-invoice-invoice_number"

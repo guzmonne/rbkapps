@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221150537) do
+ActiveRecord::Schema.define(:version => 20130225193927) do
 
   create_table "deliveries", :force => true do |t|
     t.string   "courier"
@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(:version => 20130221150537) do
   create_table "deliveries_items", :id => false, :force => true do |t|
     t.integer "delivery_id"
     t.integer "item_id"
+  end
+
+  create_table "form_helpers", :force => true do |t|
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "column"
   end
 
   create_table "invoices", :force => true do |t|

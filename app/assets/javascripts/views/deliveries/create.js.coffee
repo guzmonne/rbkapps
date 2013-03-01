@@ -30,27 +30,24 @@ class App.Views.DeliveryCreate extends Backbone.View
     'click #close-searched-invoice'            : 'searchInvoices'
     'change #searched-invoice-invoice_number'  : 'displaySearchedInvoice'
     'click #add-searched-invoice'              : 'addSearchedInvoice'
-    'focus #searched-invoice-invoice_number'   : 'typeaheadInvoice'
+    'focus #searched-item-code'                : 'typeAheadItem'
+    'focus #searched-invoice-invoice_number'   : 'typeAheadInvoice'
 
   initialize: ->
     @tabs        = 0
+    @invoices    = new App.Collections.Invoices
+    @items       = new App.Collections.Items
     @model       = new App.Models.Delivery()
     @formHelper  = new App.Mixins.Form()
-    @suppliers   = App.deliveries.pluckDistinct('supplier')
-    @origins     = App.deliveries.pluckDistinct('origin')
-    @brands      = App.items.pluckDistinct('brand')
-    @seasons     = App.items.pluckDistinct('season')
-    @entries     = App.items.pluckDistinct('entry')
-    @codes       = App.items.pluck('code')
-    @invoices    = App.invoices.pluck('invoice_number')
-    @aItems      = App.items
-    @aInvoices   = App.invoices
-    App.vent.on('removeInvoice:success', (model) => @model.invoices.remove(model))
-    App.vent.on('removeItem:success', (model) => @model.items.remove(model))
+    App.vent.on 'removeInvoice:success', (model) =>
+      @model.invoices.remove(model)
+      @invoices.add(model)
+    App.vent.on 'removeItem:success', (model) =>
+      @model.items.remove(model)
+      @items.add(model)
 
   render: ->
-    attributes = {suppliers: @suppliers, origins: @origins, brands: @brands, seasons: @seasons, entries: @entries}
-    $(@el).html(@template(attributes)).find('#searched-item-code').typeahead(source: @codes)
+    $(@el).html(@template()).find('.select2').select2({width: 'copy'})
     this
 
   changeCourierIcon: (e) ->
@@ -269,7 +266,7 @@ class App.Views.DeliveryCreate extends Backbone.View
       items       : items
       editItems   : editItems
       editInvoices: editInvoices
-
+    @updateFormHelpers()
     @model.save attributes, success: =>
       App.vent.trigger "delivery:create:success"
       App.deliveries.add(@model)
@@ -345,7 +342,7 @@ class App.Views.DeliveryCreate extends Backbone.View
       $('#searched-item-season').text('')
       $('#searched-item-entry').text('')
       return
-    item = @aItems.where(code: code)[0]
+    item = @items.where(code: code)[0]
     return if item ==  undefined
     $('#searched-item-brand').text(item.get('brand'))
     $('#searched-item-season').text(item.get('season'))
@@ -355,11 +352,13 @@ class App.Views.DeliveryCreate extends Backbone.View
   addSearchedItem: (e) ->
     e.preventDefault()
     code = $('#searched-item-code').val()
-    item = @aItems.where(code: code)[0]
+    item = @items.where(code: code)[0]
     return if item ==  undefined
     @addItem(item)
-    @codes.splice(@codes.indexOf(code), 1)
-    $('#searched-item-code').typeahead(source: @codes).val('')
+    @items.remove(item)
+    items = @items.pluck('code')
+    $('#searched-item-code').val('')
+    $('#searched-item-code').typeahead(source: items)
     @displaySearchedItem(e)
 
   displaySearchedInvoice: (e) ->
@@ -368,7 +367,7 @@ class App.Views.DeliveryCreate extends Backbone.View
       $('#searched-invoice-fob_total_cost').text('')
       $('#searched-invoice-total_units').text('')
       return
-    invoice = @aInvoices.where(invoice_number: invoice_number)[0]
+    invoice = @invoices.where(invoice_number: invoice_number)[0]
     return if invoice ==  undefined
     $('#searched-invoice-fob_total_cost').text('USD ' + invoice.get('fob_total_cost'))
     $('#searched-invoice-total_units').text(invoice.get('total_units'))
@@ -377,16 +376,64 @@ class App.Views.DeliveryCreate extends Backbone.View
   addSearchedInvoice: (e) ->
     e.preventDefault()
     invoice_number = $('#searched-invoice-invoice_number').val()
-    invoice = @aInvoices.where(invoice_number: invoice_number)[0]
+    invoice = @invoices.where(invoice_number: invoice_number)[0]
     return if invoice ==  undefined
     @addInvoice(invoice)
-    @invoices.splice(@invoices.indexOf(invoice_number), 1)
-    $('#searched-invoice-invoice_number').typeahead(source: @invoices).val('')
+    @invoices.remove(invoice)
+    invoices = _.map(@invoices.where({delivery_id: null}), (model)  -> return model.get('invoice_number'))
+    $('#searched-invoice-invoice_number').val('')
+    @typeAheadInvoice
     @displaySearchedInvoice(e)
 
-  typeaheadInvoice: (e) ->
-    $('#searched-invoice-invoice_number').typeahead(source: @invoices)
+  typeAheadInvoice: () ->
+    $('#searched-invoice-invoice_number').removeClass('loading')
+    if App.invoices.length == 0
+      App.invoices.fetch success: =>
+        @invoices = App.invoices
+        $('#searched-invoice-invoice_number').removeClass('loading')
+        $('#searched-invoice-invoice_number').typeahead source: =>
+          _.map(@invoices.where({delivery_id: null}), (model)  -> return model.get('invoice_number'))
+    else
+      @invoices = App.invoices
+      $('#searched-invoice-invoice_number').removeClass('loading')
+      $('#searched-invoice-invoice_number').typeahead source: =>
+        _.map(@invoices.where({delivery_id: null}), (model)  -> return model.get('invoice_number'))
     this
+
+  typeAheadItem: () ->
+    if App.items.length == 0
+      App.items.fetch success: =>
+        @items = App.items
+        $('#searched-item-code').removeClass('loading')
+        $('#searched-item-code').typeahead source: =>
+          @items.pluck("code")
+    else
+      @items = App.items
+      $('#searched-item-code').removeClass('loading')
+      $('#searched-item-code').typeahead source: =>
+        @items.pluck("code")
+    this
+
+  updateFormHelpers: () ->
+    if $('#brand').val()  == "Seleccione una Marca"     then brand  = null else  brand  = $('#brand').val()
+    attributes = [
+      {supplier: @setOrNull('supplier', 'Seleccione un Proveedor')}
+      {origin  : @setOrNull('origin', 'Lugar de Origen')}
+      {brand   : @setOrNull('brand', 'Seleccione una Marca') }
+      {season  : @setOrNull('season', 'Seleccione una Temporada')}
+      {entry   : @setOrNull('entry', 'Seleccione un Rubro')}
+    ]
+    App.formHelpers.addHelpers(attributes)
+    this
+
+  setOrNull: (id, value) ->
+    if $('#' + id).val()  == value then result = null else result = $('#' + id).val()
+    return result
+
+
+
+
+
 
 
 

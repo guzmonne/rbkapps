@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require underscore
 //= require backbone
+//= require select2
 //= require_tree ../templates
 //= require app
 //= require_tree ./models

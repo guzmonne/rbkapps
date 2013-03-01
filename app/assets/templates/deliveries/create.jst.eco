@@ -4,21 +4,24 @@
 <form id="create-delivery" class="form-horizontal">
 <div id="notice"></div>
     <div class="control-group" id="control-courier">
-        <label class="control-label label-grey" for="courier">Courier</label>
-        <div class="controls">
-            <select id="courier">
+        <label class="control-label label-grey" for="courier" style="font-weight: bold;">
+            Courier:
+        </label>
+        <div class="controls controls-row">
+            <select id="courier" class="select2 input-large">
                 <option>Seleccione una Empresa</option>
                 <option>DHL</option>
                 <option>FedEx</option>
                 <option>UPS</option>
             </select>
-            <img src="/assets/rails.png" id="courier-logo" style="height: 30px;">
+            <img src="/assets/rails.png" id="courier-logo" style="height: 30px;" class="center_select">
         </div>
     </div>
+    <hr>
     <div class="control-group" id="control-dispatch">
-        <label class="control-label label-grey" for="dispatch">Trámite</label>
+        <label class="control-label label-grey" for="dispatch">Trámite:</label>
         <div class="controls">
-            <select id="dispatch">
+            <select id="dispatch" class="select2 input-large">
                 <option>Seleccione una Opción</option>
                 <option>MONO</option>
                 <option>DUA</option>
@@ -26,108 +29,114 @@
             </select>
         </div>
     </div>
+    <hr>
     <div class="control-group" id="control-guide">
-        <label class="control-label label-grey" for="guide">Guía</label>
+        <label class="control-label label-grey" for="guide">Guía:</label>
         <div class="controls">
             <input type="text" id="guide" placeholder="Guía" class="hide dispatch MONO DUA LIBERADO">
             <input type="text" id="guide2" placeholder="Guía 2" class="hide dispatch DUA">
             <input type="text" id="guide3" placeholder="Guía 3" class="hide dispatch DUA">
         </div>
     </div>
+    <hr>
     <div class="control-group" id="control-cargo">
-        <label class="control-label label-grey" for="cargo_cost">Flete</label>
+        <label class="control-label label-grey" for="cargo_cost">Flete:</label>
         <div class="controls  form-inline">
             <div class="hide dispatch MONO DUA LIBERADO">
                 <div class="input-prepend">
                     <span class="add-on">$</span>
                     <input type="text" id="cargo_cost" placeholder="Flete" class="span10">
                 </div>
-                <label>Flete</label>
+                <label>Flete:</label>
             </div>
             <div class="hide dispatch DUA">
                 <div class="input-prepend">
                     <span class="add-on">$</span>
                     <input type="text" id="cargo_cost2" placeholder="Flete 2" class="span10">
                 </div>
-                <label>Flete 2</label>
+                <label>Flete 2:</label>
             </div>
             <div class="hide dispatch DUA">
                 <div class="input-prepend">
                     <span class="add-on">$</span>
                     <input type="text" id="cargo_cost3" placeholder="Flete 3" class="span10">
                 </div>
-                <label>Flete 3</label>
+                <label>Flete 3:</label>
             </div>
             <div class="hide dispatch MONO DUA">
                 <div class="input-prepend">
                     <span class="add-on">$</span>
                     <input type="text" id="dispatch_cost" placeholder="G. despacho" class="span10">
                 </div>
-                <label>G. despacho</label>
+                <label>G. despacho:</label>
             </div>
             <div class=" hide dispatch MONO DUA">
                 <div class="input-prepend">
                     <span class="add-on">$</span>
                     <input type="text" id="dua_cost" placeholder="G. DUA" class="span10">
                 </div>
-                <label>G. DUA</label>
+                <label>G. DUA:</label>
             </div>
         </div>
     </div>
+    <hr>
     <div class="control-group" id="control-supplier">
-        <label class="control-label label-grey" for="supplier">Proveedor</label>
+        <label class="control-label label-grey" for="supplier">Proveedor:</label>
         <div class="controls">
-            <select id="supplier">
+            <select id="supplier" class="select2 input-large">
                 <option>Seleccione un Proveedor</option>
-                <% @suppliers.forEach (supplier) -> : %>
-                    <option><%= supplier %></option>
+                <% App.formHelpers.where({column: 'supplier'}).forEach (model) -> : %>
+                    <option><%= model.get('value') %></option>
                 <% end %>
             </select>
-            <button class="btn btn-mini btn-success" id="add-new-supplier">
+            <button class="btn btn-mini btn-success center_select" id="add-new-supplier">
                 <i class="icon-plus icon-white"></i>
             </button>
         </div>
     </div>
+    <hr>
     <div class="control-group" id="control-origin">
-        <label class="control-label label-grey" for="origin">Origen</label>
+        <label class="control-label label-grey" for="origin">Origen:</label>
         <div class="controls">
-            <select id="origin">
+            <select id="origin" class="select2 input-large">
                 <option>Lugar de Origen</option>
-                <% @origins.forEach (origin) -> : %>
-                    <option><%= origin %></option>
+                <% App.formHelpers.where({column: 'origin'}).forEach (model) -> : %>
+                    <option><%= model.get('value') %></option>
                 <% end %>
             </select>
-            <button class="btn btn-mini btn-success" id="add-new-origin">
+            <button class="btn btn-mini btn-success center_select" id="add-new-origin">
                 <i class="icon-plus icon-white"></i>
             </button>
         </div>
     </div>
+    <hr>
     <div class="control-group" id="control-origin_date">
-        <label class="control-label label-grey" for="origin_date">Fechas</label>
+        <label class="control-label label-grey" for="origin_date">Fechas:</label>
         <div class="controls">
             <div class="row-fluid">
                  <div class="span4">
-                    <label>Salida de Origen</label>
+                    <label>Salida de Origen:</label>
                     <input id="origin_date" type="date" class="input-small">
                 </div>
                 <div class="span4">
-                    <label>Llegada a Uruguay</label>
+                    <label>Llegada a Uruguay:</label>
                     <input id="arrival_date" type="date" class="input-small">
                 </div>
                 <div class="span4">
-                    <label>Entrega</label>
+                    <label>Entrega:</label>
                     <input id="delivery_date" type="date" class="input-small">
                 </div>
             </div>
         </div>
     </div>
+    <hr>
     <div class="control-group" id="control-status">
-        <label class="control-label label-grey" for="origin_date">Datos de Estado</label>
+        <label class="control-label label-grey" for="origin_date">Datos de Estado:</label>
         <div class="controls">
             <div class="row-fluid">
                 <div class="span4">
-                    <label>Estado</label>
-                    <select id="status">
+                    <label>Estado:</label>
+                    <select id="status" class="select2 input-large">
                         <option>PENDIENTE</option>
                         <option>PROCESO</option>
                         <option>ENTREGADO</option>
@@ -135,18 +144,19 @@
                     </select>
                 </div>
                 <div class="span4">
-                    <label>Envío de Factura</label>
+                    <label>Envío de Factura:</label>
                     <input id="invoice_delivery_date" type="date" class="input-small">
                 </div>
                 <div class="span4">
-                    <label>Doc. Courier</label>
+                    <label>Doc. Courier:</label>
                     <input id="doc_courier_date" type="date" class="input-small">
                 </div>
             </div>
         </div>
     </div>
+    <hr>
     <div class="control-group" id="control-item">
-        <label class="control-label label-grey">Artículos</label>
+        <label class="control-label label-grey">Artículos:</label>
         <div class="controls">
             <div class="row-fluid" id="items-table">
                 <table class="table table-striped table-hover">
@@ -169,11 +179,11 @@
                         </tr>
                     </thead>
                     <tbody id="items">
-                        <tr id="item-search-row" class="shown">
+                        <tr id="item-search-row">
                             <td class="span4">
                                 <input type="text"
                                        id="searched-item-code"
-                                       class="search-query"
+                                       class="search-query loading"
                                        placeholder="Buscar por Codigo de Artículo">
                             </td>
                             <td>
@@ -211,8 +221,8 @@
                             <td>
                                 <select id="brand">
                                     <option>Seleccione una Marca</option>
-                                    <% @brands.forEach (brand) -> : %>
-                                        <option><%= brand %></option>
+                                    <% App.formHelpers.where({column: 'brand'}).forEach (model) -> : %>
+                                        <option><%= model.get('value') %></option>
                                     <% end %>
                                 </select>
                                 <input type="text"
@@ -226,8 +236,8 @@
                             <td>
                                 <select id="season">
                                     <option>Seleccione una Temporada</option>
-                                    <% @seasons.forEach (season) -> : %>
-                                        <option><%= season %></option>
+                                    <% App.formHelpers.where({column: 'season'}).forEach (model) -> : %>
+                                        <option><%= model.get('value') %></option>
                                     <% end %>
                                 </select>
                                 <input type="text"
@@ -240,8 +250,8 @@
                             <td>
                                 <select id="entry">
                                     <option>Seleccione un Rubro</option>
-                                        <% @entries.forEach (entry) -> : %>
-                                    <option><%= entry %></option>
+                                    <% App.formHelpers.where({column: 'entry'}).forEach (model) -> : %>
+                                    <option><%= model.get('value') %></option>
                                     <% end %>
                                 </select>
                                 <input type="text"
@@ -272,8 +282,9 @@
             </div>
         </div>
     </div>
+    <hr>
     <div class="control-group" id="control-invoices">
-        <label class="control-label label-grey">Facturas</label>
+        <label class="control-label label-grey">Facturas:</label>
         <div class="controls">
             <div class="row-fluid" id="invoices-table">
                 <table class="table table-striped table-hover">
@@ -299,8 +310,8 @@
                             <td class="span4">
                                 <input type="text"
                                        id="searched-invoice-invoice_number"
-                                       class="search-query"
-                                       placeholder="Buscar por Codigo de Artículo">
+                                       class="search-query loading"
+                                       placeholder="Buscar por Numero de Factura">
                             </td>
                             <td>
                                 <p id="searched-invoice-fob_total_cost"></p>
@@ -382,7 +393,7 @@
         <div class="modal-body">
             <div id="supplier-notice"></div>
             <div class="control-group" id="modal-control-supplier">
-                <label class="control-label" for="new-supplier">Nuevo Proveedor</label>
+                <label class="control-label" for="new-supplier">Nuevo Proveedor:</label>
                 <div class="controls">
                     <input type="text" id="new-supplier" placeholder="Proveedor">
                 </div>
@@ -406,7 +417,7 @@
         <div class="modal-body">
             <div id="origin-notice"></div>
             <div class="control-group" id="modal-control-origin">
-                <label class="control-label" for="new-supplier">Nuevo Origen</label>
+                <label class="control-label" for="new-supplier">Nuevo Origen:</label>
                 <div class="controls">
                     <input type="text" id="new-origin" placeholder="Origen">
                 </div>

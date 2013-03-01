@@ -10,3 +10,9 @@
                 data: {
                         teams: Team.select("id, name, supervisor_id, director_id")
                 } %>
+<%= content_tag "div",
+                nil ,
+                id: "form_helpers-container",
+                data: {
+                        form_helpers: FormHelper.all
+                } %>

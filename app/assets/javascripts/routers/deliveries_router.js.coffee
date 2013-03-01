@@ -6,6 +6,16 @@ class App.Routers.Delivery extends Backbone.Router
 
   create: ->
     if App.user.get("comex") == true or App.user.get("admin") == true
+      view = new App.Views.DeliveryCreate()
+      App.setAndRenderContentViews([view])
+      return this
+    else
+      Backbone.history.navigate('home', trigger: true)
+      return
+
+
+  oldCreate: ->
+    if App.user.get("comex") == true or App.user.get("admin") == true
       if App.deliveries.length == 0
         App.deliveries.fetch success: =>
           if App.items.length == 0
