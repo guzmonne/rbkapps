@@ -39,8 +39,6 @@ class App.Views.DeliveryCreate extends Backbone.View
     @items       = new App.Collections.Items
     @model       = new App.Models.Delivery()
     @formHelper  = new App.Mixins.Form()
-    # App.vent.on 'removeInvoice:success', (model) =>
-    # App.vent.on 'removeItem:success', (model) =>
     @listenTo App.vent, 'removeInvoice:success', (model) =>
       @model.invoices.remove(model)
       @invoices.add(model)
@@ -85,6 +83,7 @@ class App.Views.DeliveryCreate extends Backbone.View
     $('#invoice_number').val('')
     $('#fob_total_cost').val('')
     $('#total_units').val('1')
+    App.vent.trigger "add:invoice:success", model
     invoiceView =  new App.Views.Invoice(model: model)
     App.pushToAppendedViews(invoiceView)
     $('#invoice-form-row').after(invoiceView.render().el)
@@ -94,6 +93,7 @@ class App.Views.DeliveryCreate extends Backbone.View
     this
 
   addInvoice: (invoice) ->
+    App.vent.trigger "add:invoice:success", invoice
     invoiceView =  new App.Views.Invoice(model: invoice)
     App.pushToAppendedViews(invoiceView)
     $('#invoice-form-row').after(invoiceView.render().el)
@@ -118,6 +118,7 @@ class App.Views.DeliveryCreate extends Backbone.View
     this
 
   addItem: (item, afterElement = null) ->
+    App.vent.trigger "add:item:success", item
     itemView =  new App.Views.Item(model: item)
     App.pushToAppendedViews(itemView)
     if afterElement == null

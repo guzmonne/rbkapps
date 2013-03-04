@@ -7,7 +7,7 @@ class App.Views.Invoice extends Backbone.View
     @fH = new App.Mixins.Form
     @model.set('fob_total_cost', @fH.correctDecimal(@model.get('fob_total_cost')))
     @listenTo App.vent, 'delivery:create:success', => @remove()
-    # App.vent.on 'delivery:create:success', => @remove()
+    @listenTo App.vent, 'remove:invoices', @remove()
 
   events:
     'click #remove-invoice': 'removeInvoice'
@@ -20,5 +20,5 @@ class App.Views.Invoice extends Backbone.View
     e.preventDefault()
     result = confirm("Esta seguro que desea eliminar esta factura?")
     if result
+      App.vent.trigger 'remove:invoice:success', @model
       @remove()
-      App.vent.trigger 'removeInvoice:success', @model

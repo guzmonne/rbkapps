@@ -5,13 +5,20 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
 
   'events': _.extend({
     'click #submit-save-delivery' : 'saveChanges'
-    'keyup :input'                : 'changeInput'
     'click #reset-form'           : 'resetForm',
   }, App.Views.DeliveryCreate.prototype.events)
 
   initialize: ->
-    @savedModel = @model
-    @listenTo App.vent, "delivery:show:render:success", => @populateFields()
+    @newItems       = new App.Collections.Items
+    @removeItems    = new App.Collections.Items
+    @newInvoices    = new App.Collections.Invoices
+    @removeInvoices = new App.Collections.Invoices
+    @formHelper     = new App.Mixins.Form
+    @listenTo App.vent, "delivery:show:render:success",          => @populateFields()
+    @listenTo App.vent, "add:item:success",    (item)            => @newItems.add(item)
+    @listenTo App.vent, "add:invoice:success", (invoice)         => @newInvoices.add(invoice)
+    @listenTo App.vent, "remove:item:success",  (item)           => @removeItems.add(item)
+    @listenTo App.vent, "remove:invoice:success",  (invoice)     => @removeInvoices.add(invoice)
 
   render: ->
     $(@el).html(@template(model: @model))
@@ -48,11 +55,77 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
 
   saveChanges: (e) ->
     e.preventDefault()
-    alert "Save Changes!"
-
-  changeInput: (e) ->
-    console.log e.currentTarget.id
+    invoices        = []
+    items           = []
+    editItems       = []
+    editInvoices    = []
+    removeItems     = []
+    removeInvoices  = []
+    delivery =
+      courier           : $('#courier').val()
+      dispatch          : $('#dispatch').val()
+      guide             : $('#guide').val()
+      guide2            : $('#guide2').val()
+      guide3            : $('#guide3').val()
+      cargo_cost        : $('#cargo_cost').val()
+      cargo_cost2       : $('#cargo_cost2').val()
+      cargo_cost3       : $('#cargo_cost3').val()
+      dispatch_cost     : $('#dispatch_cost').val()
+      dua_cost          : $('#dua_cost').val()
+      supplier          : $('#supplier').val()
+      origin            : $('#origin').val()
+      origin_date       : $('#origin_date').val()
+      arrival_date      : $('#arrival_date').val()
+      delivery_date     : $('#delivery_date').val()
+      status            : $('#status').val()
+      doc_courier_date  : $('#doc_courier_date').val()
+      user_id           : App.user.id
+    @newInvoices.each (model) =>
+      if @removeInvoices.get(model)?
+        @removeInvoices.remove(model)
+      else if model.isNew()
+          invoice =
+            invoice_number  : model.get('invoice_number')
+            fob_total_cost  : model.get('fob_total_cost')
+            total_units     : model.get('total_units')
+            user_id         : App.user.id
+          invoices.push(invoice)
+      else
+        editInvoices.push(model.id)
+    @newItems.each (model) =>
+      if @removeItems.get(model)?
+        @removeItems.remove(model)
+      else if model.isNew()
+        item =
+          code    : model.get('code')
+          brand   : model.get('brand')
+          season  : model.get('season')
+          entry   : model.get('entry')
+          user_id         : App.user.id
+        items.push(item)
+      else
+        editItems.push(model.id)
+    @removeInvoices.each (model) => removeInvoices.push(model)
+    @removeItems.each    (model) => removeItems.push(model)
+    attributes =
+      delivery        : delivery
+      invoices        : invoices
+      items           : items
+      editItems       : editItems
+      editInvoices    : editInvoices
+      removeItems     : removeItems
+      removeInvoices  : removeInvoices
+    @updateFormHelpers()
+    @model.save attributes, success: =>
+      @formHelper.displayFlash("success", "Los datos se han actualizado con exito", 20000)
+      $('#courier').focus()
+    this
 
   resetForm: (e) ->
     e.preventDefault()
+    @newItems.each (item) => @model.items.remove(item)
+    @newInvoices.each (invoice) => @model.invoices.remove(invoice)
+    @newItems = new App.Collections.Items
+    @newInvoices = new App.Collections.Invoices
     @render()
+    this

@@ -5,7 +5,7 @@ class App.Views.Item extends Backbone.View
 
   initialize: ->
     @listenTo App.vent, 'delivery:create:success', => @remove()
-    # App.vent.on 'delivery:create:success', => @remove()
+    @listenTo App.vent, 'remove:items', @remove()
 
   events:
     'click #remove-item': 'removeItem'
@@ -18,5 +18,5 @@ class App.Views.Item extends Backbone.View
     e.preventDefault()
     result = confirm("Esta seguro que desea eliminar este artículo")
     if result
+      App.vent.trigger 'remove:item:success', @model
       @remove()
-      App.vent.trigger 'removeItem:success', @model
