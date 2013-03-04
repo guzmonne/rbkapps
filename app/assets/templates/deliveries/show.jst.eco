@@ -1,5 +1,5 @@
 <div class="well">
-    <h1>Crear Nuevo Envío</h1>
+    <h1>Editar Envío <%= @model.id %> </h1>
 </div>
 <form id="create-delivery" class="form-horizontal">
 <div id="notice"></div>
@@ -376,8 +376,8 @@
     </div>
 </div>
 <div class="form-actions">
-    <button id="submit-create-delivery" class="btn btn-primary btn-large">Crear Envío</button>
-    <button id="clear-form" class="btn btn-primary btn-large btn-inverse">Cancelar</button>
+    <button id="submit-save-delivery" class="btn btn-primary btn-large">Guardar Cambios</button>
+    <button id="reset-form" class="btn btn-primary btn-large btn-inverse">Borrar Cambios</button>
 </div>
 </form>
 <!-- Add new supplier -->

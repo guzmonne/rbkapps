@@ -53,15 +53,15 @@ class App.Views.DeliveryCreate extends Backbone.View
     this
 
   changeCourierIcon: (e) ->
-    courier = $('#courier').val()
+    courier = @$('#courier').val()
     if courier == "Seleccione una Empresa" then return $('#courier-logo')[0].src = "/assets/rails.png"
-    $('#courier-logo')[0].src = "/assets/#{courier}.png"
+    @$('#courier-logo')[0].src = "/assets/#{courier}.png"
     this
 
   toggleGuides: (e) ->
-    $('.dispatch').hide()
-    dispatch = $('#dispatch').val()
-    $('.' + dispatch).fadeIn('fast')
+    @$('.dispatch').hide()
+    dispatch = @$('#dispatch').val()
+    @$('.' + dispatch).fadeIn('fast')
     this
 
   addNewSupplier: (e) ->
@@ -282,24 +282,24 @@ class App.Views.DeliveryCreate extends Backbone.View
       @toggleGuides()
     this
 
-  clearForm: (e = null) =>
+  clearForm: (e=null) =>
     @formHelper.cleanForm('#create-delivery')
     this
 
   searchItems: (e) ->
-    e.preventDefault()
-    $('#item-form-row').hide()
-    $('#toggle-items-form').show()
-    $('#item-search-row').toggle('fast').find('#searched-item-code').focus()
-    $('#search-items').toggle()
+    e.preventDefault() if e?
+    @$('#item-form-row').hide()
+    @$('#toggle-items-form').show()
+    @$('#item-search-row').toggle('fast').find('#searched-item-code').focus()
+    @$('#search-items').toggle()
     this
 
   searchInvoices: (e) ->
-    e.preventDefault()
-    $('#invoice-form-row').hide()
-    $('#toggle-invoice-form').show()
-    $('#invoice-search-row').toggle('fast').find('#searched-invoice-invoice_number').focus()
-    $('#search-invoices').toggle()
+    e.preventDefault() if e?
+    @$('#invoice-form-row').hide()
+    @$('#toggle-invoice-form').show()
+    @$('#invoice-search-row').toggle('fast').find('#searched-invoice-invoice_number').focus()
+    @$('#search-invoices').toggle()
     this
 
   toggleItemsForm: (e) ->
