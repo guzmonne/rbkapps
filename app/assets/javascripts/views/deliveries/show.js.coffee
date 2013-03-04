@@ -4,25 +4,15 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
   className: 'span12'
 
   initialize: ->
-    @suppliers   = App.deliveries.pluckDistinct('supplier')
-    @origins     = App.deliveries.pluckDistinct('origin')
-    @brands      = App.items.pluckDistinct('brand')
-    @seasons     = App.items.pluckDistinct('season')
-    @entries     = App.items.pluckDistinct('entry')
-    @codes       = App.items.pluck('code')
-    @invoices    = App.invoices.pluck('invoice_number')
+
 
   render: ->
-    attributes =
-      suppliers : @suppliers
-      origins   : @origins
-      brands    : @brands
-      seasons   : @seasons
-      entries   : @entries
-      model     : @model
-    $(@el).html(@template(attributes)).find('.' + @model.get('dispatch')).fadeIn('fast')
+    $(@el).html(@template()).find('.' + @model.get('dispatch')).fadeIn('fast')
     @model.invoices.each(@renderInvoice)
     @model.items.each(@renderItem)
+    for attribute of @model.attributes
+      $('#' + attribute).val(@model.attributes[attribute])
+      console.log $('#' + attribute).val(@model.attributes[attribute])
     this
 
   renderInvoice: (invoice) =>
@@ -38,3 +28,4 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
     @$('#item-form-row').after(view.render().el)
     @$('#remove-item').hide()
     this
+

@@ -9,7 +9,7 @@
         </label>
         <div class="controls controls-row">
             <select id="courier" class="select2 input-large">
-                <option>Seleccione una Empresa</option>
+                <option value="empty">Seleccione una Empresa</option>
                 <option>DHL</option>
                 <option>FedEx</option>
                 <option>UPS</option>
@@ -22,7 +22,7 @@
         <label class="control-label label-grey" for="dispatch">Trámite:</label>
         <div class="controls">
             <select id="dispatch" class="select2 input-large">
-                <option>Seleccione una Opción</option>
+                <option value="empty">Seleccione una Opción</option>
                 <option>MONO</option>
                 <option>DUA</option>
                 <option>LIBERADO</option>
@@ -47,35 +47,35 @@
                     <span class="add-on">$</span>
                     <input type="text" id="cargo_cost" placeholder="Flete" class="span10">
                 </div>
-                <label>Flete:</label>
+                <label>Flete</label>
             </div>
             <div class="hide dispatch DUA">
                 <div class="input-prepend">
                     <span class="add-on">$</span>
                     <input type="text" id="cargo_cost2" placeholder="Flete 2" class="span10">
                 </div>
-                <label>Flete 2:</label>
+                <label>Flete 2</label>
             </div>
             <div class="hide dispatch DUA">
                 <div class="input-prepend">
                     <span class="add-on">$</span>
                     <input type="text" id="cargo_cost3" placeholder="Flete 3" class="span10">
                 </div>
-                <label>Flete 3:</label>
+                <label>Flete 3</label>
             </div>
             <div class="hide dispatch MONO DUA">
                 <div class="input-prepend">
                     <span class="add-on">$</span>
                     <input type="text" id="dispatch_cost" placeholder="G. despacho" class="span10">
                 </div>
-                <label>G. despacho:</label>
+                <label>G. despacho</label>
             </div>
             <div class=" hide dispatch MONO DUA">
                 <div class="input-prepend">
                     <span class="add-on">$</span>
                     <input type="text" id="dua_cost" placeholder="G. DUA" class="span10">
                 </div>
-                <label>G. DUA:</label>
+                <label>G. DUA</label>
             </div>
         </div>
     </div>
@@ -84,7 +84,7 @@
         <label class="control-label label-grey" for="supplier">Proveedor:</label>
         <div class="controls">
             <select id="supplier" class="select2 input-large">
-                <option>Seleccione un Proveedor</option>
+                <option value="empty">Seleccione un Proveedor</option>
                 <% App.formHelpers.where({column: 'supplier'}).forEach (model) -> : %>
                     <option><%= model.get('value') %></option>
                 <% end %>
@@ -99,7 +99,7 @@
         <label class="control-label label-grey" for="origin">Origen:</label>
         <div class="controls">
             <select id="origin" class="select2 input-large">
-                <option>Lugar de Origen</option>
+                <option value="empty">Lugar de Origen</option>
                 <% App.formHelpers.where({column: 'origin'}).forEach (model) -> : %>
                     <option><%= model.get('value') %></option>
                 <% end %>
@@ -219,7 +219,7 @@
                                        placeholder="Codigo">
                             </td>
                             <td>
-                                <select id="brand">
+                                <select id="brand"">
                                     <option>Seleccione una Marca</option>
                                     <% App.formHelpers.where({column: 'brand'}).forEach (model) -> : %>
                                         <option><%= model.get('value') %></option>

@@ -6,7 +6,7 @@
     <legend>Ingrese sus datos</legend>
     <div class="row-fluid">
         <div class="span3">
-                <label class="control-label margin-left" for="sector">Sección</label>
+                <label class="control-label" for="sector">Sección</label>
                 <input type="text" id="sector" class="span12" placeholder="Sección">
         </div>
         <div class="span2">

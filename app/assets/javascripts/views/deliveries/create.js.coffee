@@ -39,10 +39,12 @@ class App.Views.DeliveryCreate extends Backbone.View
     @items       = new App.Collections.Items
     @model       = new App.Models.Delivery()
     @formHelper  = new App.Mixins.Form()
-    App.vent.on 'removeInvoice:success', (model) =>
+    # App.vent.on 'removeInvoice:success', (model) =>
+    # App.vent.on 'removeItem:success', (model) =>
+    @listenTo App.vent, 'removeInvoice:success', (model) =>
       @model.invoices.remove(model)
       @invoices.add(model)
-    App.vent.on 'removeItem:success', (model) =>
+    @listenTo App.vent, 'removeItem:success', (model) =>
       @model.items.remove(model)
       @items.add(model)
 
@@ -270,7 +272,7 @@ class App.Views.DeliveryCreate extends Backbone.View
     @model.save attributes, success: =>
       App.vent.trigger "delivery:create:success"
       App.deliveries.add(@model)
-      @formHelper.cleanForm('#create-delivery')
+      @resetForm
       @formHelper.displayFlash("success", "El envío se ha creado con exito", 20000)
       @model.items = new App.Collections.Items
       @model.invoices = new App.Collections.Invoices
@@ -430,7 +432,9 @@ class App.Views.DeliveryCreate extends Backbone.View
     if $('#' + id).val()  == value then result = null else result = $('#' + id).val()
     return result
 
-
+  resetForm: () ->
+    @formHelper.cleanForm('#create-delivery')
+    $('.select2').select2('val', 'empty')
 
 
 

@@ -11,7 +11,8 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
 
   initialize: ->
     @formHelper = new App.Mixins.Form
-    App.vent.on 'removePurchaseRequestLine:success', @removeModel, this
+    @listenTo App.vent, 'removePurchaseRequestLine:success', @removeModel
+    # App.vent.on 'removePurchaseRequestLine:success', @removeModel, this
 
   render: ->
     view = new App.Views.PurchaseRequestLineCreate

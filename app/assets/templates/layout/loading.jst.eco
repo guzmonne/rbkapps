@@ -1,0 +1,6 @@
+<div class="well">
+    <h1>Loading...</h1>
+    <div class="progress progress-striped active progress-warning">
+        <div class="bar" style="width: 100%;"></div>
+    </div>
+</div>
