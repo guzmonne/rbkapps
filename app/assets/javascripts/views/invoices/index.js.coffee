@@ -7,9 +7,10 @@ class App.Views.InvoiceIndex extends Backbone.View
     @flip = 0
 
   events:
-    'click #new-invoice'    : 'toggleForm'
-    'click #add-new-invoice': 'createInvoice'
-    'keydown :input'        : 'keyDownManager'
+    'click #new-invoice'      : 'toggleForm'
+    'click #add-new-invoice'  : 'createInvoice'
+    'keydown :input'          : 'keyDownManager'
+    'click #fetch-deliveries' : 'fetchDeliveries'
 
   render: ->
     $(@el).html(@template()).find('#invoice-form-row').hide()
@@ -66,5 +67,13 @@ class App.Views.InvoiceIndex extends Backbone.View
             e.preventDefault()
             $('#invoice_number').focus()
             break
+    this
+
+  fetchDeliveries: (e) ->
+    e.preventDefault()
+    @$('#fetch-deliveries').html('<i class="icon-load"></i>  Actualizando').addClass('loading')
+    App.invoices.fetch success: =>
+      @$('#fetch-deliveries').html('Actualizar').removeClass('loading')
+      App.invoices.each(@appendInvoice)
     this
 

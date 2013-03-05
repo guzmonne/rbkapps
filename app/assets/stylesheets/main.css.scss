@@ -82,3 +82,42 @@ body { padding-top: 60px; }
        background-position: -50px 0;
     }
 }
+
+.icon-load,
+.btn.load [class^="icon-"],
+.btn.load [class*=" icon-"] {
+  background-image: url('/assets/loading.gif');
+  background-position: 0px 0px;
+  width: 14px;
+  height: 14px;
+}
+.btn-primary .icon-load,
+.btn-primary.load [class^="icon-"],
+.btn-primary.load [class*=" icon-"] {
+  background-image: url('/assets/loading-primary.gif');
+}
+.btn-info .icon-load,
+.btn-info.load [class^="icon-"],
+.btn-info.load [class*=" icon-"] {
+  background-image: url('/assets/loading-info.gif');
+}
+.btn-success .icon-load,
+.btn-success.load [class^="icon-"],
+.btn-success.load [class*=" icon-"] {
+  background-image: url('/assets/loading-success.gif');
+}
+.btn-warning .icon-load,
+.btn-warning.load [class^="icon-"],
+.btn-warning.load [class*=" icon-"] {
+  background-image: url('/assets/loading-warning.gif');
+}
+.btn-danger .icon-load,
+.btn-danger.load [class^="icon-"],
+.btn-danger.load [class*=" icon-"] {
+  background-image: url('/assets/loading-danger.gif');
+}
+.btn-inverse .icon-load,
+.btn-inverse.load [class^="icon-"],
+.btn-inverse.load [class*=" icon-"] {
+  background-image: url('/assets/loading-inverse.gif');
+}

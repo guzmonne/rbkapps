@@ -53,7 +53,6 @@ class DeliveriesController < ApplicationController
       @delivery.items.push Item.find(item_id)
     end
     @remove_invoices.each do |invoice|
-      #invoice["delivery_id"] = nil
       Invoice.update(invoice["id"], {delivery_id: nil })
     end
     @remove_items.each do |item|

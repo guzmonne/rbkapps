@@ -6,13 +6,13 @@
     <div class="control-group" id="control-code">
         <label class="control-label" for="code">Codigo de Artículo</label>
         <div class="controls">
-            <input type="text" id="code" placeholder="Codigo de Artículo">
+            <input type="text" id="code" placeholder="Codigo de Artículo" class="input-large">
         </div>
     </div>
     <div class="control-group" id="control-brand">
         <label class="control-label" for="brand">Marca</label>
         <div class="controls">
-            <select id="brand">
+            <select id="brand" class="input-large">
                 <option>Seleccione una Marca</option>
                 <% @brands.forEach (brand) -> : %>
                     <option><%= brand %></option>
@@ -26,7 +26,7 @@
     <div class="control-group" id="control-season">
         <label class="control-label" for="season">Temporada</label>
         <div class="controls">
-            <select id="season">
+            <select id="season" class="input-large">
                 <option>Seleccione una Temporada</option>
                 <% @seasons.forEach (season) -> : %>
                     <option><%= season %></option>
@@ -40,7 +40,7 @@
     <div class="control-group" id="control-entry">
         <label class="control-label" for="entry">Rubro</label>
         <div class="controls">
-            <select id="entry">
+            <select id="entry" class="input-large">
                 <option>Seleccione un Rubro</option>
                 <% @entries.forEach (entry) -> : %>
                     <option><%= entry %></option>

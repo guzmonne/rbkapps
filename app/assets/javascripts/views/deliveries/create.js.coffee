@@ -219,10 +219,12 @@ class App.Views.DeliveryCreate extends Backbone.View
 
   createDelivery: (e) ->
     e.preventDefault()
-    invoices = []
-    items = []
-    editItems = []
-    editInvoices = []
+    invoices      = []
+    items         = []
+    editItems     = []
+    editInvoices  = []
+    if message == @validate
+      @formHelper.displayFlash('alert', message, 20000)
     delivery =
       courier           : $('#courier').val()
       dispatch          : $('#dispatch').val()
@@ -273,18 +275,22 @@ class App.Views.DeliveryCreate extends Backbone.View
     @model.save attributes, success: =>
       App.vent.trigger "delivery:create:success"
       App.deliveries.add(@model)
-      @resetForm
+      @render()
       @formHelper.displayFlash("success", "El envío se ha creado con exito", 20000)
       @model.items = new App.Collections.Items
       @model.invoices = new App.Collections.Invoices
-      @changeCourierIcon()
       $('#courier').focus()
       App.closeAppendedViews()
-      @toggleGuides()
     this
 
   clearForm: (e=null) =>
-    @formHelper.cleanForm('#create-delivery')
+    e.preventDefault()
+    result = confirm("Perdera todos los cambios. Desea continuar?")
+    if result
+      @render()
+      @model.items = new App.Collections.Items
+      @model.invoices = new App.Collections.Invoices
+      $('#courier').focus()
     this
 
   searchItems: (e) ->
@@ -433,9 +439,7 @@ class App.Views.DeliveryCreate extends Backbone.View
     if $('#' + id).val()  == value then result = null else result = $('#' + id).val()
     return result
 
-  resetForm: () ->
-    @formHelper.cleanForm('#create-delivery')
-    $('.select2').select2('val', 'empty')
+
 
 
 

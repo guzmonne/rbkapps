@@ -2,6 +2,13 @@
     <h1>
         Solicitudes de Compra
     </h1>
+    <button id="new-purchase-request" class="btn btn-primary btn-small btn-success">
+        <i class="icon-plus icon-white"></i>
+        Nuevo Artículo
+    </button>
+    <button id="fetch-deliveries" class="btn btn-primary btn-small btn-info">
+        Actualizar
+    </button>
 </div>
 <div class="row-fluid">
     <div class="span12">

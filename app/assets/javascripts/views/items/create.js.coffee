@@ -4,14 +4,15 @@ class App.Views.ItemCreate extends Backbone.View
   className: 'span12'
 
   events:
-    'click #add-new-brand': 'addNewBrand'
-    'click #submit-new-brand': 'addNewBrand'
-    'click #add-new-season': 'addNewSeason'
-    'click #submit-new-season': 'addNewSeason'
-    'click #add-new-entry': 'addNewEntry'
-    'click #submit-new-entry': 'addNewEntry'
-    'click #clear-form': 'cleanForm'
-    'click #submit-create-item': 'createItem'
+    'click #add-new-brand'      : 'addNewBrand'
+    'click #submit-new-brand'   : 'addNewBrand'
+    'click #add-new-season'     : 'addNewSeason'
+    'click #submit-new-season'  : 'addNewSeason'
+    'click #add-new-entry'      : 'addNewEntry'
+    'click #submit-new-entry'   : 'addNewEntry'
+    'click #clear-form'         : 'cleanForm'
+    'click #submit-create-item' : 'createItem'
+    'keydown .input-large'      : 'keyDownManager'
 
   initialize: ->
     @model = new App.Models.Item()
@@ -22,6 +23,7 @@ class App.Views.ItemCreate extends Backbone.View
 
   render: ->
     $(@el).html(@template(brands: @brands, seasons: @seasons, entries: @entries))
+    @$('select').select2()
     this
 
   addNewBrand: (e) ->
@@ -60,10 +62,10 @@ class App.Views.ItemCreate extends Backbone.View
     this
 
   handleSuccess: (data, status, response) =>
-    @cleanForm()
+    @render()
     @formHelper.displayFlash('success', 'El Artículo se ha creado con exito')
-    App.items.add @model                                                deliveries
-    console.log @model
+    App.items.add @model
+    $('#code').focus()
     this
 
   handleError: (model, data, options) =>
@@ -72,3 +74,21 @@ class App.Views.ItemCreate extends Backbone.View
       errors = $.parseJSON(data.responseText).errors
       for attribute, messages of errors
         @formHelper.showInForm(attribute, message) for message in messages
+
+  keyDownManager: (e) ->
+    switch e.keyCode
+      when 9
+        switch e.currentTarget.id
+          when "code"
+            e.preventDefault()
+            $('#s2id_brand').select2("open")
+            break
+          when "s2id_brand"
+            e.preventDefault()
+            $('#s2id_season').select2("open")
+            break
+          when "s2id_season"
+            e.preventDefault()
+            $('#s2id_entry').select2("open")
+            break
+    this
