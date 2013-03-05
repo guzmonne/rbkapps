@@ -16,13 +16,10 @@ class App.Views.ItemCreate extends Backbone.View
 
   initialize: ->
     @model = new App.Models.Item()
-    @brands   = App.items.pluckDistinct('brand')
-    @seasons  = App.items.pluckDistinct('season')
-    @entries  = App.items.pluckDistinct('entry')
     @formHelper = new App.Mixins.Form()
 
   render: ->
-    $(@el).html(@template(brands: @brands, seasons: @seasons, entries: @entries))
+    $(@el).html(@template())
     @$('select').select2()
     this
 
@@ -62,6 +59,7 @@ class App.Views.ItemCreate extends Backbone.View
     this
 
   handleSuccess: (data, status, response) =>
+    @updateFormHelpers()
     @render()
     @formHelper.displayFlash('success', 'El Artículo se ha creado con exito')
     App.items.add @model
@@ -92,3 +90,16 @@ class App.Views.ItemCreate extends Backbone.View
             $('#s2id_entry').select2("open")
             break
     this
+
+  updateFormHelpers: () ->
+    attributes = [
+      {brand   : @setOrNull('brand', 'Seleccione una Marca') }
+      {season  : @setOrNull('season', 'Seleccione una Temporada')}
+      {entry   : @setOrNull('entry', 'Seleccione un Rubro')}
+    ]
+    App.formHelpers.addHelpers(attributes)
+    this
+
+  setOrNull: (id, value) ->
+    if $('#' + id).val()  == value then result = null else result = $('#' + id).val()
+    return result

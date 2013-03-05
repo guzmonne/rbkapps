@@ -424,7 +424,6 @@ class App.Views.DeliveryCreate extends Backbone.View
     this
 
   updateFormHelpers: () ->
-    if $('#brand').val()  == "Seleccione una Marca"     then brand  = null else  brand  = $('#brand').val()
     attributes = [
       {supplier: @setOrNull('supplier', 'Seleccione un Proveedor')}
       {origin  : @setOrNull('origin', 'Lugar de Origen')}

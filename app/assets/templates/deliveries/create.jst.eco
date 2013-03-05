@@ -219,7 +219,7 @@
                                        placeholder="Codigo">
                             </td>
                             <td>
-                                <select id="brand"">
+                                <select id="brand">
                                     <option>Seleccione una Marca</option>
                                     <% App.formHelpers.where({column: 'brand'}).forEach (model) -> : %>
                                         <option><%= model.get('value') %></option>

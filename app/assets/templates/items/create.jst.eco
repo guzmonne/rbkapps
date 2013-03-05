@@ -14,8 +14,8 @@
         <div class="controls">
             <select id="brand" class="input-large">
                 <option>Seleccione una Marca</option>
-                <% @brands.forEach (brand) -> : %>
-                    <option><%= brand %></option>
+                <% App.formHelpers.where({column: 'brand'}).forEach (model) -> : %>
+                <option><%= model.get('value') %></option>
                 <% end %>
             </select>
             <button class="btn btn-mini btn-success" id="add-new-brand">
@@ -28,8 +28,8 @@
         <div class="controls">
             <select id="season" class="input-large">
                 <option>Seleccione una Temporada</option>
-                <% @seasons.forEach (season) -> : %>
-                    <option><%= season %></option>
+                <% App.formHelpers.where({column: 'season'}).forEach (model) -> : %>
+                <option><%= model.get('value') %></option>
                 <% end %>
             </select>
             <button class="btn btn-mini btn-success" id="add-new-season">
@@ -42,8 +42,8 @@
         <div class="controls">
             <select id="entry" class="input-large">
                 <option>Seleccione un Rubro</option>
-                <% @entries.forEach (entry) -> : %>
-                    <option><%= entry %></option>
+                <% App.formHelpers.where({column: 'entry'}).forEach (model) -> : %>
+                <option><%= model.get('value') %></option>
                 <% end %>
             </select>
             <button class="btn btn-mini btn-success" id="add-new-entry">
