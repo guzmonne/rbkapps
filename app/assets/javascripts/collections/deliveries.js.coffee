@@ -6,7 +6,6 @@ class App.Collections.Deliveries extends Backbone.Collection
     @sortVar      = 'id'
     @sortMethod   = 'lTH'
     @sortVarType  = 'integer'
-    @reverseDirection = false
 
   pluckDistinct: (attribute, attributes=null) ->
     if attributes == null

@@ -4,16 +4,21 @@ class App.Views.DeliveryIndex extends Backbone.View
   name: 'IndexDelivery'
 
   initialize: ->
-    App.deliveries == @collection
+    @collection = App.deliveries
+    @searchCollection = new App.Collections.Deliveries
 
   events:
     'click #new-delivery'     : 'newDelivery'
     'click #fetch-deliveries' : 'fetchDeliveries'
     'click th'                : 'sortDeliveries'
+    'submit .form-search'     : 'searchDelivery'
+    'click .close'            : 'closePopover'
+    'click .drop-columns'     : 'updateSearchColumn'
+    'click #search-undo'      : 'searchUndo'
 
   render: ->
     $(@el).html(@template())
-    App.deliveries.each(@appendDelivery)
+    @collection.each(@appendDelivery)
     this
 
   appendDelivery: (model) =>
@@ -33,16 +38,17 @@ class App.Views.DeliveryIndex extends Backbone.View
     @$('#fetch-deliveries').html(' <i class="icon-load"></i>  Actualizando').addClass('loading')
     App.deliveries.fetch success: =>
       @$('#fetch-deliveries').html('Actualizar').removeClass('loading')
+      @collection = App.deliveries
       App.deliveries.each(@appendDelivery)
     this
 
   sortDeliveries: (e) ->
     sortVar =  e.currentTarget.dataset['sort']
     type    =  e.currentTarget.dataset['sort_type']
-    oldVar = App.deliveries.sortVar
+    oldVar = @collection.sortVar
     $("th[data-sort=#{oldVar}] i").remove()
     if sortVar == oldVar
-      if App.deliveries.sortMethod == 'lTH'
+      if @collection.sortMethod == 'lTH'
         @sort(sortVar, 'hTL', 'down', type )
       else
         @sort(sortVar, 'lTH', 'up', type )
@@ -55,13 +61,76 @@ class App.Views.DeliveryIndex extends Backbone.View
       $("th[data-sort=#{sortVar}]").append( '<i class="icon-chevron-up pull-right"></i>' )
     else
       $("th[data-sort=#{sortVar}]").append( '<i class="icon-chevron-down pull-right"></i>' )
-    App.deliveries.sortVarType= type
-    App.deliveries.sortVar    = sortVar
-    App.deliveries.sortMethod = method
-    App.deliveries.sort()
+    @collection.sortVarType= type
+    @collection.sortVar    = sortVar
+    @collection.sortMethod = method
+    @collection.sort()
     App.vent.trigger 'update:purchase_requests'
-    App.deliveries.each(@appendDelivery)
+    @collection.each(@appendDelivery)
 
+  searchDelivery: (e) ->
+    e.preventDefault()
+    return if e.currentTarget.id == "search-column"
+    if $('#search-column').data('column') == ""
+      $('#search-column').popover
+        placement: 'bottom'
+        title: '<h5>Atención<button class="close pull-right">&times;</button></h5>'
+        html: true
+        content:'<p class="text-warning">Seleccione una columna antes de buscar por favor.</p>'
+      $('#search-column').popover('show')
+      setTimeout( ->
+        $('#search-column').popover('destroy')
+      , 1500)
+      return
+    if App.deliveries.length == 0
+      $('#fetch-deliveries').popover
+        placement: 'right'
+        title: '<h5>Atención<button class="close pull-right">&times;</button></h5>'
+        html: true
+        content:'<p class="text-warning">Actualize los datos antes de comenzar la busqueda por favor.</p>'
+      $('#fetch-deliveries').popover('show')
+      setTimeout( ->
+        $('#fetch-deliveries').popover('destroy')
+      , 1500)
+      return
+    attributes =
+      column  : $('#search-column').data('column')
+      data    : $('#search-input').val()
+    @search(attributes)
+
+  closePopover: (e) ->
+    e.preventDefault()
+    $('#search-column').popover('destroy')
+    $('#fetch-deliveries').popover('destroy')
+
+
+  updateSearchColumn: (e) ->
+    e.preventDefault()
+    search  = e.currentTarget.dataset["search"]
+    name    = e.currentTarget.innerHTML
+    $('#search-column').data('column', search)
+    $('#search-column').html( name + ' <span class="caret"></span>')
+
+  search: (attributes) =>
+    $('#search-undo').show()
+    object = {}
+    object[attributes.column] = attributes.data
+    array = App.deliveries.where(object)
+    for model in array
+      @searchCollection.add(model)
+    App.vent.trigger 'update:purchase_requests'
+    @searchCollection.each(@appendDelivery)
+    $("th[data-sort=#{@collection.sortVar}] i").remove()
+    @collection = @searchCollection
+    @searchCollection = new App.Collections.Deliveries
+
+  searchUndo: (e) ->
+    e.preventDefault()
+    $("th[data-sort=#{@collection.sortVar}] i").remove()
+    App.vent.trigger 'update:purchase_requests'
+    @collection = App.deliveries
+    @collection.each @appendDelivery
+    $('#search-undo').hide()
 
 
 

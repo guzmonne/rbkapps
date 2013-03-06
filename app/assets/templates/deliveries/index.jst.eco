@@ -9,6 +9,49 @@
     <button id="fetch-deliveries" class="btn btn-primary btn-small btn-info">
         Actualizar
     </button>
+    <button id="search-undo" class="btn btn-small btn-warning hide">
+        <i class="icon-filter icon-white"></i>
+        Deshacer Busqueda
+    </button>
+    <form class="form-search pull-right">
+        <div class="input-prepend">
+            <button id="search-button"
+                    type="submit"
+                    class="btn btn-inverse">
+                Buscar
+            </button>
+            <div class="btn-group">
+                <a id="search-column"
+                   class="btn btn-inverse dropdown-toggle"
+                   data-toggle="dropdown"
+                   href="#"
+                   data-column="">
+                    Columna <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="drop-columns" data-search="guide">Guia</a></li>
+                    <li><a href="#" class="drop-columns" data-search="origin">Origen</a></li>
+                    <li><a href="#" class="drop-columns" data-search="supplier">Proveedor</a></li>
+                    <li><a href="#" class="drop-columns" data-search="dispatch">Tramite</a></li>
+                    <li><a href="#" class="drop-columns" data-search="status">Estado</a></li>
+                    <li><a href="#" class="drop-columns" data-search="origin_date">Fecha de Salida</a></li>
+                    <li><a href="#" class="drop-columns" data-search="arrival_date">Fecha de Llegada</a></li>
+                    <li><a href="#" class="drop-columns" data-search="delivery_date">Fecha de Entrega</a></li>
+                </ul>
+            </div>
+            <input type="text"
+                   id="search-input"
+                   data-toggle="popover"
+                   class="input-medium search-query">
+        </div>
+    </form>
+</div>
+<div class="popover top">
+    <div class="arrow"></div>
+    <h3 class="popover-title">Popover top</h3>
+    <div class="popover-content">
+        <p  class="text-warning">Seleccione una columna por favor</p>
+    </div>
 </div>
 <div class="row-fluid">
     <div class="span12">
