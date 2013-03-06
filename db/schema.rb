@@ -11,14 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225193927) do
+ActiveRecord::Schema.define(:version => 20130306181907) do
 
   create_table "deliveries", :force => true do |t|
     t.string   "courier"
     t.string   "dispatch"
-    t.integer  "guide"
-    t.integer  "guide2"
-    t.integer  "guide3"
     t.decimal  "cargo_cost",            :precision => 8, :scale => 2
     t.decimal  "cargo_cost2",           :precision => 8, :scale => 2
     t.decimal  "cargo_cost3",           :precision => 8, :scale => 2
@@ -35,9 +32,10 @@ ActiveRecord::Schema.define(:version => 20130225193927) do
     t.datetime "created_at",                                          :null => false
     t.datetime "updated_at",                                          :null => false
     t.integer  "user_id"
+    t.string   "guide"
+    t.string   "guide2"
+    t.string   "guide3"
   end
-
-  add_index "deliveries", ["guide"], :name => "index_deliveries_on_guide"
 
   create_table "deliveries_items", :id => false, :force => true do |t|
     t.integer "delivery_id"

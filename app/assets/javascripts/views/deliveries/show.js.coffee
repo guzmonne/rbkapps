@@ -5,15 +5,18 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
 
   'events': _.extend({
     'click #submit-save-delivery' : 'saveChanges'
-    'click #reset-form'           : 'resetForm',
+    'click #reset-form'           : 'resetForm'
+    'click #nav-prev-delivery'    : 'prevDelivery'
+    'click #nav-next-delivery'    : 'nextDelivery',
   }, App.Views.DeliveryCreate.prototype.events)
 
   initialize: ->
-    @newItems       = new App.Collections.Items
-    @removeItems    = new App.Collections.Items
-    @newInvoices    = new App.Collections.Invoices
-    @removeInvoices = new App.Collections.Invoices
-    @formHelper     = new App.Mixins.Form
+    @newItems         = new App.Collections.Items
+    @removeItems      = new App.Collections.Items
+    @newInvoices      = new App.Collections.Invoices
+    @removeInvoices   = new App.Collections.Invoices
+    @formHelper       = new App.Mixins.Form
+    @collectionHelper = new App.Mixins.Collections
     @listenTo App.vent, "delivery:show:render:success",          => @populateFields()
     @listenTo App.vent, "add:item:success",    (item)            => @newItems.add(item)
     @listenTo App.vent, "add:invoice:success", (invoice)         => @newInvoices.add(invoice)
@@ -129,3 +132,19 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
     @newInvoices = new App.Collections.Invoices
     @render()
     this
+
+  prevDelivery: ->
+    index = @collectionHelper.getModelId(@model, App.deliveries)
+    collectionSize = App.deliveries.length
+    if index == 0
+      App.vent.trigger "deliveries:show", App.deliveries.models[(collectionSize-1)]
+    else
+      App.vent.trigger "deliveries:show", App.deliveries.models[(index - 1)]
+
+  nextDelivery: ->
+    index = @collectionHelper.getModelId(@model, App.deliveries)
+    collectionSize = App.deliveries.length
+    if index == collectionSize-1
+      App.vent.trigger "deliveries:show", App.deliveries.models[0]
+    else
+      App.vent.trigger "deliveries:show", App.deliveries.models[(index + 1)]

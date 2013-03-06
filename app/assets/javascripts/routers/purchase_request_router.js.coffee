@@ -1,7 +1,7 @@
 class App.Routers.PurchaseRequest extends Backbone.Router
 
   initialize: ->
-    App.vent.on "purchase_requests:show", @setPurchaseOrder, this
+    @listenTo App.vent, "purchase_requests:show", (model) => @setPurchaseOrder(model)
 
   routes:
     'purchase_request/show/:id': 'show'

@@ -1,8 +1,15 @@
 class App.Routers.Delivery extends Backbone.Router
+
+  initialize: ->
+    @listenTo App.vent, "deliveries:show", (model) => @setDelivery(model)
+
   routes:
     'deliveries/new'  : 'create'
     'deliveries/index': 'index'
     'deliveries/show/:id'  : 'show'
+
+  setDelivery: (model) ->
+    Backbone.history.navigate "deliveries/show/#{model.get('id')}", true
 
   create: ->
     if App.user.get("comex") == true or App.user.get("admin") == true

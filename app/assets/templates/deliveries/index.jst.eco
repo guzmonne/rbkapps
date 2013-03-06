@@ -22,7 +22,7 @@
             </button>
             <div class="btn-group">
                 <a id="search-column"
-                   class="btn btn-inverse dropdown-toggle"
+                   class="btn btn-warning dropdown-toggle"
                    data-toggle="dropdown"
                    href="#"
                    data-column="">

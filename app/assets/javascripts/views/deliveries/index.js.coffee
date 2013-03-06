@@ -6,6 +6,7 @@ class App.Views.DeliveryIndex extends Backbone.View
   initialize: ->
     @collection = App.deliveries
     @searchCollection = new App.Collections.Deliveries
+    @lastSearch = []
 
   events:
     'click #new-delivery'     : 'newDelivery'
@@ -15,6 +16,7 @@ class App.Views.DeliveryIndex extends Backbone.View
     'click .close'            : 'closePopover'
     'click .drop-columns'     : 'updateSearchColumn'
     'click #search-undo'      : 'searchUndo'
+    'focus #search-input'     : 'searchTypeahead'
 
   render: ->
     $(@el).html(@template())
@@ -40,6 +42,7 @@ class App.Views.DeliveryIndex extends Backbone.View
       @$('#fetch-deliveries').html('Actualizar').removeClass('loading')
       @collection = App.deliveries
       App.deliveries.each(@appendDelivery)
+      @lastSearch = []
     this
 
   sortDeliveries: (e) ->
@@ -106,16 +109,21 @@ class App.Views.DeliveryIndex extends Backbone.View
 
   updateSearchColumn: (e) ->
     e.preventDefault()
+    $('#search-column').removeClass('btn-warning').addClass('btn-success')
     search  = e.currentTarget.dataset["search"]
     name    = e.currentTarget.innerHTML
     $('#search-column').data('column', search)
     $('#search-column').html( name + ' <span class="caret"></span>')
 
   search: (attributes) =>
+    for element in @lastSearch
+      if element == $('#search-column').data('column') then return
     $('#search-undo').show()
+    $('#search-column').removeClass('btn-success').addClass('btn-warning')
+    @lastSearch.push attributes.column
     object = {}
     object[attributes.column] = attributes.data
-    array = App.deliveries.where(object)
+    array = @collection.where(object)
     for model in array
       @searchCollection.add(model)
     App.vent.trigger 'update:purchase_requests'
@@ -126,11 +134,17 @@ class App.Views.DeliveryIndex extends Backbone.View
 
   searchUndo: (e) ->
     e.preventDefault()
+    $('#search-column').removeClass('btn-warning').addClass('btn-success')
     $("th[data-sort=#{@collection.sortVar}] i").remove()
     App.vent.trigger 'update:purchase_requests'
     @collection = App.deliveries
     @collection.each @appendDelivery
     $('#search-undo').hide()
+    @lastSearch = []
+
+  searchTypeahead: ->
+    $('#search-input').typeahead source: => @collection.pluckDistinct($('#search-column').data('column'))
+    this
 
 
 
