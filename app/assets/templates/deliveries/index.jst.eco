@@ -15,15 +15,15 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>Courier</th>
-                    <th>Trámite</th>
-                    <th>Guía</th>
-                    <th>Flete</th>
-                    <th>Proveedor</th>
-                    <th>Orígen</th>
-                    <th>Estado</th>
-                    <th>Salida de Orígen</th>
-                    <th>Llegada al Uruguay</th>
+                    <th data-sort="id" data-sort_type="integer">ID</i></th>
+                    <th data-sort="guide" data-sort_type="integer">Guia</th>
+                    <th data-sort="origin" data-sort_type="string">Origen</th>
+                    <th data-sort="supplier" data-sort_type="string">Proveedor</th>
+                    <th data-sort="dispatch" data-sort_type="string">Tramite</th>
+                    <th data-sort="status" data-sort_type="string">Estado</th>
+                    <th data-sort="origin_date" data-sort_type="date">Fecha de Salida</th>
+                    <th data-sort="arrival_date" data-sort_type="date">Fecha de Llegada</i></th>
+                    <th data-sort="delivery_date" data-sort_type="date">Fecha de Entrega</th>
                 </tr>
             </thead>
             <tbody id="deliveries">
