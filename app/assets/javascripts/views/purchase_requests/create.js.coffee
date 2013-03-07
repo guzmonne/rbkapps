@@ -18,6 +18,7 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
     view = new App.Views.PurchaseRequestLineCreate
     App.pushToAppendedViews(view)
     $(@el).html(@template()).find('#purchase-request-lines').html(view.render().el)
+    @$('.datepicker').datepicker({format: 'yyyy-mm-dd'}).on('changeDate', (e) -> $(e.target).datepicker('hide'))
     this
 
   createPurchaseRequest: (e) ->

@@ -27,6 +27,7 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
     $(@el).html(@template(model: @model))
     @model.invoices.each(@renderInvoice)
     @model.items.each(@renderItem)
+    @$('.datepicker').datepicker({format: 'yyyy-mm-dd'}).on('changeDate', (e) -> $(e.target).datepicker('hide'))
     App.vent.trigger "delivery:show:render:success"
     this
 

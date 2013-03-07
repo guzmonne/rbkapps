@@ -124,15 +124,15 @@
         <div class="row-fluid">
             <div class="span4">
                 <label>Salida de Origen:</label>
-                <input id="origin_date" type="date" class="input-small">
+                <input id="origin_date" type="text" class="input-small datepicker">
             </div>
             <div class="span4">
                 <label>Llegada a Uruguay:</label>
-                <input id="arrival_date" type="date" class="input-small">
+                <input id="arrival_date" type="text" class="input-small datepicker">
             </div>
             <div class="span4">
                 <label>Entrega:</label>
-                <input id="delivery_date" type="date" class="input-small">
+                <input id="delivery_date" type="text" class="input-small datepicker">
             </div>
         </div>
     </div>
@@ -153,11 +153,11 @@
             </div>
             <div class="span4">
                 <label>Envío de Factura:</label>
-                <input id="invoice_delivery_date" type="date" class="input-small">
+                <input id="invoice_delivery_date" type="text" class="input-small datepicker">
             </div>
             <div class="span4">
                 <label>Doc. Courier:</label>
-                <input id="doc_courier_date" type="date" class="input-small">
+                <input id="doc_courier_date" type="text" class="input-small datepicker">
             </div>
         </div>
     </div>

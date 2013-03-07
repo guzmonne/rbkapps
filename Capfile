@@ -11,13 +11,13 @@ set :domain, '192.168.1.201'
 set :application, 'rbkapps'
 
 # adjust if you are using RVM, remove if you are not
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+# $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"
 set :rvm_ruby_string, '1.9.3'
 set :rvm_type, :user
 
 # file paths
-set :repository, "#{user}@#{domain}:git/#{application}.git"
+set :repository, "#{user}@#{domain}:git/~/#{application}.git"
 set :deploy_to, "/var/www/#{application}"
 
 # distribute your applications across servers (the instructions below put them

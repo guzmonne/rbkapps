@@ -45,9 +45,11 @@ class App.Views.DeliveryCreate extends Backbone.View
     @listenTo App.vent, 'removeItem:success', (model) =>
       @model.items.remove(model)
       @items.add(model)
+    @listenTo @$('.datepicker'), 'all', -> alert "Selected!"
 
   render: ->
     $(@el).html(@template()).find('.select2').select2({width: 'copy'})
+    @$('.datepicker').datepicker({format: 'yyyy-mm-dd'}).on('changeDate', (e) -> $(e.target).datepicker('hide'))
     this
 
   changeCourierIcon: (e) ->
@@ -438,16 +440,7 @@ class App.Views.DeliveryCreate extends Backbone.View
     if $('#' + id).val()  == value then result = null else result = $('#' + id).val()
     return result
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  datePicker: (e) ->
+    console.log "date!!!", e
+    id = e.currentTarget.id
+    $('#' + id).datepicker('hide')
