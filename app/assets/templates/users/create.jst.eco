@@ -63,9 +63,15 @@
         </div>
     </div>
     <div class="control-group" id="control-admin">
+        <label class="control-label" for="location_id">Permisos</label>
         <div class="controls">
             <label class="checkbox">
                 <input type="checkbox" id="admin" value = true> admin?
+            </label>
+        </div>
+        <div class="controls">
+            <label class="checkbox">
+                <input type="checkbox" id="comex" value = true> COMEX?
             </label>
         </div>
     </div>

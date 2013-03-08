@@ -49,7 +49,9 @@ class App.Views.DeliveryCreate extends Backbone.View
 
   render: ->
     $(@el).html(@template()).find('.select2').select2({width: 'copy'})
-    @$('.datepicker').datepicker({format: 'yyyy-mm-dd'}).on('changeDate', (e) -> $(e.target).datepicker('hide'))
+    @$('.datepicker').datepicker({format: 'yyyy-mm-dd'}).on('changeDate', (e) ->
+      $(e.target).datepicker('hide')
+      $(e.targer).focus())
     this
 
   changeCourierIcon: (e) ->
@@ -225,8 +227,8 @@ class App.Views.DeliveryCreate extends Backbone.View
     items         = []
     editItems     = []
     editInvoices  = []
-    if message == @validate
-      @formHelper.displayFlash('alert', message, 20000)
+    # if message == @validate
+    #  @formHelper.displayFlash('alert', message, 20000)
     delivery =
       courier           : $('#courier').val()
       dispatch          : $('#dispatch').val()

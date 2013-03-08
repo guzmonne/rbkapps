@@ -25,16 +25,17 @@ class App.Views.UserCreate extends Backbone.View
       return @formHelper.displayFlash('error', 'Seleccione un equipo', 10000)
     attributes =
       user:
-        name: $('#name').val()
-        email: $('#email').val()
-        phone: $('#phone').val()
-        cellphone: $('#cellphone').val()
-        position: $('#position').val()
-        team_id: $('#team').find('option:selected').data('id')
-        location_id: $('#location_id').val()
-        password: $('#password').val()
-        password_confirmation: $('#password_confirmation').val()
-        admin: if $('#admin').attr("checked") then true else false
+        name        : $('#name').val()
+        email       : $('#email').val()
+        phone       : $('#phone').val()
+        cellphone   : $('#cellphone').val()
+        position    : $('#position').val()
+        team_id     : $('#team').find('option:selected').data('id')
+        location_id : $('#location_id').val()
+        password              : $('#password').val()
+        password_confirmation : $('#password_confirmation').val()
+        admin                : if $('#admin').attr("checked") then true else false
+        comex                : if $('#admin').attr("checked") then true else false
     @model.save(attributes, {success: @handleSuccess, error: @handleError})
 
   handleSuccess: (data, status, response) =>

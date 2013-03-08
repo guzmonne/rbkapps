@@ -1,6 +1,7 @@
 class App.Collections.Users extends Backbone.Collection
   model: App.Models.User
-  url: 'api/users'
+  urlRoot: 'api/users'
+  url: '/api/users'
 
   getNameFromId: (id) ->
     name = null

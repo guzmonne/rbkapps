@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :purchase_requests
   belongs_to :team
+  attr_accessor :team_name
   attr_accessible :name,
                   :email,
                   :cellphone,
@@ -12,7 +13,9 @@ class User < ActiveRecord::Base
                   :position,
                   :remember_token,
                   :team_id,
-                  :admin
+                  :admin,
+                  :comex
+
   before_save do |user|
     user.email = email.downcase
     user.name  = name.titleize

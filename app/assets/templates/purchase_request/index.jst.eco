@@ -4,7 +4,7 @@
     </h1>
     <button id="new-purchase-request" class="btn btn-primary btn-small btn-success">
         <i class="icon-plus icon-white"></i>
-        Nuevo Artículo
+        Nueva Solicitud de Compra
     </button>
     <button id="fetch-deliveries" class="btn btn-primary btn-small btn-info">
         Actualizar

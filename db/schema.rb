@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306181907) do
+ActiveRecord::Schema.define(:version => 20130308110744) do
 
   create_table "deliveries", :force => true do |t|
     t.string   "courier"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20130306181907) do
     t.datetime "updated_at",                         :null => false
     t.string   "remember_token"
     t.boolean  "admin",           :default => false
+    t.boolean  "comex"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -28,7 +28,7 @@ production:
   database: rbkapps
   pool: 5
   host: localhost
-  port: 5432
+  port: 5433
   username: postgres
   password: Adm1nR33b0k
 

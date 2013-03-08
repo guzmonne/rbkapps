@@ -1,0 +1,12 @@
+<td><%= @model.get('name') %></td>
+<td><%= @model.get('email') %></td>
+<td><%= @model.get('phone') %></td>
+<td><%= @model.get('cellphone') %></td>
+<td><%= @model.get('position') %></td>
+<td><%= App.teams.get(@model.get('team_id')).get('name') %></td>
+<td class="admin">
+
+</td>
+<td class="comex">
+
+</td>

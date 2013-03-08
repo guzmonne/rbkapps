@@ -24,7 +24,7 @@ window.App =
     @navView          = new App.Views.Nav()
     @user             = new App.Models.User()
     @users            = new App.Collections.Users()
-    @users.reset($('#user-container').data('users'))
+    # @users.reset($('#user-container').data('users'))
     @teams            = new App.Collections.Teams()
     @teams.reset($('#team-container').data('teams'))
     @session          = new App.Models.Session()
@@ -46,9 +46,13 @@ window.App =
 
   start: ->
     if @session.load().authenticated()
-      @user = @users.get($.cookie('user_id')) if @user.get('id') == null
-      @purchaseRequests.user_id = $.cookie('user_id')
-      @setNav()
+      @user.fetch
+        data:
+          remember_token: $.cookie('remember_token')
+        success: =>
+        # @user = @users.get($.cookie('user_id')) if @user.get('id') == null
+          @purchaseRequests.user_id = $.cookie('user_id')
+          @setNav()
     this
 
   setNav: ->

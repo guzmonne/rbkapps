@@ -1,6 +1,10 @@
 class App.Models.User extends Backbone.Model
+  urlRoot: '/api/users'
+
   url: ->
-    "api/users/#{@id}"
+    u = '/api/users'
+    if @id then u = u + "/#{@id}"
+    return u
 
   defaults: ->
     id: null
