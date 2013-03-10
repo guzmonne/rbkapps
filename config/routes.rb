@@ -11,6 +11,7 @@ Rbkapps::Application.routes.draw do
     resources :deliveries
     resources :invoices
     resources :form_helpers
+    resources :deliveries_items
   end
 
   match '*path', to: 'main#index'

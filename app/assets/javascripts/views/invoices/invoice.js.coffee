@@ -7,7 +7,8 @@ class App.Views.Invoice extends Backbone.View
     @fH = new App.Mixins.Form
     @model.set('fob_total_cost', @fH.correctDecimal(@model.get('fob_total_cost')))
     @listenTo App.vent, 'delivery:create:success', => @remove()
-    @listenTo App.vent, 'remove:invoices', @remove()
+    @listenTo App.vent, 'remove:invoices', => @remove()
+    @listenTo App.vent, 'update:invoices:success', => @remove()
 
   events:
     'click #remove-invoice': 'removeInvoice'

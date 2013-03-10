@@ -11,7 +11,7 @@ class App.Routers.User extends Backbone.Router
     if App.user.isNew()
       App.user.fetch success: =>
         team = App.teams.get(App.user.get('team_id'))
-        App.user.set('team', team.name)
+        App.user.set('team', team.name) if team?
         view = new App.Views.UserShow(model: App.user)
         App.setAndRenderContentViews([view])
         this

@@ -6,7 +6,7 @@
         <i class="icon-plus icon-white"></i>
         Nueva Factura
     </button>
-    <button id="fetch-deliveries" class="btn btn-primary btn-small btn-info">
+    <button id="fetch-invoices" class="btn btn-primary btn-small btn-info">
         Actualizar
     </button>
 </div>

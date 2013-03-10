@@ -7,6 +7,7 @@ class App.Views.DeliveryIndex extends Backbone.View
     @collection = App.deliveries
     @searchCollection = new App.Collections.Deliveries
     @lastSearch = []
+    @fetchDeliveries = _.debounce(@fetchDeliveries, 300)
 
   events:
     'click #new-delivery'     : 'newDelivery'
@@ -36,7 +37,7 @@ class App.Views.DeliveryIndex extends Backbone.View
 
   fetchDeliveries: (e) ->
     e.preventDefault()
-    App.vent.trigger 'update:purchase_requests'
+    App.vent.trigger 'update:deliveries:success'
     @$('#fetch-deliveries').html(' <i class="icon-load"></i>  Actualizando').addClass('loading')
     App.deliveries.fetch success: =>
       @$('#fetch-deliveries').html('Actualizar').removeClass('loading')
@@ -48,7 +49,7 @@ class App.Views.DeliveryIndex extends Backbone.View
   sortDeliveries: (e) ->
     sortVar =  e.currentTarget.dataset['sort']
     type    =  e.currentTarget.dataset['sort_type']
-    oldVar = @collection.sortVar
+    oldVar  = @collection.sortVar
     $("th[data-sort=#{oldVar}] i").remove()
     if sortVar == oldVar
       if @collection.sortMethod == 'lTH'
@@ -68,7 +69,7 @@ class App.Views.DeliveryIndex extends Backbone.View
     @collection.sortVar    = sortVar
     @collection.sortMethod = method
     @collection.sort()
-    App.vent.trigger 'update:purchase_requests'
+    App.vent.trigger 'update:deliveries:success'
     @collection.each(@appendDelivery)
 
   searchDelivery: (e) ->

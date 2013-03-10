@@ -125,3 +125,20 @@ body { padding-top: 60px; }
 .popover-content {
   font-size: 12px; /*or whatever size */
 }
+
+.table-no-border th, .table-no-border td {
+  border-top: none;
+}
+
+.header {
+  background-image: url(bg.gif);
+  background-repeat: no-repeat;
+  background-position: center right;
+  cursor: pointer;
+}
+.headerSortUp {
+  background-image: url(asc.gif);
+}
+.headerSortDown {
+  background-image: url(desc.gif);
+}

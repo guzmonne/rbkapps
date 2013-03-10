@@ -21,9 +21,11 @@
       <w>datos</w>
       <w>debe</w>
       <w>delever</w>
+      <w>deliverys</w>
       <w>descripcion</w>
       <w>despacho</w>
       <w>editar</w>
+      <w>ejecutar</w>
       <w>empresa</w>
       <w>entrega</w>
       <w>enviar</w>
@@ -35,6 +37,7 @@
       <w>estar</w>
       <w>fechas</w>
       <w>flete</w>
+      <w>gasto</w>
       <w>gerente</w>
       <w>glyphicons</w>
       <w>guía</w>
@@ -64,6 +67,8 @@
       <w>rbkapps</w>
       <w>rbklogo</w>
       <w>repetir</w>
+      <w>reporte</w>
+      <w>reportes</w>
       <w>reque</w>
       <w>rubro</w>
       <w>salida</w>
@@ -73,6 +78,7 @@
       <w>servicio</w>
       <w>solicitud</w>
       <w>solicitudes</w>
+      <w>tablesorter</w>
       <w>telefono</w>
       <w>temporada</w>
       <w>totales</w>

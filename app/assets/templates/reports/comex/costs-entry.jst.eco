@@ -1,0 +1,6 @@
+<tr>
+    <td><%= @entry %></td>
+    <td class="items">
+        <table id="entry-<%= @index %>"  class="items-table table table-condensed table-no-border"></table>
+    </td>
+</tr>

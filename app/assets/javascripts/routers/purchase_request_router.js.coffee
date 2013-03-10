@@ -25,6 +25,8 @@ class App.Routers.PurchaseRequest extends Backbone.Router
   show: (id) =>
     if App.purchaseRequests.length == 0
       App.purchaseRequests.fetch
+        data:
+          user_id: App.user.id
         success: =>
           model = App.purchaseRequests.get(id)
           model.lines.purchase_request_id = id

@@ -1,5 +1,9 @@
 class App.Models.PurchaseRequest extends Backbone.Model
-  urlRoot: '/api/purchase_requests'
+
+  url: ->
+    u = '/api/purchase_requests'
+    if @id then u = u + "/#{@id}"
+    return u
 
   initialize: ->
     @dateHelper = new App.Mixins.Date()
@@ -25,14 +29,3 @@ class App.Models.PurchaseRequest extends Backbone.Model
         options.success(data)
       error: (data, status, response) ->
         alert data, status, response
-
-  fetch: (options) ->
-    $.ajax
-      url: "/api/purchase_requests/#{@id}"
-      type: 'GET'
-      dataType: 'json'
-      success: (data) =>
-        @set(data)
-        options.success(data)
-      error: (data, status, response) ->
-        options.error(data, status, response)

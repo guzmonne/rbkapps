@@ -14,6 +14,8 @@ class App.Views.PurchaseRequestShow extends Backbone.View
   render: ->
     $(@el).html(@template(model: @model))
     @model.lines.each(@renderLine)
+    user = App.users.get(@model.get('user_id'))
+    @$('.user').text(user.get('name'))
     this
 
   renderLine: (line) =>

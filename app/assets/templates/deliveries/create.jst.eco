@@ -377,7 +377,6 @@
     </div>
     <div class="form-actions">
         <button id="submit-create-delivery" class="btn btn-primary btn-large">Crear Envío</button>
-        <button id="clear-form" class="btn btn-primary btn-large btn-inverse pull-right">Cancelar</button>
     </div>
 </form>
 <!-- Add new supplier -->

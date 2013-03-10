@@ -22,7 +22,7 @@ class App.Views.SessionCreate extends Backbone.View
       dataType: 'json'
       success: (data) =>
         App.session.save({'id': data.id, 'remember_token': data.remember_token})
-        App.user = App.users.get(data.id)
+        App.user.set(data)
         App.start()
         Backbone.history.navigate('home', trigger = true)
       error: (user, status, response) ->

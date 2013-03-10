@@ -25,13 +25,13 @@
                 <li>
                     <a href="#" id="nav-user">
                         <i class="icon-user"></i>
-                        Datos de Usuario
+                        Usuario
                     </a>
                 </li>
                 <li class="admin-only hide">
                     <a href="#" id="nav-users">
                         <i class="icon-user"></i>
-                        Lista de Usuarios
+                        Usuarios
                     </a>
                 </li>
                 <li class="admin-only hide">
@@ -80,7 +80,7 @@
                 <li>
                     <a href="#" id="nav-team">
                         <i class="icon-briefcase"></i>
-                        Lista de Equipos
+                        Equipos
                     </a>
                 </li>
                 <li>
@@ -114,6 +114,12 @@
                     <a href="#" id="nav-invoice">
                         <i class="icon-list-alt"></i>
                         Facturas
+                    </a>
+                </li>
+                <li class="hover-white">
+                    <a href="#" id="nav-comex-reports">
+                        <i class="icon-file"></i>
+                        Reportes
                     </a>
                 </li>
                 <li>

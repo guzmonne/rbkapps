@@ -12,13 +12,14 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
   initialize: ->
     @formHelper = new App.Mixins.Form
     @listenTo App.vent, 'removePurchaseRequestLine:success', @removeModel
-    # App.vent.on 'removePurchaseRequestLine:success', @removeModel, this
 
   render: ->
     view = new App.Views.PurchaseRequestLineCreate
     App.pushToAppendedViews(view)
     $(@el).html(@template()).find('#purchase-request-lines').html(view.render().el)
-    @$('.datepicker').datepicker({format: 'yyyy-mm-dd'}).on('changeDate', (e) -> $(e.target).datepicker('hide'))
+    @$('.datepicker').datepicker({format: 'yyyy-mm-dd'}).on 'changeDate', (e) ->
+      $(e.target).datepicker('hide')
+      $('#use').focus()
     this
 
   createPurchaseRequest: (e) ->
@@ -26,6 +27,9 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
     if $('#team').val() == "Seleccione un Equipo de la Lista"
       $('#team').parent().addClass('control-group error')
       return @formHelper.displayFlash('error', 'Seleccione un equipo de la lista', 10000)
+    @formHelper.displayFlash("info", "Espere por favor...", 2000)
+    $('#submit-create-purchase-request').attr('disabled', true)
+    $('#submit-create-purchase-request').html('<i class="icon-load"></i>  Espere por favor...')
     @lines = []
     @model.lines.each (model) =>
       line =

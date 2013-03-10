@@ -5,11 +5,12 @@ class App.Views.ItemIndex extends Backbone.View
 
   events:
     'click #new-item'         : 'newItem'
-    'click #fetch-deliveries' : 'fetchDeliveries'
+    'click #fetch-items'      : 'fetchItems'
 
   render: ->
     $(@el).html(@template())
     App.items.each(@appendItem)
+    unless App.items.length == 0 then @$('.table').tablesorter()
     this
 
   appendItem: (model) =>
@@ -23,10 +24,11 @@ class App.Views.ItemIndex extends Backbone.View
     Backbone.history.navigate 'items/new', trigger: true
     this
 
-  fetchDeliveries: (e) ->
+  fetchItems: (e) ->
     e.preventDefault()
-    @$('#fetch-deliveries').html('<i class="icon-load"></i>  Actualizando').addClass('loading')
+    @$('#fetch-items').html('<i class="icon-load"></i>  Actualizando').addClass('loading')
     App.items.fetch success: =>
-      @$('#fetch-deliveries').html('Actualizar').removeClass('loading')
+      @$('#fetch-items').html('Actualizar').removeClass('loading')
       App.items.each(@appendItem)
+      @$('.table').tablesorter()
     this

@@ -6,7 +6,7 @@
         <i class="icon-plus icon-white"></i>
         Nueva Solicitud de Compra
     </button>
-    <button id="fetch-deliveries" class="btn btn-primary btn-small btn-info">
+    <button id="fetch-purchase_requests" class="btn btn-primary btn-small btn-info">
         Actualizar
     </button>
 </div>
@@ -17,7 +17,7 @@
             <tr>
                 <th>Sector</th>
                 <th>Uso del Material</th>
-                <th>ID de Equipo</th>
+                <th>Equipo</th>
                 <th>Fecha de Entrega</th>
                 <th>Fecha de Creado</th>
                 <th>Ultima Modificación</th>

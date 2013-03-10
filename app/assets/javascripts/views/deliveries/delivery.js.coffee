@@ -7,7 +7,7 @@ class App.Views.Delivery extends Backbone.View
     'click': 'show'
 
   initialize: ->
-    @listenTo App.vent, 'update:purchase_requests', => @remove()
+    @listenTo App.vent, 'update:deliveries:success', => @remove()
 
   render: ->
     $(@el).html(@template(model: @model))

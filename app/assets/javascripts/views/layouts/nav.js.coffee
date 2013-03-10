@@ -19,6 +19,7 @@ class App.Views.Nav extends Backbone.View
     'click #nav-new-delivery'           : 'deliveryCreate'
     'click #nav-invoice'                : 'invoiceIndex'
     'click #nav-users'                  : 'usersIndex'
+    'click #nav-comex-reports'          : 'comexReports'
 
   render: ->
     if @model.get('admin') ==  true
@@ -94,3 +95,7 @@ class App.Views.Nav extends Backbone.View
   usersIndex: (e) ->
     e.preventDefault()
     Backbone.history.navigate 'users/index', trigger: true
+
+  comexReports: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate 'comex/reports', trigger: true

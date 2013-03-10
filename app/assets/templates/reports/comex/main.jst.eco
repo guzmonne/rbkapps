@@ -1,0 +1,33 @@
+<div class="row-fluid">
+    <div class="span4">
+        <div class="dropdown">
+            <a class="dropdown-toggle btn btn-info btn-block" data-toggle="dropdown" href="#">
+                Reportes
+                <i class="icon-chevron-down icon-white"></i>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li><a data-report="costs-entry">Gasto Total por Rubro</a></li>
+                <li><a data-report="costs-item">Gasto Total por Artículo</a></li>
+                <li><a data-report="costs-season">Gasto Total por Temporada</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="span4 pagination-centered">
+        <h4 id="report-name">Seleccione un Reporte por favor</h4>
+    </div>
+    <div class="span4">
+        <button class="btn btn-primary btn-block" id="run-report">Ejecutar Reporte</button>
+    </div>
+</div>
+<hr>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="loading-bar hide">
+            <div class="progress progress-striped active progress-warning">
+                <div class="bar" style="width: 0%;"></div>
+            </div>
+        </div>
+        <table id="table-report" class="table table-condensed"></table>
+    </div>
+</div>
+

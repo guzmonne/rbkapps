@@ -5,26 +5,28 @@ window.App =
   Routers: {}
   Mixins: {}
 
-  vent: _.extend({}, Backbone.Events)
-  users: null
-  teams: null
-  user: null
-  session: null
-  navView: null
-  purchaseRequests: null
-  items: null
-  deliveries: null
-  invoices: null
-  formHelpers: null
-  loading: null
-  contentViews: []
-  appendedViews: []
+  vent              : _.extend({}, Backbone.Events)
+  users             : null
+  teams             : null
+  user              : null
+  session           : null
+  navView           : null
+  purchaseRequests  : null
+  items             : null
+  deliveries        : null
+  invoices          : null
+  formHelpers       : null
+  loading           : null
+  started           : null
+  d_i               : null
+  contentViews      : []
+  appendedViews     : []
 
   initialize: ->
     @navView          = new App.Views.Nav()
     @user             = new App.Models.User()
     @users            = new App.Collections.Users()
-    # @users.reset($('#user-container').data('users'))
+    @users.reset($('#user-container').data('users'))
     @teams            = new App.Collections.Teams()
     @teams.reset($('#team-container').data('teams'))
     @session          = new App.Models.Session()
@@ -34,15 +36,8 @@ window.App =
     @invoices         = new App.Collections.Invoices()
     @formHelpers      = new App.Collections.FormHelpers()
     @formHelpers.reset($('#form_helpers-container').data('form-helpers'))
+    @d_i              = new App.Collections.DeliveriesItems()
     App.start()
-    new App.Routers.Nav()
-    new App.Routers.User()
-    new App.Routers.PurchaseRequest()
-    new App.Routers.Teams()
-    new App.Routers.Item()
-    new App.Routers.Delivery()
-    new App.Routers.Invoice()
-    Backbone.history.start({pushState: true})
 
   start: ->
     if @session.load().authenticated()
@@ -50,10 +45,24 @@ window.App =
         data:
           remember_token: $.cookie('remember_token')
         success: =>
-        # @user = @users.get($.cookie('user_id')) if @user.get('id') == null
-          @purchaseRequests.user_id = $.cookie('user_id')
           @setNav()
+          @complete()
+    else
+      @complete()
     this
+
+  complete: ->
+    if @started == true then return true
+    new App.Routers.Nav()
+    new App.Routers.User()
+    new App.Routers.PurchaseRequest()
+    new App.Routers.Teams()
+    new App.Routers.Item()
+    new App.Routers.Delivery()
+    new App.Routers.Invoice()
+    new App.Routers.Reports()
+    Backbone.history.start({pushState: true})
+    @started = true
 
   setNav: ->
     @navView = new App.Views.Nav(model: @user)
@@ -105,7 +114,8 @@ window.App =
   signOut: ->
     $.removeCookie('user_id')
     $.removeCookie('remember_token')
-    @user = new App.Models.User
+    @user     = new App.Models.User
+    @session  = new App.Models.Session
     @purchaseRequests = new App.Collections.PurchaseRequests()
     return @
 

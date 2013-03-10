@@ -14,7 +14,6 @@ class App.Views.DeliveryCreate extends Backbone.View
     'click #add-new-item'                      : 'addNewItem'
     'keydown :input'                           : 'keyDownManager'
     'submit #create-delivery'                  : 'createDelivery'
-    'click #clear-form'                        : 'clearForm'
     'click #toggle-items-form'                 : 'toggleItemsForm'
     'click #close-item-form'                   : 'toggleItemsForm'
     'click #toggle-invoice-form'               : 'toggleInvoiceForm'
@@ -39,19 +38,21 @@ class App.Views.DeliveryCreate extends Backbone.View
     @items       = new App.Collections.Items
     @model       = new App.Models.Delivery()
     @formHelper  = new App.Mixins.Form()
-    @listenTo App.vent, 'removeInvoice:success', (model) =>
+    @listenTo App.vent, 'remove:invoice:success', (model) =>
       @model.invoices.remove(model)
       @invoices.add(model)
-    @listenTo App.vent, 'removeItem:success', (model) =>
+      $('#searched-invoice-invoice_number').typeahead source: =>
+        _.map(@invoices.where({delivery_id: null}), (model)  -> return model.get('invoice_number'))
+    @listenTo App.vent, 'remove:item:success', (model) =>
       @model.items.remove(model)
       @items.add(model)
+      $('#searched-item-code').data('typeahead').source = @items.pluck('code')
     @listenTo @$('.datepicker'), 'all', -> alert "Selected!"
 
   render: ->
     $(@el).html(@template()).find('.select2').select2({width: 'copy'})
     @$('.datepicker').datepicker({format: 'yyyy-mm-dd'}).on('changeDate', (e) ->
-      $(e.target).datepicker('hide')
-      $(e.targer).focus())
+      $(e.target).datepicker('hide'))
     this
 
   changeCourierIcon: (e) ->
@@ -223,6 +224,10 @@ class App.Views.DeliveryCreate extends Backbone.View
 
   createDelivery: (e) ->
     e.preventDefault()
+    @formHelper.displayFlash("info", "Espere por favor...", 2000)
+    $('#submit-create-delivery').attr('disabled', true)
+    $('#submit-create-delivery').html('<i class="icon-load"></i>  Espere por favor...')
+    $('#courier').focus()
     invoices      = []
     items         = []
     editItems     = []
@@ -281,20 +286,12 @@ class App.Views.DeliveryCreate extends Backbone.View
       App.deliveries.add(@model)
       @render()
       @formHelper.displayFlash("success", "El envío se ha creado con exito", 20000)
-      @model.items = new App.Collections.Items
+      @model          = new App.Models.Delivery
+      @model.items    = new App.Collections.Items
       @model.invoices = new App.Collections.Invoices
-      $('#courier').focus()
+      @items          = new App.Collections.Items
+      @invoices       = new App.Collections.Invoices
       App.closeAppendedViews()
-    this
-
-  clearForm: (e=null) =>
-    e.preventDefault()
-    result = confirm("Perdera todos los cambios. Desea continuar?")
-    if result
-      @render()
-      @model.items = new App.Collections.Items
-      @model.invoices = new App.Collections.Invoices
-      $('#courier').focus()
     this
 
   searchItems: (e) ->
@@ -393,38 +390,24 @@ class App.Views.DeliveryCreate extends Backbone.View
     return if invoice ==  undefined
     @addInvoice(invoice)
     @invoices.remove(invoice)
-    invoices = _.map(@invoices.where({delivery_id: null}), (model)  -> return model.get('invoice_number'))
     $('#searched-invoice-invoice_number').val('')
     @typeAheadInvoice
     @displaySearchedInvoice(e)
 
   typeAheadInvoice: () ->
-    $('#searched-invoice-invoice_number').removeClass('loading')
-    if App.invoices.length == 0
-      App.invoices.fetch success: =>
-        @invoices = App.invoices
+    if @invoices.length == 0
+      @invoices.fetch success: =>
         $('#searched-invoice-invoice_number').removeClass('loading')
         $('#searched-invoice-invoice_number').typeahead source: =>
           _.map(@invoices.where({delivery_id: null}), (model)  -> return model.get('invoice_number'))
-    else
-      @invoices = App.invoices
-      $('#searched-invoice-invoice_number').removeClass('loading')
-      $('#searched-invoice-invoice_number').typeahead source: =>
-        _.map(@invoices.where({delivery_id: null}), (model)  -> return model.get('invoice_number'))
     this
 
   typeAheadItem: () ->
-    if App.items.length == 0
-      App.items.fetch success: =>
-        @items = App.items
+    if @items.length == 0
+      @items.fetch success: =>
         $('#searched-item-code').removeClass('loading')
         $('#searched-item-code').typeahead source: =>
           @items.pluck("code")
-    else
-      @items = App.items
-      $('#searched-item-code').removeClass('loading')
-      $('#searched-item-code').typeahead source: =>
-        @items.pluck("code")
     this
 
   updateFormHelpers: () ->

@@ -1,0 +1,5 @@
+<tr>
+    <td><%= @invoice.get('invoice_number') %></td>
+    <td><%= @invoice.get('total_units') %></td>
+    <td><%= @invoice.get('fob_total_cost') %></td>
+</tr>

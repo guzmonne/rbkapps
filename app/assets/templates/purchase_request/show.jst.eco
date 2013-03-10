@@ -20,10 +20,14 @@
         <p><%= @model.get('sector') %></p>
     </div>
     <div class="span2">
+        <p><strong>Creado Por</strong></p>
+        <p class="user"></p>
+    </div>
+    <div class="span2">
         <p><strong>Necesario para</strong></p>
         <p><%= @model.get('deliver_at') %></p>
     </div>
-    <div class="span4">
+    <div class="span2">
         <p><strong>Uso del Material</strong></p>
         <p><%= @model.get('use') %></p>
     </div>
