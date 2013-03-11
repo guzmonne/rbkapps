@@ -18,7 +18,6 @@
 //= require backbone
 //= require select2
 //= require bootstrap-datepicker
-//= require jquery.tablesorter
 //= require_tree ../templates
 //= require app
 //= require_tree ./models

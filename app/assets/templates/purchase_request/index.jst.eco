@@ -15,12 +15,12 @@
         <table class="table table-striped table-hover">
             <thead>
             <tr>
-                <th>Sector</th>
-                <th>Uso del Material</th>
-                <th>Equipo</th>
-                <th>Fecha de Entrega</th>
-                <th>Fecha de Creado</th>
-                <th>Ultima Modificación</th>
+                <th data-sort="sector" data-sort_type="string">Sector</th>
+                <th data-sort="use" data-sort_type="string">Uso del Material</th>
+                <th data-sort="team_id" data-sort_type="integer">Equipo</th>
+                <th data-sort="deliver_at" data-sort_type="date">Fecha de Entrega</th>
+                <th data-sort="created_at" data-sort_type="date">Fecha de Creado</th>
+                <th data-sort="updated_at" data-sort_type="date">Ultima Modificación</th>
             </tr>
             </thead>
             <tbody id="purchase-requests">

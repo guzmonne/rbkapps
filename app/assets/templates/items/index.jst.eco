@@ -15,10 +15,10 @@
         <table class="table table-striped table-hover">
             <thead>
             <tr>
-                <th>Codigo</th>
-                <th>Marca</th>
-                <th>Temporada</th>
-                <th>Rubro</th>
+                <th data-sort="code" data-sort_type="string">Codigo</th>
+                <th data-sort="brand" data-sort_type="string">Marca</th>
+                <th data-sort="season" data-sort_type="string">Temporada</th>
+                <th data-sort="entry" data-sort_type="string">Rubro</th>
             </tr>
             </thead>
             <tbody id="items">

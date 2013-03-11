@@ -9,7 +9,7 @@ class App.Views.PurchaseRequest extends Backbone.View
   initialize: ->
     @dateHelper = new App.Mixins.Date
     @model.set('team', App.teams.getNameFromId(@model.get('team_id')))
-    @listenTo App.vent, 'update:purchase_requests', => @remove()
+    @listenTo App.vent, 'update:purchase_requests:success', => @remove()
 
   render: ->
     $(@el).html(@template(model: @model, dateHelper: @dateHelper))

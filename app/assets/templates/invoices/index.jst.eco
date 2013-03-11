@@ -15,9 +15,9 @@
         <table class="table table-striped table-hover">
             <thead>
             <tr>
-                <th>Número de Factura</th>
-                <th>Total FOB</th>
-                <th>Total Unidades</th>
+                <th data-sort="invoice_number" data-sort_type="string">Número de Factura</th>
+                <th data-sort="fob_total_cost" data-sort_type="string">Total FOB</th>
+                <th data-sort="total_units" data-sort_type="integer">Total Unidades</th>
                 <th></th>
             </tr>
             </thead>

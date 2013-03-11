@@ -5,7 +5,7 @@ class App.Views.Item extends Backbone.View
 
   initialize: ->
     @listenTo App.vent, 'delivery:create:success', => @remove()
-    @listenTo App.vent, 'remove:items', => @remove()
+    @listenTo App.vent, 'update:items:success', => @remove()
 
   events:
     'click #remove-item': 'removeItem'

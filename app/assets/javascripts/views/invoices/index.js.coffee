@@ -6,6 +6,7 @@ class App.Views.InvoiceIndex extends Backbone.View
   initialize: ->
     @flip = 0
     @fetchInvoices = _.debounce(@fetchInvoices, 300);
+    @collection = App.invoices
 
 
   events:
@@ -13,10 +14,10 @@ class App.Views.InvoiceIndex extends Backbone.View
     'click #add-new-invoice'  : 'createInvoice'
     'keydown :input'          : 'keyDownManager'
     'click #fetch-invoices'   : 'fetchInvoices'
+    'click th'                : 'sortInvoices'
 
   render: ->
     $(@el).html(@template()).find('#invoice-form-row').hide()
-    unless App.items.length == 0 then @$('.table').tablesorter()
     App.invoices.each(@appendInvoice)
     this
 
@@ -79,6 +80,31 @@ class App.Views.InvoiceIndex extends Backbone.View
     App.invoices.fetch success: =>
       @$('#fetch-invoices').html('Actualizar').removeClass('loading')
       App.invoices.each(@appendInvoice)
-      @$('.table').tablesorter()
     this
+
+  sortInvoices: (e) ->
+    sortVar =  e.currentTarget.dataset['sort']
+    type    =  e.currentTarget.dataset['sort_type']
+    oldVar  =  @collection.sortVar
+    $("th[data-sort=#{oldVar}] i").remove()
+    if sortVar == oldVar
+      if @collection.sortMethod == 'lTH'
+        @sort(sortVar, 'hTL', 'down', type )
+      else
+        @sort(sortVar, 'lTH', 'up', type )
+    else
+      @sort(sortVar, 'lTH', 'up', type, oldVar )
+
+  sort: (sortVar, method, direction, type, oldVar = null ) ->
+    if oldVar == null then oldVar = sortVar
+    if direction == 'up'
+      $("th[data-sort=#{sortVar}]").append( '<i class="icon-chevron-up pull-right"></i>' )
+    else
+      $("th[data-sort=#{sortVar}]").append( '<i class="icon-chevron-down pull-right"></i>' )
+    @collection.sortVarType= type
+    @collection.sortVar    = sortVar
+    @collection.sortMethod = method
+    @collection.sort()
+    App.vent.trigger 'update:invoices:success'
+    @collection.each(@appendInvoice)
 
