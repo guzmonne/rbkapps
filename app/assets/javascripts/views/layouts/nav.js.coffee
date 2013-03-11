@@ -22,10 +22,11 @@ class App.Views.Nav extends Backbone.View
     'click #nav-comex-reports'          : 'comexReports'
 
   render: ->
+    $(@el).html(@template(user: @model))
     if @model.get('admin') ==  true
-      $(@el).html(@template(user: @model)).find('.admin-only').removeClass('hide')
+      @$('.admin-only').removeClass('hide')
     else
-      $(@el).html(@template(user: @model))
+      @$('.comex-only').removeClass('hide') if @model.get('comex') ==  true
     this
 
   home: (e) ->

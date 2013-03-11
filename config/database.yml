@@ -16,8 +16,8 @@ test:
   encoding: unicode
   database: rbkapps_test
   pool: 5
-  host: 192.168.1.150
-  port: 5432
+  host: 192.168.1.201
+  port: 5433
   username: postgres
   password: B4n4n3r4$
 
@@ -27,7 +27,7 @@ production:
   encoding: unicode
   database: rbkapps
   pool: 5
-  host: localhost
+  host: 192.168.1.201
   port: 5433
   username: postgres
   password: Adm1nR33b0k

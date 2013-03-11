@@ -6,6 +6,4 @@ class Team < ActiveRecord::Base
                   :director_id
 
   validates :name, presence: {:message => "no puede quedar en blanco"}
-  validates :supervisor_id, presence: {:message => "no puede quedar en blanco"}
-  validates :director_id, presence: {:message => "no puede quedar en blanco"}
 end
