@@ -1,5 +1,10 @@
 <div class="well">
-    <h1>Editar Envío <%= @model.id %> </h1>
+    <div class="pull-right">
+        <img src="/assets/<%= @model.get('status') %>.png" width="100">
+    </div>
+    <h1>
+        Editar Envío # <%= @model.id %> - <%= @model.get('status') %>
+    </h1>
     <div class="btn btn-mini btn-info" id="nav-prev-delivery">
         <i class="icon-chevron-left icon-white"></i>
         Anterior

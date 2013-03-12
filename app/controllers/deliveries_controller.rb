@@ -38,7 +38,8 @@ class DeliveriesController < ApplicationController
     @edit_items     = params["editItems"]
     @remove_items   = params["removeItems"]
     @remove_invoices= params["removeInvoices"]
-    @delivery       = Delivery.update(params["id"],params["delivery"])
+    @delivery       = Delivery.find(params["id"])
+    Delivery.update(params["id"],params["delivery"])
     @invoices.each do |invoice|
       invoice["delivery_id"] = @delivery["id"]
       Invoice.create(invoice)
