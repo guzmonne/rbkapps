@@ -20,6 +20,7 @@ class App.Views.Nav extends Backbone.View
     'click #nav-invoice'                : 'invoiceIndex'
     'click #nav-users'                  : 'usersIndex'
     'click #nav-comex-reports'          : 'comexReports'
+    'click #nav-service-request'        : 'createServiceRequest'
 
   render: ->
     $(@el).html(@template(user: @model))
@@ -100,3 +101,7 @@ class App.Views.Nav extends Backbone.View
   comexReports: (e) ->
     e.preventDefault()
     Backbone.history.navigate 'comex/reports', trigger: true
+
+  createServiceRequest: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate 'service_requests/index', trigger: true

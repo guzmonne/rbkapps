@@ -27,7 +27,24 @@
                 <div class="bar" style="width: 0%;"></div>
             </div>
         </div>
-        <table id="table-report" class="table table-condensed"></table>
+        <table class="table table-condensed table">
+            <thead>
+                <th>Rubro</th>
+                <th>Codigo</th>
+                <th>Marca</th>
+                <th>Temporada</th>
+                <th>Guia</th>
+                <th>Origen</th>
+                <th>Proveedor</th>
+                <th>Tramite</th>
+                <th>Estado</th>
+                <th>Costo de Flete</th>
+                <th>Factura</th>
+                <th>Unidades</th>
+                <th>Costo FOB</th>
+            </thead>
+            <tbody id="table-report"></tbody>
+        </table>
     </div>
 </div>
 

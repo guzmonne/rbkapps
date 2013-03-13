@@ -1,9 +1,10 @@
 class App.Views.ComexReports extends Backbone.View
   template: JST['reports/comex/main']
-  costEntry: JST['reports/comex/costs-entry']
+  costEntryOld: JST['reports/comex/costs-entry-old']
   costEntryItem: JST['reports/comex/costs-entry-item']
   costEntryDelivery: JST['reports/comex/costs-entry-delivery']
   costEntryInvoice: JST['reports/comex/costs-entry-invoices']
+  costEntry: JST['reports/comex/costs-entry']
 
   events:
     'click  li'              : 'setReport'
@@ -29,7 +30,7 @@ class App.Views.ComexReports extends Backbone.View
     @report = e.currentTarget.firstChild.dataset["report"]
     this
 
-  runReport: (e) ->
+  runReportOld: (e) ->
     e.preventDefault() if e?
     entries = App.items.pluckDistinct('entry')
     entry_index = 0
@@ -56,6 +57,35 @@ class App.Views.ComexReports extends Backbone.View
                 @$('#delivery-' + delivery_index).append(@costEntryInvoice(invoice: invoice))
     @loadingBar()
     this
+
+  runReport: (e) ->
+    e.preventDefault() if e?
+    entries = App.items.pluckDistinct('entry')
+    entry_index    = 0
+    item_index     = 0
+    delivery_index = 0
+    for entry in entries
+      items = []
+      items = App.items.where entry: entry
+      items_count      = items.length
+      deliveries_count = 0
+      invoices_count   = 0
+      for item in items
+        deliveries = []
+        _.map App.d_i.where({item_id: item.id}), (model) => return deliveries.push App.deliveries.get(model.get('delivery_id'))
+        deliveries_count = deliveries_count + deliveries.length
+        for delivery in deliveries
+          if delivery?
+            invoices = []
+            invoices = App.invoices.where delivery_id: delivery.id
+            invoices_count = invoices_count + invoices.length
+            for invoice in invoices
+              if invoice?
+                $('#table-report').append(@costEntry(entry: entry, item: item, delivery: delivery, invoice: invoice))
+    @loadingBar()
+    this
+
+
 
   custom: ->
     deliveries = []

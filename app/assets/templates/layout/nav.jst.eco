@@ -62,7 +62,7 @@
                         Nueva Solicitud de Compra
                     </a>
                 </li>
-                <li>
+                <li class="admin-only">
                     <a href="#" id="nav-service-request">
                         <i class="icon-plus"></i>
                         <i class="icon-wrench"></i>

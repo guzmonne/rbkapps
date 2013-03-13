@@ -14,7 +14,7 @@
                 <option>FedEx</option>
                 <option>UPS</option>
             </select>
-            <img src="/assets/rails.png" id="courier-logo" style="height: 30px;" class="center_select">
+            <img src="/assets/empty.png" id="courier-logo">
         </div>
     </div>
     <hr>

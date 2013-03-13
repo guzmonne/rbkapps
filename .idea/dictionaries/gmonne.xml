@@ -12,6 +12,7 @@
       <w>cambiar</w>
       <w>cancelar</w>
       <w>cantidad</w>
+      <w>categoría</w>
       <w>celular</w>
       <w>cerrar</w>
       <w>codigo</w>
@@ -52,6 +53,7 @@
       <w>marca</w>
       <w>modificación</w>
       <w>necesario</w>
+      <w>nivel</w>
       <w>número</w>
       <w>opcion</w>
       <w>opción</w>
@@ -78,12 +80,15 @@
       <w>servicio</w>
       <w>solicitud</w>
       <w>solicitudes</w>
+      <w>subcategoría</w>
       <w>tablesorter</w>
       <w>telefono</w>
       <w>temporada</w>
+      <w>tercer</w>
       <w>totales</w>
       <w>tramite</w>
       <w>trámite</w>
+      <w>título</w>
       <w>ubicación</w>
       <w>ultima</w>
       <w>unidad</w>

@@ -1,9 +1,9 @@
-<div class="well">
+<div class="well <%= @model.get('status')%>">
     <div class="pull-right">
         <img src="/assets/<%= @model.get('status') %>.png" width="100">
     </div>
     <h1>
-        Editar Envío # <%= @model.id %> - <%= @model.get('status') %>
+        Envío # <%= @model.id %> - <%= @model.get('status') %>
     </h1>
     <div class="btn btn-mini btn-info" id="nav-prev-delivery">
         <i class="icon-chevron-left icon-white"></i>
@@ -27,7 +27,7 @@
             <option>FedEx</option>
             <option>UPS</option>
         </select>
-        <img src="/assets/rails.png" id="courier-logo" style="height: 30px;" class="center_select">
+        <img src="/assets/empty.png" id="courier-logo">
     </div>
 </div>
 <hr>
@@ -390,6 +390,10 @@
 </div>
 <div class="form-actions">
     <button id="submit-save-delivery" class="btn btn-primary btn-large">Guardar Cambios</button>
+    <button id="edit-delivery" class="btn btn-success btn-large hide">
+        <i class="icon-pencil icon-white"></i>
+        Editar
+    </button>
     <button id="reset-form" class="btn btn-primary btn-large btn-inverse">Borrar Cambios</button>
 </div>
 </form>

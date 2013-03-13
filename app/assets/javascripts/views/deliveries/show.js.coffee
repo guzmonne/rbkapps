@@ -7,7 +7,8 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
     'click #submit-save-delivery' : 'saveChanges'
     'click #reset-form'           : 'resetForm'
     'click #nav-prev-delivery'    : 'prevDelivery'
-    'click #nav-next-delivery'    : 'nextDelivery',
+    'click #nav-next-delivery'    : 'nextDelivery'
+    'click #edit-delivery'        : 'editDelivery',
   }, App.Views.DeliveryCreate.prototype.events)
 
   initialize: ->
@@ -17,7 +18,6 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
     @removeInvoices   = new App.Collections.Invoices
     @formHelper       = new App.Mixins.Form
     @collectionHelper = new App.Mixins.Collections
-    @listenTo App.vent, "delivery:show:render:success",          => @populateFields()
     @listenTo App.vent, "add:item:success",    (item)            => @newItems.add(item)
     @listenTo App.vent, "add:invoice:success", (invoice)         => @newInvoices.add(invoice)
     @listenTo App.vent, "remove:item:success",  (item)           => @removeItems.add(item)
@@ -28,7 +28,20 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
     @model.invoices.each(@renderInvoice)
     @model.items.each(@renderItem)
     @$('.datepicker').datepicker({format: 'yyyy-mm-dd'}).on('changeDate', (e) -> $(e.target).datepicker('hide'))
-    App.vent.trigger "delivery:show:render:success"
+    for attribute of @model.attributes
+      @$('#' + attribute).val(@model.get(attribute))
+    @changeCourierIcon()
+    @toggleGuides()
+    @$('#item-search-row').hide()
+    @$('#search-items').show()
+    @$('#invoice-search-row').hide()
+    @$('#search-invoices').show()
+    @$('.select2').select2({width: 'copy'})
+    if @model.get('status') == "CERRADO"
+      @$('input').attr('disabled', true)
+      @$('select').attr('disabled', true)
+      @$('#submit-save-delivery').hide()
+      @$('#edit-delivery').show()
     this
 
   renderInvoice: (invoice) =>
@@ -43,18 +56,6 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
     App.pushToAppendedViews(view)
     @$('#item-form-row').after(view.render().el)
     # @$('#remove-item').hide()
-    this
-
-  populateFields: (e) =>
-    for attribute of @model.attributes
-      @$('#' + attribute).val(@model.get(attribute))
-    @changeCourierIcon()
-    @toggleGuides()
-    @$('#item-search-row').hide()
-    @$('#search-items').show()
-    @$('#invoice-search-row').hide()
-    @$('#search-invoices').show()
-    @$('.select2').select2({width: 'copy'})
     this
 
   saveChanges: (e) ->
@@ -128,6 +129,11 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
       @$('.well img')[0].src = "/assets/#{@model.get('status')}.png"
       @$('.well h1').text("Editar Envío ##{@model.id} - #{@model.get('status')}")
       @$('.well').removeClass().addClass('well ' + @model.get('status'))
+      if @model.get('status') == "CERRADO"
+        @$('input').attr('disabled', true)
+        @$('select').attr('disabled', true)
+        @$('#submit-save-delivery').hide()
+        @$('#edit-delivery').show()
     this
 
   resetForm: (e) ->
@@ -154,3 +160,10 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
       App.vent.trigger "deliveries:show", App.deliveries.models[0]
     else
       App.vent.trigger "deliveries:show", App.deliveries.models[(index + 1)]
+
+  editDelivery: (e) ->
+    e.preventDefault() if e?
+    @$('input').attr('disabled', false)
+    @$('select').attr('disabled', false)
+    @$('#submit-save-delivery').show()
+    @$('#edit-delivery').hide()

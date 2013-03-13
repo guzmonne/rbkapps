@@ -61,6 +61,7 @@ window.App =
     new App.Routers.Delivery()
     new App.Routers.Invoice()
     new App.Routers.Reports()
+    new App.Routers.ServiceRequests()
     Backbone.history.start({pushState: true})
     @started = true
 

@@ -12,6 +12,8 @@ class App.Routers.Delivery extends Backbone.Router
     Backbone.history.navigate "deliveries/show/#{model.get('id')}", true
 
   create: ->
+    view = new App.Views.Loading()
+    App.setAndRenderContentViews([view])
     if App.user.get("comex") == true or App.user.get("admin") == true
       view = new App.Views.DeliveryCreate()
       App.setAndRenderContentViews([view])
@@ -21,6 +23,8 @@ class App.Routers.Delivery extends Backbone.Router
       return this
 
   index: ->
+    view = new App.Views.Loading()
+    App.setAndRenderContentViews([view])
     if App.user.get("comex") == true or App.user.get("admin") == true
       view = new App.Views.DeliveryIndex()
       App.setAndRenderContentViews([view])
@@ -30,6 +34,8 @@ class App.Routers.Delivery extends Backbone.Router
     this
 
   show: (id) ->
+    view = new App.Views.Loading()
+    App.setAndRenderContentViews([view])
     if App.user.get("comex") == true or App.user.get("admin") == true
       view = new App.Views.Loading()
       App.setAndRenderContentViews([view])
