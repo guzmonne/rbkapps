@@ -31,6 +31,8 @@ class App.Views.DeliveryCreate extends Backbone.View
     'click #add-searched-invoice'              : 'addSearchedInvoice'
     'focus #searched-item-code'                : 'typeAheadItem'
     'focus #searched-invoice-invoice_number'   : 'typeAheadInvoice'
+    'click .clear_date'                        : 'clearDate'
+    'focus .clear_date'                        : 'hideDatePicker'
 
   initialize: ->
     @tabs        = 0
@@ -47,12 +49,14 @@ class App.Views.DeliveryCreate extends Backbone.View
       @model.items.remove(model)
       @items.add(model)
       $('#searched-item-code').data('typeahead').source = @items.pluck('code')
-    @listenTo @$('.datepicker'), 'all', -> alert "Selected!"
+    @listenTo App.vent, "change:date", (e) =>
+      @$('.datepicker').datepicker('hide')
+      id = @$('#origin_date')[0].id
+      $("button[data-date=#{id}]").focus()
 
   render: ->
     $(@el).html(@template()).find('.select2').select2({width: 'copy'})
-    @$('.datepicker').datepicker({format: 'yyyy-mm-dd'}).on('changeDate', (e) ->
-      $(e.target).datepicker('hide'))
+    @$('.datepicker').datepicker({format: 'yyyy-mm-dd'}).on('changeDate', -> App.vent.trigger 'change:date', this)
     this
 
   changeCourierIcon: (e) ->
@@ -203,6 +207,10 @@ class App.Views.DeliveryCreate extends Backbone.View
           when "searched-invoice-invoice_number"
             e.preventDefault()
             $('#searched-invoice-invoice_number').focus()
+            break
+          when "last_trash"
+            e.preventDefault()
+            $('#searched-item-code').focus()
             break
       when 107 # Plus
         switch e.currentTarget.id
@@ -425,7 +433,13 @@ class App.Views.DeliveryCreate extends Backbone.View
     if $('#' + id).val()  == value then result = null else result = $('#' + id).val()
     return result
 
-  datePicker: (e) ->
-    console.log "date!!!", e
-    id = e.currentTarget.id
-    $('#' + id).datepicker('hide')
+  clearDate: (e) ->
+    e.preventDefault()
+    @$('#' + e.currentTarget.dataset.date).val('')
+
+  hideDatePicker: =>
+    @$('.datepicker').datepicker('hide')
+
+
+
+

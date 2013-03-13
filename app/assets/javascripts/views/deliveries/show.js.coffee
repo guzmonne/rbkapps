@@ -38,10 +38,7 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
     @$('#search-invoices').show()
     @$('.select2').select2({width: 'copy'})
     if @model.get('status') == "CERRADO"
-      @$('input').attr('disabled', true)
-      @$('select').attr('disabled', true)
-      @$('#submit-save-delivery').hide()
-      @$('#edit-delivery').show()
+      @closeDelivery()
     this
 
   renderInvoice: (invoice) =>
@@ -130,10 +127,7 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
       @$('.well h1').text("Editar Envío ##{@model.id} - #{@model.get('status')}")
       @$('.well').removeClass().addClass('well ' + @model.get('status'))
       if @model.get('status') == "CERRADO"
-        @$('input').attr('disabled', true)
-        @$('select').attr('disabled', true)
-        @$('#submit-save-delivery').hide()
-        @$('#edit-delivery').show()
+        @closeDelivery()
     this
 
   resetForm: (e) ->
@@ -167,3 +161,14 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
     @$('select').attr('disabled', false)
     @$('#submit-save-delivery').show()
     @$('#edit-delivery').hide()
+    @$('.clear_date').show()
+    @$('table btn-mini').show()
+
+  closeDelivery: (e) ->
+    e.preventDefault() if e?
+    @$('input').attr('disabled', true)
+    @$('select').attr('disabled', true)
+    @$('#submit-save-delivery').hide()
+    @$('#edit-delivery').show()
+    @$('.clear_date').hide()
+    @$('table .btn-mini').hide()

@@ -4,6 +4,8 @@ class App.Routers.Item extends Backbone.Router
     'items/index': 'index'
 
   create: ->
+    view = new App.Views.Loading()
+    App.setAndRenderContentViews([view])
     if App.user.get("comex") == true or App.user.get("admin") == true
       view = new App.Views.ItemCreate()
       App.setAndRenderContentViews([view])
@@ -13,6 +15,8 @@ class App.Routers.Item extends Backbone.Router
     this
 
   index: ->
+    view = new App.Views.Loading()
+    App.setAndRenderContentViews([view])
     if App.user.get("comex") == true or App.user.get("admin") == true
       view = new App.Views.ItemIndex()
       App.setAndRenderContentViews([view])

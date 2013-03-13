@@ -5,11 +5,11 @@
     <h1>
         Envío # <%= @model.id %> - <%= @model.get('status') %>
     </h1>
-    <div class="btn btn-mini btn-info" id="nav-prev-delivery">
+    <div class="btn btn-mini btn-info movement" id="nav-prev-delivery">
         <i class="icon-chevron-left icon-white"></i>
         Anterior
     </div>
-    <div class="btn btn-mini btn-info" id="nav-next-delivery">
+    <div class="btn btn-mini btn-info movement" id="nav-next-delivery">
         Siguiente
         <i class="icon-chevron-right icon-white"></i>
     </div>
@@ -130,14 +130,23 @@
             <div class="span4">
                 <label>Salida de Origen:</label>
                 <input id="origin_date" type="text" class="input-small datepicker">
+                <button class="btn btn-mini btn-warning clear_date" data-date="origin_date">
+                    <i class="icon-trash icon-white"></i>
+                </button>
             </div>
             <div class="span4">
                 <label>Llegada a Uruguay:</label>
                 <input id="arrival_date" type="text" class="input-small datepicker">
+                <button class="btn btn-mini btn-warning clear_date" data-date="arrival_date">
+                    <i class="icon-trash icon-white"></i>
+                </button>
             </div>
             <div class="span4">
                 <label>Entrega:</label>
                 <input id="delivery_date" type="text" class="input-small datepicker">
+                <button class="btn btn-mini btn-warning clear_date" data-date="delivery_date">
+                    <i class="icon-trash icon-white"></i>
+                </button>
             </div>
         </div>
     </div>
@@ -159,10 +168,16 @@
             <div class="span4">
                 <label>Envío de Factura:</label>
                 <input id="invoice_delivery_date" type="text" class="input-small datepicker">
+                <button class="btn btn-mini btn-warning clear_date" data-date="invoice_delivery_date">
+                    <i class="icon-trash icon-white"></i>
+                </button>
             </div>
             <div class="span4">
                 <label>Doc. Courier:</label>
                 <input id="doc_courier_date" type="text" class="input-small datepicker">
+                <button class="btn btn-mini btn-warning clear_date" data-date="doc_courier_date">
+                    <i class="icon-trash icon-white"></i>
+                </button>
             </div>
         </div>
     </div>

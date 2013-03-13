@@ -41,7 +41,7 @@
 			});
 		} else {
 			if (this.component){
-				this.component.on('click', $.proxy(this.show, this));
+				this.component.on('click', function(){$.proxy(this.hide, this); $.proxy(this.show, this)});
 			} else {
 				this.element.on('click', $.proxy(this.show, this));
 			}
@@ -89,10 +89,9 @@
 		constructor: Datepicker,
 		
 		show: function(e) {
-			/*this.picker.show();*/
+			this.picker.show();
 			this.height = this.component ? this.component.outerHeight() : this.element.outerHeight();
 			this.place();
-            this.picker.show();
 			$(window).on('resize', $.proxy(this.place, this));
 			if (e ) {
 				e.stopPropagation();
@@ -120,11 +119,12 @@
 			if (!this.isInput) {
 				$(document).off('mousedown', this.hide);
 			}
-			this.set();
+			//this.set();
 			this.element.trigger({
 				type: 'hide',
 				date: this.date
 			});
+            return this
 		},
 		
 		set: function() {
@@ -200,16 +200,20 @@
 			var nextMonth = new Date(prevMonth);
 			nextMonth.setDate(nextMonth.getDate() + 42);
 			nextMonth = nextMonth.valueOf();
-			html = [];
-			var clsName;
+			var html = [];
+			var clsName,
+				prevY,
+				prevM;
 			while(prevMonth.valueOf() < nextMonth) {
 				if (prevMonth.getDay() === this.weekStart) {
 					html.push('<tr>');
 				}
 				clsName = this.onRender(prevMonth);
-				if (prevMonth.getMonth() < month) {
+				prevY = prevMonth.getFullYear();
+				prevM = prevMonth.getMonth();
+				if ((prevM < month &&  prevY === year) ||  prevY < year) {
 					clsName += ' old';
-				} else if (prevMonth.getMonth() > month) {
+				} else if ((prevM > month && prevY === year) || prevY > year) {
 					clsName += ' new';
 				}
 				if (prevMonth.valueOf() === currentDate) {

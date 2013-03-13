@@ -2,28 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="044e0a91-8a4a-4ab7-93a4-af1de8015a06" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/routers/service_requests_router.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/create.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/templates/reports/comex/costs-entry-old.jst.eco" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/templates/service_request/create.jst.eco" />
       <change type="DELETED" beforePath="C:\Users\gmonne.RBKURUGUAY\RubymineProjects\rbkapps\app\assets\images\rails.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/images/DHL.png" afterPath="$PROJECT_DIR$/app/assets/images/DHL.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/images/FedEx.png" afterPath="$PROJECT_DIR$/app/assets/images/FedEx.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/images/UPS.png" afterPath="$PROJECT_DIR$/app/assets/images/UPS.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/gmonne.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/gmonne.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/app.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/app.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/routers/deliveries_router.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/routers/deliveries_router.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/delivery.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/delivery.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/bootstrap-datepicker.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/bootstrap-datepicker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/routers/item_router.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/routers/item_router.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/create.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/create.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/layouts/nav.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/layouts/nav.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/reports/comex/comex.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/reports/comex/comex.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/deliveries/create.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/deliveries/create.jst.eco" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/deliveries/show.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/deliveries/show.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/reports/comex/costs-entry.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/reports/comex/costs-entry.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/reports/comex/main.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/reports/comex/main.jst.eco" />
     </list>
     <ignored path="rbkapps.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,27 +33,49 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="create.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/create.js.coffee">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/create.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="16" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0">
+            <state line="203" column="48" selection-start="7454" selection-end="7454" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.js.coffee" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="164" column="31" selection-start="6213" selection-end="6213" vertical-scroll-proportion="0.62731874">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bootstrap-datepicker.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/bootstrap-datepicker.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="41" column="66" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="create.jst.eco" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/templates/service_request/create.jst.eco">
+        <entry file="file://$PROJECT_DIR$/app/assets/templates/deliveries/create.jst.eco">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="25" selection-start="702" selection-end="702" vertical-scroll-proportion="-12.423077">
-              <folding />
+            <state line="133" column="0" selection-start="6004" selection-end="6194" vertical-scroll-proportion="-4.0394735">
+              <folding>
+                <element signature="n#style#0;n#label#0;n#div#1;n#form#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deliveries_router.js.coffee" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routers/deliveries_router.js.coffee">
+      <file leaf-file-name="show.jst.eco" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/templates/deliveries/show.jst.eco">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="23" selection-start="1614" selection-end="1614" vertical-scroll-proportion="1.4907252">
+            <state line="177" column="65" selection-start="7376" selection-end="7386" vertical-scroll-proportion="-12.538462">
               <folding />
             </state>
           </provider>
@@ -89,12 +97,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" />
-        <option value="$PROJECT_DIR$/app/assets/templates/deliveries/show.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/delivery.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/reports/comex/comex.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/templates/reports/comex/main.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/templates/reports/comex/costs-entry.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/app.js.coffee" />
@@ -105,6 +107,12 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/create.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/templates/service_request/create.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/routers/deliveries_router.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/routers/item_router.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/bootstrap-datepicker.js" />
+        <option value="$PROJECT_DIR$/app/assets/templates/deliveries/create.jst.eco" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/create.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/templates/deliveries/show.jst.eco" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee" />
       </list>
     </option>
   </component>
@@ -245,7 +253,7 @@
               <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="purchase_request" />
+              <option name="myItemId" value="deliveries" />
               <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -285,7 +293,33 @@
               <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.AssetsPredefinedGroupFolderNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="routers" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assets" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.AssetsTopLevelFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Javascripts" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.AssetsPredefinedGroupFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="deliveries" />
               <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1413,7 +1447,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17727272" sideWeight="0.31391585" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17727272" sideWeight="0.31391585" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20151515" sideWeight="0.47087377" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1485,61 +1519,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/create.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="57" selection-start="3127" selection-end="3151" vertical-scroll-proportion="-0.52782464">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/reports/comex/comex.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="16" selection-start="3130" selection-end="3130" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1363122696497" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1363122696497" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1363122696497" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1363122696497" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1363122696497" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/reports/comex/costs-entry.jst.eco">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="5" selection-start="1284" selection-end="1284" vertical-scroll-proportion="-12.423077">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/reports/comex/main.jst.eco">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="29" selection-start="1553" selection-end="1553" vertical-scroll-proportion="0.79012346">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="38" selection-start="2606" selection-end="2606" vertical-scroll-proportion="0.23985891">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routers/invoice_router.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="106" selection-end="377" vertical-scroll-proportion="0.17200674">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="30" selection-start="0" selection-end="618" vertical-scroll-proportion="0.17200674">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/models/user.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="24" selection-start="512" selection-end="1153" vertical-scroll-proportion="0.311973">
@@ -1568,35 +1547,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="dbDummy://dbElement:/83405298/ad0c86d1-bb82-473b-84bc-3b369ebb0d40/.public.form_helpers">
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routers/deliveries_router.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="4" selection-start="369" selection-end="444" vertical-scroll-proportion="0.40134907">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routers/item_router.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="41" selection-start="711" selection-end="711" vertical-scroll-proportion="0.6593592">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/service_request/create.jst.eco">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="25" selection-start="702" selection-end="702" vertical-scroll-proportion="0.5830325">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/create.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="16" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0">
+        <state line="5" column="16" selection-start="171" selection-end="171" vertical-scroll-proportion="0.14333895">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/templates/purchase_request/create.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="74" selection-start="2394" selection-end="2448" vertical-scroll-proportion="0.71428573">
+        <state line="52" column="58" selection-start="2121" selection-end="2121" vertical-scroll-proportion="1.5590829">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbElement:/83405298/ad0c86d1-bb82-473b-84bc-3b369ebb0d40/.public.form_helpers">
+    <entry file="dbDummy://dbElement:/83405298/ad0c86d1-bb82-473b-84bc-3b369ebb0d40/.public.users">
       <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/service_request/create.jst.eco">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/bootstrap-datepicker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="25" selection-start="702" selection-end="702" vertical-scroll-proportion="-12.423077">
+        <state line="41" column="66" selection-start="1546" selection-end="1546" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/create.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="203" column="48" selection-start="7454" selection-end="7454" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routers/deliveries_router.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/deliveries/create.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="23" selection-start="1614" selection-end="1614" vertical-scroll-proportion="1.4907252">
+        <state line="133" column="0" selection-start="6004" selection-end="6194" vertical-scroll-proportion="-4.0394735">
+          <folding>
+            <element signature="n#style#0;n#label#0;n#div#1;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/deliveries/show.jst.eco">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="177" column="65" selection-start="7376" selection-end="7386" vertical-scroll-proportion="-12.538462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="164" column="31" selection-start="6213" selection-end="6213" vertical-scroll-proportion="0.62731874">
           <folding />
         </state>
       </provider>
