@@ -12,6 +12,8 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
   }, App.Views.DeliveryCreate.prototype.events)
 
   initialize: ->
+    @items            = new App.Collections.Items
+    @invoices         = new App.Collections.Invoices
     @newItems         = new App.Collections.Items
     @removeItems      = new App.Collections.Items
     @newInvoices      = new App.Collections.Invoices
@@ -32,6 +34,7 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
       @$('#' + attribute).val(@model.get(attribute))
     @changeCourierIcon()
     @toggleGuides()
+    @calculateCosts()
     @$('#item-search-row').hide()
     @$('#search-items').show()
     @$('#invoice-search-row').hide()
@@ -39,20 +42,19 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
     @$('.select2').select2({width: 'copy'})
     if @model.get('status') == "CERRADO"
       @closeDelivery()
+    App.vent.trigger "render:show:delivery:success"
     this
 
   renderInvoice: (invoice) =>
     view = new App.Views.Invoice(model: invoice)
     App.pushToAppendedViews(view)
     @$('#invoice-form-row').after(view.render().el)
-    # @$('#remove-invoice').hide()
     this
 
   renderItem: (item) =>
     view = new App.Views.Item(model: item)
     App.pushToAppendedViews(view)
     @$('#item-form-row').after(view.render().el)
-    # @$('#remove-item').hide()
     this
 
   saveChanges: (e) ->
@@ -81,6 +83,7 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
       delivery_date     : $('#delivery_date').val()
       status            : $('#status').val()
       doc_courier_date  : $('#doc_courier_date').val()
+      exchange_rate     : $('#exchange_rate').val()
       user_id           : App.user.id
     @newInvoices.each (model) =>
       if @removeInvoices.get(model)?
@@ -162,7 +165,7 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
     @$('#submit-save-delivery').show()
     @$('#edit-delivery').hide()
     @$('.clear_date').show()
-    @$('table btn-mini').show()
+    @$('.btn-mini').show()
 
   closeDelivery: (e) ->
     e.preventDefault() if e?

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308110744) do
+ActiveRecord::Schema.define(:version => 20130314193518) do
 
   create_table "deliveries", :force => true do |t|
     t.string   "courier"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20130308110744) do
     t.string   "guide"
     t.string   "guide2"
     t.string   "guide3"
+    t.decimal  "exchange_rate",         :precision => 8, :scale => 2
   end
 
   create_table "deliveries_items", :id => false, :force => true do |t|

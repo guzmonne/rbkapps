@@ -18,7 +18,7 @@
             <button id="search-button"
                     type="submit"
                     class="btn btn-inverse">
-                Buscar
+                Filtrar
             </button>
             <div class="btn-group">
                 <a id="search-column"
@@ -74,4 +74,10 @@
             </tbody>
         </table>
     </div>
+</div>
+<div class="pagination hide pull-right">
+    <ul>
+        <li><a href="#">Prev</a></li>
+        <li id="pagination-end" data-pages="1"><a href="#">Next</a></li>
+    </ul>
 </div>

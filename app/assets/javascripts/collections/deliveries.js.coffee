@@ -4,8 +4,10 @@ class App.Collections.Deliveries extends Backbone.Collection
 
   initialize: ->
     @sortVar      = 'id'
-    @sortMethod   = 'lTH'
+    @sortMethod   = 'hTL'
     @sortVarType  = 'integer'
+    @perGroup     = 100
+    @currentPage  = 1
 
   pluckDistinct: (attribute, attributes=null) ->
     if attributes == null
@@ -37,3 +39,20 @@ class App.Collections.Deliveries extends Backbone.Collection
         else
           if delivery.get(@sortVar)?
             return String.fromCharCode.apply(String, _.map(delivery.get(@sortVar).split(""), (c)  => return 0xffff - c.charCodeAt() ))
+
+  page: (page_number) ->
+    @currentPage = page_number
+    i = ( @perGroup * page_number ) - ( @perGroup )
+    j = ( @perGroup * page_number )
+    collection = new App.Collections.Deliveries()
+    for model in this when i<j
+      collection.add(@models[i])
+      i++
+      return collection if i > @length
+    collection.sort()
+    return collection
+
+  setSortVariables: (type, sortVar, method) ->
+    @sortVarType = type
+    @sortVar     = sortVar
+    @sortMethod  = method

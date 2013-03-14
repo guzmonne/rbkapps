@@ -3,11 +3,16 @@ class App.Views.DeliveryIndex extends Backbone.View
   className: 'span12'
   name: 'IndexDelivery'
 
+  filtered: false
+
   initialize: ->
-    @collection = App.deliveries
+    @collection       = new App.Collections.Deliveries
     @searchCollection = new App.Collections.Deliveries
     @lastSearch = []
     @fetchDeliveries = _.debounce(@fetchDeliveries, 300)
+    @listenTo App.vent, 'update:page', (page) =>
+      @$('.page').removeClass("label label-info")
+      @$("*[data-pages='#{page}']").addClass("label label-info")
 
   events:
     'click #new-delivery'     : 'newDelivery'
@@ -18,11 +23,50 @@ class App.Views.DeliveryIndex extends Backbone.View
     'click .drop-columns'     : 'updateSearchColumn'
     'click #search-undo'      : 'searchUndo'
     'focus #search-input'     : 'searchTypeahead'
+    'click .pagination a'     : 'changePage'
 
   render: ->
     $(@el).html(@template())
-    @collection.each(@appendDelivery)
+    @update(1)
+    @pagination()
     this
+
+  pagination: ->
+    if @filtered == false then @collection = App.deliveries
+    @removeChevron()
+    @$('.page').remove()
+    l = @collection.length
+    if l > 0
+      @$('.pagination').show()
+      pages = l / @collection.perGroup
+      if l % @collection.perGroup > 0 then pages = pages + 1
+      for i in [1..pages]
+        @$('#pagination-end').before('<li><a href="#" class="page" data-pages="' + i + '">' + i + '</a></li>')
+      @$('#pagination-end').data('pages', pages)
+
+  removeChevron: ->
+    @$(".icon-chevron-up").remove()
+    @$(".icon-chevron-down").remove()
+
+  changePage: (e) ->
+    e.preventDefault()
+    @removeChevron()
+    if e.currentTarget.text == "Next"
+      current_page = @collection.currentPage
+      pages = parseInt @$('#pagination-end').data('pages')
+      if current_page == pages
+        return @update(1)
+      else
+        return @update(current_page + 1)
+    else if e.currentTarget.text == "Prev"
+      current_page = @collection.currentPage
+      last_page = parseInt @$('#pagination-end').data('pages')
+      if current_page == 1
+        return @update(last_page)
+      else
+        return @update(current_page - 1)
+    else
+      return @update(parseInt e.currentTarget.text)
 
   appendDelivery: (model) =>
     view = new App.Views.Delivery(model: model)
@@ -37,20 +81,19 @@ class App.Views.DeliveryIndex extends Backbone.View
 
   fetchDeliveries: (e) ->
     e.preventDefault()
-    App.vent.trigger 'update:deliveries:success'
     @$('#fetch-deliveries').html(' <i class="icon-load"></i>  Actualizando').addClass('loading')
     App.deliveries.fetch success: =>
       @$('#fetch-deliveries').html('Actualizar').removeClass('loading')
-      @collection = App.deliveries
-      App.deliveries.each(@appendDelivery)
+      @pagination()
+      @update(1)
       @lastSearch = []
     this
 
   sortDeliveries: (e) ->
     sortVar =  e.currentTarget.dataset['sort']
     type    =  e.currentTarget.dataset['sort_type']
-    oldVar  = @collection.sortVar
-    $("th[data-sort=#{oldVar}] i").remove()
+    oldVar  =  @collection.sortVar
+    @removeChevron()
     if sortVar == oldVar
       if @collection.sortMethod == 'lTH'
         @sort(sortVar, 'hTL', 'down', type )
@@ -65,12 +108,22 @@ class App.Views.DeliveryIndex extends Backbone.View
       $("th[data-sort=#{sortVar}]").append( '<i class="icon-chevron-up pull-right"></i>' )
     else
       $("th[data-sort=#{sortVar}]").append( '<i class="icon-chevron-down pull-right"></i>' )
-    @collection.sortVarType= type
-    @collection.sortVar    = sortVar
-    @collection.sortMethod = method
-    @collection.sort()
+    @update(@collection.currentPage, type, sortVar, method)
+
+  update: (page, type, sortVar, method) ->
+    oldSortVarType      = @collection.sortVarType
+    oldSortVar          = @collection.sortVar
+    oldSortMethod       = @collection.sortMethod
+    if @filtered == false then @collection = App.deliveries
+    @collection = @collection.page(page)
+    @collection.currentPage = page
+    if type? and sortVar? and method?
+      @collection.setSortVariables(type, sortVar, method)
+    else
+      @collection.setSortVariables(oldSortVarType, oldSortVar, oldSortMethod)
     App.vent.trigger 'update:deliveries:success'
-    @collection.each(@appendDelivery)
+    App.vent.trigger 'update:page', page
+    @collection.sort().each(@appendDelivery)
 
   searchDelivery: (e) ->
     e.preventDefault()
@@ -119,34 +172,43 @@ class App.Views.DeliveryIndex extends Backbone.View
   search: (attributes) =>
     for element in @lastSearch
       if element == $('#search-column').data('column') then return
+    $('#fetch-deliveries').hide()
     $('#search-undo').show()
     $('#search-column').removeClass('btn-success').addClass('btn-warning')
     @lastSearch.push attributes.column
     object = {}
     object[attributes.column] = attributes.data
-    array = @collection.where(object)
+    array = App.deliveries.where(object)
     for model in array
       @searchCollection.add(model)
-    App.vent.trigger 'update:purchase_requests'
-    @searchCollection.each(@appendDelivery)
-    $("th[data-sort=#{@collection.sortVar}] i").remove()
     @collection = @searchCollection
+    @filtered = true
+    @pagination()
+    @update(1)
+    @removeChevron()
     @searchCollection = new App.Collections.Deliveries
 
   searchUndo: (e) ->
     e.preventDefault()
     $('#search-column').removeClass('btn-warning').addClass('btn-success')
-    $("th[data-sort=#{@collection.sortVar}] i").remove()
-    App.vent.trigger 'update:purchase_requests'
-    @collection = App.deliveries
-    @collection.each @appendDelivery
+    @removeChevron()
+    @filtered = false
+    @pagination()
+    @update(1)
     $('#search-undo').hide()
+    $('#fetch-deliveries').show()
     @lastSearch = []
 
   searchTypeahead: ->
-    $('#search-input').typeahead source: => @collection.pluckDistinct($('#search-column').data('column'))
+    $('#search-input').typeahead items: 20, source: => @searchValues()
     this
 
+  searchValues: ->
+    array = []
+    App.deliveries.pluckDistinct($('#search-column').data('column'))
+    for element in App.deliveries.pluckDistinct($('#search-column').data('column'))
+      array.push element if element?
+    return array
 
 
 

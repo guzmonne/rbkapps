@@ -19,6 +19,7 @@ class Delivery < ActiveRecord::Base
                   :status,
                   :invoice_delivery_date,
                   :doc_courier_date,
-                  :user_id
+                  :user_id,
+                  :exchange_rate
 
 end

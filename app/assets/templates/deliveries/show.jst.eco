@@ -53,43 +53,77 @@
 </div>
 <hr>
 <div class="control-group" id="control-cargo">
-    <label class="control-label label-grey" for="cargo_cost">Flete:</label>
-    <div class="controls  form-inline">
-        <div class="hide dispatch MONO DUA LIBERADO">
-            <div class="input-prepend">
-                <span class="add-on">$</span>
-                <input type="text" id="cargo_cost" placeholder="Flete" class="span10">
-            </div>
-            <label>Flete</label>
+    <label class="control-label label-grey" for="cargo_cost">Gastos:</label>
+    <div class="form-inline hide dispatch MONO DUA LIBERADO pull-right er">
+        <label>Total Flete (USD)</label>
+        <div class="input-prepend">
+            <span class="add-on">USD</span>
+            <input type="text" id="total_cargo_cost_dollars" class="input-small" value="0.00" readonly>
         </div>
-        <div class="hide dispatch DUA">
-            <div class="input-prepend">
-                <span class="add-on">$</span>
-                <input type="text" id="cargo_cost2" placeholder="Flete 2" class="span10">
-            </div>
-            <label>Flete 2</label>
+    </div>
+    <div class="form-inline hide dispatch MONO DUA LIBERADO pull-right er cost">
+
+        <div class="input-prepend">
+            <span class="add-on">Tipo de Cambio</span>
+            <input type="text" id="exchange_rate" class="input-mini" value="0.00">
         </div>
-        <div class="hide dispatch DUA">
-            <div class="input-prepend">
-                <span class="add-on">$</span>
-                <input type="text" id="cargo_cost3" placeholder="Flete 3" class="span10">
-            </div>
-            <label>Flete 3</label>
+    </div>
+    <div class="form-inline hide dispatch MONO DUA LIBERADO pull-right er">
+        <label>Total Flete</label>
+        <div class="input-prepend">
+            <span class="add-on">$</span>
+            <input type="text" id="total_cargo_cost" class="input-small" value="0.00" readonly>
         </div>
-        <div class="hide dispatch MONO DUA">
-            <div class="input-prepend">
-                <span class="add-on">$</span>
-                <input type="text" id="dispatch_cost" placeholder="G. despacho" class="span10">
-            </div>
-            <label>G. despacho</label>
+    </div>
+    <div class="controls form-inline hide dispatch MONO DUA LIBERADO cost">
+        <div class="input-prepend">
+            <span class="add-on">$</span>
+            <input type="text" id="cargo_cost" placeholder="Flete" class="span10">
         </div>
-        <div class=" hide dispatch MONO DUA">
-            <div class="input-prepend">
-                <span class="add-on">$</span>
-                <input type="text" id="dua_cost" placeholder="G. DUA" class="span10">
-            </div>
-            <label>G. DUA</label>
+        <label>Flete</label>
+    </div>
+    <div class="form-inline hide dispatch MONO DUA LIBERADO pull-right er">
+        <label>Total FOB</label>
+        <div class="input-prepend">
+            <span class="add-on">USD</span>
+            <input type="text" id="fob_cost_total" class="input-small" value="0.00" readonly>
         </div>
+    </div>
+    <div class="controls form-inline hide dispatch DUA cost">
+        <div class="input-prepend">
+            <span class="add-on">$</span>
+            <input type="text" id="cargo_cost2" placeholder="Flete 2" class="span10">
+        </div>
+        <label>Flete 2</label>
+    </div>
+    <div class="controls form-inline hide dispatch DUA cost">
+        <div class="input-prepend">
+            <span class="add-on">$</span>
+            <input type="text" id="cargo_cost3" placeholder="Flete 3" class="span10">
+        </div>
+        <label>Flete 3</label>
+    </div>
+    <br><br>
+    <div class="hide dispatch MONO DUA LIBERADO pull-right er er2">
+        <label style="font-weight: bold;">Total Envío</label>
+        <div class="input-prepend">
+            <span class="add-on">USD</span>
+            <input type="text" id="cost_total" class="input-small" value="0.00" readonly>
+        </div>
+    </div>
+    <div class="controls form-inline hide dispatch MONO DUA cost">
+        <div class="input-prepend">
+            <span class="add-on">$</span>
+            <input type="text" id="dispatch_cost" placeholder="G. despacho" class="span10">
+        </div>
+        <label>G. despacho</label>
+    </div>
+    <div class="controls form-inline hide dispatch MONO DUA cost">
+        <div class="input-prepend">
+            <span class="add-on">$</span>
+            <input type="text" id="dua_cost" placeholder="G. DUA" class="span10">
+        </div>
+        <label>G. DUA</label>
     </div>
 </div>
 <hr>
@@ -247,7 +281,7 @@
                                placeholder="Codigo">
                     </td>
                     <td>
-                        <select id="brand"">
+                        <select id="brand">
                         <option>Seleccione una Marca</option>
                         <% App.formHelpers.where({column: 'brand'}).forEach (model) -> : %>
                         <option><%= model.get('value') %></option>

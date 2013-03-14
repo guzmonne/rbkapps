@@ -3,6 +3,13 @@ class App.Collections.Items extends Backbone.Collection
   urlRoot: 'api/items'
   url: '/api/items'
 
+  initialize: ->
+    @sortVar      = 'id'
+    @sortMethod   = 'hTL'
+    @sortVarType  = 'integer'
+    @perGroup     = 100
+    @currentPage  = 1
+
   pluckDistinct: (attribute, attributes=null) ->
     if attributes == null
       array = this.pluck(attribute)
@@ -33,3 +40,20 @@ class App.Collections.Items extends Backbone.Collection
         else
           if item.get(@sortVar)?
             return String.fromCharCode.apply(String, _.map(item.get(@sortVar).split(""), (c)  => return 0xffff - c.charCodeAt() ))
+
+  page: (page_number) ->
+    @currentPage = page_number
+    i = ( @perGroup * page_number ) - ( @perGroup )
+    j = ( @perGroup * page_number ) - 1
+    collection = new App.Collections.Items()
+    collection.setSortVariables(@sortVarType, @sortVar, @sortMethod)
+    for model in this when i<j
+      collection.add(@models[i])
+      i++
+      return collection if i > @length
+    return collection
+
+  setSortVariables: (type, sortVar, method) ->
+    @sortVarType = type
+    @sortVar     = sortVar
+    @sortMethod  = method

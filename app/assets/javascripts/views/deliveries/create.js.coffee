@@ -33,6 +33,7 @@ class App.Views.DeliveryCreate extends Backbone.View
     'focus #searched-invoice-invoice_number'   : 'typeAheadInvoice'
     'click .clear_date'                        : 'clearDate'
     'focus .clear_date'                        : 'hideDatePicker'
+    'change .cost'                             : 'calculateCosts'
 
   initialize: ->
     @tabs        = 0
@@ -99,6 +100,7 @@ class App.Views.DeliveryCreate extends Backbone.View
     $('#invoice_number').focus()
     @model.invoices.add(model)
     $('#invoice_number').focus()
+    @calculateCosts()
     this
 
   addInvoice: (invoice) ->
@@ -166,6 +168,55 @@ class App.Views.DeliveryCreate extends Backbone.View
           when "searched-invoice-invoice_number"
             @addSearchedInvoice(e)
             break
+          when "cargo_cost"
+            e.preventDefault()
+            switch $('#dispatch').val()
+              when "MONO"
+                $('#dispatch_cost').focus()
+                break
+              when "DUA"
+                $('#cargo_cost2').focus()
+                break
+              when "LIBERADO"
+                $('#supplier').focus()
+                break
+            break
+          when "cargo_cost2"
+            e.preventDefault()
+            $('#cargo_cost3').focus()
+            break
+          when "cargo_cost3"
+            e.preventDefault()
+            $('#dispatch_cost').focus()
+            break
+          when "dispatch_cost"
+            e.preventDefault()
+            $('#dua_cost').focus()
+            break
+          when "guide"
+            if $('#dispatch').val() == "LIBERADO" or $('#dispatch').val() == "MONO"
+              e.preventDefault()
+              $('#cargo_cost').focus()
+            else
+              e.preventDefault()
+              $('#guide2').focus()
+            break
+          when "guide2"
+            e.preventDefault()
+            $('#guide3').focus()
+            break
+          when "guide3"
+            e.preventDefault()
+            $('#cargo_cost').focus()
+            break
+          when "dua_cost"
+            e.preventDefault()
+            $('#supplier').select2("open")
+            break
+          when "exchange_rate"
+            e.preventDefault()
+            $('#cargo_cost').focus()
+            break
           else
             e.preventDefault()
       when 9 # Tab
@@ -211,6 +262,51 @@ class App.Views.DeliveryCreate extends Backbone.View
           when "last_trash"
             e.preventDefault()
             $('#searched-item-code').focus()
+            break
+          when "cargo_cost"
+            e.preventDefault()
+            switch $('#dispatch').val()
+              when "MONO"
+                $('#dispatch_cost').focus()
+                break
+              when "DUA"
+                $('#cargo_cost2').focus()
+                break
+              when "LIBERADO"
+                $('#supplier').focus()
+                break
+            break
+          when "cargo_cost2"
+            e.preventDefault()
+            $('#cargo_cost3').focus()
+            break
+          when "cargo_cost3"
+            e.preventDefault()
+            $('#dispatch_cost').focus()
+            break
+          when "dispatch_cost"
+            e.preventDefault()
+            $('#dua_cost').focus()
+            break
+          when "guide"
+            if $('#dispatch').val() == "LIBERADO" or $('#dispatch').val() == "MONO"
+              e.preventDefault()
+              $('#cargo_cost').focus()
+            else
+              e.preventDefault()
+              $('#guide2').focus()
+            break
+          when "guide3"
+            e.preventDefault()
+            $('#cargo_cost').focus()
+            break
+          when "dua_cost"
+            e.preventDefault()
+            $('#supplier').select2("open")
+            break
+          when "exchange_rate"
+            e.preventDefault()
+            $('#cargo_cost').focus()
             break
       when 107 # Plus
         switch e.currentTarget.id
@@ -260,6 +356,7 @@ class App.Views.DeliveryCreate extends Backbone.View
       delivery_date     : $('#delivery_date').val()
       status            : $('#status').val()
       doc_courier_date  : $('#doc_courier_date').val()
+      exchange_rate     : $('#exchange_rate').val()
       user_id           : App.user.id
     @model.invoices.each (model) =>
       if model.isNew()
@@ -422,7 +519,7 @@ class App.Views.DeliveryCreate extends Backbone.View
     attributes = [
       {supplier: @setOrNull('supplier', 'Seleccione un Proveedor')}
       {origin  : @setOrNull('origin', 'Lugar de Origen')}
-      {brand   : @setOrNull('brand', 'Seleccione una Marca') }
+      {brand   : @setOrNull('brand', 'Seleccione una Marca')}
       {season  : @setOrNull('season', 'Seleccione una Temporada')}
       {entry   : @setOrNull('entry', 'Seleccione un Rubro')}
     ]
@@ -439,6 +536,59 @@ class App.Views.DeliveryCreate extends Backbone.View
 
   hideDatePicker: =>
     @$('.datepicker').datepicker('hide')
+
+  calculateCosts: ->
+    if @$('#cargo_cost').val() == ''
+      cargo_cost = 0
+    else
+      cargo_cost = parseFloat @$('#cargo_cost').val()
+      @$('#cargo_cost').val cargo_cost.toFixed(2)
+    ######################################################
+    if @$('#cargo_cost2').val() == ''
+      cargo_cost2 = 0
+    else
+      cargo_cost2 = parseFloat @$('#cargo_cost2').val()
+      @$('#cargo_cost2').val cargo_cost2.toFixed(2)
+    ######################################################
+    if @$('#cargo_cost3').val() == ''
+      cargo_cost3 = 0
+    else
+      cargo_cost3 = parseFloat @$('#cargo_cost3').val()
+      @$('#cargo_cost3').val cargo_cost3.toFixed(2)
+    ######################################################
+    if @$('#dispatch_cost').val() == ''
+      dispatch_cost= 0
+    else
+      dispatch_cost  = parseFloat @$('#dispatch_cost').val()
+      @$('#dispatch_cost').val dispatch_cost.toFixed(2)
+    ######################################################
+    if @$('#dua_cost').val() == ''
+      dua_cost= 0
+    else
+      dua_cost       = parseFloat @$('#dua_cost').val()
+      @$('#dua_cost').val dua_cost.toFixed(2)
+    ######################################################
+    if @$('#exchange_rate').val() == ''
+      er = 0
+    else
+      er             = parseFloat @$('#exchange_rate').val()
+      @$('#exchange_rate').val er.toFixed(2)
+    ######################################################
+    total_cargo_cost           = cargo_cost + cargo_cost2 + cargo_cost3 + dispatch_cost + dua_cost
+    if er == 0
+      total_cargo_cost_dollars = 0
+    else
+      total_cargo_cost_dollars = total_cargo_cost / er
+    total_fob_cost             = 0
+    fob_total_costs            = @model.invoices.pluck('fob_total_cost')
+    if fob_total_costs.length > 0
+      for fob_total_cost in fob_total_costs
+        total_fob_cost = total_fob_cost + parseFloat fob_total_cost
+    total                     = total_cargo_cost_dollars + total_fob_cost
+    @$('#total_cargo_cost').val total_cargo_cost.toFixed(2)
+    @$('#total_cargo_cost_dollars').val total_cargo_cost_dollars.toFixed(2)
+    @$('#fob_cost_total').val total_fob_cost.toFixed(2)
+    @$('#cost_total').val total.toFixed(2)
 
 
 
