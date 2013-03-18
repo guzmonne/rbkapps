@@ -1,42 +1,97 @@
 <div class="well">
     <h1>Crear Nueva  Solicitud de Servicio</h1>
 </div>
-<form id="create-purchase-request">
+<form id="create-service-request" class="form-horizontal">
+    <!--############################## Notice ##################################-->
     <div id="notice"></div>
-    <legend>Ingrese sus datos</legend>
-    <div class="row-fluid well">
-        <div class="span2">
-            <label class="control-label" for="category">Categoría</label>
-        </div>
-        <div class="span3">
-            <select id="category" class="span12">
+    <!--############################## Categorias ##############################-->
+    <div class="control-group box">
+        <label class="control-label" for="category">Categoría</label>
+        <div class="controls">
+            <select id="category" class="input-xlarge">
                 <option>Seleccione una Categoría</option>
             </select>
-        </div>
-        <div class="span3">
-            <select id="category2" class="span12">
+            <select id="category2" class="input-xlarge">
                 <option>Seleccione una Subcategoría</option>
             </select>
-        </div>
-        <div class="span4">
-            <select id="category3" class="span12">
-                <option>Seleccione una Categoría de Tercer Nivel</option>
+            <select id="category3" class="input-xlarge">
+                <option>Seleccione una Tercera Categoría</option>
             </select>
         </div>
     </div>
-    <div class="row-fluid">
-        <div class="span2">
-            <label class="control-label" for="category">Título</label>
-        </div>
-        <div class="span10">
-            <input type="text" id="title" placeholder="Ingrese un Título">
+    <!--############################## Título #################################-->
+    <div class="control-group">
+        <label class="control-label" for="title">Título</label>
+        <div class="controls">
+            <input type="text" id="title" placeholder="Título" class="input-xxlarge">
         </div>
     </div>
+    <!--############################## Descripción ##############################-->
+    <div class="control-group">
+        <label class="control-label" for="description">Descripción</label>
+        <div class="controls">
+            <textarea id="description" rows="3" class="input-xxlarge"></textarea>
+        </div>
+    </div>
+    <!--############################## Notas #################################-->
+    <div class="control-group">
+        <label class="control-label" for="notes">Notas</label>
+        <div class="controls">
+            <textarea id="notes" rows="3" class="input-xxlarge" style="margin-bottom: 10px;" readonly></textarea>
+            <br>
+            <button id="add-note" class="btn btn-info btn-mini">
+                <i class="icon-font icon-white"></i>
+                Nueva Nota
+            </button>
+            <button id="edit-note" class="btn btn-warning btn-mini">
+                <i class="icon-pencil icon-white"></i>
+                Editar Nota
+            </button>
+            <button id="remove-note" class="btn btn-danger btn-mini">
+                <i class="icon-remove icon-white"></i>
+                Eliminar Nota
+            </button>
+        </div>
+    </div>
+    <!--############################## Asignado a ##############################-->
+    <div class="control-group">
+        <label class="control-label" for="asigned_to"> Asignado a </label>
+        <div class="controls">
+            <select id="asigned_to" class="input-xlarge">
+                <option>Seleccione un Administrador</option>
+            </select>
+        </div>
+    </div>
+    <!--############################## Ubicación ##############################-->
+    <div class="control-group">
+        <label class="control-label" for="location"> Ubicación </label>
+        <div class="controls">
+            <select id="location" class="input-xlarge">
+                <option>Seleccione una Ubicación</option>
+                <% App.formHelpers.where({column: 'location'}).forEach (model) -> : %>
+                <option><%= model.get('value') %></option>
+                <% end %>
+            </select>
+        </div>
+    </div>
+    <!--############################## Equipo ##############################-->
+    <div class="control-group">
+        <label class="control-label" for="team"> Equipo </label>
+        <div class="controls">
+            <select id="team" class="input-xlarge">
+                <option>Seleccione un Equipo</option>
+                <% App.teams.forEach (model) -> : %>
+                <option><%= model.get('name') %></option>
+                <% end %>
+            </select>
+        </div>
+    </div>
+    <!--############################## Botones ################################-->
     <div class="row-fluid">
         <div class="span12">
             <div class="form-actions">
                 <button id="submit-create-purchase-request" class="btn btn-primary btn-large">Enviar</button>
-                <button id="clear-form" class="btn btn-primary btn-large btn-inverse">Cancelar</button>
+                <button id="clear-form" class="btn btn-primary btn-large btn-inverse pull-right">Cancelar</button>
             </div>
         </div>
     </div>

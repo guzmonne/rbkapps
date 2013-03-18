@@ -7,4 +7,5 @@ class App.Views.ServiceRequestsCreate extends Backbone.View
 
   render: ->
     $(@el).html(@template())
+    @$('select').select2({width: 'copy'})
     this
