@@ -1,5 +1,4 @@
 class Delivery < ActiveRecord::Base
-  has_and_belongs_to_many :items
   has_many :invoices
   attr_accessible :courier,
                   :dispatch,

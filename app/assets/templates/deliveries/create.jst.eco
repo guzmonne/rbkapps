@@ -4,7 +4,7 @@
 <form id="create-delivery" class="form-horizontal">
 <div id="notice"></div>
     <div class="control-group" id="control-courier">
-        <label class="control-label label-grey" for="courier" style="font-weight: bold;">
+        <label class="control-label label-grey label label-inverse" for="courier">
             Courier:
         </label>
         <div class="controls controls-row">
@@ -19,7 +19,7 @@
     </div>
     <hr>
     <div class="control-group" id="control-dispatch">
-        <label class="control-label label-grey" for="dispatch">Trámite:</label>
+        <label class="control-label label-grey label label-inverse" for="dispatch">Trámite:</label>
         <div class="controls">
             <select id="dispatch" class="select2 input-large">
                 <option value="empty">Seleccione una Opción</option>
@@ -31,7 +31,7 @@
     </div>
     <hr>
     <div class="control-group" id="control-guide">
-        <label class="control-label label-grey" for="guide">Guía:</label>
+        <label class="control-label label-grey label label-inverse" for="guide">Guía:</label>
         <div class="controls">
             <input type="text" id="guide" placeholder="Guía" class="hide dispatch MONO DUA LIBERADO">
             <input type="text" id="guide2" placeholder="Guía 2" class="hide dispatch DUA">
@@ -40,7 +40,7 @@
     </div>
     <hr>
     <div class="control-group" id="control-cargo">
-        <label class="control-label label-grey" for="cargo_cost">Gastos:</label>
+        <label class="control-label label-grey label label-inverse" for="cargo_cost">Gastos:</label>
         <div class="form-inline hide dispatch MONO DUA LIBERADO pull-right er">
             <label>Total Flete (USD)</label>
             <div class="input-prepend">
@@ -115,7 +115,7 @@
     </div>
     <hr>
     <div class="control-group" id="control-supplier">
-        <label class="control-label label-grey" for="supplier">Proveedor:</label>
+        <label class="control-label label-grey label label-inverse" for="supplier">Proveedor:</label>
         <div class="controls">
             <select id="supplier" class="select2 input-large">
                 <option value="empty">Seleccione un Proveedor</option>
@@ -130,7 +130,7 @@
     </div>
     <hr>
     <div class="control-group" id="control-origin">
-        <label class="control-label label-grey" for="origin">Origen:</label>
+        <label class="control-label label-grey label label-inverse" for="origin">Origen:</label>
         <div class="controls">
             <select id="origin" class="select2 input-large">
                 <option value="empty">Lugar de Origen</option>
@@ -145,7 +145,7 @@
     </div>
     <hr>
     <div class="control-group" id="control-origin_date">
-        <label class="control-label label-grey" for="origin_date">Fechas:</label>
+        <label class="control-label label-grey label label-inverse" for="origin_date">Fechas:</label>
         <div class="controls">
             <div class="row-fluid">
                  <div class="span4">
@@ -174,7 +174,7 @@
     </div>
     <hr>
     <div class="control-group" id="control-status">
-        <label class="control-label label-grey" for="origin_date">Datos de Estado:</label>
+        <label class="control-label label-grey label label-inverse" for="origin_date">Datos de Estado:</label>
         <div class="controls">
             <div class="row-fluid">
                 <div class="span4">
@@ -204,226 +204,21 @@
         </div>
     </div>
     <hr>
-    <div class="control-group" id="control-item">
-        <label class="control-label label-grey">Artículos:</label>
-        <div class="controls">
-            <div class="row-fluid" id="items-table">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>Codigo</th>
-                            <th>Marca</th>
-                            <th>Temporada</th>
-                            <th>Rubro</th>
-                            <th class="span1">
-                                <button class="btn btn-mini btn-success" id="toggle-items-form">
-                                    <i class="icon-plus icon-white"></i>
-                                </button>
-                            </th>
-                            <th class="span1">
-                                <button class="btn btn-mini btn-info hide" id="search-items">
-                                    <i class="icon-search icon-white"></i>
-                                </button>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody id="items">
-                        <tr id="item-search-row">
-                            <td class="span4">
-                                <input type="text"
-                                       id="searched-item-code"
-                                       class="search-query loading"
-                                       placeholder="Buscar por Codigo de Artículo">
-                            </td>
-                            <td>
-                                <p id="searched-item-brand"></p>
-                            </td>
-                            <td>
-                                <p id="searched-item-season"></p>
-                            </td>
-                            <td>
-                                <p id="searched-item-entry"></p>
-                            </td>
-                            <td class="span1">
-                                <button type="submit"
-                                        id="add-searched-item"
-                                        class="btn btn-block btn-success">
-                                    <i class="icon-ok icon-white"></i>
-                                </button>
-                            </td>
-                            <td>
-                                <button type="submit"
-                                        id="close-searched-item"
-                                        class="btn btn-block btn-warning">
-                                    <i class="icon-remove icon-white"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="hide"></tr>
-                        <tr id="item-form-row" class="hide">
-                            <td>
-                                <input type="text"
-                                       id="code"
-                                       class="span12"
-                                       placeholder="Codigo">
-                            </td>
-                            <td>
-                                <select id="brand">
-                                    <option>Seleccione una Marca</option>
-                                    <% App.formHelpers.where({column: 'brand'}).forEach (model) -> : %>
-                                        <option><%= model.get('value') %></option>
-                                    <% end %>
-                                </select>
-                                <input type="text"
-                                       id="new-brand"
-                                       class="hide"
-                                       placeholder="Nueva Marca">
-                                <button class="btn btn-mini btn-success" id="add-new-brand">
-                                    <i class="icon-plus icon-white"></i>
-                                </button>
-                            </td>
-                            <td>
-                                <select id="season">
-                                    <option>Seleccione una Temporada</option>
-                                    <% App.formHelpers.where({column: 'season'}).forEach (model) -> : %>
-                                        <option><%= model.get('value') %></option>
-                                    <% end %>
-                                </select>
-                                <input type="text"
-                                       id="new-season"
-                                       class="hide"
-                                       placeholder="Nueva Marca">
-                                <button class="btn btn-mini btn-success" id="add-new-season">
-                                    <i class="icon-plus icon-white"></i>
-                                </button>
-                            <td>
-                                <select id="entry">
-                                    <option>Seleccione un Rubro</option>
-                                    <% App.formHelpers.where({column: 'entry'}).forEach (model) -> : %>
-                                    <option><%= model.get('value') %></option>
-                                    <% end %>
-                                </select>
-                                <input type="text"
-                                   id="new-entry"
-                                   class="hide"
-                                   placeholder="Nueva Marca">
-                                <button class="btn btn-mini btn-success" id="add-new-entry">
-                                    <i class="icon-plus icon-white"></i>
-                                </button>
-                            </td>
-                            <td class="span1">
-                                <button type="submit"
-                                        id="add-new-item"
-                                        class="btn btn-block btn-success">
-                                    <i class="icon-ok icon-white"></i>
-                                </button>
-                            </td>
-                            <td class="span1">
-                                <button type="button"
-                                        id="close-item-form"
-                                        class="btn btn-block btn-warning">
-                                    <i class="icon-remove icon-white"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <hr>
+<!--############################## Tabla de Facturas ##############################-->
     <div class="control-group" id="control-invoices">
-        <label class="control-label label-grey">Facturas:</label>
-        <div class="controls">
-            <div class="row-fluid" id="invoices-table">
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr>
-                        <th>Numero de Factura</th>
-                        <th>Total FOB</th>
-                        <th>Total Unidades</th>
-                        <th class="span1">
-                            <button class="btn btn-mini btn-success" id="toggle-invoice-form">
-                                <i class="icon-plus icon-white"></i>
-                            </button>
-                        </th>
-                        <th class="span1">
-                            <button class="btn btn-mini btn-info hide" id="search-invoices">
-                                <i class="icon-search icon-white"></i>
-                            </button>
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody id="invoices">
-                        <tr id="invoice-search-row" class="shown">
-                            <td class="span4">
-                                <input type="text"
-                                       id="searched-invoice-invoice_number"
-                                       class="search-query loading"
-                                       placeholder="Buscar por Numero de Factura">
-                            </td>
-                            <td>
-                                <p id="searched-invoice-fob_total_cost"></p>
-                            </td>
-                            <td>
-                                <p id="searched-invoice-total_units"></p>
-                            </td>
-                            <td class="span1">
-                                <button type="submit"
-                                        id="add-searched-invoice"
-                                        class="btn btn-block btn-success">
-                                    <i class="icon-ok icon-white"></i>
-                                </button>
-                            </td>
-                            <td>
-                                <button type="submit"
-                                        id="close-searched-invoice"
-                                        class="btn btn-block btn-warning">
-                                    <i class="icon-remove icon-white"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr class="hide"></tr>
-                        <tr id="invoice-form-row" class="hide">
-                            <td>
-                                <input type="text"
-                                       id="invoice_number"
-                                       placeholder="Numero de Factura">
-                            </td>
-                            <td>
-                                <div class="input-prepend">
-                                    <span class="add-on">USD</span>
-                                    <input type="text"
-                                           id="fob_total_cost"
-                                           placeholder="Total FOB">
-                                </div>
-                            </td>
-                            <td>
-                                <input type="number"
-                                       id="total_units"
-                                       placeholder="Total Unidades"
-                                       value="1.00">
-                            </td>
-                            <td class="span1">
-                                <button type="submit"
-                                        id="add-new-invoice"
-                                        class="btn btn-block btn-success">
-                                    <i class="icon-ok icon-white"></i>
-                                </button>
-                            </td>
-                            <td class="span1">
-                                <button type="button"
-                                        id="close-invoice-form"
-                                        class="btn btn-block btn-warning">
-                                    <i class="icon-remove icon-white"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="row-fluid">
+            <div class="span11">
+                <label class="control-label label-grey label label-inverse">Facturas:</label>
+                <div id="invoices"  class="controls">
+                    <button id="new_invoice" class="btn btn-success btn-small ">
+                        <i class="icon-list-alt icon-white"></i>
+                        Agregar Nueva Factura
+                    </button>
+                </div>
             </div>
         </div>
     </div>
+<!--############################## Tabla de Facturas ##############################-->
     <div class="form-actions">
         <button id="submit-create-delivery" class="btn btn-primary btn-large">Crear Envío</button>
     </div>
@@ -473,6 +268,66 @@
         </div>
         <div class="modal-footer">
             <button id="submit-new-origin" class="btn btn-primary btn-block btn-large ">Aceptar</button>
+        </div>
+    </div>
+</form>
+        <!--############################## Nueva Factura ##############################-->
+<!-- Add new origin -->
+<form id="add-new-invoice-form" class="form-horizontal">
+    <div id="add-new-invoice-modal"
+         class="modal hide fade"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-header">
+            <h3>Agregar Factura</h3>
+        </div>
+        <div class="modal-body">
+            <div id="invoice-notice"></div>
+            <div class="control-group">
+                <label class="control-label" for="invoice_number">Numero de Factura:</label>
+                <div class="controls">
+                    <input type="text" id="invoice_number" placeholder="Numero de Factura">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="fob_total_cost">Total FOB:</label>
+                <div class="controls">
+                    <input type="text" id="fob_total_cost" placeholder="Total FOB">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="total_units">Total FOB:</label>
+                <div class="controls">
+                    <input type="text" id="total_units" placeholder="Total Unidades">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="submit-new-invoice" class="btn btn-primary btn-block btn-large ">Aceptar</button>
+        </div>
+    </div>
+</form>
+<form id="search-invoice-form" class="form-horizontal">
+    <div id="search-invoice-modal"
+         class="modal hide fade"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-header">
+            <h3>Buscar Factura</h3>
+        </div>
+        <div class="modal-body">
+            <div id="search-invoice-notice"></div>
+            <div class="control-group" id="modal-control-search-invoice">
+                <label class="control-label" for="new-supplier">Bescar Factura:</label>
+                <div class="controls">
+                    <input type="text" id="search-invoice_number" placeholder="Número de Factura">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="submit-search-invoice" class="btn btn-primary btn-block btn-large ">Buscar</button>
         </div>
     </div>
 </form>

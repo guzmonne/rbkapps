@@ -3,7 +3,6 @@ class App.Models.Delivery extends Backbone.Model
 
   initialize: (model) ->
     @invoices = new App.Collections.Invoices()
-    @items = new App.Collections.Items()
 
   defaults:  ->
     courier               : null

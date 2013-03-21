@@ -1,9 +1,17 @@
 <td><%= @invoice.get('invoice_number') %></td>
 <td>USD <%= @invoice.get('fob_total_cost') %></td>
 <td><%= @invoice.get('total_units') %></td>
+<td class="span1">
+    <button id="add-item-to-invoice"
+            class="btn btn-mini btn-success"
+            data-cid="<%= @invoice.cid %>">
+        <i class="t_shirt-white" style="margin-top: 5px;"></i>
+    </button>
+</td>
 <td class="span1" id="remove-invoice-model">
     <button id="remove-invoice" class="btn btn-mini btn-danger" data-cid="<%= @invoice.cid %>">
         <i class="icon-minus icon-white"></i>
     </button>
 </td>
+
 

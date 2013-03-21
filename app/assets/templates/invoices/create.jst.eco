@@ -1,0 +1,86 @@
+<form class="form-inline">
+    <button class="close pull-right">&times;</button>
+    <button
+            class="btn btn-info btn-small toggle_form search_invoice pull-right"
+            style="margin-right: 30px;">
+        <i class="icon-search icon-white"></i>
+        Buscar
+    </button>
+    <button
+            class="btn btn-info btn-small pull-right toggle_form search_invoice pull-right hide"
+            style="margin-right: 30px;">
+        <i class="icon-plus icon-white"></i>
+        Nueva Factura
+    </button>
+    <div class="new_invoice">
+        <div class="span4" style="width: 25%;">
+            <label class="label label-inverse label-big">Numero de Factura:</label>
+            <input type="text" class="invoice_number input-small" placeholder="#########">
+        </div>
+        <div class="span3">
+            <label class="label label-inverse label-big">Total FOB:</label>
+            <div class="input-prepend">
+                <span class="add-on">USD</span>
+                <input type="text" class="fob_total_cost input-small" placeholder="Total FOB">
+            </div>
+        </div>
+        <div class="span4">
+            <label class="label label-inverse label-big">Total Unidades</label>
+            <input type="text"
+                   class="total_units input-mini"
+                   placeholder="Total Unidades"
+                   value="0"
+                   readonly>
+        </div>
+    </div>
+    <div class="search_invoice hide">
+        <div class="span10">
+            <div class="row-fluid">
+                <div class="span3">
+                    <input type="text"
+                           placeholder="Numero de Factura"
+                           id="search-invoice"
+                           class="search-query input-medium loading"
+                           style="margin-left: 10px;">
+                </div>
+                <div class="span3">
+                    <label
+                            class="label label-big label-inverse"
+                            style="margin-top: 2px;">
+                        Total FOB:
+                    </label>
+                    <label
+                            id="searched-fob_total_cost"
+                            class="label label-big"
+                            style="margin-top: 2px;"></label>
+                </div>
+                <div class="span3">
+                    <label
+                            class="label label-big label-inverse"
+                            style="margin-top: 2px;">
+                        Total Unidades
+                    </label>
+                    <label
+                            id="searched-total_units"
+                            class="label label-big"
+                            style="margin-top: 2px;"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <div class="row-fluid items"></div>
+    <button id="add-searched-invoice"
+            type="submit"
+            class="btn btn-success btn-small hide pull-right"
+            style="margin-top: 15px">
+        <i class="icon-plus icon-white"></i>
+        Agregar
+    </button>
+    <button id="save-invoice"
+            class="btn btn-primary btn-small pull-right"
+            style="margin-top: 15px">
+        Guardar
+    </button>
+</form>

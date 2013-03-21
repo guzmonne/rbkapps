@@ -15,7 +15,19 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    respond_with Invoice.create(params["invoice"])
+    @invoice = Invoice.create(params["invoice"])
+    @old_items = params["old_items"]
+    @old_items.each do |old_item|
+      InvoiceItem.create({invoice_id: @invoice.id, item_id: old_item["id"], quantity: old_item["quantity"]})
+    end
+    @new_items = params["new_items"]
+    @new_items.each do |new_item|
+      quantity = new_item["quantity"]
+      new_item.delete("quantity")
+      @item = Item.create(new_item)
+      InvoiceItem.create({invoice_id: @invoice.id, item_id: @item.id, quantity: quantity})
+    end
+    respond_with @invoice
   end
 
   def update

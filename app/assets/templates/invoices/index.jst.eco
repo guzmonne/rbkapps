@@ -23,34 +23,8 @@
             </thead>
             <tbody id="invoices">
                 <tr id="invoice-form-row">
-                    <td>
-                        <input type="text"
-                               id="invoice_number"
-                               placeholder="Numero de Factura">
-                    </td>
-                    <td>
-                        <div class="input-prepend">
-                            <span class="add-on">USD</span>
-                            <input type="text"
-                                   id="fob_total_cost"
-                                   placeholder="Total FOB">
-                        </div>
-                    </td>
-                    <td>
-                        <input type="number"
-                               id="total_units"
-                               placeholder="Total Unidades"
-                               value="1">
-                    </td>
-                    <td>
-                        <button type="submit"
-                                id="add-new-invoice"
-                                class="btn btn-block btn-success">
-                            <i class="icon-plus icon-white"></i>
-                        </button>
-                    </td>
+                    <td id="create-invoice" colspan="4"></td>
                 </tr>
-
             </tbody>
         </table>
     </div>

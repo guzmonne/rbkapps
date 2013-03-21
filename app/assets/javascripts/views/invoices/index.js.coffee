@@ -10,32 +10,69 @@ class App.Views.InvoiceIndex extends Backbone.View
 
 
   events:
-    'click #new-invoice'      : 'toggleForm'
+    'click #new-invoice'      : 'createForm'
     'click #add-new-invoice'  : 'createInvoice'
     'keydown :input'          : 'keyDownManager'
     'click #fetch-invoices'   : 'fetchInvoices'
     'click th'                : 'sortInvoices'
+########################################################################################################################
 
+################################################# $ Initialize $ #######################################################
+  initialize: ->
+    @listenTo App.vent, "remove:createInvoice:success", ->
+      @$('#new-invoice').show()
+      @$('#invoice-form-row').hide()
+    @listenTo App.vent, "invoice:create:success", (model) =>
+      oldItems     = []
+      newItems     = []
+      model.invoice_items.each (item) ->
+        if item.isNew()
+          newItems.push(item.attributes)
+        else
+          array =
+            id      : item.id
+            quantity: item.get('quantity')
+          oldItems.push(array)
+      object =
+        invoice     : model.attributes
+        old_items   : oldItems
+        new_items   : newItems
+      invoice = new App.Models.Invoice
+      invoice.save object
+      @$('#new-invoice').show()
+      @$('#invoice-form-row').hide()
+      @appendInvoice(model)
+########################################################################################################################
+
+################################################### $ Render $ #########################################################
   render: ->
     $(@el).html(@template()).find('#invoice-form-row').hide()
     App.invoices.each(@appendInvoice)
     this
+########################################################################################################################
 
+############################################# $ Append Invoice $ #######################################################
   appendInvoice: (model) =>
     view = new App.Views.Invoice(model: model)
     App.pushToAppendedViews(view)
     @$('#invoices').append(view.render().el)
     this
+########################################################################################################################
 
-  toggleForm: (e) ->
+############################################### $ Create Form $ ########################################################
+  createForm: (e) ->
     e.preventDefault()
-    $('#invoice-form-row').toggle(@flip++ % 2 == 0)
-    unless @flip % 2 == 0
-      $('#invoice_number').focus()
-      return $('#new-invoice').text('Cerrar Formulario')
-    $('#new-invoice').html('<i class="icon-plus icon-white"></i>Nueva Factura')
+    model = new App.Models.Invoice
+    view  = new App.Views.CreateInvoice(model: model)
+    App.pushToAppendedViews(view)
+    @$('#invoice-form-row').show()
+    @$('#create-invoice').append(view.render().el)
+    @$('#new-invoice').hide()
+    view.hideSearchButton()
     this
+########################################################################################################################
 
+############################################## $ Create Invoice $ ######################################################
   createInvoice: (e) ->
     e.preventDefault()
     model = new App.Models.Invoice()
@@ -54,7 +91,9 @@ class App.Views.InvoiceIndex extends Backbone.View
     $('#invoice_number').focus()
     App.invoices.add(model)
     this
+########################################################################################################################
 
+########################################### $ Key Down Manager $ #######################################################
   keyDownManager: (e) ->
     switch e.keyCode
       when 13
@@ -72,7 +111,9 @@ class App.Views.InvoiceIndex extends Backbone.View
             $('#invoice_number').focus()
             break
     this
+########################################################################################################################
 
+############################################## $ Fetch Invoices $ ######################################################
   fetchInvoices: (e) ->
     e.preventDefault()
     App.vent.trigger 'update:invoices:success'
@@ -81,7 +122,9 @@ class App.Views.InvoiceIndex extends Backbone.View
       @$('#fetch-invoices').html('Actualizar').removeClass('loading')
       App.invoices.each(@appendInvoice)
     this
+########################################################################################################################
 
+############################################### $ Sort Invoicew $ ######################################################
   sortInvoices: (e) ->
     sortVar =  e.currentTarget.dataset['sort']
     type    =  e.currentTarget.dataset['sort_type']
@@ -94,7 +137,9 @@ class App.Views.InvoiceIndex extends Backbone.View
         @sort(sortVar, 'lTH', 'up', type )
     else
       @sort(sortVar, 'lTH', 'up', type, oldVar )
+########################################################################################################################
 
+################################################### $ Sort $ #########################################################
   sort: (sortVar, method, direction, type, oldVar = null ) ->
     if oldVar == null then oldVar = sortVar
     if direction == 'up'

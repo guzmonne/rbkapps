@@ -2,16 +2,6 @@ class App.Views.Delivery extends Backbone.View
   template: JST['deliveries/delivery']
   tagName: 'tr'
   name: 'Delivery'
-  className: ->
-    switch @model.get('status')
-      when 'PENDIENTE'
-        "error"
-      when 'PROCESO'
-        "warning"
-      when 'ENTREGADO'
-        "success"
-      when 'CERRADO'
-        "info"
 
   events:
     'click': 'show'

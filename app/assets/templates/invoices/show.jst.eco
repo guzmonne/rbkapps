@@ -1,0 +1,34 @@
+<form class="form-inline">
+    <div class="span4">
+            <label class="label label-big label-inverse">Numero de Factura:</label>
+            <label class="label label-big"><%= @model.get('invoice_number') %></label>
+    </div>
+    <div class="span4">
+            <label class="label label-big label-inverse">Total FOB:</label>
+            <label class="label label-big"><%= @model.get('fob_total_cost') %></label>
+    </div>
+    <div class="span3">
+        <label class="label label-big label-inverse">Total Unidades</label>
+        <label class="label label-big"><%= @model.get('total_units') %></label>
+    </div>
+    <div class="span1">
+        <button class="close close-invoice">&times;</button>
+        <button class="close edit-invoice">
+            <i class="icon-pencil close-box"></i>
+        </button>
+    </div>
+    <br>
+    <hr>
+    <table class="table table-striped table-hover white-box">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Marca</th>
+                <th>Temporada</th>
+                <th>Rubro</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody id="invoice_items"></tbody>
+    </table>
+</form>

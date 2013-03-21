@@ -1,6 +1,7 @@
 <div class="well <%= @model.get('status')%>">
     <div class="pull-right">
-        <img src="/assets/<%= @model.get('status') %>.png" width="100">
+        <!--<img src="/assets/<%= @model.get('status') %>.png" width="100">-->
+        <i class="status-<%= @model.get('status') %>"></i>
     </div>
     <h1>
         Envío # <%= @model.id %> - <%= @model.get('status') %>
@@ -443,7 +444,7 @@
         <i class="icon-pencil icon-white"></i>
         Editar
     </button>
-    <button id="reset-form" class="btn btn-primary btn-large btn-inverse">Borrar Cambios</button>
+    <button id="reset-form" class="btn btn-primary btn-large btn-inverse pull-right">Borrar Cambios</button>
 </div>
 </form>
 <!-- Add new supplier -->

@@ -1,0 +1,112 @@
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>Codigo</th>
+        <th>Marca</th>
+        <th>Temporada</th>
+        <th>Rubro</th>
+        <th>Cantidad</th>
+        <th class="span1">
+            <button class="btn btn-mini btn-success" id="toggle-items-form">
+                <i class="icon-plus icon-white"></i>
+            </button>
+        </th>
+        <th class="span1">
+            <button class="btn btn-mini btn-info hide" id="search-items">
+                <i class="icon-search icon-white"></i>
+            </button>
+        </th>
+    </tr>
+    </thead>
+    <tbody id="items">
+    <tr id="item-search-row">
+        <td class="span4">
+            <input type="text"
+                   id="searched-item-code"
+                   class="search-query loading"
+                   placeholder="Buscar por Codigo de Artículo">
+        </td>
+        <td>
+            <p id="searched-item-brand"></p>
+        </td>
+        <td>
+            <p id="searched-item-season"></p>
+        </td>
+        <td>
+            <p id="searched-item-entry"></p>
+        </td>
+        <td><input type="number" id="search_quantity" placeholder="Cant." class="input-mini" value="1"></td>
+        <td class="span1" colspan="2">
+            <button type="submit"
+                    id="add-searched-item"
+                    class="btn btn-block btn-success">
+                <i class="icon-ok icon-white"></i>
+            </button>
+        </td>
+    </tr>
+    <tr class="hide"></tr>
+    <tr id="item-form-row" class="hide">
+        <td>
+            <input type="text"
+                   id="code"
+                   class="span12 new_item"
+                   placeholder="Codigo">
+        </td>
+        <td>
+            <div class="input-append">
+                <select id="brand" class="input-medium">
+                    <% App.formHelpers.where({column: 'brand'}).forEach (model) -> : %>
+                    <option><%= model.get('value') %></option>
+                    <% end %>
+                </select>
+                <input type="text"
+                       id="new-brand"
+                       class="hide new_item input-medium"
+                       placeholder="Nueva Marca">
+                <button class="btn btn-success" id="add-new-brand">
+                    <i class="icon-plus icon-white"></i>
+                </button>
+            </div>
+        </td>
+        <td>
+            <div class="input-append">
+                <select id="season">
+                    <% App.formHelpers.where({column: 'season'}).forEach (model) -> : %>
+                    <option><%= model.get('value') %></option>
+                    <% end %>
+                </select>
+                <input type="text"
+                       id="new-season"
+                       class="hide new_item"
+                       placeholder="Nueva Temporada ">
+                <button class="btn btn-success" id="add-new-season">
+                    <i class="icon-plus icon-white"></i>
+                </button>
+            </div>
+        <td>
+            <div class="input-append">
+                <select id="entry">
+                    <% App.formHelpers.where({column: 'entry'}).forEach (model) -> : %>
+                    <option><%= model.get('value') %></option>
+                    <% end %>
+                </select>
+                <input type="text"
+                       id="new-entry"
+                       class="hide new_item"
+                       placeholder="Nuevo Rubro">
+                <button class="btn btn-success" id="add-new-entry">
+                    <i class="icon-plus icon-white"></i>
+                </button>
+            </div>
+        </td>
+        <td><input type="number" id="quantity" placeholder="Cant." class="input-mini" value="1"></td>
+        <td class="span1" colspan="2">
+            <button type="submit"
+                    id="add-new-item"
+                    class="btn btn-block btn-success">
+                <i class="icon-ok icon-white"></i>
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>

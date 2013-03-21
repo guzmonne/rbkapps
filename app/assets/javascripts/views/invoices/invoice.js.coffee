@@ -2,6 +2,8 @@ class App.Views.Invoice extends Backbone.View
   template: JST['invoices/invoice']
   tagName: 'tr'
   name: 'Invoice'
+  id: ->
+    @model.cid
 
   initialize: ->
     @fH = new App.Mixins.Form

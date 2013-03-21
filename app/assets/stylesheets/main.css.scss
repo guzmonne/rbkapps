@@ -42,8 +42,9 @@ body { padding-top: 60px; }
 }
 
 .label-grey{
-  font-size: 14px;
   font-weight: bold;
+  padding: 7px;
+  font-size: 12;
 }
 
 .center_select{
@@ -158,3 +159,67 @@ body { padding-top: 60px; }
 .pagination {
   margin: 0px;
 }
+
+[class^="status-"],
+[class*=" status-"] {
+  display: inline-block;
+  width: 100px;
+  height: 88px;
+  margin-top: 1px;
+  *margin-right: .3em;
+  line-height: 88px;
+  vertical-align: text-top;
+  background-image: url("/assets/status.png");
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+}
+
+.status-PENDIENTE {
+  background-position: -3px,      0;
+}
+
+.status-PROCESO {
+  background-position: -118px      0;
+}
+
+.status-ENTREGADO {
+  background-position: -230px      0;
+}
+
+.status-CERRADO {
+  background-position: -348px      0;
+}
+
+.box {
+  -webkit-box-shadow: 10px 7px 22px rgba(0, 0, 0, 0.61);
+  -moz-box-shadow:    10px 7px 22px rgba(0, 0, 0, 0.61);
+  box-shadow:         10px 7px 22px rgba(0, 0, 0, 0.61);
+  background-color: #ececec;
+  border-radius: 15px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.white-box {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.label-big{
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 5px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.close-box {
+  margin-top: 5px;
+  margin-right: 10px;
+}
+

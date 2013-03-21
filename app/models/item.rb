@@ -1,6 +1,6 @@
 class Item < ActiveRecord::Base
-  has_and_belongs_to_many :deliveries
-
+  has_many :invoice_items
+  has_many :invoices, :through => :invoice_items
   attr_accessible :code,
                   :brand,
                   :season,

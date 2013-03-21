@@ -123,10 +123,9 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
     @updateFormHelpers()
     @model.save attributes, success: =>
       @model.set(attributes.delivery)
-      @setHeader
       @formHelper.displayFlash("success", "Los datos se han actualizado con exito", 20000)
-      $('#courier').focus()
-      @$('.well img')[0].src = "/assets/#{@model.get('status')}.png"
+      @$('#courier').focus()
+      @$('[class^="status-"]').removeClass().addClass("status-#{@model.get('status')}")
       @$('.well h1').text("Editar Envío ##{@model.id} - #{@model.get('status')}")
       @$('.well').removeClass().addClass('well ' + @model.get('status'))
       if @model.get('status') == "CERRADO"
