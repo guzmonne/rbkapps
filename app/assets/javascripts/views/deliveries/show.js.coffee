@@ -4,67 +4,125 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
   className: 'span12'
 
   'events': _.extend({
-    'click #submit-save-delivery' : 'saveChanges'
+    'click #update-delivery'      : 'saveChanges'
     'click #reset-form'           : 'resetForm'
     'click #nav-prev-delivery'    : 'prevDelivery'
     'click #nav-next-delivery'    : 'nextDelivery'
-    'click #edit-delivery'        : 'editDelivery',
+    'click #edit-delivery'        : 'editDelivery'
+    'click #add-note'             : 'newNote'
+    'click #submit-new-note'      : 'newNote',
   }, App.Views.DeliveryCreate.prototype.events)
+########################################################################################################################
 
+############################################## $ Initialize $ ##########################################################
   initialize: ->
-    @items            = new App.Collections.Items
-    @invoices         = new App.Collections.Invoices
-    @newItems         = new App.Collections.Items
-    @removeItems      = new App.Collections.Items
-    @newInvoices      = new App.Collections.Invoices
-    @removeInvoices   = new App.Collections.Invoices
     @formHelper       = new App.Mixins.Form
     @collectionHelper = new App.Mixins.Collections
-    @listenTo App.vent, "add:item:success",    (item)            => @newItems.add(item)
-    @listenTo App.vent, "add:invoice:success", (invoice)         => @newInvoices.add(invoice)
-    @listenTo App.vent, "remove:item:success",  (item)           => @removeItems.add(item)
-    @listenTo App.vent, "remove:invoice:success",  (invoice)     => @removeInvoices.add(invoice)
+    @notes            = new App.Collections.Notes
+    @listenTo App.vent, "change:date", (e) =>
+      @$('.datepicker').datepicker('hide')
+      id = @$('#origin_date')[0].id
+      $("button[data-date=#{id}]").focus()
+    @listenTo App.vent, "invoice:create:success", (model) =>
+      view = new App.Views.InvoiceShow(model: model)
+      App.pushToAppendedViews(view)
+      @$('#invoices').append(view.render().el)
+      view.hideMinimizeButton()
+      @$('#new_invoice').show()
+      @model.invoices.add(model)
+      @calculateCosts()
+    @listenTo App.vent, "edit:invoice:success", (model) =>
+      view = new App.Views.CreateInvoice(model: model)
+      App.pushToAppendedViews(view)
+      @$('#invoices').prepend(view.renderShow().el)
+      view.hideMinimizeButton()
+      @model.invoices.remove(model)
+      @$('#new_invoice').hide()
+      @calculateCosts()
+    @listenTo App.vent, "remove:createInvoice:success", =>
+      @$('#new_invoice').show()
+    @listenTo App.vent, "remove:invoiceShow:success", (model) =>
+      @model.invoices.remove(model)
+      model.destroy()
+    @listenTo App.vent, "invoice:create:success", (model) =>
+      @$('#loading-div').show()
+      oldItems        = []
+      newItems        = []
+      model.set('user_id', App.user.id)
+      model.invoice_items.each (item) ->
+        if item.isNew()
+          newItems.push(item.attributes)
+        else
+          array =
+            item_id : item.id
+            quantity: item.get('quantity')
+          oldItems.push(array)
+      model.set('delivery_id', @model.id)
+      object =
+        id          : model.id
+        invoice     : model.attributes
+        old_items   : oldItems
+        new_items   : newItems
+      invoice = new App.Models.Invoice
+      invoice.save object,
+        success: (model, data) =>
+          invoice = new App.Models.Invoice
+          if data?
+            invoice.set(data)
+          else
+            invoice.set(model.get('invoice'))
+          @$('#new-invoice').show()
+          @$('#invoice-form-row').hide()
+          @$('#loading-div').hide()
+########################################################################################################################
 
+############################################### $ Render $ #############################################################
   render: ->
     $(@el).html(@template(model: @model))
-    @model.invoices.each(@renderInvoice)
-    @model.items.each(@renderItem)
     @$('.datepicker').datepicker({format: 'yyyy-mm-dd'}).on('changeDate', (e) -> $(e.target).datepicker('hide'))
     for attribute of @model.attributes
       @$('#' + attribute).val(@model.get(attribute))
     @changeCourierIcon()
     @toggleGuides()
     @calculateCosts()
-    @$('#item-search-row').hide()
-    @$('#search-items').show()
-    @$('#invoice-search-row').hide()
-    @$('#search-invoices').show()
     @$('.select2').select2({width: 'copy'})
+    @model.invoices.each @renderInvoice
+    @$('#loading-div').hide()
     if @model.get('status') == "CERRADO"
       @closeDelivery()
-    App.vent.trigger "render:show:delivery:success"
+    @notes.fetch
+      data:
+        table_name    : 'delivery'
+        table_name_id : @model.id
+      success: =>
+        @notes.each @renderNote
     this
+########################################################################################################################
 
+############################################ $ Render invoice $ ########################################################
   renderInvoice: (invoice) =>
-    view = new App.Views.Invoice(model: invoice)
+    view = new App.Views.InvoiceShow(model: invoice)
     App.pushToAppendedViews(view)
-    @$('#invoice-form-row').after(view.render().el)
+    @$('#invoices').append(view.render().el)
+    view.hideMinimizeButton()
     this
+########################################################################################################################
 
-  renderItem: (item) =>
-    view = new App.Views.Item(model: item)
+############################################# $ Render Note $ ##########################################################
+  renderNote: (note) =>
+    view = new App.Views.NoteShow(model: note)
     App.pushToAppendedViews(view)
-    @$('#item-form-row').after(view.render().el)
+    @$('#notes').append(view.render().el)
     this
+########################################################################################################################
 
+############################################# $ Save Changes $ #########################################################
   saveChanges: (e) ->
     e.preventDefault()
-    invoices        = []
-    items           = []
-    editItems       = []
-    editInvoices    = []
-    removeItems     = []
-    removeInvoices  = []
+    @formHelper.displayFlash("info", "Espere por favor...", 2000)
+    $('#submit-create-delivery').attr('disabled', true)
+    $('#submit-create-delivery').html('<i class="icon-load"></i>  Guardando Cambios. Espere por favor...')
+    $('#courier').focus()
     delivery =
       courier           : $('#courier').val()
       dispatch          : $('#dispatch').val()
@@ -85,53 +143,22 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
       doc_courier_date  : $('#doc_courier_date').val()
       exchange_rate     : $('#exchange_rate').val()
       user_id           : App.user.id
-    @newInvoices.each (model) =>
-      if @removeInvoices.get(model)?
-        @removeInvoices.remove(model)
-      else if model.isNew()
-          invoice =
-            invoice_number  : model.get('invoice_number')
-            fob_total_cost  : model.get('fob_total_cost')
-            total_units     : model.get('total_units')
-            user_id         : App.user.id
-          invoices.push(invoice)
-      else
-        editInvoices.push(model.id)
-    @newItems.each (model) =>
-      if @removeItems.get(model)?
-        @removeItems.remove(model)
-      else if model.isNew()
-        item =
-          code    : model.get('code')
-          brand   : model.get('brand')
-          season  : model.get('season')
-          entry   : model.get('entry')
-          user_id         : App.user.id
-        items.push(item)
-      else
-        editItems.push(model.id)
-    @removeInvoices.each (model) => removeInvoices.push(model)
-    @removeItems.each    (model) => removeItems.push(model)
-    attributes =
-      delivery        : delivery
-      invoices        : invoices
-      items           : items
-      editItems       : editItems
-      editInvoices    : editInvoices
-      removeItems     : removeItems
-      removeInvoices  : removeInvoices
     @updateFormHelpers()
-    @model.save attributes, success: =>
-      @model.set(attributes.delivery)
-      @formHelper.displayFlash("success", "Los datos se han actualizado con exito", 20000)
-      @$('#courier').focus()
-      @$('[class^="status-"]').removeClass().addClass("status-#{@model.get('status')}")
-      @$('.well h1').text("Editar Envío ##{@model.id} - #{@model.get('status')}")
-      @$('.well').removeClass().addClass('well ' + @model.get('status'))
-      if @model.get('status') == "CERRADO"
-        @closeDelivery()
+    @model.save delivery,
+      success: (data, status, response) =>
+        @$('.alert').remove()
+        @formHelper.displayFlash("success", "Los datos se han actualizado con exito", 20000)
+        @$('#courier').focus()
+        @$('[class^="status-"]').removeClass().addClass("status-#{@model.get('status')}")
+        status = @model.get('status')
+        @$('.well h1').html("Editar Envío ##{@model.id} - " + '<label class="label label-' + status + '">' + "#{status} </label>"  )
+        @$('.well').removeClass().addClass('well ' + @model.get('status'))
+        if @model.get('status') == "CERRADO"
+          @closeDelivery()
     this
+########################################################################################################################
 
+############################################# $ Reset Form $ ###########################################################
   resetForm: (e) ->
     e.preventDefault()
     @newItems.each (item) => @model.items.remove(item)
@@ -140,7 +167,9 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
     @newInvoices = new App.Collections.Invoices
     @render()
     this
+########################################################################################################################
 
+########################################## $ Previous Delivery $ #######################################################
   prevDelivery: ->
     index = @collectionHelper.getModelId(@model, App.deliveries)
     collectionSize = App.deliveries.length
@@ -148,7 +177,9 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
       App.vent.trigger "deliveries:show", App.deliveries.models[(collectionSize-1)]
     else
       App.vent.trigger "deliveries:show", App.deliveries.models[(index - 1)]
+########################################################################################################################
 
+############################################ $ Next Delivery $ #########################################################
   nextDelivery: ->
     index = @collectionHelper.getModelId(@model, App.deliveries)
     collectionSize = App.deliveries.length
@@ -156,21 +187,49 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
       App.vent.trigger "deliveries:show", App.deliveries.models[0]
     else
       App.vent.trigger "deliveries:show", App.deliveries.models[(index + 1)]
+########################################################################################################################
 
+############################################ $ Edit Delivery $ #########################################################
   editDelivery: (e) ->
     e.preventDefault() if e?
+    App.vent.trigger "invoice:show:unblock"
     @$('input').attr('disabled', false)
     @$('select').attr('disabled', false)
-    @$('#submit-save-delivery').show()
+    @$('#update-delivery').show()
     @$('#edit-delivery').hide()
     @$('.clear_date').show()
-    @$('.btn-mini').show()
+    @$('#new_invoice').show()
+########################################################################################################################
 
+############################################ $ Close Delivery $ ########################################################
   closeDelivery: (e) ->
     e.preventDefault() if e?
+    App.vent.trigger "invoice:show:block"
     @$('input').attr('disabled', true)
     @$('select').attr('disabled', true)
-    @$('#submit-save-delivery').hide()
+    @$('#update-delivery').hide()
     @$('#edit-delivery').show()
     @$('.clear_date').hide()
-    @$('table .btn-mini').hide()
+    @$('#new_invoice').hide()
+########################################################################################################################
+
+################################################### $ New Note $ #######################################################
+  newNote: (e) ->
+    e.preventDefault() if e?
+    @$('#add-new-note-modal').modal('toggle')
+    @$('#add-new-note-modal').on('shown', => @$('#new-note').focus() )
+    newNote = @$('#new-note').val()
+    if newNote == "" then return @
+    @$('#new-note').val('')
+    model = new App.Models.Note
+    attributes =
+      note:
+        content       : newNote
+        user_id       : App.user.id
+        table_name    : 'delivery'
+        table_name_id : @model.id
+    model.save attributes, success: =>
+      view = new App.Views.NoteShow(model: model)
+      App.pushToAppendedViews(view)
+      @$('#notes').append(view.render().el)
+    this

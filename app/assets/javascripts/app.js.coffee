@@ -88,12 +88,13 @@ window.App =
     @appendedViews = []
 
   closeView: (view) =>
-    view.unbind()
-    view.remove()
-    view.model.off() unless view.model == undefined
-    view.collection.off() unless view.collection == undefined
-    App.vent.off(null, null, view)
-    view.close() if view.hasOwnProperty('close')
+    if view?
+      view.unbind()
+      view.remove()
+      view.model.off() unless view.model == undefined
+      view.collection.off() unless view.collection == undefined
+      App.vent.off(null, null, view)
+      view.close() if view.hasOwnProperty('close')
 
   renderContentView: (view) =>
     $('#content-layout').append(view.render().el)

@@ -6,7 +6,19 @@ class DeliveriesController < ApplicationController
   end
 
   def show
-    respond_with Delivery.find(params["id"])
+    @delivery = Delivery.find(params["id"])
+    @invoices = @delivery.invoices
+    array = []
+    @invoices.each do |invoice|
+      aux = []
+      invoice.invoice_items.each do |invoice_item|
+        item = Item.find(invoice_item.item_id)
+        aux.push({id: item.id, code: item.code, brand: item.brand, entry: item.entry, season:item.season, quantity: invoice_item.quantity})
+      end
+      array.push({invoice: invoice, invoice_items: aux})
+    end
+    @result = {delivery: @delivery, invoices: array}
+    respond_with @result
   end
 
   def create
@@ -20,6 +32,8 @@ class DeliveriesController < ApplicationController
     end
     @new_invoices.each do |invoice|
       @model = Invoice.create(invoice["invoice"])
+      @model.delivery_id = @delivery.id
+      @model.save!
       invoice["old_items"].each do |old_item|
         InvoiceItem.create({invoice_id: @model.id, item_id: old_item["id"], quantity: old_item["quantity"]})
       end
@@ -32,33 +46,7 @@ class DeliveriesController < ApplicationController
   end
 
   def update
-    @invoices       = params["invoices"]
-    @items          = params["items"]
-    @edit_invoices  = params["editInvoices"]
-    @edit_items     = params["editItems"]
-    @remove_items   = params["removeItems"]
-    @remove_invoices= params["removeInvoices"]
-    @delivery       = Delivery.find(params["id"])
-    Delivery.update(params["id"],params["delivery"])
-    @invoices.each do |invoice|
-      invoice["delivery_id"] = @delivery["id"]
-      Invoice.create(invoice)
-    end
-    @items.each do |item|
-      @delivery.items.push Item.create(item)
-    end
-    @edit_invoices.each do |invoice_id|
-      Invoice.update(invoice_id, {delivery_id: @delivery.id})
-    end
-    @edit_items.each do |item_id|
-      @delivery.items.push Item.find(item_id)
-    end
-    @remove_invoices.each do |invoice|
-      Invoice.update(invoice["id"], {delivery_id: nil })
-    end
-    @remove_items.each do |item|
-      @delivery.items.delete Item.find(item["id"])
-    end
+    @delivery = Delivery.update(params["id"], params["delivery"])
     respond_with @delivery
   end
 end

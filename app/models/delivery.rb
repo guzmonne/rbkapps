@@ -21,4 +21,21 @@ class Delivery < ActiveRecord::Base
                   :user_id,
                   :exchange_rate
 
+  def next(id)
+    delivery = Delivery.order("id").where('id > ?', id).first()
+    if delivery.nil?
+      return Delivery.order("id").first()
+    else
+      return delivery
+    end
+  end
+
+  def previous(id)
+    delivery = Delivery.order("id DESC").where('id < ?', id).first()
+    if delivery.nil?
+      return Delivery.order("id DESC").first()
+    else
+      return delivery
+    end
+  end
 end

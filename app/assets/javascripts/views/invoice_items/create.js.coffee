@@ -1,6 +1,6 @@
 class App.Views.InvoiceItemCreate extends Backbone.View
   template: JST['invoice_items/create']
-  name: 'ItemTable'
+  name: 'InvoiceItemCreate'
   className: 'white-box'
 
   events:
@@ -13,14 +13,23 @@ class App.Views.InvoiceItemCreate extends Backbone.View
     'change #searched-item-code'               : 'displaySearchedItem'
     'click #add-searched-item'                 : 'addSearchedItem'
     'focus #searched-item-code'                : 'typeAheadItem'
+#######################################################################################################################
 
+################################################### $ Initialize $ ####################################################
   initialize: (options) ->
     @items = new App.Collections.Items
-    @currentItems = options.currentItems unless options == undefined
+    if options == undefined
+      @currentItems = new App.Collections.Items
+    else
+      @currentItems = options.currentItems
     @listenTo App.vent, 'remove:invoice_item:success', (model) =>
+      return if @items.length == 0
+      return unless @$('#searched-item-code').data('typeahead')?
       @items.add(model)
-      $('#searched-item-code').data('typeahead') source: => @items.pluck('code')
+      @$('#searched-item-code').data('typeahead').source = => @items.pluck('code')
+#######################################################################################################################
 
+###################################################### $ Render $ #####################################################
   render: ->
     $(@el).html(@template())
     this
@@ -50,6 +59,8 @@ class App.Views.InvoiceItemCreate extends Backbone.View
       @items.fetch success: =>
         @$('#searched-item-code').removeClass('loading')
         @$('#searched-item-code').typeahead source: =>
+          if @currentItems.length > 0
+            @currentItems.each (model) => @items.remove(model)
           @items.pluck("code")
     this
 ########################################################################################################################

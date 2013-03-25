@@ -19,35 +19,50 @@ class App.Views.InvoiceIndex extends Backbone.View
 
 ################################################# $ Initialize $ #######################################################
   initialize: ->
+    @listenTo App.vent, "minimize:invoice:success", (model) =>
+      @prependInvoice(model)
+    @listenTo App.vent, "remove:invoiceShow:success", (model) =>
+      @prependInvoice(model)
     @listenTo App.vent, "remove:createInvoice:success", ->
       @$('#new-invoice').show()
       @$('#invoice-form-row').hide()
     @listenTo App.vent, "invoice:create:success", (model) =>
-      oldItems     = []
-      newItems     = []
+      @$('#loading-row').show()
+      oldItems        = []
+      newItems        = []
+      model.set('user_id', App.user.id)
       model.invoice_items.each (item) ->
         if item.isNew()
           newItems.push(item.attributes)
         else
           array =
-            id      : item.id
+            item_id : item.id
             quantity: item.get('quantity')
           oldItems.push(array)
       object =
+        id          : model.id
         invoice     : model.attributes
         old_items   : oldItems
         new_items   : newItems
       invoice = new App.Models.Invoice
-      invoice.save object
-      @$('#new-invoice').show()
-      @$('#invoice-form-row').hide()
-      @appendInvoice(model)
+      invoice.save object,
+        success: (model, data) =>
+          invoice = new App.Models.Invoice
+          if data?
+            invoice.set(data)
+          else
+            invoice.set(model.get('invoice'))
+          @$('#new-invoice').show()
+          @$('#invoice-form-row').hide()
+          @prependInvoice(invoice)
+          @$('#loading-row').hide()
 ########################################################################################################################
 
 ################################################### $ Render $ #########################################################
   render: ->
     $(@el).html(@template()).find('#invoice-form-row').hide()
     App.invoices.each(@appendInvoice)
+    @$('#loading-row').hide()
     this
 ########################################################################################################################
 
@@ -56,6 +71,14 @@ class App.Views.InvoiceIndex extends Backbone.View
     view = new App.Views.Invoice(model: model)
     App.pushToAppendedViews(view)
     @$('#invoices').append(view.render().el)
+    this
+########################################################################################################################
+
+############################################# $ Append Invoice $ #######################################################
+  prependInvoice: (model) =>
+    view = new App.Views.Invoice(model: model)
+    App.pushToAppendedViews(view)
+    @$('#invoices').prepend(view.render().el)
     this
 ########################################################################################################################
 
@@ -152,4 +175,3 @@ class App.Views.InvoiceIndex extends Backbone.View
     @collection.sort()
     App.vent.trigger 'update:invoices:success'
     @collection.each(@appendInvoice)
-

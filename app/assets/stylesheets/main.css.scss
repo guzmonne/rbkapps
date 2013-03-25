@@ -223,3 +223,67 @@ body { padding-top: 60px; }
   margin-right: 10px;
 }
 
+.label-CERRADO{
+  background-color: #3a87ad;
+  font-size: 25px;
+  line-height: 20px;
+  padding: 6px 4px;
+  vertical-align: middle;
+  border-radius: 6px;
+}
+
+.label-PENDIENTE{
+  background-color: #be0000;
+  font-size: 25px;
+  line-height: 20px;
+  padding: 6px 4px;
+  vertical-align: middle;
+  border-radius: 6px;
+}
+
+.label-PROCESO{
+  background-color: #f89406;
+  font-size: 25px;
+  line-height: 20px;
+  padding: 6px 4px;
+  vertical-align: middle;
+  border-radius: 6px;
+}
+
+.label-ENTREGADO{
+  background-color: #468847;
+  font-size: 25px;
+  line-height: 20px;
+  padding: 6px 4px;
+  vertical-align: middle;
+  border-radius: 6px;
+}
+
+.modal-header{
+  background-color: #f5f5f5;
+  text-align: center;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 10px 10px 0px 0px;
+  border-radius: 10px 10px 0px 0px;
+
+}
+
+.note-box{
+  background-color: #f5f5f5;
+  margin-bottom: 6px;
+  padding: 8px;
+  border-radius: 8px;
+  border-color: #000000;
+  width: 96%;
+}
+
+.note-box p{
+  background-color: white;
+  padding: 6px;
+  border-radius: 6px;
+  width: 97%;
+}
+
+.note-box .span4{
+  min-height: 5px;
+}

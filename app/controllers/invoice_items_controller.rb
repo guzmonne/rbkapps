@@ -7,7 +7,7 @@ class InvoiceItemsController < ApplicationController
       @items = []
       @invoice_items.each do |invoice_item|
         item = Item.find(invoice_item.item_id)
-        @items.push({ code: item.code, brand: item.brand, season: item.season, entry: item.entry, quantity: invoice_item.quantity })
+        @items.push({ id: item.id, code: item.code, brand: item.brand, season: item.season, entry: item.entry, quantity: invoice_item.quantity })
       end
       respond_with @items
     end

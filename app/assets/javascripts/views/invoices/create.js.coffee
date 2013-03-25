@@ -6,18 +6,27 @@ class App.Views.CreateInvoice extends Backbone.View
   events:
     'click #save-invoice'         : 'saveInvoice'
     'click .toggle_form'          : 'toggleForm'
-    'click .close'                : 'removeView'
+    'click .close-invoice'        : 'removeView'
     'focus #search-invoice'       : 'typeAheadInvoice'
     'change #search-invoice'      : 'displaySearchedInvoice'
     'click #add-searched-invoice' : 'addSearchedInvoice'
+    'click .minimize-invoice'     : 'minimizeView'
 
-  initialize: ->
+  initialize: (options) ->
     @invoices = new App.Collections.Invoices
     @flip = 0
+    if options == undefined
+      @currentInvoices = new App.Collections.Invoices
+    else
+      if options.currentInvoices == undefined
+        @currentInvoices = new App.Collections.Invoices
+      else
+        @currentInvoices = options.currentInvoices
     @listenTo App.vent, "add:invoice_item:success", (invoice_item) =>
       @model.invoice_items.add(invoice_item)
       @$('.total_units').val((parseInt(@$('.total_units').val()) + parseInt(invoice_item.get('quantity'))))
     @listenTo App.vent, 'remove:invoice_item:success', (invoice_item) =>
+      @model.invoice_items.remove(invoice_item)
       @$('.total_units').val((parseInt(@$('.total_units').val()) - parseInt(invoice_item.get('quantity'))))
     this
 ########################################################################################################################
@@ -49,8 +58,15 @@ class App.Views.CreateInvoice extends Backbone.View
     e.preventDefault() if e?
     result = confirm("Esta seguro que desea eliminar esta factura?")
     if result
-      App.vent.trigger "remove:createInvoice:success"
+      App.vent.trigger "remove:createInvoice:success", @model
       @remove()
+########################################################################################################################
+
+################################################# $ Minimize View $ ####################################################
+  minimizeView: (e) ->
+    e.preventDefault() if e?
+    App.vent.trigger "remove:createInvoice:success", @model
+    @remove()
 ########################################################################################################################
 
 ################################################## $ Render Show $ ####################################################
@@ -61,7 +77,6 @@ class App.Views.CreateInvoice extends Backbone.View
     App.pushToAppendedViews(view)
     @$('.items').html(view.render().el)
     @$('.invoice_number').val(@model.get('invoice_number'))
-    @model.set('fob_total_cost', @model.get('fob_total_cost').split(' ')[1])
     @$('.fob_total_cost').val(@model.get('fob_total_cost'))
     @$('.total_units').val(@model.get('total_units'))
     @model.invoice_items.each(@renderInvoiceItem)
@@ -76,7 +91,7 @@ class App.Views.CreateInvoice extends Backbone.View
     this
 ########################################################################################################################
 
-################################################ $ Toggle Form $ ######################################################
+################################################# $ Toggle Form $ ######################################################
   toggleForm: (e) =>
     e.preventDefault() if e?
     @flip++
@@ -106,6 +121,8 @@ class App.Views.CreateInvoice extends Backbone.View
       @invoices.fetch success: =>
         $('#search-invoice').removeClass('loading')
         $('#search-invoice').typeahead source: =>
+          if @currentInvoices.length > 0
+            @currentInvoices.each (model) => @invoices.remove(model)
           _.map(@invoices.where({delivery_id: null}), (model)  -> return model.get('invoice_number'))
     this
 ########################################################################################################################
@@ -134,14 +151,23 @@ class App.Views.CreateInvoice extends Backbone.View
           @$('#items').append(view.render().el).find('#remove-invoice_item').remove()
 ########################################################################################################################
 
-############################################# $ Display Searched Item $ ################################################
-  hideSearchButton: ->
-    @$('.toggle_form').hide()
-########################################################################################################################
-
 ############################################## $ Add Searched Item $ ###################################################
   addSearchedInvoice: (e) ->
     e.preventDefault() if e?
     App.vent.trigger "invoice:create:success", @model
     App.closeView(this)
+########################################################################################################################
 
+############################################# $ Hide Search Button $ ###################################################
+  hideSearchButton: ->
+    @$('#search').hide()
+########################################################################################################################
+
+############################################## $ Hide Close Button $ ###################################################
+  hideCloseButton: ->
+    @$('.close-invoice').hide()
+########################################################################################################################
+
+############################################## $ Hide Close Button $ ###################################################
+  hideMinimizeButton: ->
+    @$('.minimize-invoice').hide()

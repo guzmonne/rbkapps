@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  has_many :invoice_items
+  has_many :invoice_items, :dependent => :destroy
   has_many :invoices, :through => :invoice_items
   attr_accessible :code,
                   :brand,

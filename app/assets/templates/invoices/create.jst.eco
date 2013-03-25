@@ -1,8 +1,11 @@
 <form class="form-inline">
-    <button class="close pull-right">&times;</button>
-    <button
-            class="btn btn-info btn-small toggle_form search_invoice pull-right"
-            style="margin-right: 30px;">
+    <button class="close close-invoice pull-right">&times;</button>
+    <button class="close minimize-invoice">
+        <i class="icon-minus close-box"></i>
+    </button>
+    <button class="btn btn-info btn-small toggle_form search_invoice pull-right"
+            id="search"
+            style="margin-right: 20px; margin-top: 3px;">
         <i class="icon-search icon-white"></i>
         Buscar
     </button>

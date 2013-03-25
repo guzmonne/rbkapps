@@ -22,6 +22,14 @@
             </tr>
             </thead>
             <tbody id="invoices">
+                <tr id="loading-row">
+                    <td colspan="5">
+                        <div class="progress progress-striped active progress-warning"
+                             style=" margin-bottom: 4px; margin-top: 2px;">
+                            <div class="bar" style="width: 100%;"></div>
+                        </div>
+                    </td>
+                </tr>
                 <tr id="invoice-form-row">
                     <td id="create-invoice" colspan="4"></td>
                 </tr>

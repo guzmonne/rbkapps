@@ -33,6 +33,7 @@ class App.Views.DeliveryCreate extends Backbone.View
       App.pushToAppendedViews(view)
       @$('#invoices').append(view.render().el)
       view.hideEditButton() unless model.isNew()
+      view.hideMinimizeButton()
       @$('#new_invoice').show()
       @model.invoices.add(model)
       @calculateCosts()
@@ -40,11 +41,14 @@ class App.Views.DeliveryCreate extends Backbone.View
       view = new App.Views.CreateInvoice(model: model)
       App.pushToAppendedViews(view)
       @$('#invoices').prepend(view.renderShow().el)
+      view.hideMinimizeButton()
       @model.invoices.remove(model)
       @$('#new_invoice').hide()
       @calculateCosts()
     @listenTo App.vent, "remove:createInvoice:success", =>
       @$('#new_invoice').show()
+    @listenTo App.vent, "remove:invoiceShow:success", (model) =>
+      @model.invoices.remove(model)
 ########################################################################################################################
 
 ################################################# $ Render $ ###########################################################
@@ -146,6 +150,9 @@ class App.Views.DeliveryCreate extends Backbone.View
             e.preventDefault()
             $('#cargo_cost').focus()
             break
+          when "new-note"
+            e.preventDefault()
+            @newNote()
           else
             e.preventDefault()
       when 9 # Tab
@@ -265,7 +272,6 @@ class App.Views.DeliveryCreate extends Backbone.View
       doc_courier_date  : $('#doc_courier_date').val()
       exchange_rate     : $('#exchange_rate').val()
       user_id           : App.user.id
-    console.log @model
     @model.invoices.each (invoice) =>
         if invoice.isNew()
           oldItems     = []
@@ -289,7 +295,7 @@ class App.Views.DeliveryCreate extends Backbone.View
       delivery      : delivery
       invoices      : oldInvoices
       new_invoices  : newInvoices
-    console.log attributes
+
     @updateFormHelpers()
     @model.save attributes, success: =>
       App.vent.trigger "delivery:create:success"
@@ -353,7 +359,7 @@ class App.Views.DeliveryCreate extends Backbone.View
     fob_total_costs            = @model.invoices.pluck('fob_total_cost')
     if fob_total_costs.length > 0
       for fob_total_cost in fob_total_costs
-        total_fob_cost = total_fob_cost + parseFloat(fob_total_cost.split(' ')[1])
+        total_fob_cost = total_fob_cost + parseFloat(fob_total_cost)
     total = total_cargo_cost_dollars + total_fob_cost
     @$('#total_cargo_cost').val         total_cargo_cost.toFixed(2)
     @$('#total_cargo_cost_dollars').val total_cargo_cost_dollars.toFixed(2)
@@ -365,9 +371,8 @@ class App.Views.DeliveryCreate extends Backbone.View
   newInvoice: (e) ->
     e.preventDefault() if e?
     model   = new App.Models.Invoice
-    view    = new App.Views.CreateInvoice(model: model)
+    view    = new App.Views.CreateInvoice(model: model, currentInvoices: @model.invoices)
     App.pushToAppendedViews(view)
     @$('#invoices').prepend(view.render().el)
+    view.hideMinimizeButton()
     @$('#new_invoice').hide()
-########################################################################################################################
-

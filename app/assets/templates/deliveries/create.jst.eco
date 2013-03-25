@@ -26,6 +26,7 @@
                 <option>MONO</option>
                 <option>DUA</option>
                 <option>LIBERADO</option>
+                <option>MARITIMO</option>
             </select>
         </div>
     </div>
@@ -33,7 +34,7 @@
     <div class="control-group" id="control-guide">
         <label class="control-label label-grey label label-inverse" for="guide">Guía:</label>
         <div class="controls">
-            <input type="text" id="guide" placeholder="Guía" class="hide dispatch MONO DUA LIBERADO">
+            <input type="text" id="guide" placeholder="Guía" class="hide dispatch MONO DUA LIBERADO MARITIMO">
             <input type="text" id="guide2" placeholder="Guía 2" class="hide dispatch DUA">
             <input type="text" id="guide3" placeholder="Guía 3" class="hide dispatch DUA">
         </div>
@@ -41,35 +42,35 @@
     <hr>
     <div class="control-group" id="control-cargo">
         <label class="control-label label-grey label label-inverse" for="cargo_cost">Gastos:</label>
-        <div class="form-inline hide dispatch MONO DUA LIBERADO pull-right er">
+        <div class="form-inline hide dispatch MONO DUA LIBERADO MARITIMO pull-right er">
             <label>Total Flete (USD)</label>
             <div class="input-prepend">
                 <span class="add-on">USD</span>
                 <input type="text" id="total_cargo_cost_dollars" class="input-small" value="0.00" readonly>
             </div>
         </div>
-        <div class="form-inline hide dispatch MONO DUA LIBERADO pull-right er cost">
+        <div class="form-inline hide dispatch MONO DUA LIBERADO pull-right MARITIMO er cost">
 
             <div class="input-prepend">
                 <span class="add-on">Tipo de Cambio</span>
                 <input type="text" id="exchange_rate" class="input-mini" value="0.00">
             </div>
         </div>
-        <div class="form-inline hide dispatch MONO DUA LIBERADO pull-right er">
+        <div class="form-inline hide dispatch MONO DUA LIBERADO MARITIMO pull-right er">
             <label>Total Flete</label>
             <div class="input-prepend">
                 <span class="add-on">$</span>
                 <input type="text" id="total_cargo_cost" class="input-small" value="0.00" readonly>
             </div>
         </div>
-        <div class="controls form-inline hide dispatch MONO DUA LIBERADO cost">
+        <div class="controls form-inline hide dispatch MONO DUA LIBERADO cost MARITIMO">
             <div class="input-prepend">
                 <span class="add-on">$</span>
                 <input type="text" id="cargo_cost" placeholder="Flete" class="span10">
             </div>
             <label>Flete</label>
         </div>
-        <div class="form-inline hide dispatch MONO DUA LIBERADO pull-right er">
+        <div class="form-inline hide dispatch MONO DUA MARITIMO LIBERADO pull-right er">
             <label>Total FOB</label>
             <div class="input-prepend">
                 <span class="add-on">USD</span>
@@ -91,7 +92,7 @@
             <label>Flete 3</label>
         </div>
         <br><br>
-        <div class="hide dispatch MONO DUA LIBERADO pull-right er er2">
+        <div class="hide dispatch MONO DUA LIBERADO MARITIMO pull-right er er2">
             <label style="font-weight: bold;">Total Envío</label>
             <div class="input-prepend">
                 <span class="add-on">USD</span>
@@ -218,7 +219,8 @@
             </div>
         </div>
     </div>
-<!--############################## Tabla de Facturas ##############################-->
+<!--###############################################################################-->
+</div>
     <div class="form-actions">
         <button id="submit-create-delivery" class="btn btn-primary btn-large">Crear Envío</button>
     </div>
@@ -271,63 +273,4 @@
         </div>
     </div>
 </form>
-        <!--############################## Nueva Factura ##############################-->
-<!-- Add new origin -->
-<form id="add-new-invoice-form" class="form-horizontal">
-    <div id="add-new-invoice-modal"
-         class="modal hide fade"
-         tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-header">
-            <h3>Agregar Factura</h3>
-        </div>
-        <div class="modal-body">
-            <div id="invoice-notice"></div>
-            <div class="control-group">
-                <label class="control-label" for="invoice_number">Numero de Factura:</label>
-                <div class="controls">
-                    <input type="text" id="invoice_number" placeholder="Numero de Factura">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="fob_total_cost">Total FOB:</label>
-                <div class="controls">
-                    <input type="text" id="fob_total_cost" placeholder="Total FOB">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="total_units">Total FOB:</label>
-                <div class="controls">
-                    <input type="text" id="total_units" placeholder="Total Unidades">
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button id="submit-new-invoice" class="btn btn-primary btn-block btn-large ">Aceptar</button>
-        </div>
-    </div>
-</form>
-<form id="search-invoice-form" class="form-horizontal">
-    <div id="search-invoice-modal"
-         class="modal hide fade"
-         tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-header">
-            <h3>Buscar Factura</h3>
-        </div>
-        <div class="modal-body">
-            <div id="search-invoice-notice"></div>
-            <div class="control-group" id="modal-control-search-invoice">
-                <label class="control-label" for="new-supplier">Bescar Factura:</label>
-                <div class="controls">
-                    <input type="text" id="search-invoice_number" placeholder="Número de Factura">
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button id="submit-search-invoice" class="btn btn-primary btn-block btn-large ">Buscar</button>
-        </div>
-    </div>
-</form>
+

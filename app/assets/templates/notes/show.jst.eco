@@ -1,0 +1,20 @@
+<button class="close close-note">&times;</button>
+<div class="row-fluid">
+    <p><%= @model.get('content') %></p>
+</div>
+<div class="row-fluid">
+    <div class="span4">
+        <label class="label  label-inverse">Autor:</label>
+        <label class="label"><%= @model.get('user') %></label>
+    </div>
+    <div class="span4">
+        <label class="label  label-inverse">Fecha:</label>
+        <label class="label"><%= @model.get('date') %></label>
+    </div>
+    <div class="span4">
+        <label class="label  label-inverse">Hora:</label>
+        <label class="label"><%= @model.get('time') %></label>
+    </div>
+</div>
+
+
