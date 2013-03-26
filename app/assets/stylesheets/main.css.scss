@@ -287,3 +287,37 @@ body { padding-top: 60px; }
 .note-box .span4{
   min-height: 5px;
 }
+
+[class^="courier-"],
+[class*=" courier-"] {
+  display: inline-block;
+  width: 156px;
+  height: 50px;
+  margin-top: 1px;
+  *margin-right: .3em;
+  line-height: 88px;
+  vertical-align: text-top;
+  background-image: url("/assets/courier.png");
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+}
+
+.courier-DHL {
+  background-position: 0px,      0;
+}
+
+.courier-FedEx {
+  background-position: -156px      0;
+}
+
+.courier-UPS {
+  background-position: -312px      0;
+}
+
+.courier-MARITIMO {
+  background-position: -468px      0;
+}
+
+.courier-empty {
+  background-position: -624px      0;
+}

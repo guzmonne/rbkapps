@@ -61,8 +61,11 @@ class App.Views.DeliveryCreate extends Backbone.View
 ########################################## $ Change Courier Icon $ #####################################################
   changeCourierIcon: (e) ->
     courier = @$('#courier').val()
-    if courier == "Seleccione una Empresa" then return $('#courier-logo')[0].src = "/assets/rails.png"
-    @$('#courier-logo')[0].src = "/assets/#{courier}.png"
+    #if courier == "Seleccione una Empresa" then return $('#courier-logo')[0].src = "/assets/rails.png"
+    #@$('#courier-logo')[0].src = "/assets/#{courier}.png"
+    if courier == "Seleccione una Empresa"
+      return @$('[class^="courier-"]').removeClass().addClass("courier-empty")
+    @$('[class^="courier-"]').removeClass().addClass("courier-#{courier}")
     this
 ########################################################################################################################
 
