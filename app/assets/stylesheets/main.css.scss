@@ -321,3 +321,24 @@ body { padding-top: 60px; }
 .courier-empty {
   background-position: -624px      0;
 }
+
+.label-status {
+  vertical-align: middle;
+  font-size: 22px;
+  padding: 8px;
+}
+
+.label-element {
+  font-size: 14px;
+  padding: 4px;
+}
+
+.p-element {
+  background-color: #f5f5f5;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.input-append .btn {
+  border-radius: 0 8px 8px 0;
+}

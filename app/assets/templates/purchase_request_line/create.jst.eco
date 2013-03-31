@@ -3,7 +3,7 @@
         <th>Descripcion</th>
         <th>
             Unidad
-            <button class="btn btn-mini btn-success" id="add-new-unit"><i class="icon-plus icon-white"></i></button>
+            <!--<button class="btn btn-mini btn-success" id="add-new-unit"><i class="icon-plus icon-white"></i></button>-->
         </th>
         <th>Cantidad</th>
         <th></th>
@@ -16,10 +16,22 @@
                 <input type="text" id="description" class="span12" placeholder="Descripcion">
             </td>
             <td class="span2">
-                <select id="unit" class="span12">
+                <div class="input-append dropdown">
+                    <input type="text" id="unit" class="span12" placeholder="Unidades">
+                    <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
+                        <i class="icon-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <li><a>Unidades</a></li>
+                        <li><a>Metros</a></li>
+                        <li><a>Litros</a></li>
+                        <li><a><i class="icon-plus"></i></a></li>
+                    </ul>
+                </div>
+                <!-- <select id="unit" class="span12">
                     <option>Unidades</option>
                     <option>Metros</option>
-                </select>
+                </select> -->
             </td>
             <td class="span2">
                 <input type="number" id="quantity" class="span12" placeholder="Cantidad" value="1">

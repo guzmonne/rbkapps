@@ -4,6 +4,12 @@ class App.Views.PurchaseRequestLineCreate extends Backbone.View
   className: 'table table-striped table-hover'
   name: 'CreatePurchaseRequestLine'
 
+  events:
+    'click a' : 'updateUnit'
+
   render: ->
     $(@el).html(@template())
     this
+
+  updateUnit: ->
+
