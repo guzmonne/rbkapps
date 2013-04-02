@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
                   :remember_token,
                   :team_id,
                   :admin,
-                  :comex
+                  :comex,
+                  :compras
 
   before_save do |user|
     user.email = email.downcase

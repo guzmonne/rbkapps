@@ -3,11 +3,9 @@ class App.Views.User extends Backbone.View
   tagName: 'tr'
   name: 'User'
 
-  events:
-    'click': 'show'
-
   initialize: ->
     @listenTo App.vent, 'update:users', => @remove()
+    console.log @model
 
   render: ->
     $(@el).html(@template(model: @model))
@@ -15,8 +13,6 @@ class App.Views.User extends Backbone.View
       @$(".admin").html('<i class="icon-ok"></i>')
     if @model.get('comex') == true
       @$(".comex").html('<i class="icon-ok"></i>')
-    this
-
-  show: ->
-    Backbone.history.navigate("users/show/#{@model.id}", true)
+    if @model.get('compras') == true
+      @$(".compras").html('<i class="icon-ok"></i>')
     this

@@ -3,7 +3,7 @@ class RemoveTeamIdFromPurchaseRequests < ActiveRecord::Migration
     remove_column :purchase_requests, :team_id
   end
   def down
-    remove_column :purchase_requests, :team_id, :integer
+    add_column :purchase_requests, :team_id, :integer
   end
 end
 

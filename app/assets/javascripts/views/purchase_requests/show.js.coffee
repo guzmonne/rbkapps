@@ -13,7 +13,12 @@ class App.Views.PurchaseRequestShow extends Backbone.View
 ############################################## $ Initialize $ ##########################################################
   initialize: ->
     @collectionHelper = new App.Mixins.Collections
-    @user = App.users.get(@model.get('user_id'))
+    @user     = App.users.get(@model.get('user_id'))
+    if @model.get('approver')?
+      @approver = App.users.get(@model.get('approver'))
+      @model.set('approved_by', @approver.get('name'))
+    else
+      @model.set('approved_by', "*** Sin Aprobar ***")
     @model.set('team', App.teams.getNameFromId(@user.get('team_id')))
 ########################################################################################################################
 
@@ -22,6 +27,8 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     $(@el).html(@template(model: @model))
     @$('.user').text(@user.get('name'))
     @$('#detail').html(@model.get('detail'))
+    if App.user.get('compras') == true
+      @$('#compras-row').show()
     this
 ########################################################################################################################
 

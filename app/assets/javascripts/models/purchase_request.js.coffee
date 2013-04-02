@@ -17,6 +17,7 @@ class App.Models.PurchaseRequest extends Backbone.Model
     use         : null
     state       : null
     detail      : null
+    approved_by : null
 
   saveModel: (attributes, options) ->
     $.ajax

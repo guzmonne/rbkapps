@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130402124307) do
+ActiveRecord::Schema.define(:version => 20130402175401) do
 
   create_table "deliveries", :force => true do |t|
     t.string   "courier"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20130402124307) do
     t.datetime "updated_at", :null => false
     t.string   "state"
     t.text     "detail"
+    t.integer  "approver"
   end
 
   create_table "teams", :force => true do |t|
@@ -124,6 +125,7 @@ ActiveRecord::Schema.define(:version => 20130402124307) do
     t.string   "remember_token"
     t.boolean  "admin",           :default => false
     t.boolean  "comex"
+    t.boolean  "compras"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

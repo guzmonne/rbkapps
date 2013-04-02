@@ -4,9 +4,6 @@
 <td><%= @model.get('cellphone') %></td>
 <td><%= @model.get('position') %></td>
 <td><%= App.teams.get(@model.get('team_id')).get('name') %></td>
-<td class="admin">
-
-</td>
-<td class="comex">
-
-</td>
+<td class="admin"></td>
+<td class="comex"></td>
+<td class="compras"></td>

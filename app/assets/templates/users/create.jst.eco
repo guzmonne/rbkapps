@@ -71,7 +71,12 @@
         </div>
         <div class="controls">
             <label class="checkbox">
-                <input type="checkbox" id="comex" value = true> COMEX?
+                <input type="checkbox" id="comex" value = true> comex?
+            </label>
+        </div>
+        <div class="controls">
+            <label class="checkbox">
+                <input type="checkbox" id="compras" value = true> compras?
             </label>
         </div>
     </div>

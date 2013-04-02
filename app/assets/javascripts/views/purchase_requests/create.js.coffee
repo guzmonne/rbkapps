@@ -53,9 +53,11 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
     @$('#submit-create-purchase-request').html('<i class="icon-load"></i>  Espere por favor...')
     team = App.teams.get(App.user.get('team_id'))
     if App.user.id == team.get('supervisor_id') or App.user.id == team.get('director_id')
-      state = "Aprobado"
+      state    = "Aprobado"
+      approver = App.user.id
     else
-      state = "Esperando Aprobación"
+      state    = "Esperando Aprobación"
+      approver = null
     purchaseRequest =
         user_id     : App.user.get('id')
         sector      : @$('#sector').val()
@@ -63,6 +65,7 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
         use         : @$('#use').val()
         detail      : @$('#detail').val()
         state       : state
+        approver    : approver
     console.log purchaseRequest
     @model.save purchaseRequest, success: =>
       App.purchaseRequests.add(@model)
