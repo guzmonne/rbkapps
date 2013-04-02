@@ -2,27 +2,30 @@ class App.Views.PurchaseRequestShow extends Backbone.View
   template: JST['purchase_request/show']
   className: 'span12'
   name: 'ShowPurchaseRequest'
+########################################################################################################################
 
+################################################ $ Events $ ############################################################
   events:
     'click #nav-prev-purchase-request': 'prevPurchaseRequest'
     'click #nav-next-purchase-request': 'nextPurchaseRequest'
+########################################################################################################################
 
+############################################## $ Initialize $ ##########################################################
   initialize: ->
     @collectionHelper = new App.Mixins.Collections
-    @model.set('team', App.teams.getNameFromId(@model.get('team_id')))
+    @user = App.users.get(@model.get('user_id'))
+    @model.set('team', App.teams.getNameFromId(@user.get('team_id')))
+########################################################################################################################
 
+################################################ $ Render $ ############################################################
   render: ->
     $(@el).html(@template(model: @model))
-    @model.lines.each(@renderLine)
-    user = App.users.get(@model.get('user_id'))
-    @$('.user').text(user.get('name'))
+    @$('.user').text(@user.get('name'))
+    @$('#detail').html(@model.get('detail'))
     this
+########################################################################################################################
 
-  renderLine: (line) =>
-    view = new App.Views.PurchaseRequestLineShow(model: line)
-    App.pushToAppendedViews(view)
-    @$('#purchase-request-lines').append(view.render().el).find('.btn-danger').addClass('hide')
-
+###################################### $ Previous Purchase Request $ ###################################################
   prevPurchaseRequest: ->
     index = @collectionHelper.getModelId(@model, App.purchaseRequests)
     collectionSize = App.purchaseRequests.length
@@ -30,7 +33,9 @@ class App.Views.PurchaseRequestShow extends Backbone.View
       App.vent.trigger "purchase_requests:show", App.purchaseRequests.models[(collectionSize-1)]
     else
       App.vent.trigger "purchase_requests:show", App.purchaseRequests.models[(index - 1)]
+########################################################################################################################
 
+######################################## $ Next Purchase Request $ #####################################################
   nextPurchaseRequest: ->
     index = @collectionHelper.getModelId(@model, App.purchaseRequests)
     collectionSize = App.purchaseRequests.length

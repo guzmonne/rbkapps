@@ -8,7 +8,7 @@
             Courier:
         </label>
         <div class="controls controls-row">
-            <select id="courier" class="select2 input-large">
+            <select id="courier" class="select2 input-xlarge">
                 <option value="empty">Seleccione una Empresa</option>
                 <option>DHL</option>
                 <option>FedEx</option>
@@ -23,7 +23,7 @@
     <div class="control-group" id="control-dispatch">
         <label class="control-label label-grey label label-inverse" for="dispatch">Trámite:</label>
         <div class="controls">
-            <select id="dispatch" class="select2 input-large">
+            <select id="dispatch" class="select2 input-xlarge">
                 <option value="empty">Seleccione una Opción</option>
                 <option>MONO</option>
                 <option>DUA</option>
@@ -119,7 +119,7 @@
     <div class="control-group" id="control-supplier">
         <label class="control-label label-grey label label-inverse" for="supplier">Proveedor:</label>
         <div class="controls">
-            <select id="supplier" class="select2 input-large">
+            <select id="supplier" class="select2 input-xlarge">
                 <option value="empty">Seleccione un Proveedor</option>
                 <% App.formHelpers.where({column: 'supplier'}).forEach (model) -> : %>
                     <option><%= model.get('value') %></option>
@@ -134,7 +134,7 @@
     <div class="control-group" id="control-origin">
         <label class="control-label label-grey label label-inverse" for="origin">Origen:</label>
         <div class="controls">
-            <select id="origin" class="select2 input-large">
+            <select id="origin" class="select2 input-xlarge">
                 <option value="empty">Lugar de Origen</option>
                 <% App.formHelpers.where({column: 'origin'}).forEach (model) -> : %>
                     <option><%= model.get('value') %></option>
@@ -181,7 +181,7 @@
             <div class="row-fluid">
                 <div class="span4">
                     <label>Estado:</label>
-                    <select id="status" class="select2 input-large">
+                    <select id="status" class="select2 input-xlarge">
                         <option>PENDIENTE</option>
                         <option>PROCESO</option>
                         <option>ENTREGADO</option>

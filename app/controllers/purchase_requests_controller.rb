@@ -4,10 +4,17 @@ class PurchaseRequestsController < ApplicationController
     @user_id = params["user_id"]
     @user = User.find(@user_id)
     @team = Team.find(@user.team_id)
+    @team_members = @team.team_members
     if @user.admin == true
       respond_with PurchaseRequest.all
     elsif @team.supervisor_id == @user.id
-      respond_with PurchaseRequest.find_all_by_team_id(@team.id)
+      array = []
+      PurchaseRequest.all.each do |p|
+        if @team_members.include? p.user_id
+          array.push(p)
+        end
+      end
+      respond_with array
     else
       respond_with PurchaseRequest.find_all_by_user_id(@user_id)
     end
@@ -18,14 +25,7 @@ class PurchaseRequestsController < ApplicationController
   end
 
   def create
-    @purchase_request = params["purchase_request"]
-    @purchase_request_lines = params["purchase_request_lines"]
-    @result = PurchaseRequest.create(params["purchase_request"])
-    @purchase_request_lines.each do |line|
-        line["purchase_request_id"] = @result["id"]
-        PurchaseRequestLine.create(line)
-    end
-    respond_with @result
+    respond_with PurchaseRequest.create(params["purchase_request"])
   end
 
   def update

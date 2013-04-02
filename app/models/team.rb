@@ -6,4 +6,13 @@ class Team < ActiveRecord::Base
                   :director_id
 
   validates :name, presence: {:message => "no puede quedar en blanco"}
+
+  def team_members
+    array = []
+    users = User.where("team_id = ?", self.id)
+    users.each do |u|
+      array.push(u.id)
+    end
+    return array
+  end
 end

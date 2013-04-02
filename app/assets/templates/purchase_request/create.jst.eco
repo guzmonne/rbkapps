@@ -4,61 +4,47 @@
 <form id="create-purchase-request">
     <div id="notice"></div>
     <div class="row-fluid">
-        <div class="span3">
-                <label class="control-label" for="sector">Sección</label>
-                <input type="text" id="sector" class="span12" placeholder="Sección">
-        </div>
-        <div class="span2">
-                <label class="control-label label label-inverse label-element" for="deliver_at">Necesario para</label>
-                <input type="text" id="deliver_at" class="input-medium datepicker" placeholder="Fecha"><br>
-        </div>
-        <div class="span4" style="width: 30%;">
-            <label class="control-label label label-inverse label-element" for="use">Uso del Material</label>
-            <input type="text" id="use" class="span12" placeholder="Uso del Material" ><br>
-        </div>
-        <div class="span3">
-                <label class="control-label label label-inverse label-element" for="team" style="margin-left: 7.5px;">Equipo</label>
-                <select id="team" class="span12 select2" style="width: 95%;">
-                    <option>Seleccione un Equipo de la Lista</option>
-                    <% App.teams.each (team) -> : %>
-                        <option data-id="<%= team.get('id') %>"><%= team.get('name') %></option>
-                    <% end %>
-                </select>
+        <div class="span12">
+            <label class="control-label label label-inverse label-element" for="use" style="margin-bottom: 11px; margin-left: 10px; vertical-align: middle; ">Compra de:</label>
+            <input type="text" id="use" class="span4" placeholder="Describa su pedido brevemente" >
+            <label class="control-label label label-inverse label-element" for="sector" style="margin-bottom: 11px; margin-left: 10px; vertical-align: middle; ">Sector:</label>
+            <div class="input-append dropdown">
+                <input type="text" id="sector" class="input-xlarge" placeholder="Seleccione un Equipo o un local">
+                <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
+                    <i class="icon-chevron-down"></i>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" id="sector-options">
+                    <li class="dropdown-submenu"><a>Locales</a>
+                        <ul class="dropdown-menu">
+                            <% App.formHelpers.where({column: 'location'}).forEach (model) -> : %>
+                            <li><a><%= model.get('value') %></a></li>
+                            <% end %>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu"><a>Equipos</a>
+                        <ul class="dropdown-menu">
+                            <% App.teams.forEach (model) -> : %>
+                            <li><a><%= model.get('name') %></a></li>
+                            <% end %>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--<input type="text" id="sector" class="span12" placeholder="Sección">-->
+            <label class="control-label label label-inverse label-element" for="deliver_at" style="margin-bottom: 11px; margin-left: 10px; vertical-align: middle; ">Fecha de Entrega:</label>
+            <input type="text" id="deliver_at" class="input-medium datepicker" placeholder="Fecha">
         </div>
     </div>
     <div class="row-fluid">
-        <div class="span12" id="purchase-request-lines"></div>
+        <div class="span12 note-box">
+            <textarea id="detail" placeholder="Escriba el detalle de su compra aqui" class="span12" rows="16"></textarea>
+        </div>
     </div>
     <div class="row-fluid">
         <div class="span12">
             <div class="form-actions">
                 <button id="submit-create-purchase-request" class="btn btn-primary btn-large">Enviar</button>
-                <button id="clear-form" class="btn btn-primary btn-large btn-inverse">Cancelar</button>
             </div>
-        </div>
-    </div>
-</form>
-<!-- Add new unit Form Modal -->
-<form id="add-new-unit-form" class="form-horizontal">
-    <div id="add-new-unit-modal"
-         class="modal hide fade"
-         tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-header">
-            <h3>Agregar Unidad</h3>
-        </div>
-        <div class="modal-body">
-            <div id="unit-notice"></div>
-            <div class="control-group" id="control-unit">
-                <label class="control-label" for="new-unit">Nueva Unidad</label>
-                <div class="controls">
-                    <input type="text" id="new-unit" placeholder="Unidad">
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button id="submit-new-unit" class="btn btn-primary btn-block btn-large ">Aceptar</button>
         </div>
     </div>
 </form>

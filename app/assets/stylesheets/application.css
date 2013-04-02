@@ -13,5 +13,6 @@
  *= require bootstrap-responsive
  *= require select2
  *= require datepicker
+ *= require bootstrap-wysihtml5
  *= require_tree .
 */

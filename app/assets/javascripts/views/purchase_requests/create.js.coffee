@@ -5,27 +5,42 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
 
   events:
     'click #submit-create-purchase-request'     : 'createPurchaseRequest'
-    'click #add-new-line'                       : 'addNewLine'
-    'click #add-new-unit'                       : 'addNewUnit'
-    'submit #add-new-unit-form'                 : 'addNewUnit'
+    'click #sector-options li a'                : 'selectSector'
+    'focus #detail'                             : 'showWYSIHTML5'
+    'focus #sector'                             : 'typeAheadSector'
     'keydown :input'                            : 'keyHelper'
 ########################################################################################################################
 
 ############################################## $ Initialize $ ##########################################################
   initialize: ->
+    @sector = []
     @formHelper = new App.Mixins.Form
-    @listenTo App.vent, 'removePurchaseRequestLine:success', @removeModel
+    @shown = 0
+    App.formHelpers.where({column: 'location'}).forEach (e) => @sector.push e.get('value')
+    App.teams.each (e) => @sector.push e.get('name')
 ########################################################################################################################
 
 ################################################ $ Render $ ############################################################
   render: ->
-    view = new App.Views.PurchaseRequestLineCreate
-    App.pushToAppendedViews(view)
-    $(@el).html(@template()).find('#purchase-request-lines').html(view.render().el)
-    @$('.select2').select2({width: 'copy'})
+    $(@el).html(@template())
     @$('.datepicker').datepicker({format: 'yyyy-mm-dd'}).on 'changeDate', (e) =>
       @$(e.target).datepicker('hide')
       @$('#use').focus()
+    this
+########################################################################################################################
+
+############################################ $ Type Ahead Sector $ #####################################################
+  typeAheadSector: ->
+    @$('#sector').typeahead source: =>
+      @sector
+    this
+########################################################################################################################
+
+######################################## $ Create Purchase Request $ ###################################################
+  showWYSIHTML5: ->
+    return if @shown == 1
+    @$('#detail').wysihtml5()
+    @shown = 1
     this
 ########################################################################################################################
 
@@ -34,26 +49,22 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
     e.preventDefault()
     return if @validate()
     @formHelper.displayFlash("info", "Espere por favor...", 2000)
-    $('#submit-create-purchase-request').attr('disabled', true)
-    $('#submit-create-purchase-request').html('<i class="icon-load"></i>  Espere por favor...')
-    @lines = []
-    @model.lines.each (model) =>
-      line =
-          description: model.get('description')
-          unit:        model.get('unit')
-          quantity:    model.get('quantity')
-      @lines.push(line)
+    @$('#submit-create-purchase-request').attr('disabled', true)
+    @$('#submit-create-purchase-request').html('<i class="icon-load"></i>  Espere por favor...')
+    team = App.teams.get(App.user.get('team_id'))
+    if App.user.id == team.get('supervisor_id') or App.user.id == team.get('director_id')
+      state = "Aprobado"
+    else
+      state = "Esperando Aprobación"
     purchaseRequest =
-        user_id:    App.user.get('id')
-        sector:     $('#sector').val()
-        deliver_at: $('#deliver_at').val()
-        use:        $('#use').val()
-        team_id:    $('#team').find('option:selected').data('id')
-        state:      'Esperando Aprovación'
-    attributes =
-      purchase_request: purchaseRequest
-      purchase_request_lines: @lines
-    @model.save attributes, success: =>
+        user_id     : App.user.get('id')
+        sector      : @$('#sector').val()
+        deliver_at  : @$('#deliver_at').val()
+        use         : @$('#use').val()
+        detail      : @$('#detail').val()
+        state       : state
+    console.log purchaseRequest
+    @model.save purchaseRequest, success: =>
       App.purchaseRequests.add(@model)
       Backbone.history.navigate("purchase_request/show/#{@model.id}", trigger = true)
 ########################################################################################################################
@@ -61,81 +72,41 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
 ############################################# $ Handle Success $ #######################################################
   handleSuccess: (data) =>
     @formHelper.cleanForm('#create-purchase-request')
-    @model.lines.each((model) => @saveModel())
 ########################################################################################################################
 
-############################################## $ Save Model $ ##########################################################
-  saveModel: (model) =>
-    model.set('purchase_request_id', @model.get('id'))
-    model.save()
-    @model.lines.remove(model)
-    return
-########################################################################################################################
-
-############################################# $ Add New Line $ #########################################################
-  addNewLine: (e) ->
-    e.preventDefault()
-    model = new App.Models.PurchaseRequestLine()
-    attributes =
-      description: $('#description').val()
-      unit: $('#unit').val()
-      quantity: $('#quantity').val()
-    model.set(attributes)
-    showView = new App.Views.PurchaseRequestLineShow(model: model)
-    App.pushToAppendedViews(showView)
-    @formHelper.cleanForm('#add-new-line-form')
-    @$('tbody').append(showView.render().el)
-    #$('#purchase-request-form-row').after(showView.render().el)
-    $('#description').focus()
-    @model.lines.add(model)
-########################################################################################################################
-
-############################################ $ Remove Model $ ##########################################################
-  removeModel: (model) ->
-    @model.lines.remove(model)
-########################################################################################################################
-
-########################################### $ Add New Unit $ ###########################################################
-  addNewUnit: (e) ->
-    e.preventDefault()
-    $('#add-new-unit-modal').modal('toggle')
-    newUnit = $('#new-unit').val()
-    if newUnit == "" then return @
-    $('#new-unit').val('')
-    $('#unit').prepend("<option>#{newUnit}</option>")
-    $('#unit').val(newUnit)
+############################################ $ Validate Sector$ ########################################################
+  validateSector: ->
+    console.log "Validate Sector"
+    if @sector.indexOf('Sam') > -1
+      @$("label[for='sector']").removeClass('label-important').addClass('label-inverse')
+    else
+      @$("label[for='sector']").removeClass('label-inverse').addClass('label-important')
+      @formHelper.displayFlash('error', 'Debe seleccionar un sector de la lista', 10000)
     this
 ########################################################################################################################
 
 ############################################# $ Validate $ #############################################################
   validate: ->
     @removeHighlight()
+    @$("label[for='sector']").removeClass('label-important').addClass('label-inverse')
     alert = 0
-    if $('#team').val() == "Seleccione un Equipo de la Lista"
-      @highlightError('team')
-      @formHelper.displayFlash('error', 'Seleccione un equipo de la lista', 10000)
+    unless @sector.indexOf(@$('#sector').val()) > -1
+      @highlightError('sector', 'Debe seleccionar un elemento de la lista.')
       alert++
-    if $('#sector').val() == ''
-      @highlightError('sector')
-      @formHelper.displayFlash('error', 'El campo "Sector" no puede quedar vacío', 10000)
+    if @$('#deliver_at').val() == ''
+      @highlightError('deliver_at', 'Debe seleccionar una fecha de entrega')
       alert++
-    if $('#deliver_at').val() == ''
-      @highlightError('deliver_at')
-      @formHelper.displayFlash('error', 'El campo "Necesario para" no puede quedar vacío', 10000)
-      alert++
-    if $('#use').val() == ''
-      @highlightError('use')
-      @formHelper.displayFlash('error', 'El campo "Uso del Material" no puede quedar vacío', 10000)
-      alert++
-    if @model.lines.length == 0
-      @formHelper.displayFlash('error', 'Debe ingresar al menos un elemento en la solicitud', 10000)
+    if @$('#use').val() == ''
+      @highlightError('use', 'El campo "Compra de" no puede quedar vacío')
       alert++
     if alert > 0 then return true else return false
 ########################################################################################################################
 
 ########################################## $ Higlight Error $ ##########################################################
-  highlightError: (id) ->
-    @$('#' + id).parent().addClass('control-group error').find('label').removeClass('label-inverse').addClass('label-important').css('color', '#FFFFFF')
+  highlightError: (id, text) ->
+    @$("label[for='#{id}']").removeClass('label-inverse').addClass('label-important')
+    @formHelper.displayFlash('error', text, 10000)
+    @$('#' + id).focus()
     this
 ########################################################################################################################
 
@@ -149,7 +120,6 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
 
 ############################################ $ Key Helper $ ############################################################
   keyHelper: (e) ->
-    console.log e
     switch  e.keyCode
       when 13
         switch e.currentTarget.id
@@ -191,3 +161,10 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
         break
     this
 ########################################################################################################################
+
+############################################## $ Select Sector $ #######################################################
+  selectSector: (e) ->
+    value =  e.currentTarget.text
+    return if value == 'Locales' or value == 'Equipos'
+    e.preventDefault if e?
+    @$('#sector').val(value)

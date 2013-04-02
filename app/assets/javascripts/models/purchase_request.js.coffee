@@ -10,12 +10,13 @@ class App.Models.PurchaseRequest extends Backbone.Model
     @lines = new App.Collections.PurchaseRequestLines([], {purchase_request_id: @id})
 
   defaults: ->
-    id: null
-    user_id: null
-    deliver_at: null
-    sector:  null
-    use: null
-    state: null
+    id          : null
+    user_id     : null
+    deliver_at  : null
+    sector      : null
+    use         : null
+    state       : null
+    detail      : null
 
   saveModel: (attributes, options) ->
     $.ajax

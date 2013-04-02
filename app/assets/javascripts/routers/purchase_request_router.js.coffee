@@ -22,7 +22,16 @@ class App.Routers.PurchaseRequest extends Backbone.Router
     App.setAndRenderContentViews([purchaseRequestView])
     this
 
-  show: (id) =>
+  show: (id) ->
+    view = new App.Views.Loading()
+    App.setAndRenderContentViews([view])
+    model = new App.Models.PurchaseRequest
+    model.id = id
+    model.fetch success: =>
+      view = new App.Views.PurchaseRequestShow(model: model)
+      App.setAndRenderContentViews([view])
+
+  old_show: (id) =>
     if App.purchaseRequests.length == 0
       App.purchaseRequests.fetch
         data:
