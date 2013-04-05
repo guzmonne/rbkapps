@@ -4,7 +4,7 @@ class App.Views.UsersIndex extends Backbone.View
   name: 'IndexUsers'
 
   events:
-    'click #fetch-users'  : 'fetchDeliveries'
+    'click #fetch-users'  : 'fetchUsers'
 
   render: ->
     $(@el).html(@template())
@@ -17,7 +17,7 @@ class App.Views.UsersIndex extends Backbone.View
     @$('#users').append(view.render().el)
     this
 
-  fetchDeliveries: (e) ->
+  fetchUsers: (e) ->
     e.preventDefault()
     App.vent.trigger 'update:users'
     @$('#fetch-users').html('<i class="icon-load"></i>  Actualizando').addClass('loading')

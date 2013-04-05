@@ -177,8 +177,19 @@ class App.Views.DeliveryIndex extends Backbone.View
     $('#search-column').removeClass('btn-success').addClass('btn-warning')
     @lastSearch.push attributes.column
     object = {}
-    object[attributes.column] = attributes.data
-    array = App.deliveries.where(object)
+    array = []
+    if attributes.column == 'guide'
+      object2 = {}
+      object3 = {}
+      object['guide'] = attributes.data
+      object2['guide2'] = attributes.data
+      object3['guide3'] = attributes.data
+      array.push(App.deliveries.where(object))
+      array.push(App.deliveries.where(object2))
+      array.push(App.deliveries.where(object3))
+    else
+      object[attributes.column] = attributes.data
+      array = App.deliveries.where(object)
     for model in array
       @searchCollection.add(model)
     @collection = @searchCollection
@@ -205,10 +216,19 @@ class App.Views.DeliveryIndex extends Backbone.View
 
   searchValues: ->
     array = []
-    App.deliveries.pluckDistinct($('#search-column').data('column'))
-    for element in App.deliveries.pluckDistinct($('#search-column').data('column'))
-      array.push element if element?
-    return array
+    column = @$('#search-column').data('column')
+    if column == 'guide'
+      for element in App.deliveries.pluckDistinct('guide')
+        array.push element if element?
+      for element in App.deliveries.pluckDistinct('guide2')
+        array.push element if element?
+      for element in App.deliveries.pluckDistinct('guide3')
+        array.push element if element?
+      return array
+    else
+      for element in App.deliveries.pluckDistinct(column)
+        array.push element if element?
+      return array
 
 
 

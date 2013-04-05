@@ -11,3 +11,10 @@ class App.Models.Item extends Backbone.Model
     brand: null
     season: null
     entry: null
+
+  destroy: ->
+    $.ajax
+      url: "/api/items/#{@id}"
+      data: {id: @id}
+      type: 'DELETE'
+      dataType: 'json'

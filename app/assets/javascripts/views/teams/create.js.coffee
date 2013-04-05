@@ -4,8 +4,12 @@ class App.Views.TeamCreate extends Backbone.View
   className: 'span12'
 
   events:
-    'click #submit-create-team': 'createTeam'
-    'click #clear-form': 'cleanForm'
+    'submit #create-team'             : 'createTeam'
+    'click #submit-create-team'       : 'createTeam'
+    'click #clear-form'               : 'cleanForm'
+    'click #create-new-cost_center'   : 'createCostCenter'
+    'click #cancel-cost_center'       : 'createCostCenter'
+    'click #save-cost_center'         : 'saveCostCenter'
 
   initialize: ->
     @model = new App.Models.Team()
@@ -15,20 +19,35 @@ class App.Views.TeamCreate extends Backbone.View
     $(@el).html(@template(team: @model))
     this
 
+  createCostCenter: (e) ->
+    e.preventDefault() if e?
+    @$('.create-cost_center').toggle()
+    @$('#new-cost_center').focus()
+    @$('#cost_center').focus()
+
+  saveCostCenter: (e) ->
+    e.preventDefault()
+    model = new App.Models.FormHelper()
+    attributes =
+      column  : 'cost_center'
+      value   : @$('#new-cost_center').val()
+    model.save attributes, success: =>
+      @formHelper.displayFlash('info', 'El Centro de Costos se ha creado con exito', 1000)
+      App.formHelpers.add(model)
+      @createCostCenter()
+      @$('#cost_center').append("<option>#{model.get('value')}</option>").val(model.get('value'))
+      @$('#new-cost_center').val('')
+    this
+
   createTeam: (e) ->
     e.preventDefault()
     @formHelper.removeValidations()
-    if $('#supervisor').val() == "Seleccionar Supervisor"
-      $('#control-supervisor').addClass('error')
-      return @formHelper.displayFlash('error', 'Seleccione un Supervisor')
-    if $('#director').val() == "Seleccionar Director"
-      $('#control-director').addClass('error')
-      return @formHelper.displayFlash('error', 'Seleccione un Director')
     attributes =
       team:
         name: $('#name').val()
-        supervisor_id: $('#supervisor').find('option:selected').data('id')
-        director_id: $('#director').find('option:selected').data('id')
+        supervisor_id : @$('#supervisor').find('option:selected').data('id')
+        director_id   : @$('#director').find('option:selected').data('id')
+        cost_center   : @$('#cost_center').val()
     @model.save(attributes, {success: @handleSuccess, error: @handleError})
 
   handleSuccess: (data, status, response) =>

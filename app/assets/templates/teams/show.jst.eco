@@ -1,12 +1,12 @@
 <div class="well">
-    <h1>Crear Nuevo Equipo</h1>
+    <h1>Editar Equipo - <%= @team.get('name') %></h1>
 </div>
 <form id="create-team" class="form-horizontal">
     <div id="notice"></div>
     <div class="control-group" id="control-name">
         <label class="control-label" for="name">Nombre</label>
         <div class="controls">
-            <input type="text" id="name" placeholder="Nombre">
+            <input type="text" id="name" placeholder="Nombre" value="<%= @team.get('name') %>">
         </div>
     </div>
     <div class="control-group" id="control-supervisor">
@@ -59,7 +59,9 @@
         </div>
     </div>
     <div class="form-actions">
-        <button id="submit-create-team" class="btn btn-primary btn-large">Crear Equipo</button>
-        <button id="clear-form" class="btn btn-primary btn-large btn-inverse">Cancelar</button>
+        <button id="update-team" class="btn btn-success btn-large">
+            <i class="icon-pencil icon-white"></i>
+            Actualizar Datos
+        </button>
     </div>
 </form>

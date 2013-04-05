@@ -8,3 +8,6 @@ class App.Collections.Teams extends Backbone.Collection
       if model.id == id
         name =  model.get('name')
     return name
+
+  comparator: (model) ->
+    return model.get('name')

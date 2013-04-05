@@ -5,7 +5,6 @@ class App.Views.User extends Backbone.View
 
   initialize: ->
     @listenTo App.vent, 'update:users', => @remove()
-    console.log @model
 
   render: ->
     $(@el).html(@template(model: @model))

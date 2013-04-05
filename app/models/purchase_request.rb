@@ -8,7 +8,8 @@ class PurchaseRequest < ActiveRecord::Base
                   :use,
                   :state,
                   :detail,
-                  :approver
+                  :approver,
+                  :cost_center
 
   validates :user_id, :presence => {:message => "el pedido de be pertenecer a un usuario"}
   validates :deliver_at, :presence => {:message => "debe aclarar una fecha de entrega"}

@@ -20,3 +20,6 @@ class App.Collections.FormHelpers extends Backbone.Collection
     for model in collection
       return true if model.get('value') == object[key]
     return false
+
+  comparator: (model) ->
+    return model.get('value')

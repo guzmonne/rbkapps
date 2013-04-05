@@ -3,11 +3,16 @@
 <% if @model.get('status') == "ENTREGADO" then statusClass = "success"  %>
 <% if @model.get('status') == "CERRADO" then statusClass = "info"  %>
 <td><%= @model.id %></td>
-<td><%= @model.get('guide') %></td>
+<td>
+    <p><%= @model.get('guide') %></p>
+    <p><%= @model.get('guide2') %></p>
+    <p><%= @model.get('guide3') %></p>
+</td>
 <td><%= @model.get('origin') %></td>
 <td><%= @model.get('supplier') %></td>
 <td><%= @model.get('dispatch') %></td>
 <td><p class="label label-<%= statusClass %>"><%= @model.get('status') %></p></td>
+<td><%= @model.get('invoice_delivery_date') %></td>
 <td><%= @model.get('origin_date') %></td>
 <td><%= @model.get('arrival_date') %></td>
 <td><%= @model.get('delivery_date') %></td>

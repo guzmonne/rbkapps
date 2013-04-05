@@ -3,7 +3,8 @@ class Team < ActiveRecord::Base
 
   attr_accessible :name,
                   :supervisor_id,
-                  :director_id
+                  :director_id,
+                  :cost_center
 
   validates :name, presence: {:message => "no puede quedar en blanco"}
 

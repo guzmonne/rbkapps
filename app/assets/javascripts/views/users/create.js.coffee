@@ -20,9 +20,6 @@ class App.Views.UserCreate extends Backbone.View
   createUser: (e) ->
     e.preventDefault()
     @formHelper.removeValidations()
-    if $('#team').val() == "Seleccione un Equipo"
-      $('#control-team_id').addClass('error')
-      return @formHelper.displayFlash('error', 'Seleccione un equipo', 10000)
     if @$('#admin').attr("checked") then admin = true else admin = false
     if @$('#comex').attr("checked") then comex = true else comex = false
     if @$('#compras').attr("checked") then compras = true else compras = false

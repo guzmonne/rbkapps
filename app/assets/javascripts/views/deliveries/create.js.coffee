@@ -274,6 +274,7 @@ class App.Views.DeliveryCreate extends Backbone.View
       status            : $('#status').val()
       doc_courier_date  : $('#doc_courier_date').val()
       exchange_rate     : $('#exchange_rate').val()
+      invoice_delivery_date : $('#invoice_delivery_date').val()
       user_id           : App.user.id
     @model.invoices.each (invoice) =>
         if invoice.isNew()

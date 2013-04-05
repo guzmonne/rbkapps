@@ -8,7 +8,9 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
     'click #sector-options li a'                : 'selectSector'
     'focus #detail'                             : 'showWYSIHTML5'
     'focus #sector'                             : 'typeAheadSector'
-    'keydown :input'                            : 'keyHelper'
+    'keydown #sector'                           : 'keyHelperDown'
+    'keydown #use'                              : 'keyHelperDown'
+    'keydown #deliver_at'                       : 'keyHelperUp'
 ########################################################################################################################
 
 ############################################## $ Initialize $ ##########################################################
@@ -52,6 +54,7 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
     @$('#submit-create-purchase-request').attr('disabled', true)
     @$('#submit-create-purchase-request').html('<i class="icon-load"></i>  Espere por favor...')
     team = App.teams.get(App.user.get('team_id'))
+    cost_center = team.get('cost_center')
     if App.user.id == team.get('supervisor_id') or App.user.id == team.get('director_id')
       state    = "Aprobado"
       approver = App.user.id
@@ -66,7 +69,7 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
         detail      : @$('#detail').val()
         state       : state
         approver    : approver
-    console.log purchaseRequest
+        cost_center : cost_center
     @model.save purchaseRequest, success: =>
       App.purchaseRequests.add(@model)
       Backbone.history.navigate("purchase_request/show/#{@model.id}", trigger = true)
@@ -122,7 +125,7 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
 ########################################################################################################################
 
 ############################################ $ Key Helper $ ############################################################
-  keyHelper: (e) ->
+  keyHelperDown: (e) ->
     switch  e.keyCode
       when 13
         switch e.currentTarget.id
@@ -132,36 +135,23 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
             break
           when 'deliver_at'
             e.preventDefault()
-            @$('#use').focus()
+            @$('#detail').focus()
             @$('#deliver_at').datepicker('hide')
             break
           when 'use'
             e.preventDefault()
-            @$('#team').focus()
-            break
-          when 'team'
-            e.preventDefault()
-            @$('#description').focus()
-            break
-        switch e.currentTarget.className
-          when 'select2-focusser select2-offscreen'
-            e.preventDefault()
-            @$('#description').focus()
+            @$('#sector').focus()
             break
         break
       when 9
         switch e.currentTarget.id
           when 'deliver_at'
             e.preventDefault()
-            @$('#use').focus()
+            @$('#detail').focus()
             @$('#deliver_at').datepicker('hide')
             break
-        switch e.currentTarget.className
-          when 'select2-focusser select2-offscreen'
-            e.preventDefault()
-            @$('#description').focus()
-            break
         break
+    console.log e.currentTarget.id
     this
 ########################################################################################################################
 
@@ -171,3 +161,14 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
     return if value == 'Locales' or value == 'Equipos'
     e.preventDefault if e?
     @$('#sector').val(value)
+    @$('#deliver_at').focus()
+########################################################################################################################
+
+############################################## $ Key Helper Up $ #######################################################
+  keyHelperUp: (e) ->
+    e.preventDefault()
+    console.log e.currentTarget.id
+    if e.currentTarget.id == "deliver_at"
+      @$('#deliver_at').val('')
+    #@$('#deliver_at').datepicker('show')
+    this

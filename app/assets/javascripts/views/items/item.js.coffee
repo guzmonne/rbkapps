@@ -19,4 +19,5 @@ class App.Views.Item extends Backbone.View
     result = confirm("Esta seguro que desea eliminar este artículo")
     if result
       App.vent.trigger 'remove:item:success', @model
+      @model.destroy()
       @remove()

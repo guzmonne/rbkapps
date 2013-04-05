@@ -6,6 +6,9 @@
       <w>actualizar</w>
       <w>agregar</w>
       <w>approver</w>
+      <w>aprobación</w>
+      <w>aprobado</w>
+      <w>aprobar</w>
       <w>aqui</w>
       <w>artículo</w>
       <w>artículos</w>
@@ -18,11 +21,15 @@
       <w>cantidad</w>
       <w>categoría</w>
       <w>celular</w>
+      <w>centro</w>
       <w>cerrar</w>
       <w>codigo</w>
       <w>comex</w>
+      <w>completado</w>
       <w>compra</w>
       <w>compras</w>
+      <w>costos</w>
+      <w>cotizando</w>
       <w>creado</w>
       <w>datos</w>
       <w>debe</w>
@@ -81,6 +88,7 @@
       <w>quedar</w>
       <w>rbkapps</w>
       <w>rbklogo</w>
+      <w>rechazado</w>
       <w>repetir</w>
       <w>reporte</w>
       <w>reportes</w>

@@ -18,6 +18,15 @@ class App.Models.User extends Backbone.Model
     remember_token: null
     admin: false
 
+  isSupervisor: ->
+    team = App.teams.get(@get("team_id"))
+    if @id == team.get("supervisor_id") or @id == team.get("director_id")
+      return true
+    else
+      return false
+
+
+
   changePasword: (credentials) ->
     attributes =
       user:

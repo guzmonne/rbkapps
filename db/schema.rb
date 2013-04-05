@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130402175401) do
+ActiveRecord::Schema.define(:version => 20130404204439) do
 
   create_table "deliveries", :force => true do |t|
     t.string   "courier"
@@ -96,11 +96,12 @@ ActiveRecord::Schema.define(:version => 20130402175401) do
     t.string   "sector"
     t.date     "deliver_at"
     t.string   "use"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "state"
     t.text     "detail"
     t.integer  "approver"
+    t.string   "cost_center"
   end
 
   create_table "teams", :force => true do |t|
@@ -109,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20130402175401) do
     t.integer  "director_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "cost_center"
   end
 
   create_table "users", :force => true do |t|

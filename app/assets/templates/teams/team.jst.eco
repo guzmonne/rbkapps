@@ -1,3 +1,5 @@
 <td><%= @model.get('name') %></td>
 <td><%= @model.get('supervisor') %></td>
 <td><%= @model.get('director') %></td>
+<td><%= @model.get('cost_center') %></td>
+

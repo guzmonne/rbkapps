@@ -142,6 +142,7 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
       status            : $('#status').val()
       doc_courier_date  : $('#doc_courier_date').val()
       exchange_rate     : $('#exchange_rate').val()
+      invoice_delivery_date : $('#invoice_delivery_date').val()
       user_id           : App.user.id
     @updateFormHelpers()
     @model.save delivery,

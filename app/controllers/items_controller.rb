@@ -21,4 +21,10 @@ class ItemsController < ApplicationController
   def update
     respond_with Item.update(params["id"], params["item"])
   end
+
+  def destroy
+    Item.find(params["id"]).destroy
+    @result = {status: :ok}
+    respond_with @result
+  end
 end

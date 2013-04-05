@@ -4,7 +4,7 @@ class App.Views.Team extends Backbone.View
   name: 'Team'
 
   events:
-    'click': 'show'
+    'click': 'showTeam'
 
   initialize: ->
     @model.set('supervisor', App.users.getNameFromId(@model.get('supervisor_id')))
@@ -14,6 +14,7 @@ class App.Views.Team extends Backbone.View
     $(@el).html(@template(model: @model))
     this
 
-  show: ->
-    Backbone.history.navigate("teams/show/#{@model.id}", true)
-    this
+  showTeam: ->
+    view = new App.Views.ShowTeam(model: @model)
+    Backbone.history.navigate "teams/show/#{@model.id}"
+    App.setAndRenderContentViews([view])

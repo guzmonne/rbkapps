@@ -39,17 +39,63 @@
     </div>
     <div class="span2">
         <label class="label label-inverse label-element"><strong>Estado</strong></label>
-        <p class="p-element"><%= @model.get('state') %></p>
+        <button class="btn btn-mini btn-success state label-center compras" id="edit-state" >
+            <i class="icon-pencil icon-white"></i>
+        </button>
+        <button class="btn btn-mini btn-primary state hide label-center" id="change-state" >
+            <i class="icon-ok icon-white"></i>
+        </button>
+        <button class="btn btn-mini btn-inverse state hide label-center" id="cancel-change-state" >
+            <i class="icon-remove icon-white"></i>
+        </button>
+        <p class="p-element state" id="state"><%= @model.get('state') %></p>
+        <select class="state hide" id="state_list">
+            <option></option>
+            <option>Esperando Aprobación</option>
+            <option>Aprobado</option>
+            <option>Cotizando</option>
+            <option>Esperando Autorización</option>
+            <option>Autorizado</option>
+            <option>Completado</option>
+            <option>Cerrado</option>
+            <option>Rechazado</option>
+        </select>
     </div>
 </div>
 <div class="row-fluid hide" id="compras-row">
     <div class="span2" style="margin-left: 10px;">
         <label class="label label-inverse label-element"><strong>Aprobado por</strong></label>
-        <p class="p-element"><%= @model.get('approved_by') %></p>
+        <p class="p-element" id="approver" ><%= @model.get('approved_by') %></p>
+    </div>
+    <div class="span2">
+        <label class="label label-inverse label-element"><strong>Centro de Costos</strong></label>
+        <button class="btn btn-mini btn-success cost_center label-center" id="edit-cost_center" >
+            <i class="icon-pencil icon-white"></i>
+        </button>
+        <button class="btn btn-mini btn-primary cost_center hide label-center" id="change-cost_center" >
+            <i class="icon-ok icon-white"></i>
+        </button>
+        <button class="btn btn-mini btn-inverse cost_center hide label-center" id="cancel-change-cost_center" >
+            <i class="icon-remove icon-white"></i>
+        </button>
+        <p class="p-element cost_center" id="cost_center" ><%= if @model.get('cost_center')? then @model.get('cost_center') else "*** No Asignado ***" %></p>
+        <select class="cost_center hide" id="cost_center_list">
+            <option></option>
+            <% App.formHelpers.where({column: 'cost_center'}).forEach (model) -> : %>
+            <option><%= model.get('value') %></option>
+            <% end %>
+        </select>
     </div>
 </div>
 <label class="label label-inverse label-element" style="margin-left: 10px;"><strong>Detalle</strong></label>
 <div class="row-fluid">
     <div class="span12 note-box"><div class="detail" id="detail"></div></div>
+</div>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="form-actions">
+            <button id="approve-purchase-request" class="btn btn-warning btn-large hide">Aprobar Pedido</button>
+        </div>
+    </div>
 </div>
 

@@ -19,7 +19,7 @@
                 <th>Equipo</th>
                 <th>admin?</th>
                 <th>comex?</th>
-                <th>compras</th>
+                <th>compras?</th>
             </tr>
             </thead>
             <tbody id="users">

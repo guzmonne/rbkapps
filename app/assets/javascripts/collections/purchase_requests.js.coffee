@@ -3,6 +3,13 @@ class App.Collections.PurchaseRequests extends Backbone.Collection
   url: '/api/purchase_requests'
   user_id: null
 
+  initialize: ->
+    @sortVar      = 'created_at'
+    @sortMethod   = 'hTL'
+    @sortVarType  = 'date'
+    @perGroup     = 100
+    @currentPage  = 1
+
   comparator: (purchase_request) ->
     switch @sortVarType
       when 'integer'
