@@ -1,0 +1,34 @@
+<div class="span12" style="margin-left: 10px; margin-right: 10px;">
+    <button class="close close-invoice pull-right" style="margin-right: 10px;">&times;</button>
+    <div class="row-fluid">
+        <div class="span4">
+            <label class="label label-inverse">Proveedor</label>
+            <p><%= @model.get('supplier_id') %></p>
+        </div>
+        <div class="span4">
+            <label class="label label-inverse">Forma de Pago</label>
+            <p><%= @model.get('method_of_payment') %></p>
+        </div>
+        <div class="span4"></div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <label class="label label-inverse">Detalle</label><br>
+            <section class="detail"></section>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span4">
+            <label class="label label-inverse">Total Neto</label>
+            <p>$ <%= parseFloat(@model.get('total_net')).toFixed(2) %></p>
+        </div>
+        <div class="span4">
+            <label class="label label-inverse">I.V.A</label>
+            <p>$ <%= parseFloat(@model.get('iva')).toFixed(2) %></p>
+        </div>
+        <div class="span4">
+            <label class="label label-warning">Total</label>
+            <p class="alert-error"><strong>$ <%= ( parseFloat(@model.get('iva')) + parseFloat(@model.get('total_net')) ).toFixed(2) %></strong></p>
+        </div>
+    </div>
+</div>

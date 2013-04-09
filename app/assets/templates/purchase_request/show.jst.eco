@@ -39,7 +39,7 @@
     </div>
     <div class="span2">
         <label class="label label-inverse label-element"><strong>Estado</strong></label>
-        <button class="btn btn-mini btn-success state label-center compras" id="edit-state" >
+        <button class="btn btn-mini btn-warning state label-center compras" id="edit-state" >
             <i class="icon-pencil icon-white"></i>
         </button>
         <button class="btn btn-mini btn-primary state hide label-center" id="change-state" >
@@ -62,6 +62,7 @@
         </select>
     </div>
 </div>
+<hr>
 <div class="row-fluid hide" id="compras-row">
     <div class="span2" style="margin-left: 10px;">
         <label class="label label-inverse label-element"><strong>Aprobado por</strong></label>
@@ -69,8 +70,11 @@
     </div>
     <div class="span2">
         <label class="label label-inverse label-element"><strong>Centro de Costos</strong></label>
-        <button class="btn btn-mini btn-success cost_center label-center" id="edit-cost_center" >
+        <button class="btn btn-mini btn-warning cost_center label-center" id="edit-cost_center" >
             <i class="icon-pencil icon-white"></i>
+        </button>
+        <button class="btn btn-mini btn-success cost_center label-center" id="create-new-cost_center" >
+            <i class="icon-plus icon-white"></i>
         </button>
         <button class="btn btn-mini btn-primary cost_center hide label-center" id="change-cost_center" >
             <i class="icon-ok icon-white"></i>
@@ -78,7 +82,18 @@
         <button class="btn btn-mini btn-inverse cost_center hide label-center" id="cancel-change-cost_center" >
             <i class="icon-remove icon-white"></i>
         </button>
+        <button class="btn btn-mini btn-primary hide label-center" id="submit-new-cost_center" >
+            <i class="icon-ok icon-white"></i>
+        </button>
+        <button class="btn btn-mini btn-inverse hide label-center" id="cancel-new-cost_center" >
+            <i class="icon-remove icon-white"></i>
+        </button>
         <p class="p-element cost_center" id="cost_center" ><%= if @model.get('cost_center')? then @model.get('cost_center') else "*** No Asignado ***" %></p>
+        <input type="text"
+               id="new-cost_center-input"
+               class="new-cost_center hide"
+               placeholder="Nuevo Centro de Costos"
+               style="display: none;">
         <select class="cost_center hide" id="cost_center_list">
             <option></option>
             <% App.formHelpers.where({column: 'cost_center'}).forEach (model) -> : %>
@@ -87,10 +102,40 @@
         </select>
     </div>
 </div>
-<label class="label label-inverse label-element" style="margin-left: 10px;"><strong>Detalle</strong></label>
-<div class="row-fluid">
-    <div class="span12 note-box"><div class="detail" id="detail"></div></div>
+<hr>
+<!--#################################### Detalle ######################################-->
+<label class="label label-inverse label-element detail-label" style="margin-left: 10px;"><strong>Detalle</strong></label>
+<div class="row-fluid note-box detail-box" style="width: 99%;">
+    <div class="span12"><div class="detail" id="detail" style="margin-left: 10px; margin-right: 10px;"></div></div>
 </div>
+<!--###################################################################################-->
+<hr>
+<!--################################### Cotizaciones ##################################-->
+<label class="label label-inverse label-element" style="margin-left: 10px;"><strong>Cotizaciones</strong></label>
+<br>
+<button class="btn btn-success" id="new-quotation" style="margin-left: 10px;">
+    <i class="icon-plus icon-white"></i>
+    Nueva Cotización
+</button>
+<div class="row-fluid hide compras">
+    <div class="span12" id="quotations"></div>
+</div>
+<!--###################################################################################-->
+<hr>
+<!--##################################### Notas #######################################-->
+<div class="row-fluid" style="width: 98%;">
+    <label class="label label-inverse label-element" style="margin-left: 10px;" for="notes">Notas</label>
+    <div class="span12">
+        <div id="notes"></div>
+        <textarea id="new-note" rows="2" style="width: 96%;"></textarea>
+        <button id="add-note" class="btn btn-info btn-mini" style="margin-top: 4px;">
+            <i class="icon-font icon-white"></i>
+            Agregar Nota
+        </button>
+    </div>
+</div>
+<!--###################################################################################-->
+<hr>
 <div class="row-fluid">
     <div class="span12">
         <div class="form-actions">

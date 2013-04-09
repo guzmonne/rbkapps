@@ -6,6 +6,7 @@ class App.Models.PurchaseRequest extends Backbone.Model
     return u
 
   initialize: ->
+    @quotations = new App.Collections.Quotations()
     @dateHelper = new App.Mixins.Date()
     @lines = new App.Collections.PurchaseRequestLines([], {purchase_request_id: @id})
 

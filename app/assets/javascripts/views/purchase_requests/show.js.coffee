@@ -1,6 +1,6 @@
 class App.Views.PurchaseRequestShow extends Backbone.View
   template: JST['purchase_request/show']
-  className: 'span12'
+  className: 'row-fluid'
   name: 'ShowPurchaseRequest'
 ########################################################################################################################
 
@@ -15,12 +15,21 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     'click #edit-state'               : 'toggleState'
     'click #cancel-change-state'      : 'toggleState'
     'click #change-state'             : 'changeState'
+    'click #add-note'                 : 'newNote'
+    'click #submit-new-note'          : 'newNote'
+    'click #create-new-cost_center'   : 'createNewCostCenter'
+    'click #cancel-new-cost_center'   : 'createNewCostCenter'
+    'click #submit-new-cost_center'   : 'createCostCenter'
+    'click #new-quotation'            : 'createNewQuotation'
+    'click .detail-label'             : 'toggleSection'
 ########################################################################################################################
 
 ############################################## $ Initialize $ ##########################################################
   initialize: ->
     @fm = new App.Mixins.Form
+    @flip = 1
     @collectionHelper = new App.Mixins.Collections
+    @notes            = new App.Collections.Notes
     @user     = App.users.get(@model.get('user_id'))
     if @model.get('approver')?
       @approver = App.users.get(@model.get('approver'))
@@ -28,6 +37,11 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     else
       @model.set('approved_by', "*** Sin Aprobar ***")
     @model.set('team', App.teams.getNameFromId(@user.get('team_id')))
+    @listenTo App.vent, "remove:createQuotation:success", (model) =>
+      @$('#new-quotation').show()
+    @listenTo App.vent, "quotation:create:success", (model) => @addQuotation(model)
+    @listenTo App.vent, "remove:createQuotation:success", (model) => @model.quotations.remove(model)
+    this
 ########################################################################################################################
 
 ################################################ $ Render $ ############################################################
@@ -41,6 +55,20 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     if App.user.get('compras') == true
       @$('#compras-row').show()
       @$('.compras').show()
+    @notes.fetch
+      data:
+        table_name    : 'purchase_request'
+        table_name_id : @model.id
+      success: =>
+        @notes.each @renderNote
+    this
+########################################################################################################################
+
+############################################# $ Render Note $ ##########################################################
+  renderNote: (note) =>
+    view = new App.Views.NoteShow(model: note)
+    App.pushToAppendedViews(view)
+    @$('#notes').append(view.render().el)
     this
 ########################################################################################################################
 
@@ -87,6 +115,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     @model.save null, success: =>
       @fm.displayFlash('success', "El Centro de Costo ha cambiado a #{newCost}", 2500)
       @$('#cost_center').text(newCost)
+      @$('#cost_center_list').append("<option>#{newCost}</option>")
     this
 ########################################################################################################################
 
@@ -133,3 +162,91 @@ class App.Views.PurchaseRequestShow extends Backbone.View
       @fm.displayFlash('success', "El estado ha cambiado a #{state}", 2500)
       @$('.label-status').text(state)
       @$('#status').text(state)
+########################################################################################################################
+
+############################################## $ New Note $ ############################################################
+  newNote: (e) ->
+    e.preventDefault() if e?
+    newNote = @$('#new-note').val()
+    if newNote == "" then return @
+    @$('#new-note').val('')
+    model = new App.Models.Note
+    attributes =
+      note:
+        content       : newNote
+        user_id       : App.user.id
+        table_name    : 'purchase_request'
+        table_name_id : @model.id
+    model.save attributes, success: =>
+      view = new App.Views.NoteShow(model: model)
+      App.pushToAppendedViews(view)
+      @$('#notes').append(view.render().el)
+    this
+########################################################################################################################
+
+######################################## $ Create New Cost Center $ ####################################################
+  createNewCostCenter: (e) ->
+    e.preventDefault() if e?
+    @$('#new-cost_center-input').toggle()
+    @$('#edit-cost_center').toggle()
+    @$('#cost_center').toggle()
+    @$('#create-new-cost_center').toggle()
+    @$('#submit-new-cost_center').toggle()
+    @$('#cancel-new-cost_center').toggle()
+    this
+########################################################################################################################
+
+########################################## $ Create Cost Center $ ######################################################
+  createCostCenter: (e) ->
+    e.preventDefault() if e?
+    newCostCenter = @$('#new-cost_center-input').val()
+    if newCostCenter == "" then return @createNewCostCenter()
+    @$('#submit-new-cost_center').val('')
+    model = new App.Models.FormHelper
+    attributes =
+      form_helper:
+        column       : 'cost_center'
+        value        : newCostCenter
+    model.save attributes, success: =>
+      @model.set('cost_center', newCostCenter)
+      @model.save null, success: =>
+        @$('#new-cost_center-input').val('')
+        @createNewCostCenter()
+        @fm.displayFlash('success', "Se ha creado el Centro de Costos '#{newCostCenter}' y se ha asignado a esta Solicitud", 2500)
+        @$('#cost_center').text(newCostCenter)
+        @$('#cost_center_list').append("<option>#{newCostCenter}</option>")
+    this
+########################################################################################################################
+
+######################################## $ Create New Quotation $ ######################################################
+  createNewQuotation: (e) ->
+    e.preventDefault() if e?
+    model = new App.Models.Quotation()
+    view = new App.Views.CreateQuotation(model: model)
+    App.pushToAppendedViews(view)
+    @$('#quotations').prepend(view.render().el)
+    @$('#new-quotation').hide()
+    this
+########################################################################################################################
+
+########################################## $ Add Quotations $ ##########################################################
+  addQuotation: (model) =>
+    console.log model
+    @model.quotations.add(model)
+    view = new App.Views.ShowQuotation(model: model)
+    App.pushToAppendedViews(view)
+    @$('#quotations').append(view.render().el)
+    @$('#new-quotation').show()
+    this
+########################################################################################################################
+
+############################################ $ Toggle Section $ ########################################################
+  toggleSection: ->
+    @flip = @flip + 1
+    @$('.detail-box').slideToggle('slow')
+    if @flip % 2 == 0
+      @$('.detail-label').html('Detalle <i class="icon-filter icon-white"></i>')
+    else
+      @$('.detail-label').html('Detalle')
+    this
+########################################################################################################################

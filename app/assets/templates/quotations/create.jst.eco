@@ -1,0 +1,58 @@
+<div class="span12" style="margin-left: 10px; margin-right: 10px;">
+    <button class="close close-invoice pull-right" style="margin-right: 10px;">&times;</button>
+    <div class="row-fluid">
+        <div class="span4">
+            <label class="label label-inverse">Proveedor</label>
+            <select class="supplier span11">
+                <option>Seleccione un proveedor</option>
+            </select>
+        </div>
+        <div class="span4">
+            <label class="label label-inverse">Forma de Pago</label>
+            <select class="method_of_payment span11">
+                <option>Seleccione una forma de pago</option>
+            </select>
+        </div>
+        <div class="span4"></div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <label class="label label-inverse">Detalle</label><br>
+            <section>
+                <textarea placeholder="Escriba el detalle de la cotización"
+                          id="quotation_detail"
+                          class="span12"
+                          rows="16"
+                          style="width: 96%;"></textarea>
+            </section>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span4">
+            <label class="label label-inverse">Total Neto</label>
+            <div class="input-prepend">
+                <span class="add-on">$</span>
+                <input type="text" class="total_net tot" value="0,00">
+            </div>
+        </div>
+        <div class="span4">
+            <label class="label label-inverse">I.V.A</label>
+            <div class="input-prepend">
+                <span class="add-on">$</span>
+                <input type="text" class="iva tot" value="0,00">
+            </div>
+        </div>
+        <div class="span4">
+            <label class="label label-inverse">Total</label>
+            <div class="input-prepend">
+                <span class="add-on">$</span>
+                <input type="text" class="total" value="0,00" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <button class="btn btn-primary btn-large" id="save-new-quotation">Crear Cotización</button>
+        </div>
+    </div>
+</div>
