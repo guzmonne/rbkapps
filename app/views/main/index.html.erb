@@ -2,7 +2,7 @@
                 nil ,
                 id: "user-container",
                 data: {
-                        users: User.select("id, name, email, phone, cellphone, position, location_id, team_id, admin, comex, compras")
+                        users: User.select("id, name, email, phone, cellphone, position, location_id, team_id, admin, comex, compras, director")
                 } %>
 <%= content_tag "div",
                 nil ,
@@ -15,6 +15,12 @@
                 id: "form_helpers-container",
                 data: {
                         form_helpers: FormHelper.all
+                } %>
+<%= content_tag "div",
+                nil ,
+                id: "suppliers-container",
+                data: {
+                        suppliers: Supplier.all
                 } %>
 
 

@@ -9,18 +9,27 @@ class App.Views.ShowQuotation extends Backbone.View
   events:
     'click .close'                    : 'destroyQuotation'
     'click label:contains("Detalle")' : 'toggleSection'
+    'click'                           : 'selected'
 ########################################################################################################################
 
 ################################################ $ Events $ ############################################################
-  initialize: ->
+  initialize: (options) ->
     @flip = 1
+    @model.set 'supplier', App.suppliers.get(@model.get('supplier_id')).get('name')
+    @listenTo App.vent, "show:select-quotation-button", => @model.set('can_be_selected', true)
+    @listenTo App.vent, "hide:select-quotation-button", =>
+      @model.set('can_be_selected', false)
+      @$('.close-quotation').show()
+    @listenTo App.vent, "selected:quotation:success", (cid) =>
+      unless cid == @model.cid then @$('.select-quotation-button').slideUp('slow')
+      $(@el).removeClass('selected')
 ########################################################################################################################
 
 ################################################ $ Render $ ############################################################
   render: ->
-    $(@el).hide().html(@template(model: @model)).fadeIn('slow')
+    $(@el).hide().html(@template(model: @model, state: @state)).fadeIn('slow')
     @$('.detail').html(@model.get('detail'))
-    console.log "render"
+    if @model.get('can_be_selected') == true then @$('.close-quotation').hide()
     this
 ########################################################################################################################
 
@@ -44,3 +53,16 @@ class App.Views.ShowQuotation extends Backbone.View
       @$('label:contains("Detalle")').html('Detalle')
     this
 ########################################################################################################################
+
+############################################ $ Toggle Section $ ########################################################
+  selected: (e) ->
+    return if @model.get('can_be_selected') == false
+    App.vent.trigger "selected:quotation:success", @model.cid
+    $(@el).addClass('selected')
+    @$('.select-quotation-button').slideDown('slow')
+########################################################################################################################
+
+############################################# $ Show Button $ ##########################################################
+  showButton: ->
+    @$('.select-quotation-button').show()
+    this

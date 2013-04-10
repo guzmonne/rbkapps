@@ -1,6 +1,7 @@
 class PurchaseRequest < ActiveRecord::Base
   belongs_to :user
   has_many :purchase_request_lines
+  has_many :quotations
 
   attr_accessible :user_id,
                   :deliver_at,

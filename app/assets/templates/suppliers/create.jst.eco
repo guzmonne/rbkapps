@@ -1,0 +1,68 @@
+<div class="span12" style="margin-left: 10px; margin-right: 10px;">
+    <button class="close close-supplier pull-right" style="margin-right: 10px;">&times;</button>
+    <div class="row-fluid">
+        <div class="span3">
+            <label class="label label-inverse">Nombre</label>
+            <input type="text" id="name" placeholder="Nombre del Proveedor">
+        </div>
+        <div class="span2">
+            <label class="label label-inverse">Telefono</label>
+            <input type="text" id="phone" placeholder="Telefono" class="input-small">
+        </div>
+        <div class="span3">
+            <label class="label label-inverse">E-mail</label>
+            <input type="text" id="email" placeholder="E-mail del Proveedor">
+        </div>
+        <div class="span3">
+            <label class="label label-inverse">Dirección</label>
+            <input type="text" id="address" placeholder="Dirección del Proveedor">
+        </div>
+    </div>
+    <hr style="margin: 5px 0;">
+    <div class="row-fluid">
+        <div class="span12">
+            <label class="label label-inverse">Forma de Pago</label>
+            <button class="btn btn-mini btn-success label-center" id="create-new-method_of_payment" style="margin-bottom: 8px;">
+                <i class="icon-plus icon-white"></i>
+            </button>
+            <button class="btn btn-mini btn-primary hide label-center" id="submit-new-method_of_payment" style="margin-bottom: 8px;">
+                <i class="icon-ok icon-white"></i>
+            </button>
+            <button class="btn btn-mini btn-inverse hide label-center" id="cancel-new-method_of_payment" style="margin-bottom: 8px;">
+                <i class="icon-remove icon-white"></i>
+            </button>
+            <input type="text"
+                   id="new-method_of_payment-input"
+                   class="new-cost_center hide input-xxlarge"
+                   placeholder="Nueva Forma de Pago"
+                   style="display: none;">
+            <select id="method_of_payment"  class="input-xxlarge">
+                <option></option>
+                <% App.formHelpers.where({column: 'method_of_payment'}).forEach (model) -> : %>
+                <option><%= model.get('value') %></option>
+                <% end %>
+            </select>
+        </div>
+    </div>
+    <hr style="margin: 5px 0;">
+    <div class="row-fluid">
+        <div class="span4">
+            <label class="label label-inverse">Nombre de Contacto</label>
+            <input type="text" id="contact_name" placeholder="Nombre de Contacto">
+        </div>
+        <div class="span4">
+            <label class="label label-inverse">Telefono de Contacto</label>
+            <input type="text" id="contact_phone" placeholder="Telefono de Contacto">
+        </div>
+        <div class="span4">
+            <label class="label label-inverse">E-mail de Contacto</label>
+            <input type="text" id="contact_email" placeholder="E-mail de Contacto">
+        </div>
+    </div>
+    <hr style="margin: 5px 0;">
+    <div class="row-fluid">
+        <div class="span12">
+            <button class="btn btn-primary btn-large" id="save-supplier">Crear Proveedor</button>
+        </div>
+    </div>
+</div>

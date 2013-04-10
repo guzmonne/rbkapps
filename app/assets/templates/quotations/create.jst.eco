@@ -3,14 +3,35 @@
     <div class="row-fluid">
         <div class="span4">
             <label class="label label-inverse">Proveedor</label>
-            <select class="supplier span11">
+            <select class="supplier_id span11">
                 <option>Seleccione un proveedor</option>
+                <% App.suppliers.forEach (model) -> : %>
+                <option value=<%= model.id %>><%= model.get('name') %></option>
+                <% end %>
             </select>
         </div>
         <div class="span4">
             <label class="label label-inverse">Forma de Pago</label>
-            <select class="method_of_payment span11">
-                <option>Seleccione una forma de pago</option>
+            <button class="btn btn-mini btn-success label-center" id="create-new-method_of_payment" style="margin-bottom: 8px;">
+                <i class="icon-plus icon-white"></i>
+            </button>
+            <button class="btn btn-mini btn-primary hide label-center" id="submit-new-method_of_payment" style="margin-bottom: 8px;">
+                <i class="icon-ok icon-white"></i>
+            </button>
+            <button class="btn btn-mini btn-inverse hide label-center" id="cancel-new-method_of_payment" style="margin-bottom: 8px;">
+                <i class="icon-remove icon-white"></i>
+            </button>
+            <br>
+            <input type="text"
+                   id="new-method_of_payment-input"
+                   class="new-cost_center hide input-xxlarge"
+                   placeholder="Nueva Forma de Pago"
+                   style="display: none;">
+            <select class="method_of_payment input-xxlarge">
+                <option></option>
+                <% App.formHelpers.where({column: 'method_of_payment'}).forEach (model) -> : %>
+                <option><%= model.get('value') %></option>
+                <% end %>
             </select>
         </div>
         <div class="span4"></div>
@@ -34,6 +55,7 @@
                 <span class="add-on">$</span>
                 <input type="text" class="total_net tot" value="0,00">
             </div>
+            <button class="btn btn-warning btn-large btn-small currency" style="margin-bottom: 9px;">USD</button>
         </div>
         <div class="span4">
             <label class="label label-inverse">I.V.A</label>

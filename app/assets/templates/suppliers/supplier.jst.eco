@@ -1,0 +1,10 @@
+<td><%= @model.get('name') %></td>
+<td><%= @model.get('phone') %></td>
+<td><%= @model.get('email') %></td>
+<td><%= @model.get('address') %></td>
+<td>
+    <p><%= @model.get('contact') %></p>
+    <p><%= @model.get('contact_phone') %></p>
+    <p><%= @model.get('contact_email') %></p>
+</td>
+<td style="max-width: 400px;"><%= @model.get('method_of_payment') %></td>

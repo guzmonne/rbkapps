@@ -1,13 +1,13 @@
 <div class="span12" style="margin-left: 10px; margin-right: 10px;">
-    <button class="close close-invoice pull-right" style="margin-right: 10px;">&times;</button>
+    <button class="close close-quotation pull-right" style="margin-right: 10px;">&times;</button>
     <div class="row-fluid">
         <div class="span4">
             <label class="label label-inverse">Proveedor</label>
-            <p><%= @model.get('supplier_id') %></p>
+            <p><%= @model.get('supplier') %></p>
         </div>
         <div class="span4">
             <label class="label label-inverse">Forma de Pago</label>
-            <p><%= @model.get('method_of_payment') %></p>
+            <p style="padding-right: 10px;"><%= @model.get('method_of_payment') %></p>
         </div>
         <div class="span4"></div>
     </div>
@@ -20,15 +20,23 @@
     <div class="row-fluid">
         <div class="span4">
             <label class="label label-inverse">Total Neto</label>
-            <p>$ <%= parseFloat(@model.get('total_net')).toFixed(2) %></p>
+            <p><%= if @model.get('dollars') == true then "USD" else "$" %> <%= parseFloat(@model.get('total_net')).toFixed(2) %></p>
         </div>
         <div class="span4">
             <label class="label label-inverse">I.V.A</label>
-            <p>$ <%= parseFloat(@model.get('iva')).toFixed(2) %></p>
+            <p><%= if @model.get('dollars') == true then "USD" else "$" %> <%= parseFloat(@model.get('iva')).toFixed(2) %></p>
         </div>
         <div class="span4">
             <label class="label label-warning">Total</label>
-            <p class="alert-error"><strong>$ <%= ( parseFloat(@model.get('iva')) + parseFloat(@model.get('total_net')) ).toFixed(2) %></strong></p>
+            <p class="alert-error"><strong><%= if @model.get('dollars') == true then "USD" else "$" %> <%= ( parseFloat(@model.get('iva')) + parseFloat(@model.get('total_net')) ).toFixed(2) %></strong></p>
+        </div>
+    </div>
+    <div class="row-fluid select-quotation-button hide" >
+        <div class="span12">
+            <hr>
+            <button class="btn btn-warning btn-block btn-large" id="select-quotation" style="width: 98.5%;">
+                Seleccionar Cotización
+            </button>
         </div>
     </div>
 </div>

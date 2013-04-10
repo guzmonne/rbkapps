@@ -14,4 +14,6 @@ class App.Views.User extends Backbone.View
       @$(".comex").html('<i class="icon-ok"></i>')
     if @model.get('compras') == true
       @$(".compras").html('<i class="icon-ok"></i>')
+    if @model.get('director') == true
+      @$(".director").html('<i class="icon-ok"></i>')
     this

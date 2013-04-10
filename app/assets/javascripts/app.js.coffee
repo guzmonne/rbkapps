@@ -19,6 +19,7 @@ window.App =
   loading           : null
   started           : null
   d_i               : null
+  suppliers         : null
   contentViews      : []
   appendedViews     : []
 
@@ -37,6 +38,8 @@ window.App =
     @formHelpers      = new App.Collections.FormHelpers()
     @formHelpers.reset($('#form_helpers-container').data('form-helpers'))
     @d_i              = new App.Collections.DeliveriesItems()
+    @suppliers        = new App.Collections.Suppliers()
+    @suppliers.reset($('#suppliers-container').data('suppliers'))
     App.start()
 
   start: ->
@@ -62,6 +65,7 @@ window.App =
     new App.Routers.Invoice()
     new App.Routers.Reports()
     new App.Routers.ServiceRequests()
+    new App.Routers.Supplier()
     Backbone.history.start({pushState: true})
     @started = true
 

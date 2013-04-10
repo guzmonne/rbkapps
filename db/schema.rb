@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130404204439) do
+ActiveRecord::Schema.define(:version => 20130410163935) do
 
   create_table "deliveries", :force => true do |t|
     t.string   "courier"
@@ -104,6 +104,30 @@ ActiveRecord::Schema.define(:version => 20130404204439) do
     t.string   "cost_center"
   end
 
+  create_table "quotations", :force => true do |t|
+    t.integer  "supplier_id"
+    t.string   "method_of_payment"
+    t.text     "detail"
+    t.decimal  "total_net",           :precision => 8, :scale => 2
+    t.decimal  "iva",                 :precision => 8, :scale => 2
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
+    t.integer  "purchase_request_id"
+  end
+
+  create_table "suppliers", :force => true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "address"
+    t.string   "contact"
+    t.string   "contact_phone"
+    t.string   "contact_email"
+    t.string   "method_of_payment"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "teams", :force => true do |t|
     t.string   "name"
     t.integer  "supervisor_id"
@@ -128,6 +152,7 @@ ActiveRecord::Schema.define(:version => 20130404204439) do
     t.boolean  "admin",           :default => false
     t.boolean  "comex"
     t.boolean  "compras"
+    t.boolean  "director"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

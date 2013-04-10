@@ -21,13 +21,13 @@ class App.Views.Nav extends Backbone.View
     'click #nav-users'                  : 'usersIndex'
     'click #nav-comex-reports'          : 'comexReports'
     'click #nav-service-request'        : 'createServiceRequest'
+    'click #nav-suppliers'              : 'suppliersIndex'
 
   render: ->
     $(@el).html(@template(user: @model))
-    if @model.get('admin') ==  true
-      @$('.admin-only').removeClass('hide')
-    else
-      @$('.comex-only').removeClass('hide') if @model.get('comex') ==  true
+    if @model.get('admin') ==  true then @$('.admin').show()
+    if @model.get('comex') == true then @$('.comex').show()
+    if @model.get('compras') == true then @$('.compras').show()
     this
 
   home: (e) ->
@@ -105,3 +105,7 @@ class App.Views.Nav extends Backbone.View
   createServiceRequest: (e) ->
     e.preventDefault()
     Backbone.history.navigate 'service_requests/index', trigger: true
+
+  suppliersIndex: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate 'suppliers/index', trigger: true

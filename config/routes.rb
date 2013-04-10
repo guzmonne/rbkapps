@@ -14,6 +14,8 @@ Rbkapps::Application.routes.draw do
     resources :deliveries_items
     resources :invoice_items
     resources :notes
+    resources :suppliers
+    resources :quotations
   end
 
   match '*path', to: 'main#index'

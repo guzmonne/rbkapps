@@ -31,6 +31,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     @collectionHelper = new App.Mixins.Collections
     @notes            = new App.Collections.Notes
     @user     = App.users.get(@model.get('user_id'))
+    @uneditable_quotation_states = ['Esperando Autorización', 'Autorizado', 'Completado', 'Cerrado', 'Rechazado']
     if @model.get('approver')?
       @approver = App.users.get(@model.get('approver'))
       @model.set('approved_by', @approver.get('name'))
@@ -61,6 +62,18 @@ class App.Views.PurchaseRequestShow extends Backbone.View
         table_name_id : @model.id
       success: =>
         @notes.each @renderNote
+    @model.quotations.fetch
+      data:
+        purchase_request_id: @model.id
+      success: =>
+        @model.quotations.each (model) =>
+          if @uneditable_quotation_states.indexOf(@model.get('state')) > -1
+            model.set('can_be_selected', true)
+          view = new App.Views.ShowQuotation(model: model)
+          App.pushToAppendedViews(view)
+          @$('#quotations').append(view.render().el)
+    if @uneditable_quotation_states.indexOf(@model.get('state')) > -1
+      @$('#new-quotation').hide()
     this
 ########################################################################################################################
 
@@ -83,17 +96,21 @@ class App.Views.PurchaseRequestShow extends Backbone.View
 ######################################### $ Change Cost Center $ #######################################################
   changeState: (e) ->
     e.preventDefault()
+    App.vent.trigger "hide:select-quotation-button"
+    App.vent.trigger "selected:quotation:success"
+    @$('#new-quotation').show()
     newState = @$('#state_list').val()
     if newState == '' then return @toggleState()
     @toggleState()
     @$('#state').text(newState)
-    switch newState
-      when 'Aprobado'
-        @approveRequest()
-        break
-      else
-        @updateRequest(newState)
-        break
+    if newState == 'Aprobado'
+      return @approveRequest()
+    if @uneditable_quotation_states.indexOf(newState) > -1
+      @$('#new-quotation').hide()
+      @$('.close-quotation').hide()
+      App.vent.trigger "show:select-quotation-button"
+      return @updateRequest(newState)
+    @updateRequest(newState)
     this
 ########################################################################################################################
 
@@ -157,8 +174,8 @@ class App.Views.PurchaseRequestShow extends Backbone.View
 
 ########################################### $ Update Request $ ########################################################
   updateRequest: (state) ->
-    @model.set('state', state)
-    @model.save null,  success: =>
+    #@model.set('state', state)
+    @model.save {'state', state}, success: =>
       @fm.displayFlash('success', "El estado ha cambiado a #{state}", 2500)
       @$('.label-status').text(state)
       @$('#status').text(state)
@@ -222,6 +239,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
   createNewQuotation: (e) ->
     e.preventDefault() if e?
     model = new App.Models.Quotation()
+    model.set('purchase_request_id', @model.id)
     view = new App.Views.CreateQuotation(model: model)
     App.pushToAppendedViews(view)
     @$('#quotations').prepend(view.render().el)
@@ -231,8 +249,8 @@ class App.Views.PurchaseRequestShow extends Backbone.View
 
 ########################################## $ Add Quotations $ ##########################################################
   addQuotation: (model) =>
-    console.log model
     @model.quotations.add(model)
+    model.set('purchase_request_state', @model.get('state'))
     view = new App.Views.ShowQuotation(model: model)
     App.pushToAppendedViews(view)
     @$('#quotations').append(view.render().el)

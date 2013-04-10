@@ -102,18 +102,17 @@
         </select>
     </div>
 </div>
-<hr>
+<hr class="compras">
 <!--#################################### Detalle ######################################-->
 <label class="label label-inverse label-element detail-label" style="margin-left: 10px;"><strong>Detalle</strong></label>
 <div class="row-fluid note-box detail-box" style="width: 99%;">
     <div class="span12"><div class="detail" id="detail" style="margin-left: 10px; margin-right: 10px;"></div></div>
 </div>
 <!--###################################################################################-->
-<hr>
+<hr class="compras">
 <!--################################### Cotizaciones ##################################-->
-<label class="label label-inverse label-element" style="margin-left: 10px;"><strong>Cotizaciones</strong></label>
-<br>
-<button class="btn btn-success" id="new-quotation" style="margin-left: 10px;">
+<div class="compras"><label class="label label-inverse label-element" style="margin-left: 10px;"><strong>Cotizaciones</strong></label></div>
+<button class="btn btn-success compras" id="new-quotation" style="margin-left: 10px;">
     <i class="icon-plus icon-white"></i>
     Nueva Cotización
 </button>

@@ -10,15 +10,50 @@ class App.Views.CreateQuotation extends Backbone.View
     'change .total_net'                                   : 'updateIVA'
     'click label:contains("I.V.A")'                       : 'updateIVA'
     'click #save-new-quotation'                           : 'saveQuotation'
+    'click .currency'                                     : 'changeCurrency'
+    'click #create-new-method_of_payment'                 : 'createNewMethod'
+    'click #cancel-new-method_of_payment'                 : 'createNewMethod'
+    'click #submit-new-method_of_payment'                 : 'createMethod'
 ############################################### $ Initialize $ #########################################################
   initialize: ->
-    @shown = 0
+    @shown  = 0
+    @flip   = 1
 ########################################################################################################################
 
 ################################################# $ Render $ ###########################################################
   render: ->
     $(@el).hide().html(@template()).fadeIn('slow')
     @$('.supplier').focus()
+    this
+########################################################################################################################
+
+############################################ $ Create New Method $ #####################################################
+  createNewMethod: (e) ->
+    e.preventDefault() if e?
+    @$('#new-method_of_payment-input').toggle()
+    @$('.method_of_payment').toggle()
+    @$('#create-new-method_of_payment').toggle()
+    @$('#submit-new-method_of_payment').toggle()
+    @$('#cancel-new-method_of_payment').toggle()
+    this
+########################################################################################################################
+
+############################################# $ Create Method $ ########################################################
+  createMethod: (e) ->
+    e.preventDefault() if e?
+    newMethod = @$('#new-method_of_payment-input').val()
+    if newMethod == "" then return @createNewMethod()
+    @$('#submit-new-method_of_payment').val('')
+    model = new App.Models.FormHelper
+    attributes =
+      form_helper:
+        column       : 'method_of_payment'
+        value        : newMethod
+    model.save attributes, success: =>
+      @$('#new-method_of_payment-input').val('')
+      @createNewMethod()
+      @$('.method_of_payment').append("<option>#{newMethod}</option>")
+      @$('.method_of_payment').val(newMethod)
     this
 ########################################################################################################################
 
@@ -34,14 +69,16 @@ class App.Views.CreateQuotation extends Backbone.View
   saveQuotation: (e) ->
     e.preventDefault()
     attributes =
-      supplier_id       : @$('.supplier').val()
-      method_of_payment : @$('.method_of_payment').val()
-      detail            : @$('#quotation_detail').val()
-      total_net         : @$('.total_net').val()
-      iva               : @$('.iva').val()
-    @model.set(attributes)
-    App.vent.trigger "quotation:create:success", @model
-    App.closeView(this)
+      purchase_request_id : @model.get('purchase_request_id')
+      supplier_id         : @$('.supplier_id').val()
+      method_of_payment   : @$('.method_of_payment').val()
+      detail              : @$('#quotation_detail').val()
+      total_net           : @$('.total_net').val()
+      iva                 : @$('.iva').val()
+      dollars             : @model.get('dollars')
+    @model.save attributes, success: =>
+      App.vent.trigger "quotation:create:success", @model
+      App.closeView(this)
 ########################################################################################################################
 
 ############################################### $ Remove Quotation $ ###################################################
@@ -66,3 +103,18 @@ class App.Views.CreateQuotation extends Backbone.View
     @$('.iva').val((parseFloat(@$('.total_net').val()) * 0.22).toFixed(2))
     @$('.total').val((parseFloat(@$('.total_net').val()) + parseFloat( @$('.iva').val())).toFixed(2))
     this
+########################################################################################################################
+
+################################################ $ Change Currency $ ###################################################
+  changeCurrency: ->
+    @flip = @flip + 1
+    if @flip % 2 == 0
+      @$('.add-on').text('USD')
+      @$('.currency').text('$')
+      @model.set('dollars', true)
+    else
+      @$('.add-on').text('$')
+      @$('.currency').text('USD')
+      @model.set('dollars', false)
+    this
+########################################################################################################################

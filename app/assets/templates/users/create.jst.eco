@@ -79,6 +79,11 @@
                 <input type="checkbox" id="compras" value = true> compras?
             </label>
         </div>
+        <div class="controls">
+            <label class="checkbox">
+                <input type="checkbox" id="director" value = true> Gerente?
+            </label>
+        </div>
     </div>
     <div class="form-actions">
         <button id="submit-create-user" class="btn btn-primary btn-large">Crear Usuario</button>

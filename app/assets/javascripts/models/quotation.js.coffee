@@ -11,6 +11,8 @@ class App.Models.Quotation extends Backbone.Model
     method_of_payment : null
     total_net         : null
     iva               : null
+    dollars           : false
+    can_be_selected   : false
 
   destroy: ->
     $.ajax
