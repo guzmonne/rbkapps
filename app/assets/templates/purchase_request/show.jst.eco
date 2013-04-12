@@ -102,6 +102,13 @@
         </select>
     </div>
 </div>
+<hr class="accepted-quotation hide">
+<!--################################### Cotización Aceptada ##################################-->
+<div class="accepted-quotation hide"><label id="accepted-quotations-label"  class="label label-inverse label-element" style="margin-left: 10px;"><strong>Cotización Aceptada</strong></label></div>
+<div class="row-fluid hide compras">
+    <div class="span12" id="accepted-quotation"></div>
+</div>
+<!--######################################################################################-->
 <hr class="compras">
 <!--#################################### Detalle ######################################-->
 <label class="label label-inverse label-element detail-label" style="margin-left: 10px;"><strong>Detalle</strong></label>
@@ -111,7 +118,7 @@
 <!--###################################################################################-->
 <hr class="compras">
 <!--################################### Cotizaciones ##################################-->
-<div class="compras"><label class="label label-inverse label-element" style="margin-left: 10px;"><strong>Cotizaciones</strong></label></div>
+<div class="compras"><label id="quotations-label"  class="label label-inverse label-element" style="margin-left: 10px;"><strong>Cotizaciones</strong></label></div>
 <button class="btn btn-success compras" id="new-quotation" style="margin-left: 10px;">
     <i class="icon-plus icon-white"></i>
     Nueva Cotización

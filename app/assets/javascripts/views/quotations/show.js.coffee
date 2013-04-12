@@ -9,6 +9,7 @@ class App.Views.ShowQuotation extends Backbone.View
   events:
     'click .close'                    : 'destroyQuotation'
     'click label:contains("Detalle")' : 'toggleSection'
+    'click #select-quotation'         : 'authorizeQuotation'
     'click'                           : 'selected'
 ########################################################################################################################
 
@@ -23,6 +24,7 @@ class App.Views.ShowQuotation extends Backbone.View
     @listenTo App.vent, "selected:quotation:success", (cid) =>
       unless cid == @model.cid then @$('.select-quotation-button').slideUp('slow')
       $(@el).removeClass('selected')
+    @listenTo App.vent, "purchase:request:authorized:success", => @model.set('can_be_selected', false)
 ########################################################################################################################
 
 ################################################ $ Render $ ############################################################
@@ -66,3 +68,29 @@ class App.Views.ShowQuotation extends Backbone.View
   showButton: ->
     @$('.select-quotation-button').show()
     this
+########################################################################################################################
+
+######################################### $ Authorize Quotation $ ######################################################
+  authorizeQuotation: (e) ->
+    e.preventDefault()
+    @model.save {selected: 'true'}, success: =>
+      App.vent.trigger "selected:quotation:success", @model.cid
+      App.vent.trigger "purchase_request:authorized:success", @model
+      @$('.image').html('<img src="/assets/autorizado.png" style="float:right;">')
+      $(@el).effect("bounce", { times:5 }, 500).fadeOut().remove()
+    this
+########################################################################################################################
+
+########################################### $ Hide Close Button $ ######################################################
+  hideCloseButton: (e) ->
+    @$('.close-quotation').hide()
+    this
+########################################################################################################################
+
+########################################### $ Hide Close Button $ ######################################################
+  paintSelected: ->
+    $(@el).addClass('selected')
+    @$('.image').html('<img src="/assets/autorizado.png" style="float:right;">')
+    @$('.select-quotation-button').remove()
+    this
+########################################################################################################################

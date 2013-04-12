@@ -24,9 +24,7 @@
                     <th data-sort="method_of_payment" data-sort_type="string">Forma de Pago</th>
                 </tr>
             </thead>
-            <tbody id="suppliers">
-
-            </tbody>
+            <tbody id="suppliers"></tbody>
         </table>
     </div>
 </div>

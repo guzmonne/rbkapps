@@ -119,7 +119,7 @@
     <div class="control-group" id="control-supplier">
         <label class="control-label label-grey label label-inverse" for="supplier">Proveedor:</label>
         <div class="controls">
-            <select id="supplier" class="select2 input-xlarge">
+            <select id="supplier" class="select2 input-xxlarge">
                 <option value="empty">Seleccione un Proveedor</option>
                 <% App.formHelpers.where({column: 'supplier'}).forEach (model) -> : %>
                     <option><%= model.get('value') %></option>
@@ -134,7 +134,7 @@
     <div class="control-group" id="control-origin">
         <label class="control-label label-grey label label-inverse" for="origin">Origen:</label>
         <div class="controls">
-            <select id="origin" class="select2 input-xlarge">
+            <select id="origin" class="select2 input-xxlarge">
                 <option value="empty">Lugar de Origen</option>
                 <% App.formHelpers.where({column: 'origin'}).forEach (model) -> : %>
                     <option><%= model.get('value') %></option>

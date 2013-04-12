@@ -7,6 +7,7 @@ class Quotation < ActiveRecord::Base
                   :method_of_payment,
                   :supplier_id,
                   :total_net,
-                  :purchase_request_id
+                  :purchase_request_id,
+                  :selected
 
 end

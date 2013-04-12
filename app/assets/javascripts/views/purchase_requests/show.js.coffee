@@ -32,6 +32,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     @notes            = new App.Collections.Notes
     @user     = App.users.get(@model.get('user_id'))
     @uneditable_quotation_states = ['Esperando Autorización', 'Autorizado', 'Completado', 'Cerrado', 'Rechazado']
+    @accepted_quotation_states = ['Autorizado', 'Completado', 'Cerrado', 'Rechazado']
     if @model.get('approver')?
       @approver = App.users.get(@model.get('approver'))
       @model.set('approved_by', @approver.get('name'))
@@ -42,6 +43,15 @@ class App.Views.PurchaseRequestShow extends Backbone.View
       @$('#new-quotation').show()
     @listenTo App.vent, "quotation:create:success", (model) => @addQuotation(model)
     @listenTo App.vent, "remove:createQuotation:success", (model) => @model.quotations.remove(model)
+    @listenTo App.vent, "purchase_request:authorized:success", (model) =>
+      @$('#quotations').slideUp('slow')
+      @model.save {state: 'Autorizado'}, success: =>
+        @$('.state').text('Autorizado')
+        @fm.displayFlash('success', "Se ha creado el estado a Autorizado", 2500)
+        view = new App.Views.ShowQuotation(model: model)
+        App.pushToAppendedViews(view)
+        @$('#accepted-quotation').append(view.render().el)
+        view.paintSelected()
     this
 ########################################################################################################################
 
@@ -56,6 +66,8 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     if App.user.get('compras') == true
       @$('#compras-row').show()
       @$('.compras').show()
+      if @accepted_quotation_states.indexOf(@model.get('state'))
+        @$('.accepted-quotation').show()
     @notes.fetch
       data:
         table_name    : 'purchase_request'
@@ -67,11 +79,17 @@ class App.Views.PurchaseRequestShow extends Backbone.View
         purchase_request_id: @model.id
       success: =>
         @model.quotations.each (model) =>
-          if @uneditable_quotation_states.indexOf(@model.get('state')) > -1
+          if @model.get('state') == "Esperando Autorización"
             model.set('can_be_selected', true)
           view = new App.Views.ShowQuotation(model: model)
           App.pushToAppendedViews(view)
-          @$('#quotations').append(view.render().el)
+          if model.get('selected') == true
+            @$('#accepted-quotation').append(view.render().el)
+            @$('#quotations').hide()
+          else
+            @$('#quotations').append(view.render().el)
+          if @uneditable_quotation_states.indexOf(@model.get('state')) > -1
+            view.hideCloseButton()
     if @uneditable_quotation_states.indexOf(@model.get('state')) > -1
       @$('#new-quotation').hide()
     this
