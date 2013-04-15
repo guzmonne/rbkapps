@@ -6,8 +6,8 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
   'events': _.extend({
     'click #update-delivery'      : 'saveChanges'
     'click #reset-form'           : 'resetForm'
-    'click #nav-prev-delivery'    : 'prevDelivery'
-    'click #nav-next-delivery'    : 'nextDelivery'
+    'click #nav-prev-delivery'    : 'nextDelivery'
+    'click #nav-next-delivery'    : 'prevDelivery'
     'click #edit-delivery'        : 'editDelivery'
     'click #add-note'             : 'newNote'
     'click #submit-new-note'      : 'newNote',

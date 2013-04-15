@@ -4,10 +4,14 @@ class App.Views.Invoice extends Backbone.View
   name: 'Invoice'
   id: ->
     @model.cid
+  className: ->
+    unless @model.get('delivery_id') then 'row-warning'
 
   events:
     'click #remove-invoice'       : 'removeInvoice'
     'click #add-item-to-invoice'  : 'showInvoice'
+    'mouseover'                   : 'iconWhite'
+    'mouseout'                    : 'iconBlack'
 ########################################################################################################################
 
 ################################################## $ Initialize $ ######################################################
@@ -44,6 +48,7 @@ class App.Views.Invoice extends Backbone.View
 #################################################### $ Render $ ########################################################
   render: ->
     $(@el).html(@template(invoice: @model))
+    unless @model.get('delivery_id') then  @$('.without_delivery').html('<i class="icon-ok"></i>')
     this
 ########################################################################################################################
 
@@ -64,7 +69,7 @@ class App.Views.Invoice extends Backbone.View
       success: =>
         view = new App.Views.InvoiceShow(model: @model)
         App.pushToAppendedViews()
-        $(@el).html('<td colspan="5" class="show-invoice"></td>')
+        $(@el).html('<td colspan="6" class="show-invoice"></td>')
         @$('.show-invoice').append(view.render().el)
         view.hideCloseButton()
 ########################################################################################################################
@@ -74,4 +79,13 @@ class App.Views.Invoice extends Backbone.View
     view = new App.Views.CreateInvoice(model: @model)
     App.pushToAppendedViews()
     @$('.show-invoice').append(view.renderShow().el)
+########################################################################################################################
+
+################################################ $ Paint Icon $ ########################################################
+  iconWhite: ->
+    @$('.icon-ok').addClass('icon-white')
+    this
+  iconBlack: ->
+    @$('.icon-ok').removeClass('icon-white')
+    this
 

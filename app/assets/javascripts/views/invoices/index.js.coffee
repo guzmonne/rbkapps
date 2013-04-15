@@ -88,8 +88,9 @@ class App.Views.InvoiceIndex extends Backbone.View
     model = new App.Models.Invoice
     view  = new App.Views.CreateInvoice(model: model)
     App.pushToAppendedViews(view)
-    @$('#invoice-form-row').show()
-    @$('#create-invoice').append(view.render().el)
+    #@$('#invoice-form-row').show()
+    @$('.well').after(view.render().el)
+    #@$('#create-invoice').append(view.render().el)
     @$('#new-invoice').hide()
     view.hideSearchButton()
     this

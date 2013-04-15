@@ -18,12 +18,13 @@
                 <th data-sort="invoice_number" data-sort_type="string">Número de Factura</th>
                 <th data-sort="fob_total_cost" data-sort_type="string">Total FOB</th>
                 <th data-sort="total_units" data-sort_type="integer">Total Unidades</th>
+                <th data-sort="delivery_id" data-sort_type="integer">Sin Envío</th>
                 <th></th>
             </tr>
             </thead>
             <tbody id="invoices">
                 <tr id="loading-row">
-                    <td colspan="5">
+                    <td colspan="6">
                         <div class="progress progress-striped active progress-warning"
                              style=" margin-bottom: 4px; margin-top: 2px;">
                             <div class="bar" style="width: 100%;"></div>
@@ -31,7 +32,7 @@
                     </td>
                 </tr>
                 <tr id="invoice-form-row">
-                    <td id="create-invoice" colspan="4"></td>
+                    <td id="create-invoice" colspan="6"></td>
                 </tr>
             </tbody>
         </table>

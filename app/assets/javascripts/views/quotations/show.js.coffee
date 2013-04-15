@@ -1,6 +1,7 @@
 class App.Views.ShowQuotation extends Backbone.View
   template: JST['quotations/show']
-  className: 'row-fluid quotation'
+  className: ->
+    "row-fluid quotation color#{@model.id % 2}"
   name: 'ShowQuotations'
 
 ########################################################################################################################
@@ -73,11 +74,10 @@ class App.Views.ShowQuotation extends Backbone.View
 ######################################### $ Authorize Quotation $ ######################################################
   authorizeQuotation: (e) ->
     e.preventDefault()
-    @model.save {selected: 'true'}, success: =>
-      App.vent.trigger "selected:quotation:success", @model.cid
-      App.vent.trigger "purchase_request:authorized:success", @model
-      @$('.image').html('<img src="/assets/autorizado.png" style="float:right;">')
-      $(@el).effect("bounce", { times:5 }, 500).fadeOut().remove()
+    #@model.save {selected: 'true'}, success: =>
+    App.vent.trigger "selected:quotation:success", @model.cid
+    App.vent.trigger "purchase_request:authorized:success", @model
+    @remove()
     this
 ########################################################################################################################
 
@@ -89,8 +89,11 @@ class App.Views.ShowQuotation extends Backbone.View
 
 ########################################### $ Hide Close Button $ ######################################################
   paintSelected: ->
-    $(@el).addClass('selected')
-    @$('.image').html('<img src="/assets/autorizado.png" style="float:right;">')
+    setTimeout =>
+      @$('.image').html('<img src="/assets/autorizado.png" style="float:right;">')
+      $(@el).effect("shake")
+      #$(@el).effect("bounce", { times:5 }, 500)
+    , 800
     @$('.select-quotation-button').remove()
     this
 ########################################################################################################################

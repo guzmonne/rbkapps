@@ -22,12 +22,14 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     'click #submit-new-cost_center'   : 'createCostCenter'
     'click #new-quotation'            : 'createNewQuotation'
     'click .detail-label'             : 'toggleSection'
+    'click #quotations-label'         : 'toggleQuotations'
 ########################################################################################################################
 
 ############################################## $ Initialize $ ##########################################################
   initialize: ->
     @fm = new App.Mixins.Form
     @flip = 1
+    @flip1 = 1
     @collectionHelper = new App.Mixins.Collections
     @notes            = new App.Collections.Notes
     @user     = App.users.get(@model.get('user_id'))
@@ -44,14 +46,17 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     @listenTo App.vent, "quotation:create:success", (model) => @addQuotation(model)
     @listenTo App.vent, "remove:createQuotation:success", (model) => @model.quotations.remove(model)
     @listenTo App.vent, "purchase_request:authorized:success", (model) =>
+      @$('.accepted-quotation').show()
       @$('#quotations').slideUp('slow')
-      @model.save {state: 'Autorizado'}, success: =>
-        @$('.state').text('Autorizado')
-        @fm.displayFlash('success', "Se ha creado el estado a Autorizado", 2500)
-        view = new App.Views.ShowQuotation(model: model)
-        App.pushToAppendedViews(view)
-        @$('#accepted-quotation').append(view.render().el)
-        view.paintSelected()
+      @$('#quotations-label').html('Cotizaciones <i class="icon-filter icon-white"></i>')
+      @flip1 = @flip1 + 1
+      $("html, body").animate({ scrollTop: 405 }, "slow")
+      #@model.save {state: 'Autorizado'}, success: =>
+      @$('#state').text('Autorizado')
+      view = new App.Views.ShowQuotation(model: model)
+      App.pushToAppendedViews(view)
+      @$('#accepted-quotation').append(view.render().el).hide().slideDown('slow')
+      view.paintSelected()
     this
 ########################################################################################################################
 
@@ -66,7 +71,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     if App.user.get('compras') == true
       @$('#compras-row').show()
       @$('.compras').show()
-      if @accepted_quotation_states.indexOf(@model.get('state'))
+      if @accepted_quotation_states.indexOf(@model.get('state')) > -1
         @$('.accepted-quotation').show()
     @notes.fetch
       data:
@@ -284,5 +289,16 @@ class App.Views.PurchaseRequestShow extends Backbone.View
       @$('.detail-label').html('Detalle <i class="icon-filter icon-white"></i>')
     else
       @$('.detail-label').html('Detalle')
+    this
+########################################################################################################################
+
+########################################### $ Toggle Quotations $ ######################################################
+  toggleQuotations: ->
+    @flip1 = @flip1 + 1
+    @$('#quotations').slideToggle('slow')
+    if @flip1 % 2 == 0
+      @$('#quotations-label').html('Cotizaciones <i class="icon-filter icon-white"></i>')
+    else
+      @$('#quotations-label').html('Cotizaciones')
     this
 ########################################################################################################################
