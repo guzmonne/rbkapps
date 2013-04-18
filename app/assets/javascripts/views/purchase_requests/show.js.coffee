@@ -9,6 +9,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     'click #nav-prev-purchase-request': 'nextPurchaseRequest'
     'click #nav-next-purchase-request': 'prevPurchaseRequest'
     'click #approve-purchase-request' : 'approveRequest'
+    'click #reject-purchase-request'  : 'rejectRequest'
     'click #edit-cost_center'         : 'toggleCostCenter'
     'click #cancel-change-cost_center': 'toggleCostCenter'
     'click #change-cost_center'       : 'changeCostCenter'
@@ -90,12 +91,16 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     @comprasView()
     # Si el estado del pedido es "Cerrado"
     @closedView()
+    # Si el estado del pedido es "Rechazado"
+    @rejectedView()
     # Notas adjuntas a la Orden de Compras
     @notes.fetch data: {table_name: 'purchase_request', table_name_id : @model.id}, success: => @notes.each @renderNote
     # Cotizaciones adjuntas a la Orden de Compras
     @model.quotations.fetch data: {purchase_request_id: @model.id}, success: => @model.quotations.each (model) => @appendQuotation(model)
     # si la orden de compra se encuentra en algun estado que no permita edicion
     @uneditableQuotation()
+    # Si el usuario es gerente y el estado es "Esperando Autorización"
+    @directorView()
     # inicializar datepicker en el boton
     @$('#set_should_arrive_at').datepicker().on 'changeDate', (ev) =>
       @$('#set_should_arrive_at').datepicker('hide')
@@ -105,9 +110,18 @@ class App.Views.PurchaseRequestShow extends Backbone.View
         @fm.displayFlash 'success', "El campo 'Fecha Esperado' ha sido actualizado correctamente"
     this
 
+  directorView: ->
+    if App.user.get('director') == true and @model.get('state') == "Esperando Autorización"
+      @$('.director').show()
+    if App.user.get('director') == true and @model.get('state') == "Autorizado"
+      @$('.director').show()
+      @$('.accepted-quotation').show()
+    this
+
   supervisorView: ->
     if App.user.isSupervisor() and @model.get('state') == "Esperando Aprobación"
       @$('#approve-purchase-request').show()
+      @$('#reject-purchase-request').show()
     this
 
   comprasView: ->
@@ -124,10 +138,19 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     this
 
   closedView: ->
-    @$('#stamp').removeClass().addClass('pr_status-Cerrado pull-right')
-    @$('#state').text('Cerrado')
-    @$('.well label').text('Cerrado')
-    @$('.hideable').hide()
+    if @model.get('state') == 'Cerrado'
+      @$('#stamp').removeClass().addClass('pr_status-Cerrado pull-right')
+      @$('#state').text('Cerrado')
+      @$('.well label').text('Cerrado')
+      @$('.hideable').hide()
+    this
+
+  rejectedView: ->
+    if @model.get('state') == 'Rechazado'
+      @$('#stamp').removeClass().addClass('pr_status-Rechazado pull-right')
+      @$('#state').text('Rechazado')
+      @$('.well label').text('Rechazado')
+      @$('.hideable').hide()
     this
 
   appendQuotation: (model) =>
@@ -153,6 +176,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     view = new App.Views.NoteShow(model: note)
     App.pushToAppendedViews(view)
     @$('#notes').append(view.render().el)
+    view.hideCloseButton()
     this
 ########################################################################################################################
 
@@ -174,8 +198,8 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     if newState == '' then return @toggleState()
     @toggleState()
     @$('#state').text(newState)
-    if newState == 'Aprobado' then return @approveRequest()
-    console.log newState, Date.parse($('#should_arrive_at').text())
+    if newState == 'Aprobado' then return @approveRequest
+    if newState == 'Rechazado' then return @rejectRequest
     if newState == 'Pedido Realizado'
       unless Date.parse($('#should_arrive_at').text()) > 0
         @fm.displayFlash('warning', "ATENCION! El campo 'Fecha Esperada' esta vacío. Por favor completelo.", 20000)
@@ -233,17 +257,35 @@ class App.Views.PurchaseRequestShow extends Backbone.View
 ########################################### $ Approve Request $ ########################################################
   approveRequest: (e) ->
     e.preventDefault() if e?
-    @model.set('state', 'Aprobado')
-    @model.set('approver', App.user.id)
-    @model.save null,  success: =>
+    #@model.set('state', 'Aprobado')
+    #@model.set('approver', App.user.id)
+    @model.save {state: 'Aprobado', approver: App.user.id},  success: =>
       $("html, body").animate({ scrollTop: 0 }, "fast")
-      $('.well').effect("bounce", { times:5 }, 500);
-      @fm.displayFlash('success', 'El pedido de Compra ha sido aprobado', 10000)
+      $('.well').effect("bounce", { times:7 }, 500);
+      @fm.displayFlash('success', 'El Pedido de Compra ha sido aprobado', 10000)
       @$('.label-status').text('Aprobado')
       @$('[class^="pr_status-"]').removeClass().addClass('pr_status-Aprobado pull-right')
-      @$('#status').text('Aprobado')
+      @$('#state').text('Aprobado')
       @$('#approve-purchase-request').hide()
+      @$('#reject-purchase-request').hide()
       @$('#approver').text(App.user.get('name'))
+########################################################################################################################
+
+############################################ $ Reject Request $ ########################################################
+  rejectRequest: (e) ->
+    e.preventDefault() if e?
+    @model.save {state: 'Rechazado', approver: App.user.id},  success: =>
+      $("html, body").animate({ scrollTop: 0 }, "fast")
+      $('.well').effect("bounce", { times:7 }, 500);
+      @fm.displayFlash('alert', 'El Pedido de Compra ha sido Rechazado', 10000)
+      @$('.label-status').text('Rechazado')
+      @$('[class^="pr_status-"]').removeClass().addClass('pr_status-Rechazado pull-right')
+      @$('#state').text('Rechazado')
+      @$('#approve-purchase-request').hide()
+      @$('#reject-purchase-request').hide()
+      @$('#approver').text(App.user.get('name'))
+      @$('.hideable').hide()
+      this
 ########################################################################################################################
 
 ########################################### $ Update Request $ ########################################################
@@ -422,6 +464,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
             view = new App.Views.NoteShow(model: model)
             App.pushToAppendedViews(view)
             @$('#notes').append(view.render().el)
+            view.hideCloseButton()
         @model.save {state: 'No Entregado'}, success: =>
           @$('#state').text('No Entregado')
           @$('.well label').text('No Entregado')

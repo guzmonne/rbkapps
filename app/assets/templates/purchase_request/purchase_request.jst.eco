@@ -1,7 +1,7 @@
 <td style="max-width: 90px;"><%= @model.get('sector') %></td>
 <td><%= @model.get('user_name') %></td>
 <td style="max-width: 300px;"><%= @model.get('use') %></td>
-<td><%= @model.get('state') %></td>
+<td><label class="label label-<%= @model.get('state').split(' ').join('-') %>"><%= @model.get('state') %></label></td>
 <td><%= @model.get('approved_by') %></td>
 <td><%= @model.get('authorizer') %></td>
 <td><%= @dateHelper.dateRailsOnly(@model.get('created_at')) %></td>

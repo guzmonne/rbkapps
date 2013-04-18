@@ -4,7 +4,7 @@ class App.Views.PurchaseRequest extends Backbone.View
   name: 'PurchaseRequest'
 
   events:
-    'click': 'show'
+    'dblclick': 'show'
 
   initialize: ->
     @dateHelper = new App.Mixins.Date

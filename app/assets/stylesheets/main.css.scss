@@ -360,7 +360,7 @@ body { padding-top: 60px; }
   *margin-right: .3em;
   line-height: 90px;
   vertical-align: middle;
-  background-image: url("/assets/aprobado2.png");
+  background-image: url("/assets/aprobado.png");
   background-position: 0px 0px;
   background-repeat: no-repeat;
 }
@@ -377,7 +377,7 @@ body { padding-top: 60px; }
   background-position: -240px 0;
 }
 
-.pr_status-Cerrado2 {
+.pr_status-Rechazado {
   background-position: -480px 0;
 }
 
@@ -386,6 +386,7 @@ body { padding-top: 60px; }
 }
 
 .quotation {
+  background-color: #f5f5f5;
   padding: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -521,4 +522,40 @@ body { padding-top: 60px; }
   background-image: linear-gradient(to bottom, #51a0c7, #1d1db8);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+}
+
+.label-Esperando-Aprobación {
+  background-color: #FF8940;
+}
+
+.label-Aprobado {
+  background-color: #A63F00;
+}
+
+.label-Cotizando {
+  background-color: #FF6200;
+}
+
+.label-Esperando-Autorización {
+  background-color: #ffa500;
+}
+
+.label-Autorizado {
+  background-color: #84B22D;
+}
+
+.label-Pedido-Realizado {
+  background-color: #689A00;
+}
+
+.label-Cerrado {
+  background-color: #0f8200;
+}
+
+.label-Rechazado {
+  background-color: #e55500;
+}
+
+.label-No-Entregado {
+  background-color: #ba0017;
 }
