@@ -1,6 +1,7 @@
 <td><%= @model.get('name') %></td>
 <td><%= @model.get('phone') %></td>
 <td><%= @model.get('email') %></td>
+<td><%= @model.get('entry') %></td>
 <td><%= @model.get('address') %></td>
 <td>
     <p><%= @model.get('contact') %></p>

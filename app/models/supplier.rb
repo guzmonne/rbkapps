@@ -8,5 +8,6 @@ class Supplier < ActiveRecord::Base
                   :contact,
                   :contact_phone,
                   :contact_email,
-                  :method_of_payment
+                  :method_of_payment,
+                  :entry
 end

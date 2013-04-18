@@ -34,3 +34,10 @@ class App.Models.Delivery extends Backbone.Model
         options.success(data, status, response) if options.success()?
       error: (data, status, response) =>
         options.error(data, status, response) if options.error()?
+
+  destroy: ->
+    $.ajax
+      url: "/api/deliveries/#{@id}"
+      data: {id: @id}
+      type: 'DELETE'
+      dataType: 'json'

@@ -1,4 +1,4 @@
-<form class="form-inline">
+<form class="form-inline" style="color: #000000;">
     <button class="close close-invoice pull-right">&times;</button>
     <button class="close minimize-invoice">
         <i class="icon-minus close-box"></i>

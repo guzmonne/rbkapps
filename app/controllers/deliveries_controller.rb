@@ -5,6 +5,12 @@ class DeliveriesController < ApplicationController
     respond_with Delivery.all
   end
 
+  def destroy
+    Delivery.find(params["id"]).destroy
+    @result = {status: :ok}
+    respond_with @result
+  end
+
   def show
     @delivery = Delivery.find(params["id"])
     @invoices = @delivery.invoices

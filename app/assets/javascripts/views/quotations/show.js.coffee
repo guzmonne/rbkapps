@@ -74,10 +74,11 @@ class App.Views.ShowQuotation extends Backbone.View
 ######################################### $ Authorize Quotation $ ######################################################
   authorizeQuotation: (e) ->
     e.preventDefault()
-    #@model.save {selected: 'true'}, success: =>
-    App.vent.trigger "selected:quotation:success", @model.cid
-    App.vent.trigger "purchase_request:authorized:success", @model
-    @remove()
+    @model.save {selected: 'true'}, success: =>
+      @model.set('can_be_selected', false)
+      App.vent.trigger "selected:quotation:success", @model.cid
+      App.vent.trigger "purchase_request:authorized:success", @model
+      @remove()
     this
 ########################################################################################################################
 

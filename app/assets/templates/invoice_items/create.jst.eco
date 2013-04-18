@@ -40,7 +40,7 @@
             <button type="submit"
                     id="add-searched-item"
                     class="btn btn-block btn-success">
-                <i class="icon-ok icon-white"></i>
+                <i class="icon-ok icon-white" style="color: #FFFFFF;"></i>
             </button>
         </td>
     </tr>

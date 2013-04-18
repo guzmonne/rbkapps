@@ -1,9 +1,10 @@
 <div class="well">
-    <i class="pr_status-<%= @model.get('state').replace(' ', '-' ) %> pull-right"></i>
+    <i id="stamp" class="pr_status-<%= @model.get('state').replace(' ', '-' ) %> pull-right"></i>
     <h1>
-        Solicitud de Compra #<%= @model.id %> - <label class="label label-info label-status"><%= @model.get('state') %></label>
+        Solicitud de Compra #<%= @model.id %> - <label class="label <%= if @model.get('state') == 'Pedido Realizado' then 'label-success' else 'label-info' %> label-status">
+        <%= @model.get('state') %>
+    </label>
     </h1>
-
     <p>
         <div class="btn btn-mini btn-info" id="nav-prev-purchase-request">
             <i class="icon-chevron-left icon-white"></i>
@@ -27,7 +28,7 @@
     </div>
     <div class="span2" style="width: 10%;">
         <label class="label label-inverse label-element"><strong>Necesario para</strong></label>
-        <p class="p-element"><%= @model.get('deliver_at') %></p>
+        <p class="p-element" style="width: 102px; text-align: center;"><%= @model.get('deliver_at') %></p>
     </div>
     <div class="span2">
         <label class="label label-inverse label-element"><strong>Uso del Material</strong></label>
@@ -39,13 +40,13 @@
     </div>
     <div class="span2">
         <label class="label label-inverse label-element"><strong>Estado</strong></label>
-        <button class="btn btn-mini btn-warning state label-center compras" id="edit-state" >
+        <button class="btn btn-mini hideable btn-warning state label-center compras" id="edit-state" >
             <i class="icon-pencil icon-white"></i>
         </button>
-        <button class="btn btn-mini btn-primary state hide label-center" id="change-state" >
+        <button class="btn btn-mini hideable btn-primary state hide label-center" id="change-state" >
             <i class="icon-ok icon-white"></i>
         </button>
-        <button class="btn btn-mini btn-inverse state hide label-center" id="cancel-change-state" >
+        <button class="btn btn-mini hideable btn-inverse state hide label-center" id="cancel-change-state" >
             <i class="icon-remove icon-white"></i>
         </button>
         <p class="p-element state" id="state"><%= @model.get('state') %></p>
@@ -56,9 +57,10 @@
             <option>Cotizando</option>
             <option>Esperando Autorización</option>
             <option>Autorizado</option>
-            <option>Completado</option>
+            <option>Pedido Realizado</option>
             <option>Cerrado</option>
             <option>Rechazado</option>
+            <option>No Entregado</option>
         </select>
     </div>
 </div>
@@ -70,22 +72,22 @@
     </div>
     <div class="span2">
         <label class="label label-inverse label-element"><strong>Centro de Costos</strong></label>
-        <button class="btn btn-mini btn-warning cost_center label-center" id="edit-cost_center" >
+        <button class="btn btn-mini hideable btn-warning cost_center label-center" id="edit-cost_center" >
             <i class="icon-pencil icon-white"></i>
         </button>
-        <button class="btn btn-mini btn-success cost_center label-center" id="create-new-cost_center" >
+        <button class="btn btn-mini hideable btn-success cost_center label-center" id="create-new-cost_center" >
             <i class="icon-plus icon-white"></i>
         </button>
-        <button class="btn btn-mini btn-primary cost_center hide label-center" id="change-cost_center" >
+        <button class="btn btn-mini hideable btn-primary cost_center hide label-center" id="change-cost_center" >
             <i class="icon-ok icon-white"></i>
         </button>
-        <button class="btn btn-mini btn-inverse cost_center hide label-center" id="cancel-change-cost_center" >
+        <button class="btn btn-mini hideable btn-inverse cost_center hide label-center" id="cancel-change-cost_center" >
             <i class="icon-remove icon-white"></i>
         </button>
-        <button class="btn btn-mini btn-primary hide label-center" id="submit-new-cost_center" >
+        <button class="btn btn-mini hideable btn-primary hide label-center" id="submit-new-cost_center" >
             <i class="icon-ok icon-white"></i>
         </button>
-        <button class="btn btn-mini btn-inverse hide label-center" id="cancel-new-cost_center" >
+        <button class="btn btn-mini hideable btn-inverse hide label-center" id="cancel-new-cost_center" >
             <i class="icon-remove icon-white"></i>
         </button>
         <p class="p-element cost_center" id="cost_center" ><%= if @model.get('cost_center')? then @model.get('cost_center') else "*** No Asignado ***" %></p>
@@ -101,10 +103,26 @@
             <% end %>
         </select>
     </div>
+    <div class="span2">
+        <label class="label label-inverse label-element"><strong>Autorizado por</strong></label>
+        <p class="p-element" id="authorized_by" ><%= @model.get('authorizer') %></p>
+    </div>
+    <div class="span2 authorized hide">
+        <label class="label label-inverse label-element"><strong>Fecha Esperada</strong></label>
+        <button class="btn btn-mini hideable btn-warning label-center" id="set_should_arrive_at" data-date-format="yyyy-mm-dd" data-date="">
+            <i class="icon-calendar icon-white"></i>
+        </button>
+        <button class="btn btn-mini hideable btn-danger label-center" id="clean_should_arrive_at" data-date-format="yyyy-mm-dd" data-date="">
+            <i class="icon-trash icon-white"></i>
+        </button>
+        <p class="p-element date" data-date-format="yyyy-mm-dd" id="should_arrive_at" style="width: 175px; text-align: center;">
+            <%= if @model.get('should_arrive_at')? then @model.get('should_arrive_at') else "***" %>
+        </p>
+    </div>
 </div>
 <hr class="accepted-quotation hide">
 <!--################################### Cotización Aceptada ##################################-->
-<div class="accepted-quotation hide"><label id="accepted-quotations-label"  class="label label-inverse label-element" style="margin-left: 10px;"><strong>Cotización Aceptada</strong></label></div>
+<div class="accepted-quotation hide"><label id="accepted-quotations-label"  class="label label-info label-element" style="margin-left: 10px;"><strong>Cotización Aceptada</strong></label></div>
 <div class="row-fluid hide compras">
     <div class="span12" id="accepted-quotation"></div>
 </div>
@@ -134,7 +152,7 @@
     <div class="span12">
         <div id="notes"></div>
         <textarea id="new-note" rows="2" style="width: 96%;"></textarea>
-        <button id="add-note" class="btn btn-info btn-mini" style="margin-top: 4px;">
+        <button id="add-note" class="btn btn-info btn-mini hideable" style="margin-top: 4px;">
             <i class="icon-font icon-white"></i>
             Agregar Nota
         </button>
@@ -146,7 +164,53 @@
     <div class="span12">
         <div class="form-actions">
             <button id="approve-purchase-request" class="btn btn-warning btn-large hide">Aprobar Pedido</button>
+            <button id="received-purchase-request"
+                    class="btn btn-warning btn-large closeRequest <%= unless @model.get('state') == 'Pedido Realizado' then 'hide' %>"
+                    data-toggle="modal"
+                    href="#confirm_delivery_modal">
+                Pedido Recibido
+            </button>
         </div>
+    </div>
+</div>
+<div class="modal hide fade" tabindex="-1" role="dialog" id="confirm_delivery_modal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h3>Confirmación de Recepción de Pedido</h3>
+    </div>
+    <div class="modal-body">
+        <p class="not_delivered">Ha recibido su pedido correctamente?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" id="delivered"  class="btn btn-primary btn-large pull-left not_delivered closeRequest">Si</a>
+        <a href="#" id="not_delivered" class="btn btn-danger btn-large pull-right not_delivered closeRequest">No</a>
+    </div>
+</div>
+<div class="modal hide fade" tabindex="-1" role="dialog" id="leave_note_modal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h3>Confirmación de Recepción de Pedido</h3>
+    </div>
+    <div class="modal-body">
+        <p class="not_delivered delivery_note">Desea dejar una nota?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" id="leave_note"  class="btn btn-primary btn-large pull-left not_delivered delivery_note closeRequest">Si</a>
+        <a href="#" id="dont_leave_note" class="btn btn-danger btn-large pull-right not_delivered delivery_note closeRequest">No</a>
+   </div>
+</div>
+<div class="modal hide fade" tabindex="-1" role="dialog" id="confirm_delivery_note_modal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h3>Confirmación de Recepción de Pedido</h3>
+    </div>
+    <div class="modal-body">
+        <p class="delivery_note">Ingrese su Comentario:</p>
+        <textarea class="delivery_note" id="delivery_note"></textarea>
+    </div>
+    <div class="modal-footer">
+        <a href="#" id="confirm_note" class="btn btn-primary btn-large pull-left delivery_note closeRequest">OK</a>
+        <a href="#" id="cancel_note" class="btn btn-inverse btn-large pull-right delivery_note closeRequest">Cancelar</a>
     </div>
 </div>
 

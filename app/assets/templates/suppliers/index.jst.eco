@@ -19,6 +19,7 @@
                     <th data-sort="name" data-sort_type="string">Nombre</th>
                     <th data-sort="phone" data-sort_type="string">Telefono</th>
                     <th data-sort="email" data-sort_type="string">E-mail</th>
+                    <th data-sort="entry" data-sort_type="string">Rubro</th>
                     <th data-sort="address" data-sort_type="string">Dirección</th>
                     <th data-sort="contact" data-sort_type="string">Contacto</th>
                     <th data-sort="method_of_payment" data-sort_type="string">Forma de Pago</th>

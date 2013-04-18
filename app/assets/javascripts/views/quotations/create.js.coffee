@@ -14,6 +14,7 @@ class App.Views.CreateQuotation extends Backbone.View
     'click #create-new-method_of_payment'                 : 'createNewMethod'
     'click #cancel-new-method_of_payment'                 : 'createNewMethod'
     'click #submit-new-method_of_payment'                 : 'createMethod'
+    'change .supplier_id'                                 : 'setMethodOfPayment'
 ############################################### $ Initialize $ #########################################################
   initialize: ->
     @shown  = 0
@@ -116,5 +117,11 @@ class App.Views.CreateQuotation extends Backbone.View
       @$('.add-on').text('$')
       @$('.currency').text('USD')
       @model.set('dollars', false)
+    this
+########################################################################################################################
+
+########################################### $ Set Method of Payment $ ##################################################
+  setMethodOfPayment: (e) ->
+    @$('.method_of_payment').val(App.suppliers.get(@$('.supplier_id').val()).get('method_of_payment'))
     this
 ########################################################################################################################

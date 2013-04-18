@@ -27,6 +27,7 @@ class App.Views.SupplierCreate extends Backbone.View
   createNewMethod: (e) ->
     e.preventDefault() if e?
     @$('#new-method_of_payment-input').toggle()
+    @$('#method_of_payment').toggle()
     @$('.method_of_payment').toggle()
     @$('#create-new-method_of_payment').toggle()
     @$('#submit-new-method_of_payment').toggle()
@@ -48,8 +49,8 @@ class App.Views.SupplierCreate extends Backbone.View
     model.save attributes, success: =>
       @$('#new-method_of_payment-input').val('')
       @createNewMethod()
-      @$('.method_of_payment').append("<option>#{newMethod}</option>")
-      @$('.method_of_payment').val(newMethod)
+      @$('#method_of_payment').append("<option>#{newMethod}</option>")
+      @$('#method_of_payment').val(newMethod)
     this
 ########################################################################################################################
 
@@ -66,6 +67,7 @@ class App.Views.SupplierCreate extends Backbone.View
         contact             : @$('#contact_name').val()
         contact_phone       : @$('#contact_phone').val()
         contact_email       : @$('#contact_email').val()
+        entry               : @$('#entry').val()
     @model.save attributes, success: =>
       App.vent.trigger "supplier:create:success", @model
       @remove()

@@ -3,16 +3,41 @@
   <component name="ChangeListManager">
     <list default="true" id="044e0a91-8a4a-4ab7-93a4-af1de8015a06" name="Default" comment="">
       <change type="DELETED" beforePath="C:\Users\gmonne.RBKURUGUAY\RubymineProjects\rbkapps\app\assets\images\plane.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/images/aprobado.png" afterPath="$PROJECT_DIR$/app/assets/images/aprobado.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/images/autorizado.png" afterPath="$PROJECT_DIR$/app/assets/images/autorizado.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/invoices/create.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/invoices/create.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/collections/suppliers.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/suppliers.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/mixins/date.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/mixins/date.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/models/delivery.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/models/delivery.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/delivery.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/delivery.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/index.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/index.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/invoices/invoice.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/invoices/invoice.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/items/index.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/items/index.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/index.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/index.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/purchase_request.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/purchase_request.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/show.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/show.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/quotations/create.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/quotations/create.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/quotations/show.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/quotations/show.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/suppliers/create.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/suppliers/create.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/suppliers/index.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/suppliers/index.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/invoices/index.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/invoices/index.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/invoices/invoice.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/invoices/invoice.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/deliveries/delivery.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/deliveries/delivery.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/deliveries/index.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/deliveries/index.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/invoice_items/create.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/invoice_items/create.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/invoices/create.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/invoices/create.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/purchase_request/index.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/purchase_request/index.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/purchase_request/purchase_request.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/purchase_request/purchase_request.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/purchase_request/show.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/purchase_request/show.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/quotations/show.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/quotations/show.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/suppliers/create.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/suppliers/create.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/suppliers/index.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/suppliers/index.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/suppliers/supplier.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/suppliers/supplier.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/deliveries_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/deliveries_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/purchase_request.rb" afterPath="$PROJECT_DIR$/app/models/purchase_request.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/supplier.rb" afterPath="$PROJECT_DIR$/app/models/supplier.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
     </list>
     <ignored path="rbkapps.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,19 +60,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee">
+      <file leaf-file-name="index.jst.eco" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/templates/deliveries/index.jst.eco">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="18" selection-start="3841" selection-end="3841" vertical-scroll-proportion="0.0">
+            <state line="83" column="30" selection-start="3739" selection-end="3753" vertical-scroll-proportion="-15.923077">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="invoice.js.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/index.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="6" selection-start="529" selection-end="582" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js.coffee" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/items/index.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="59" selection-start="456" selection-end="456" vertical-scroll-proportion="0.3406408">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="invoice.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/invoices/invoice.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="35" selection-start="3249" selection-end="3249" vertical-scroll-proportion="0.53288364">
+            <state line="12" column="12" selection-start="330" selection-end="339" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.css.scss" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/main.css.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="520" column="0" selection-start="11306" selection-end="11306" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="delivery.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/delivery.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="44" selection-start="594" selection-end="619" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -69,22 +130,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/templates/deliveries/create.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/templates/deliveries/show.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/templates/quotations/show.jst.eco" />
-        <option value="$PROJECT_DIR$/db/migrate/20130410191947_add_selected_to_quotation.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130417125307_add_some_fields_to_purchase_requests.rb" />
+        <option value="$PROJECT_DIR$/app/models/purchase_request.rb" />
+        <option value="$PROJECT_DIR$/app/assets/templates/purchase_request/index.jst.eco" />
+        <option value="$PROJECT_DIR$/app/assets/templates/purchase_request/purchase_request.jst.eco" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/purchase_request.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/templates/purchase_request/show.jst.eco" />
-        <option value="$PROJECT_DIR$/app/models/quotation.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/show.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/quotations/show.js.coffee" />
-        <option value="$PROJECT_DIR$/config/database.yml" />
+        <option value="$PROJECT_DIR$/app/assets/templates/deliveries/index.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/templates/invoices/invoice.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/invoices/create.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/templates/deliveries/delivery.jst.eco" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/models/delivery.js.coffee" />
+        <option value="$PROJECT_DIR$/app/controllers/deliveries_controller.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/delivery.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/index.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" />
-        <option value="$PROJECT_DIR$/app/assets/templates/invoices/index.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/invoices/invoice.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/items/index.js.coffee" />
       </list>
     </option>
   </component>
@@ -269,6 +330,28 @@
               <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="purchase_request_line" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assets" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.AssetsTopLevelFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="purchase_request" />
               <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
             </PATH_ELEMENT>
@@ -335,6 +418,28 @@
               <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="invoice_items" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assets" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.AssetsTopLevelFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="deliveries" />
               <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
             </PATH_ELEMENT>
@@ -376,58 +481,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="users" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rbkapps" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rbkapps" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Assets" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.AssetsTopLevelFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Javascripts" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.AssetsPredefinedGroupFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rbkapps" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rbkapps" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Assets" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.AssetsTopLevelFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Javascripts" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.AssetsPredefinedGroupFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="suppliers" />
               <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -480,6 +533,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="purchase_requests" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assets" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.AssetsTopLevelFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Javascripts" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.AssetsPredefinedGroupFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="items" />
               <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.FolderSubFolderNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -609,6 +688,20 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="Assets" />
               <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.AssetsTopLevelFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.ControllersFolderNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1431,7 +1524,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="816" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="154" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="153" />
-    <property name="Database.TableEditor.Splitter" value="0.9000002" />
+    <property name="Database.TableEditor.Splitter" value="0.9184398" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
@@ -1689,9 +1782,9 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19166666" sideWeight="0.5744337" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19166666" sideWeight="0.5760518" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21742424" sideWeight="0.27669904" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21742424" sideWeight="0.5760518" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21439394" sideWeight="0.5760518" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5307443" sideWeight="0.5189394" order="7" side_tool="true" content_ui="tabs" />
@@ -1761,112 +1854,133 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/models/quotation.rb">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/show.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="27" selection-start="310" selection-end="310" vertical-scroll-proportion="0.5151515" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/mixins/form.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="26" selection-start="21" selection-end="301" vertical-scroll-proportion="0.0" />
+        <state line="13" column="49" selection-start="755" selection-end="755" vertical-scroll-proportion="0.24864864">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/templates/purchase_request/show.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="33" selection-start="2267" selection-end="2272" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/quotations/show.jst.eco">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="37" selection-start="1936" selection-end="1959" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/purchase_requests/show.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="6" selection-start="2742" selection-end="2742" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/database.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="21" selection-start="118" selection-end="118" vertical-scroll-proportion="0.1450151">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/quotations/show.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="2" selection-start="2746" selection-end="2746" vertical-scroll-proportion="0.0">
+        <state line="12" column="32" selection-start="566" selection-end="566" vertical-scroll-proportion="0.36823106">
           <folding>
-            <marker date="1365795895436" expanded="false" signature="-1:-1" placeholder="..." />
+            <element signature="n#style#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#2;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#3;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#6;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#7;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#9;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#9;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#div#0;n#div#9;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#9;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2145" column="0" selection-start="39265" selection-end="39297" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/invoices/create.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="28" selection-start="7823" selection-end="7823" vertical-scroll-proportion="0.5413153">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/select2.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/templates/invoices/invoice.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="27" selection-start="169" selection-end="169" vertical-scroll-proportion="0.08994709">
+        <state line="11" column="0" selection-start="405" selection-end="611" vertical-scroll-proportion="0.329806">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/invoices/index.jst.eco">
+    <entry file="file://$PROJECT_DIR$/app/controllers/invoices_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="42" selection-start="781" selection-end="781" vertical-scroll-proportion="0.5996473">
+        <state line="51" column="20" selection-start="1558" selection-end="1558" vertical-scroll-proportion="0.6846543">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/main.css.scss">
+    <entry file="file://$PROJECT_DIR$/app/controllers/deliveries_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="483" column="0" selection-start="10514" selection-end="10514" vertical-scroll-proportion="0.7362069">
+        <state line="8" column="12" selection-start="146" selection-end="146" vertical-scroll-proportion="0.23448277">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/models/invoice.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="41" selection-start="305" selection-end="305" vertical-scroll-proportion="0.22934233">
+        <state line="12" column="0" selection-start="259" selection-end="383" vertical-scroll-proportion="0.34401348">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/items/item.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="23" selection-start="549" selection-end="565" vertical-scroll-proportion="0.6020236">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/delivery.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="44" selection-start="594" selection-end="619" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/deliveries/delivery.jst.eco">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="31" selection-start="899" selection-end="914" vertical-scroll-proportion="0.5696649">
+          <folding>
+            <element signature="n#style#0;n#td#10;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/models/delivery.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="27" selection-start="1344" selection-end="1344" vertical-scroll-proportion="0.8503521">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/deliveries/index.jst.eco">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="30" selection-start="3739" selection-end="3753" vertical-scroll-proportion="-15.923077">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="18" selection-start="3841" selection-end="3841" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/invoices/invoice.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="35" selection-start="3249" selection-end="3249" vertical-scroll-proportion="0.53288364">
+        <state line="12" column="12" selection-start="330" selection-end="339" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/main.css.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="520" column="0" selection-start="11306" selection-end="11306" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/index.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="6" selection-start="529" selection-end="582" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/items/index.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="59" selection-start="456" selection-end="456" vertical-scroll-proportion="0.3406408">
           <folding />
         </state>
       </provider>

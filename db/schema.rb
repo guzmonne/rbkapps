@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130410191947) do
+ActiveRecord::Schema.define(:version => 20130417125307) do
 
   create_table "deliveries", :force => true do |t|
     t.string   "courier"
@@ -96,12 +96,16 @@ ActiveRecord::Schema.define(:version => 20130410191947) do
     t.string   "sector"
     t.date     "deliver_at"
     t.string   "use"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.string   "state"
     t.text     "detail"
     t.integer  "approver"
     t.string   "cost_center"
+    t.integer  "authorizer_id"
+    t.date     "should_arrive_at"
+    t.date     "arrived_at"
+    t.date     "closed_at"
   end
 
   create_table "quotations", :force => true do |t|
@@ -127,6 +131,7 @@ ActiveRecord::Schema.define(:version => 20130410191947) do
     t.string   "method_of_payment"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "entry"
   end
 
   create_table "teams", :force => true do |t|

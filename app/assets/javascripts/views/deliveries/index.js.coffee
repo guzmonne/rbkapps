@@ -13,6 +13,8 @@ class App.Views.DeliveryIndex extends Backbone.View
     @listenTo App.vent, 'update:page', (page) =>
       @$('.page').removeClass("label label-info")
       @$("*[data-pages='#{page}']").addClass("label label-info")
+      @$('#pagination-end').removeClass('label label-info')
+    @listenTo App.vent, 'remove:delivery:success', (model) => App.deliveries.remove(model)
 
   events:
     'click #new-delivery'     : 'newDelivery'
@@ -24,11 +26,23 @@ class App.Views.DeliveryIndex extends Backbone.View
     'click #search-undo'      : 'searchUndo'
     'focus #search-input'     : 'searchTypeahead'
     'click .pagination a'     : 'changePage'
+    'mouseover .page'         : 'paginationHoverIn'
+    'mouseout .page'          : 'paginationHoverOut'
 
   render: ->
     $(@el).html(@template())
     @update(1)
     @pagination()
+    this
+
+  paginationHoverIn: (e) ->
+    page = e.currentTarget.dataset["pages"]
+    @$('.page').removeClass('pagination-hover')
+    @$("[data-pages=#{page}]").addClass('pagination-hover')
+    this
+
+  paginationHoverOut: (e) ->
+    @$('.page').removeClass('pagination-hover')
     this
 
   pagination: ->

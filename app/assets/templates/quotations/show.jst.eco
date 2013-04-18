@@ -1,5 +1,6 @@
 <div class="span12" style="margin-left: 10px; margin-right: 10px;">
     <button class="close close-quotation pull-right" style="margin-right: 10px;">&times;</button>
+    <i class="<% if @model.get('selected') == true then 'authorized_image' %>"></i>
     <div class="image"></div>
     <div class="row-fluid">
         <div class="span4">
@@ -14,29 +15,21 @@
     <div class="row-fluid">
         <div class="span12">
             <label class="label label-inverse">Detalle</label><br>
-            <section class="detail"></section>
+            <section class="detail" style="padding: 10px; margin-bottom: 30px;"></section>
         </div>
     </div>
     <div class="row-fluid">
         <div class="span4 row-fluid">
-            <div class="span3"><label class="label label-inverse">Total Neto</label></div>
-            <div class="span9">
-                <p><%= if @model.get('dollars') == true then "USD" else "$" %> <%= parseFloat(@model.get('total_net')).toFixed(2) %></p>
-            </div>
+            <label class="label label-inverse currency">Total Neto</label>
+            <p class="currency"><%= if @model.get('dollars') == true then "USD" else "$" %> <%= parseFloat(@model.get('total_net')).toFixed(2) %></p>
         </div>
         <div class="span4 row-fluid">
-            <div class="span3"><label class="label label-inverse">I.V.A</label></div>
-            <div class="span9">
-                <p><%= if @model.get('dollars') == true then "USD" else "$" %> <%= parseFloat(@model.get('iva')).toFixed(2) %></p>
-            </div>
+            <label class="label label-inverse currency">I.V.A</label>
+            <p class="currency"><%= if @model.get('dollars') == true then "USD" else "$" %> <%= parseFloat(@model.get('iva')).toFixed(2) %></p>
         </div>
         <div class="span4 row-fluid">
-            <div class="span3">
-                <label class="label label-warning">Total</label>
-            </div>
-            <div class="span9">
-                <p class="alert-error"><strong><%= if @model.get('dollars') == true then "USD" else "$" %> <%= ( parseFloat(@model.get('iva')) + parseFloat(@model.get('total_net')) ).toFixed(2) %></strong></p>
-            </div>
+            <label class="label label-inverse currency">Total</label>
+            <p class="alert-error currency"><strong><%= if @model.get('dollars') == true then "USD" else "$" %> <%= ( parseFloat(@model.get('iva')) + parseFloat(@model.get('total_net')) ).toFixed(2) %></strong></p>
         </div>
     </div>
     <div class="row-fluid select-quotation-button hide" >

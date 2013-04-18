@@ -48,7 +48,7 @@ class App.Views.Invoice extends Backbone.View
 #################################################### $ Render $ ########################################################
   render: ->
     $(@el).html(@template(invoice: @model))
-    unless @model.get('delivery_id') then  @$('.without_delivery').html('<i class="icon-ok"></i>')
+    unless @model.get('delivery_id') then  @$('.without_delivery').html('<i class="icon-ok delivery_id"></i>')
     this
 ########################################################################################################################
 
@@ -83,9 +83,9 @@ class App.Views.Invoice extends Backbone.View
 
 ################################################ $ Paint Icon $ ########################################################
   iconWhite: ->
-    @$('.icon-ok').addClass('icon-white')
+    @$('.delivery_id').addClass('icon-white')
     this
   iconBlack: ->
-    @$('.icon-ok').removeClass('icon-white')
+    @$('.delivery_id').removeClass('icon-white')
     this
 

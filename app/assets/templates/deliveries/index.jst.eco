@@ -69,6 +69,7 @@
                     <th data-sort="origin_date" data-sort_type="date">Fecha de Salida</th>
                     <th data-sort="arrival_date" data-sort_type="date">Fecha de Llegada</i></th>
                     <th data-sort="delivery_date" data-sort_type="date">Fecha de Entrega</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody id="deliveries">

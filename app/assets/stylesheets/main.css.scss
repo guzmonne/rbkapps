@@ -360,7 +360,7 @@ body { padding-top: 60px; }
   *margin-right: .3em;
   line-height: 90px;
   vertical-align: middle;
-  background-image: url("/assets/aprobado.png");
+  background-image: url("/assets/aprobado2.png");
   background-position: 0px 0px;
   background-repeat: no-repeat;
 }
@@ -370,7 +370,15 @@ body { padding-top: 60px; }
  }
 
 .pr_status-Esperando-Aprobación {
+  background-position: 240px 0;
+}
+
+.pr_status-Cerrado {
   background-position: -240px 0;
+}
+
+.pr_status-Cerrado2 {
+  background-position: -480px 0;
 }
 
 .label-center {
@@ -391,7 +399,7 @@ body { padding-top: 60px; }
 
 .quotation label {
   vertical-align: middle;
-  margin-bottom: 8px;
+  margin-bottom: 9px;
   font-size: 13px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 7px;
@@ -403,14 +411,31 @@ body { padding-top: 60px; }
   padding: 5px;
   border-radius: 5px;
   width: 95%;
+  box-shadow: 0 0 5px rgb(184, 184, 184);
+  -webkit-box-shadow: 0 0 5px rgb(184, 184, 184);
+  -moz-box-shadow: 0 0 5px rgb(184, 184, 184);
+}
+
+.quotation p.currency {
+  display: inline;
+  padding: 7px;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.quotation label.currency {
+  display: inline;
 }
 
 .quotation section {
   margin-bottom: 10px;
-  padding: 10px;
+  //padding: 10px;
   background-color: #ffffff;
   border-radius: 5px;
   width: 97.5%;
+  box-shadow: 0 0 5px rgb(184, 184, 184);
+  -webkit-box-shadow: 0 0 5px rgb(184, 184, 184);
+  -moz-box-shadow: 0 0 5px rgb(184, 184, 184);
 }
 
 .supplier {
@@ -447,25 +472,13 @@ body { padding-top: 60px; }
   background-color: #f8d200;
 }
 
-.authorized {
-  background: rgb(205,235,142); /* Old browsers */
-  background: -moz-linear-gradient(top,  rgba(205,235,142,1) 0%, rgba(165,201,86,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(205,235,142,1)), color-stop(100%,rgba(165,201,86,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(205,235,142,1) 0%,rgba(165,201,86,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(205,235,142,1) 0%,rgba(165,201,86,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(205,235,142,1) 0%,rgba(165,201,86,1) 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  rgba(205,235,142,1) 0%,rgba(165,201,86,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cdeb8e', endColorstr='#a5c956',GradientType=0 ); /* IE6-9 */
-
-}
-
 .authorized_image {
   #display: inline-block;
-  width: 360px;
-  height: 110px;
+  width: 180px;
+  height: 55px;
   #margin-top: 1px;
-  *margin-right: .3em;
-  line-height: 110px;
+  margin-right: 1em;
+  line-height: 55px;
   #vertical-align: text-top;
   background-image: url("/assets/autorizado.png");
   background-position: 0px 0px;
@@ -482,6 +495,30 @@ body { padding-top: 60px; }
   background-image: -webkit-linear-gradient(top, #07c700, #0ca400);
   background-image: -o-linear-gradient(top, #07c700, #0ca400);
   background-image: linear-gradient(to bottom, #07c700, #0ca400);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+}
+
+.well.cerrado {
+  color: #FFFFFF;
+  background-color: #0c6b00;
+  background-image: -moz-linear-gradient(top, #07c700, #0c6b00);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#07c700), to(#0c6b00));
+  background-image: -webkit-linear-gradient(top, #07c700, #0c6b00);
+  background-image: -o-linear-gradient(top, #07c700, #0c6b00);
+  background-image: linear-gradient(to bottom, #07c700, #0c6b00);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+}
+
+.pagination-hover {
+  color: #FFFFFF;
+  background-color: #1d1db8;
+  background-image: -moz-linear-gradient(top, #51a0c7, #1d1db8);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#51a0c7), to(#1d1db8));
+  background-image: -webkit-linear-gradient(top, #51a0c7, #1d1db8);
+  background-image: -o-linear-gradient(top, #51a0c7, #1d1db8);
+  background-image: linear-gradient(to bottom, #51a0c7, #1d1db8);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
 }

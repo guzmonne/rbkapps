@@ -4,7 +4,8 @@ class App.Views.Delivery extends Backbone.View
   name: 'Delivery'
 
   events:
-    'click': 'show'
+    'dblclick': 'show'
+    'click #remove-delivery' : 'removeDelivery'
 
   initialize: ->
     @listenTo App.vent, 'update:deliveries:success', => @remove()
@@ -16,3 +17,11 @@ class App.Views.Delivery extends Backbone.View
   show: ->
     Backbone.history.navigate("deliveries/show/#{@model.id}", true)
     this
+
+  removeDelivery: (e) ->
+    e.preventDefault()
+    result = confirm("Esta seguro que desea eliminar este envío?")
+    if result
+      App.vent.trigger 'remove:delivery:success', @model
+      @model.destroy()
+      @remove()

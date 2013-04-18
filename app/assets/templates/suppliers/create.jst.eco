@@ -20,7 +20,7 @@
     </div>
     <hr style="margin: 5px 0;">
     <div class="row-fluid">
-        <div class="span12">
+        <div class="span8">
             <label class="label label-inverse">Forma de Pago</label>
             <button class="btn btn-mini btn-success label-center" id="create-new-method_of_payment" style="margin-bottom: 8px;">
                 <i class="icon-plus icon-white"></i>
@@ -41,6 +41,15 @@
                 <% App.formHelpers.where({column: 'method_of_payment'}).forEach (model) -> : %>
                 <option><%= model.get('value') %></option>
                 <% end %>
+            </select>
+        </div>
+        <div class="span4">
+            <label class="label label-inverse">Rubro</label>
+            <select id="entry">
+                <option></option>
+                <option>Tecnología</option>
+                <option>Servicios</option>
+                <option>Papelería</option>
             </select>
         </div>
     </div>

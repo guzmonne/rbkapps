@@ -8,6 +8,7 @@ class App.Views.SupplierIndex extends Backbone.View
   events:
     'click #fetch-suppliers'     : 'fetchSuppliers'
     'click #new-supplier'        : 'newSupplier'
+    'click th'                   : 'sortSuppliers'
 ########################################################################################################################
 
 ############################################### $ Initialize $ #########################################################
@@ -57,4 +58,43 @@ class App.Views.SupplierIndex extends Backbone.View
       @$('#fetch-suppliers').html('Actualizar').removeClass('loading')
       App.suppliers.each(@appendSuppliers)
     this
+########################################################################################################################
+
+################################################## $ Sort $ ############################################################
+  sortSuppliers: (e) ->
+    sortVar =  e.currentTarget.dataset['sort']
+    type    =  e.currentTarget.dataset['sort_type']
+    oldVar  =  @collection.sortVar
+    @removeChevron()
+    if sortVar == oldVar
+      if @collection.sortMethod == 'lTH'
+        @sort(sortVar, 'hTL', 'down', type )
+      else
+        @sort(sortVar, 'lTH', 'up', type )
+    else
+      @sort(sortVar, 'lTH', 'up', type, oldVar )
+
+  sort: (sortVar, method, direction, type, oldVar = null ) ->
+    if oldVar == null then oldVar = sortVar
+    if direction == 'up'
+      $("th[data-sort=#{sortVar}]").append( '<i class="icon-chevron-up pull-right"></i>' )
+    else
+      $("th[data-sort=#{sortVar}]").append( '<i class="icon-chevron-down pull-right"></i>' )
+    @update(type, sortVar, method)
+
+  removeChevron: ->
+    @$(".icon-chevron-up").remove()
+    @$(".icon-chevron-down").remove()
+
+  update: (type, sortVar, method) ->
+    oldSortVarType      = @collection.sortVarType
+    oldSortVar          = @collection.sortVar
+    oldSortMethod       = @collection.sortMethod
+    @collection = App.suppliers
+    if type? and sortVar? and method?
+      @collection.setSortVariables(type, sortVar, method)
+    else
+      @collection.setSortVariables(oldSortVarType, oldSortVar, oldSortMethod)
+    App.vent.trigger 'update:suppliers:success'
+    @collection.sort().each(@appendSuppliers)
 ########################################################################################################################

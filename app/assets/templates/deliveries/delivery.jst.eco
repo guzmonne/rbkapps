@@ -16,3 +16,8 @@
 <td><%= @model.get('origin_date') %></td>
 <td><%= @model.get('arrival_date') %></td>
 <td><%= @model.get('delivery_date') %></td>
+<td id="remove-invoice-model" style="max-width: 30px;">
+    <button id="remove-delivery" class="btn btn-mini btn-danger" data-cid="<%= @model.cid %>">
+        <i class="icon-minus icon-white"></i>
+    </button>
+</td>
