@@ -2,10 +2,16 @@ class App.Views.Item extends Backbone.View
   template: JST['items/item']
   tagName: 'tr'
   name: 'Item'
+  className: (options) ->
+    if @collection?
+      if App.colHelper.colHasDupes(@collection.pluck('code')).indexOf(@model.get('code')) > -1 then 'row-danger'
 
-  initialize: ->
+  initialize: (options) ->
     @listenTo App.vent, 'delivery:create:success', => @remove()
     @listenTo App.vent, 'update:items:success', => @remove()
+    @listenTo App.vent, 'new:report:success', => @remove()
+    @array =  options['array'] if options?
+    console.log @array
 
   events:
     'click #remove-item': 'removeItem'
@@ -21,3 +27,11 @@ class App.Views.Item extends Backbone.View
       App.vent.trigger 'remove:item:success', @model
       @model.destroy()
       @remove()
+
+  removeHideButton: ->
+    @$('#remove-item').remove()
+    this
+
+  rowDangerClass: ->
+    $(@el).addClass('row-danger')
+    this

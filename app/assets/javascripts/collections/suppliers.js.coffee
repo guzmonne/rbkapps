@@ -9,7 +9,6 @@ class App.Collections.Suppliers extends Backbone.Collection
     @sortVarType  = 'string'
 
   comparator: (supplier) ->
-    console.log @sortVar
     switch @sortVarType
       when 'integer'
         if @sortMethod == "lTH"

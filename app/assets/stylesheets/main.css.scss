@@ -360,16 +360,16 @@ body { padding-top: 60px; }
   *margin-right: .3em;
   line-height: 90px;
   vertical-align: middle;
-  background-image: url("/assets/aprobado.png");
+  background-image: url("/assets/estados.png");
   background-position: 0px 0px;
   background-repeat: no-repeat;
 }
 
-.pr_status-Aprobado {
+.pr_status-Visto {
    background-position: 0px,      0;
  }
 
-.pr_status-Esperando-Aprobación {
+.pr_status-Pendiente {
   background-position: 240px 0;
 }
 
@@ -481,7 +481,7 @@ body { padding-top: 60px; }
   margin-right: 1em;
   line-height: 55px;
   #vertical-align: text-top;
-  background-image: url("/assets/autorizado.png");
+  background-image: url("/assets/aprobado.png");
   background-position: 0px 0px;
   background-repeat: no-repeat;
   float: right;
@@ -500,16 +500,22 @@ body { padding-top: 60px; }
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
 }
 
-.well.cerrado {
-  color: #FFFFFF;
-  background-color: #0c6b00;
-  background-image: -moz-linear-gradient(top, #07c700, #0c6b00);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#07c700), to(#0c6b00));
-  background-image: -webkit-linear-gradient(top, #07c700, #0c6b00);
-  background-image: -o-linear-gradient(top, #07c700, #0c6b00);
-  background-image: linear-gradient(to bottom, #07c700, #0c6b00);
+.table-hover tbody tr.row-danger:hover > td {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #8b0012;
+  background-image: -moz-linear-gradient(top, #d10000, #8b0012);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d10000), to(#8b0012));
+  background-image: -webkit-linear-gradient(top, #d10000, #8b0012);
+  background-image: -o-linear-gradient(top, #d10000, #8b0012);
+  background-image: linear-gradient(to bottom, #d10000, #8b0012);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+}
+.table tbody tr.row-danger > td {
+  color: #8b0012;
+  text-decoration: none;
+  background-color: rgba(209, 0, 0, 0.30);
 }
 
 .pagination-hover {
@@ -524,38 +530,61 @@ body { padding-top: 60px; }
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
 }
 
-.label-Esperando-Aprobación {
-  background-color: #FF8940;
+.label-Pendiente {
+  background-color: #CC3300;
 }
 
-.label-Aprobado {
-  background-color: #A63F00;
+.label-Visto {
+  background-color: #FF6600;
 }
 
 .label-Cotizando {
-  background-color: #FF6200;
+  background-color: #ff9c00;
 }
 
-.label-Esperando-Autorización {
-  background-color: #ffa500;
+.label-Esperando-Aprobación {
+  background-color: #009fbc;
 }
 
-.label-Autorizado {
-  background-color: #84B22D;
+.label-Aprobado {
+  background-color: #41b600;
 }
 
 .label-Pedido-Realizado {
-  background-color: #689A00;
+  background-color: #669900;
 }
 
 .label-Cerrado {
-  background-color: #0f8200;
+  background-color: #426599;
 }
 
 .label-Rechazado {
-  background-color: #e55500;
+  background-color: #800074;
 }
 
 .label-No-Entregado {
-  background-color: #ba0017;
+  background-color: #d10000;
+}
+
+input.error {
+  box-shadow: 0 0 5px rgb(139, 0, 18);
+  -webkit-box-shadow: 0 0 5px rgb(139, 0, 18);
+  -moz-box-shadow: 0 0 5px rgb(139, 0, 18);
+}
+
+html {
+  background: url("/assets/bg.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.centered {
+  width: 100%;
+  background-color: #f5f5f5;
+  position: absolute;
+  margin-top: -30px;
+  padding: 10px 0 10px 0;
+  border-radius: 20px;
 }

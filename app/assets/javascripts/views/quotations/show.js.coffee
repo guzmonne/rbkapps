@@ -91,7 +91,7 @@ class App.Views.ShowQuotation extends Backbone.View
 ########################################### $ Hide Close Button $ ######################################################
   paintSelected: ->
     setTimeout =>
-      @$('.image').html('<img src="/assets/autorizado.png" style="float:right;">')
+      @$('.image').html('<img src="/assets/aprobado.png" style="float:right;">')
       $(@el).effect("shake")
       #$(@el).effect("bounce", { times:5 }, 500)
     , 800

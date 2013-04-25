@@ -1,50 +1,88 @@
+<div class="well">
+    <h1>
+        Reportes - Comex
+    </h1>
+</div>
 <div class="row-fluid">
-    <div class="span4">
-        <div class="dropdown">
-            <a class="dropdown-toggle btn btn-info btn-block" data-toggle="dropdown" href="#">
-                Reportes
-                <i class="icon-chevron-down icon-white"></i>
+    <div class="span5">
+        <label class="control-label label label-inverse label-big" for="report_name" style="vertical-align: middle;margin-bottom: 15px;">Reporte</label>
+        <div class="input-append dropdown">
+            <input type="text" id="report_name" class="input-xlarge no_typing" placeholder="Seleccione un Reporte">
+            <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
+                <i class="icon-chevron-down"></i>
             </a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <li><a data-report="costs-entry">Gasto Total por Rubro</a></li>
-                <li><a data-report="costs-item">Gasto Total por Artículo</a></li>
-                <li><a data-report="costs-season">Gasto Total por Temporada</a></li>
+                <li><a data-id="report_name" data-report-name="items_status">Estado de Artículos</a></li>
             </ul>
         </div>
     </div>
-    <div class="span4 pagination-centered">
-        <h4 id="report-name">Seleccione un Reporte por favor</h4>
-    </div>
-    <div class="span4">
-        <button class="btn btn-primary btn-block" id="run-report">Ejecutar Reporte</button>
-    </div>
-</div>
-<hr>
-<div class="row-fluid">
-    <div class="span12">
-        <div class="loading-bar hide">
-            <div class="progress progress-striped active progress-warning">
-                <div class="bar" style="width: 0%;"></div>
+    <div class="span7 filter hide" id="items_status" style="padding: 10px 0 0 10px; background-color: #f5f5f5; border-radius: 15px; margin-bottom: 10px;" >
+        <div class="row-fluid">
+            <div class="span6">
+                <div class="row-fluid">
+                    <div class="span3">
+                        <label class="control-label label label-inverse label-big pull-right" for="brand" style="vertical-align: middle;margin-bottom: 15px;">Marca</label>
+                    </div>
+                    <div class="span9">
+                        <div class="input-append dropdown">
+                            <input type="text" id="brand" placeholder="Todas" class="no_typing">
+                            <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
+                                <i class="icon-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <% App.formHelpers.where({column: 'brand'}).forEach (model) -> : %>
+                                <li><a data-id="brand"><%= model.get('value') %></a></li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span3">
+                        <label class="control-label label label-inverse label-big pull-right" for="season" style="vertical-align: middle;margin-bottom: 15px;">Temporada</label>
+                    </div>
+                    <div class="span9">
+                        <div class="input-append dropdown">
+                            <input type="text" id="season" placeholder="Todas" class="no_typing">
+                            <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
+                                <i class="icon-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <% App.formHelpers.where({column: 'season'}).forEach (model) -> : %>
+                                <li><a data-id="season"><%= model.get('value') %></a></li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="span6">
+                <div class="row-fluid">
+                    <div class="span3">
+                        <label class="control-label label label-inverse label-big pull-right" for="entry" style="vertical-align: middle;margin-bottom: 15px;">Rubro</label>
+                    </div>
+                    <div class="span9">
+                        <div class="input-append dropdown">
+                            <input type="text" id="entry" placeholder="Todas" class="no_typing">
+                            <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
+                                <i class="icon-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <% App.formHelpers.where({column: 'entry'}).forEach (model) -> : %>
+                                <li><a data-id="entry"><%= model.get('value') %></a></li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <button id="run_report" class="btn btn-primary btn-block">Ejecutar Reporte</button>
+                    </div>
+                </div>
             </div>
         </div>
-        <table class="table table-condensed table">
-            <thead>
-                <th>Rubro</th>
-                <th>Codigo</th>
-                <th>Marca</th>
-                <th>Temporada</th>
-                <th>Guia</th>
-                <th>Origen</th>
-                <th>Proveedor</th>
-                <th>Tramite</th>
-                <th>Estado</th>
-                <th>Costo de Flete</th>
-                <th>Factura</th>
-                <th>Unidades</th>
-                <th>Costo FOB</th>
-            </thead>
-            <tbody id="table-report"></tbody>
-        </table>
     </div>
 </div>
+<div class="row-fluid hide" id="report"></div>
 

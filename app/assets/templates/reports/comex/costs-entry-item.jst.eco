@@ -1,8 +1,0 @@
-<tr>
-    <td><%= @item.get('code') %></td>
-    <td><%= @item.get('brand') %></td>
-    <td><%= @item.get('season') %></td>
-    <td class="deliveries">
-        <table id="item-<%= @index %>" class="deliveries-table table table-condensed table-no-border"></table>
-    </td>
-</tr>

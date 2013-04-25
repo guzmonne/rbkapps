@@ -1,5 +1,6 @@
 class App.Mixins.Form
   flash: JST['layout/flash']
+  listFlash: JST['layout/list_flash']
 
   cleanForm: (formId) ->
     $(formId)[0].reset()
@@ -50,3 +51,18 @@ class App.Mixins.Form
     if i > 0
       return decimal.substring(0, decimal.length - i)
     this
+
+  addDays: (myDate,days) ->
+    date = new Date(myDate.getTime() + days * 24 * 60 * 60 * 1000);
+    return "#{date.getFullYear()}-#{date.getMonth() + 1}-#{date.getDate()}"
+
+  displayListFlash: (type, messages, time=3000) ->
+    flashId = @uniqueId()
+    if time == 0
+      $('#notice').append( @listFlash(type: type, messages: messages, id: flashId) )
+    else
+      $('#notice').append( @listFlash(type: type, messages: messages, id: flashId) )
+      setTimeout( ->
+        $('#' + flashId).fadeOut('slow', -> $('#' + flashId).remove())
+      , time)
+      return @flash(type: type, message: message, id: flashId)

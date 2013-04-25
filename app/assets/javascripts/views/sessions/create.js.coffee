@@ -6,11 +6,19 @@ class App.Views.SessionCreate extends Backbone.View
     'submit #create-session': 'createSession'
 
   render: ->
+    #if App.session.load().authenticated()
+    #  return @goToHome()
     $(@el).html(@template())
     this
 
+  goToHome: ->
+    App.start()
+    $('body').css('background-color', 'white')
+    Backbone.history.navigate('home', trigger = true)
+    this
+
   createSession: (e) ->
-    e.preventDefault()
+    e.preventDefault() if e?
     attributes =
       email:    $('#email').val()
       password: $('#password').val()
@@ -24,6 +32,7 @@ class App.Views.SessionCreate extends Backbone.View
         App.session.save({'id': data.id, 'remember_token': data.remember_token})
         App.user.set(data)
         App.start()
+        $('body').css('background-color', 'white')
         Backbone.history.navigate('home', trigger = true)
       error: (user, status, response) ->
         alert "Email o Contraseña incorrecta. Verífique sus datos"

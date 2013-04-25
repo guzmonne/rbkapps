@@ -1,7 +1,7 @@
 <div class="well">
     <i id="stamp" class="pr_status-<%= @model.get('state').replace(' ', '-' ) %> pull-right"></i>
     <h1>
-        Solicitud de Compra #<%= @model.id %> - <label class="label <%= if @model.get('state') == 'Pedido Realizado' then 'label-success' else 'label-info' %> label-status">
+        Solicitud de Compra #<%= @model.id %> - <label class="label <%= if @model.get('state') == 'Pedido Realizado' then 'label-success' else 'label-info' %> label-status label-<%= @model.get('state').split(' ').join('-') %>">
         <%= @model.get('state') %>
     </label>
     </h1>
@@ -31,7 +31,7 @@
         <p class="p-element" style="width: 102px; text-align: center;"><%= @model.get('deliver_at') %></p>
     </div>
     <div class="span2">
-        <label class="label label-inverse label-element"><strong>Uso del Material</strong></label>
+        <label class="label label-inverse label-element"><strong>Compra de</strong></label>
         <p class="p-element"><%= @model.get('use') %></p>
     </div>
     <div class="span2">
@@ -52,11 +52,11 @@
         <p class="p-element state" id="state"><%= @model.get('state') %></p>
         <select class="state hide" id="state_list">
             <option></option>
+            <option>Pendiente</option>
+            <option>Visto</option>
+            <option>Cotizando</option>
             <option>Esperando Aprobación</option>
             <option>Aprobado</option>
-            <option>Cotizando</option>
-            <option>Esperando Autorización</option>
-            <option>Autorizado</option>
             <option>Pedido Realizado</option>
             <option>Cerrado</option>
             <option>Rechazado</option>
@@ -67,7 +67,7 @@
 <hr>
 <div class="row-fluid hide" id="compras-row">
     <div class="span2" style="margin-left: 10px;">
-        <label class="label label-inverse label-element"><strong>Aprobado por</strong></label>
+        <label class="label label-inverse label-element"><strong>Visto por</strong></label>
         <p class="p-element" id="approver" ><%= @model.get('approved_by') %></p>
     </div>
     <div class="span2">
@@ -104,7 +104,7 @@
         </select>
     </div>
     <div class="span2">
-        <label class="label label-inverse label-element"><strong>Autorizado por</strong></label>
+        <label class="label label-inverse label-element"><strong>Aprobado por</strong></label>
         <p class="p-element" id="authorized_by" ><%= @model.get('authorizer') %></p>
     </div>
     <div class="span2 authorized hide">
@@ -169,7 +169,7 @@
                     class="btn btn-warning btn-large closeRequest <%= unless @model.get('state') == 'Pedido Realizado' then 'hide' %>"
                     data-toggle="modal"
                     href="#confirm_delivery_modal">
-                Pedido Recibido
+                Pedido Recibido / Conformidad
             </button>
         </div>
     </div>

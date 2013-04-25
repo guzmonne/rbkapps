@@ -17,6 +17,8 @@ class App.Models.Session extends Backbone.Model
     Boolean(@get("remember_token"))
 
   save: (auth_hash) ->
+    $.removeCookie('user_id')
+    $.removeCookie('remember_token')
     $.cookie('user_id', auth_hash.id)
     $.cookie('remember_token', auth_hash.remember_token)
 

@@ -75,7 +75,7 @@ class App.Views.ItemIndex extends Backbone.View
       return @update(parseInt e.currentTarget.text)
 
   appendItem: (model) =>
-    view = new App.Views.Item(model: model)
+    view = new App.Views.Item(model: model, collection: App.items)
     App.pushToAppendedViews(view)
     @$('#items').append(view.render().el)
     this

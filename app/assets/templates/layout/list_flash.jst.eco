@@ -1,0 +1,9 @@
+<div class="alert alert-block alert-<%= @type %> fade in" id="<%= @id %>">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <p><strong>Se ha<%= if @messages.length > 1 then 'n' %> encontrado <%= @messages.length %> error<%= if @messages.length > 1 then 'es' %></strong></p>
+    <ul>
+        <% @messages.forEach (message) -> : %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+</div>

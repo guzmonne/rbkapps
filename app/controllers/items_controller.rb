@@ -6,7 +6,9 @@ class ItemsController < ApplicationController
       @delivery = Delivery.find(params["delivery_id"])
       respond_with @delivery.items
     else
-      respond_with Item.all
+      #respond_with Item.all
+      @item = Item.new
+      respond_with @item.items_deliveries
     end
   end
 

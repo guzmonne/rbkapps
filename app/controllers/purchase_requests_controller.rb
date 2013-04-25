@@ -5,7 +5,7 @@ class PurchaseRequestsController < ApplicationController
     @user = User.find(@user_id)
     @team = Team.find(@user.team_id)
     @team_members = @team.team_members
-    if @user.admin == true or @user.compras == true
+    if @user.admin == true or @user.compras == true or @user.director == true
       respond_with PurchaseRequest.all
     elsif @team.supervisor_id == @user.id
       array = []

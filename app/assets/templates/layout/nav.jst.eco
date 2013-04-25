@@ -6,7 +6,7 @@
 <ul class="nav">
     <li class="divider-vertical"></li>
     <li id="li-home">
-        <a class="brand" id="nav-home" href="#">RBK Apps</a>
+        <a class="brand" id="nav-home" href="#"><img src="/assets/logo.png"/></a>
     </li>
     <li class="divider-vertical"></li>
 </ul>

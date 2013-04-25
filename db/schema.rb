@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417125307) do
+ActiveRecord::Schema.define(:version => 20130424182402) do
 
   create_table "deliveries", :force => true do |t|
     t.string   "courier"
@@ -104,7 +104,6 @@ ActiveRecord::Schema.define(:version => 20130417125307) do
     t.string   "cost_center"
     t.integer  "authorizer_id"
     t.date     "should_arrive_at"
-    t.date     "arrived_at"
     t.date     "closed_at"
   end
 

@@ -17,6 +17,8 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
   initialize: ->
     @sector = []
     @formHelper = new App.Mixins.Form
+    nowTemp = new Date()
+    @fiveDays = @formHelper.addDays(nowTemp, 4).split('-')
     @shown = 0
     App.formHelpers.where({column: 'location'}).forEach (e) => @sector.push e.get('value')
     App.teams.each (e) => @sector.push e.get('name')
@@ -24,10 +26,23 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
 
 ################################################ $ Render $ ############################################################
   render: ->
+    console.log @fiveDays
     $(@el).html(@template())
-    @$('.datepicker').datepicker({format: 'yyyy-mm-dd'}).on 'changeDate', (e) =>
+    @$('.datepicker').datepicker({format: 'dd-mm-yyyy'}).on 'changeDate', (e) =>
+    @$('.datepicker').datepicker({format: 'yyyy-mm-dd', onRender: -> console.log "onRender" }).on 'changeDate', (e) =>
       @$(e.target).datepicker('hide')
-      @$('#use').focus()
+      @$('#notice').html('')
+      date = @formHelper.addDays(e.date, 1).split('-')
+      console.log date
+      if @fiveDays[0] < date[0]
+        return @$('#detail').focus()
+      else if @fiveDays[1] < date[1]
+        return @$('#detail').focus()
+      else if @fiveDays[2] < date[2]
+        return @$('#detail').focus()
+      else
+        @$(e.target).val('')
+        return @formHelper.displayFlash('alert', 'Debe dar por lo menos 5 días a partir de hoy a la Fecha de Entrega. Por favor corrijala.', 100000)
     this
 ########################################################################################################################
 
@@ -56,10 +71,10 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
     team = App.teams.get(App.user.get('team_id'))
     cost_center = team.get('cost_center')
     if App.user.id == team.get('supervisor_id') or App.user.id == team.get('director_id')
-      state    = "Aprobado"
+      state    = "Visto"
       approver = App.user.id
     else
-      state    = "Esperando Aprobación"
+      state    = "Pendiente"
       approver = null
     purchaseRequest =
         user_id     : App.user.get('id')
@@ -94,25 +109,28 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
 ############################################# $ Validate $ #############################################################
   validate: ->
     @removeHighlight()
-    @$("label[for='sector']").removeClass('label-important').addClass('label-inverse')
-    alert = 0
-    unless @sector.indexOf(@$('#sector').val()) > -1
-      @highlightError('sector', 'Debe seleccionar un elemento de la lista.')
-      alert++
-    if @$('#deliver_at').val() == ''
-      @highlightError('deliver_at', 'Debe seleccionar una fecha de entrega')
-      alert++
+    alert = []
     if @$('#use').val() == ''
-      @highlightError('use', 'El campo "Compra de" no puede quedar vacío')
-      alert++
-    if alert > 0 then return true else return false
+      @highlightError('use')
+      alert.push('El campo "Compra de" no puede quedar vacío')
+    unless @sector.indexOf(@$('#sector').val()) > -1
+      @highlightError('sector')
+      alert.push('Debe seleccionar un sector de la lista.')
+    if @$('#deliver_at').val() == ''
+      @highlightError('deliver_at')
+      alert.push('Debe seleccionar una fecha de entrega')
+    if @$('#detail').val() == ''
+      @highlightError('detail')
+      alert.push('El contenido de su pedido no puede quedar vacío.')
+    @formHelper.displayListFlash('danger', alert, 0)
+    $("html, body").animate({ scrollTop: 0 }, "slow")
+    if alert.length > 0 then return true else return false
 ########################################################################################################################
 
 ########################################## $ Higlight Error $ ##########################################################
-  highlightError: (id, text) ->
+  highlightError: (id) ->
     @$("label[for='#{id}']").removeClass('label-inverse').addClass('label-important')
-    @formHelper.displayFlash('error', text, 10000)
-    @$('#' + id).focus()
+    @$('#' + id).addClass('error')
     this
 ########################################################################################################################
 
@@ -121,6 +139,7 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
     @$('.control-group').removeClass('error')
     @$('.label-important').removeClass('label-important').addClass('label-inverse')
     @$('.alert').remove()
+    @$('input').removeClass('error')
     this
 ########################################################################################################################
 

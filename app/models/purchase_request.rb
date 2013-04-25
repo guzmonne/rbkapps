@@ -13,7 +13,6 @@ class PurchaseRequest < ActiveRecord::Base
                   :cost_center,
                   :authorizer_id,
                   :should_arrive_at,
-                  :arrived_at,
                   :closed_at
 
   validates :user_id, :presence => {:message => "el pedido de be pertenecer a un usuario"}

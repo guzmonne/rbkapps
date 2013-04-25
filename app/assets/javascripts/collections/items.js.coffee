@@ -33,7 +33,8 @@ class App.Collections.Items extends Backbone.Collection
         if @sortMethod == "lTH"
           return item.get(@sortVar)
         else
-          return String.fromCharCode.apply(String, _.map(item.get(@sortVar).split(""), (c)  => return 0xffff - c.charCodeAt() ))
+          if item.get(@sortVar)?
+            return String.fromCharCode.apply(String, _.map(item.get(@sortVar).split(""), (c)  => return 0xffff - c.charCodeAt() ))
       when 'date'
         if @sortMethod == "lTH"
           if item.get(@sortVar)? then return item.get(@sortVar)

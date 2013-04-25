@@ -1,7 +1,14 @@
+<% if @model.get('status') == "PENDIENTE" then statusClass = "important"  %>
+<% if @model.get('status') == "PROCESO" then statusClass = "warning"  %>
+<% if @model.get('status') == "ENTREGADO" then statusClass = "success"  %>
+<% if @model.get('status') == "CERRADO" then statusClass = "info"  %>
 <td><%= @model.get('code') %></td>
 <td><%= @model.get('brand') %></td>
 <td><%= @model.get('season') %></td>
 <td><%= @model.get('entry') %></td>
+<td><%= if @model.get('delivery') then @model.get('delivery') else 'S/G' %></td>
+<td><%= @model.get('invoice_number') %></td>
+<td><p class="label label-<%= statusClass %>"><%= @model.get('status') %></p></td>
 <td class="span1">
     <button id="remove-item" class="btn btn-mini btn-danger" data-cid="<%= @model.cid %>">
         <i class="icon-minus icon-white"></i>

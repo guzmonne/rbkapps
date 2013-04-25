@@ -40,10 +40,12 @@ window.App =
     @d_i              = new App.Collections.DeliveriesItems()
     @suppliers        = new App.Collections.Suppliers()
     @suppliers.reset($('#suppliers-container').data('suppliers'))
+    @colHelper        = new App.Mixins.Collections()
     App.start()
 
   start: ->
     if @session.load().authenticated()
+      $('body').css('background-color', 'white')
       @user.fetch
         data:
           remember_token: $.cookie('remember_token')
@@ -120,6 +122,7 @@ window.App =
   signOut: ->
     $.removeCookie('user_id')
     $.removeCookie('remember_token')
+    $('body').css('background-color', 'transparent')
     @user     = new App.Models.User
     @session  = new App.Models.Session
     @purchaseRequests = new App.Collections.PurchaseRequests()

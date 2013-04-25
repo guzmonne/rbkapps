@@ -1,9 +1,0 @@
-<tr>
-    <td><%= @delivery.get('guide') %></td>
-    <td><%= @delivery.get('courier') %></td>
-    <td><%= @delivery.get('dispatch') %></td>
-    <td><%= @delivery.get('cargo_cost') %></td>
-    <td>
-        <table id="delivery-<%= @index %>" class="invoices-table table table-condensed table-no-border"></table>
-    </td>
-</tr>

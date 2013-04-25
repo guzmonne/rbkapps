@@ -1,13 +1,12 @@
-<td style="max-width: 90px;"><%= @model.get('sector') %></td>
+<td style="max-width: 100px;"><%= @model.get('sector') %></td>
 <td><%= @model.get('user_name') %></td>
 <td style="max-width: 300px;"><%= @model.get('use') %></td>
-<td><label class="label label-<%= @model.get('state').split(' ').join('-') %>"><%= @model.get('state') %></label></td>
+<td><p class="label label-<%= @model.get('state').split(' ').join('-') %>" ><%= @model.get('state') %></p></td>
 <td><%= @model.get('approved_by') %></td>
 <td><%= @model.get('authorizer') %></td>
 <td><%= @dateHelper.dateRailsOnly(@model.get('created_at')) %></td>
 <td><%= @model.get('deliver_at') %></td>
 <td><%= @model.get('should_arrive_at') %></td>
-<td><%= @model.get('arrived_at') %></td>
 <td><%= @model.get('closed_at') %></td>
 
 

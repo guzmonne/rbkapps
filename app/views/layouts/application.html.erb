@@ -10,15 +10,13 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body role="content" id="container-fluid">
+<body role="content" id="container-fluid" style="background-color: transparent;">
     <div role="data-container" id="data">
       <%= yield %>
     </div>
     <header class="navbar navbar-fixed-top navbar-inverse" id="nav-layout">
 
     </header>
-    <div id="content-layout" class="row-fluid" role="main">
-
-    </div>
+    <div id="content-layout" class="row-fluid" role="main"></div>
 </body>
 </html>

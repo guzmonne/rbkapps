@@ -35,17 +35,17 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     @flip1 = 1
     @collectionHelper = new App.Mixins.Collections
     @notes            = new App.Collections.Notes
-    @uneditable_quotation_states = ['Esperando Autorización', 'Autorizado', 'Pedido Realizado', 'Cerrado', 'Rechazado', "No Entregado"]
-    @accepted_quotation_states = ['Autorizado', 'Pedido Realizado', 'Cerrado', 'Rechazado', "No Entregado"]
+    @uneditable_quotation_states = ['Esperando Aprobación', 'Aprobado', 'Pedido Realizado', 'Cerrado', 'Rechazado', "No Entregado"]
+    @accepted_quotation_states = ['Aprobado', 'Pedido Realizado', 'Cerrado', 'Rechazado', "No Entregado"]
     # Resuelvo el nombre del usuario creador
     @user     = App.users.get(@model.get('user_id'))
-    # Resuelvo nombre del aprobador
+    # Resuelvo nombre del Vistor
     if @model.get('approver')?
       @approver = App.users.get(@model.get('approver'))
       @model.set('approved_by', @approver.get('name'))
     else
       @model.set('approved_by', "*** Sin Aprobar ***")
-    # Resuelvo nombre del autorizador
+    # Resuelvo nombre del Aprobador
     if @model.get('authorizer_id')?
       @authorizer = App.users.get(@model.get('authorizer_id'))
       @model.set('authorizer', @authorizer.get('name'))
@@ -67,8 +67,9 @@ class App.Views.PurchaseRequestShow extends Backbone.View
       @$('#quotations-label').html('Cotizaciones <i class="icon-filter icon-white"></i>')
       @flip1 = @flip1 + 1
       $("html, body").animate({ scrollTop: 405 }, "slow")
-      @model.save {state: 'Autorizado', authorizer_id: App.user.id}, success: =>
-        @$('#state').text('Autorizado')
+      @model.save {state: 'Aprobado', authorizer_id: App.user.id}, success: =>
+        @$('.well label').text('Aprobado')
+        @$('#state').text('Aprobado')
         @$('#authorized_by').text(App.user.get('name'))
         view = new App.Views.ShowQuotation(model: model)
         App.pushToAppendedViews(view)
@@ -102,30 +103,32 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     # Si el usuario es gerente y el estado es "Esperando Autorización"
     @directorView()
     # inicializar datepicker en el boton
-    @$('#set_should_arrive_at').datepicker().on 'changeDate', (ev) =>
-      @$('#set_should_arrive_at').datepicker('hide')
-      @model.save {should_arrive_at: @$('#set_should_arrive_at').data('date')}, success: =>
-        @$('#should_arrive_at').text(@$('#set_should_arrive_at').data('date'))
+    @$('#set_should_arrive_at').datepicker({format: 'dd-mm-yyy'}).on 'changeDate', (ev) =>
+      console.log ev
+      @model.save {should_arrive_at: ev.date}, success: =>
+        date = new Date(ev.date)
+        @$('#should_arrive_at').text(date.getFullYear() + "-" + (date.getMonth() + 1)  + "-" + (date.getDate() + 1) )
         @$('#notice').html('')
         @fm.displayFlash 'success', "El campo 'Fecha Esperado' ha sido actualizado correctamente"
+        @$('#set_should_arrive_at').datepicker('hide')
     this
 
   directorView: ->
     if App.user.get('director') == true and @model.get('state') == "Esperando Autorización"
       @$('.director').show()
-    if App.user.get('director') == true and @model.get('state') == "Autorizado"
+    if App.user.get('director') == true and @model.get('state') == "Aprobado"
       @$('.director').show()
-      @$('.accepted-quotation').show()
+      #@$('.accepted-quotation').show()
     this
 
   supervisorView: ->
-    if App.user.isSupervisor() and @model.get('state') == "Esperando Aprobación"
+    if App.user.isSupervisor() and @model.get('state') == "Pendiente"
       @$('#approve-purchase-request').show()
       @$('#reject-purchase-request').show()
     this
 
   comprasView: ->
-    if App.user.get('compras') == true
+    if App.user.get('compras') == true or App.user.get('director') == true
       @$('#compras-row').show()
       @$('.compras').show()
       if @accepted_quotation_states.indexOf(@model.get('state')) > -1
@@ -154,7 +157,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     this
 
   appendQuotation: (model) =>
-    if @model.get('state') == "Esperando Autorización"
+    if @model.get('state') == "Esperando Aprobación"
       model.set('can_be_selected', true)
     view = new App.Views.ShowQuotation(model: model)
     App.pushToAppendedViews(view)
@@ -198,8 +201,8 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     if newState == '' then return @toggleState()
     @toggleState()
     @$('#state').text(newState)
-    if newState == 'Aprobado' then return @approveRequest
-    if newState == 'Rechazado' then return @rejectRequest
+    if newState == 'Visto' then return @approveRequest()
+    if newState == 'Rechazado' then return @rejectRequest()
     if newState == 'Pedido Realizado'
       unless Date.parse($('#should_arrive_at').text()) > 0
         @fm.displayFlash('warning', "ATENCION! El campo 'Fecha Esperada' esta vacío. Por favor completelo.", 20000)
@@ -257,15 +260,15 @@ class App.Views.PurchaseRequestShow extends Backbone.View
 ########################################### $ Approve Request $ ########################################################
   approveRequest: (e) ->
     e.preventDefault() if e?
-    #@model.set('state', 'Aprobado')
-    #@model.set('approver', App.user.id)
-    @model.save {state: 'Aprobado', approver: App.user.id},  success: =>
+    console.log "Approve Request"
+    @model.save {state: 'Visto', approver: App.user.id},  success: =>
+      console.log @model.get('state')
       $("html, body").animate({ scrollTop: 0 }, "fast")
       $('.well').effect("bounce", { times:7 }, 500);
-      @fm.displayFlash('success', 'El Pedido de Compra ha sido aprobado', 10000)
-      @$('.label-status').text('Aprobado')
-      @$('[class^="pr_status-"]').removeClass().addClass('pr_status-Aprobado pull-right')
-      @$('#state').text('Aprobado')
+      @fm.displayFlash('success', 'El Pedido de Compra ha sido Visto y se ha notificado al departamento de Compras.', 10000)
+      @$('.label-status').text('Visto')
+      @$('[class^="pr_status-"]').removeClass().addClass('pr_status-Visto pull-right')
+      @$('#state').text('Visto')
       @$('#approve-purchase-request').hide()
       @$('#reject-purchase-request').hide()
       @$('#approver').text(App.user.get('name'))
@@ -290,11 +293,10 @@ class App.Views.PurchaseRequestShow extends Backbone.View
 
 ########################################### $ Update Request $ ########################################################
   updateRequest: (state) ->
-    #@model.set('state', state)
-    @model.save {'state', state}, success: =>
+    @model.save {state: state}, success: =>
       @fm.displayFlash('success', "El estado ha cambiado a #{state}", 2500)
       @$('.label-status').text(state)
-      @$('#status').text(state)
+      @$('#state').text(state)
 ########################################################################################################################
 
 ############################################## $ New Note $ ############################################################
@@ -412,7 +414,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     e.preventDefault if e?
     switch e.currentTarget.id
       when 'delivered'
-        @model.save {state: 'Cerrado'}, success: =>
+        @model.save {state: 'Cerrado', closed_at: new Date()}, success: =>
           @fm.displayFlash('success', "El pedido se ha entregado correctamente y su estado es ahora: 'Cerrado'")
           $("html, body").animate({ scrollTop: 0 }, "fast")
           $('.well').effect("bounce", { times:5 }, 500);
