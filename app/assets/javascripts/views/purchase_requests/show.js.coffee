@@ -103,11 +103,13 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     # Si el usuario es gerente y el estado es "Esperando Autorización"
     @directorView()
     # inicializar datepicker en el boton
-    @$('#set_should_arrive_at').datepicker({format: 'dd-mm-yyy'}).on 'changeDate', (ev) =>
-      console.log ev
+    @$('#set_should_arrive_at').datepicker({format: 'yyyy-mm-dd'}).on 'changeDate', (ev) =>
       @model.save {should_arrive_at: ev.date}, success: =>
         date = new Date(ev.date)
-        @$('#should_arrive_at').text(date.getFullYear() + "-" + (date.getMonth() + 1)  + "-" + (date.getDate() + 1) )
+        year = date.getFullYear()
+        month = date.getMonth() + 1
+        day = date.getDate()
+        @$('#should_arrive_at').text( "#{year}-#{month}-#{day}" )
         @$('#notice').html('')
         @fm.displayFlash 'success', "El campo 'Fecha Esperado' ha sido actualizado correctamente"
         @$('#set_should_arrive_at').datepicker('hide')
@@ -123,6 +125,9 @@ class App.Views.PurchaseRequestShow extends Backbone.View
 
   supervisorView: ->
     if App.user.isSupervisor() and @model.get('state') == "Pendiente"
+      @$('#approve-purchase-request').show()
+      @$('#reject-purchase-request').show()
+    if App.user.compras == true and @model.get('state') == "Pendiente"
       @$('#approve-purchase-request').show()
       @$('#reject-purchase-request').show()
     this
@@ -203,6 +208,10 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     @$('#state').text(newState)
     if newState == 'Visto' then return @approveRequest()
     if newState == 'Rechazado' then return @rejectRequest()
+    if newState == 'Esperando Aprobación' and @model.quotations.length == 0
+      @fm.displayFlash('warning', 'ATENCION! No se ha cargado ninguna cotización a este pedido. Se revertira el estado a "Cotizando".', 10000)
+      @$('#state').text('Cotizando')
+      return @$('h1 label').removeClass().addClass("label label-info label-status label-Cotizando")
     if newState == 'Pedido Realizado'
       unless Date.parse($('#should_arrive_at').text()) > 0
         @fm.displayFlash('warning', "ATENCION! El campo 'Fecha Esperada' esta vacío. Por favor completelo.", 20000)
@@ -267,7 +276,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
       $('.well').effect("bounce", { times:7 }, 500);
       @fm.displayFlash('success', 'El Pedido de Compra ha sido Visto y se ha notificado al departamento de Compras.', 10000)
       @$('.label-status').text('Visto')
-      @$('[class^="pr_status-"]').removeClass().addClass('pr_status-Visto pull-right')
+      @$('h1 label').removeClass().addClass("label label-info label-status label-Visto")
       @$('#state').text('Visto')
       @$('#approve-purchase-request').hide()
       @$('#reject-purchase-request').hide()
@@ -296,6 +305,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     @model.save {state: state}, success: =>
       @fm.displayFlash('success', "El estado ha cambiado a #{state}", 2500)
       @$('.label-status').text(state)
+      @$('h1 label').removeClass().addClass("label label-info label-status label-#{state}")
       @$('#state').text(state)
 ########################################################################################################################
 

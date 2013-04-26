@@ -40,7 +40,7 @@ class Item < ActiveRecord::Base
           next
         end
       else
-        @result.push({id: i.id, code: i.code, brand: i.brand, season: i.season, entry: i.entry, invoice_number: nil, delivery: nil, status: "S/E"})
+        @result.push({id: i.id, code: i.code, brand: i.brand, season: i.season, entry: i.entry, invoice_number: nil, delivery: nil, status: 'S/E'})
         next
       end
     end

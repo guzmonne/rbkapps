@@ -4,7 +4,9 @@ class App.Views.ItemIndex extends Backbone.View
   name: 'IndexItem'
 
   filtered: false
+########################################################################################################################
 
+############################################## $ Initialize $ ##########################################################
   initialize: ->
     @collection = App.items
     @fetchItems = _.debounce(@fetchItems, 300)
@@ -12,7 +14,9 @@ class App.Views.ItemIndex extends Backbone.View
       @$('.page').removeClass("label label-info")
       @$("*[data-pages='#{page}']").addClass("label label-info")
       @$('#pagination-end').removeClass('label label-info')
+########################################################################################################################
 
+############################################### $ Events $ #############################################################
   events:
     'click #new-item'         : 'newItem'
     'click #fetch-items'      : 'fetchItems'
@@ -20,13 +24,17 @@ class App.Views.ItemIndex extends Backbone.View
     'click .pagination a'     : 'changePage'
     'mouseover .page'         : 'paginationHoverIn'
     'mouseout .page'          : 'paginationHoverOut'
+########################################################################################################################
 
+############################################### $ Render $ #############################################################
   render: ->
     $(@el).html(@template())
     @update(1)
     @pagination()
     this
+########################################################################################################################
 
+############################################# $ Pagination $ ###########################################################
   paginationHoverIn: (e) ->
     page = e.currentTarget.dataset["pages"]
     @$('.page').removeClass('pagination-hover')
@@ -50,10 +58,6 @@ class App.Views.ItemIndex extends Backbone.View
         @$('#pagination-end').before('<li><a href="#" class="page" data-pages="' + i + '">' + i + '</a></li>')
       @$('#pagination-end').data('pages', pages)
 
-  removeChevron: ->
-    @$(".icon-chevron-up").remove()
-    @$(".icon-chevron-down").remove()
-
   changePage: (e) ->
     e.preventDefault()
     @removeChevron()
@@ -73,7 +77,51 @@ class App.Views.ItemIndex extends Backbone.View
         return @update(current_page - 1)
     else
       return @update(parseInt e.currentTarget.text)
+########################################################################################################################
 
+################################################# $ Sort $ #############################################################
+  removeChevron: ->
+    @$(".icon-chevron-up").remove()
+    @$(".icon-chevron-down").remove()
+
+  sortItems: (e) ->
+    sortVar =  e.currentTarget.dataset['sort']
+    type    =  e.currentTarget.dataset['sort_type']
+    oldVar  =  @collection.sortVar
+    @removeChevron()
+    if sortVar == oldVar
+      if @collection.sortMethod == 'lTH'
+        @sort(sortVar, 'hTL', 'down', type )
+      else
+        @sort(sortVar, 'lTH', 'up', type )
+    else
+      @sort(sortVar, 'lTH', 'up', type, oldVar )
+
+  sort: (sortVar, method, direction, type, oldVar = null ) ->
+    if oldVar == null then oldVar = sortVar
+    if direction == 'up'
+      @$("th[data-sort=#{sortVar}]").append( '<i class="icon-chevron-up pull-right"></i>' )
+    else
+      @$("th[data-sort=#{sortVar}]").append( '<i class="icon-chevron-down pull-right"></i>' )
+    @update(@collection.currentPage, type, sortVar, method)
+
+  update: (page, type, sortVar, method) ->
+    oldSortVarType      = @collection.sortVarType
+    oldSortVar          = @collection.sortVar
+    oldSortMethod       = @collection.sortMethod
+    if @filtered == false then @collection = App.items
+    @collection = @collection.page(page)
+    @collection.currentPage = page
+    if type? and sortVar? and method?
+      @collection.setSortVariables(type, sortVar, method)
+    else
+      @collection.setSortVariables(oldSortVarType, oldSortVar, oldSortMethod)
+    App.vent.trigger 'update:items:success'
+    App.vent.trigger 'update:page', page
+    @collection.sort().each(@appendItem)
+########################################################################################################################
+
+############################################# $ Manage Items $ #########################################################
   appendItem: (model) =>
     view = new App.Views.Item(model: model, collection: App.items)
     App.pushToAppendedViews(view)
@@ -94,39 +142,3 @@ class App.Views.ItemIndex extends Backbone.View
       @pagination()
       @update(1)
     this
-
-  sortItems: (e) ->
-    sortVar =  e.currentTarget.dataset['sort']
-    type    =  e.currentTarget.dataset['sort_type']
-    oldVar  =  @collection.sortVar
-    @removeChevron()
-    if sortVar == oldVar
-      if @collection.sortMethod == 'lTH'
-        @sort(sortVar, 'hTL', 'down', type )
-      else
-        @sort(sortVar, 'lTH', 'up', type )
-    else
-      @sort(sortVar, 'lTH', 'up', type, oldVar )
-
-  sort: (sortVar, method, direction, type, oldVar = null ) ->
-    if oldVar == null then oldVar = sortVar
-    if direction == 'up'
-      $("th[data-sort=#{sortVar}]").append( '<i class="icon-chevron-up pull-right"></i>' )
-    else
-      $("th[data-sort=#{sortVar}]").append( '<i class="icon-chevron-down pull-right"></i>' )
-    @update(@collection.currentPage, type, sortVar, method)
-
-  update: (page, type, sortVar, method) ->
-    oldSortVarType      = @collection.sortVarType
-    oldSortVar          = @collection.sortVar
-    oldSortMethod       = @collection.sortMethod
-    if @filtered == false then @collection = App.items
-    @collection = @collection.page(page)
-    @collection.currentPage = page
-    if type? and sortVar? and method?
-      @collection.setSortVariables(type, sortVar, method)
-    else
-      @collection.setSortVariables(oldSortVarType, oldSortVar, oldSortMethod)
-    App.vent.trigger 'update:items:success'
-    App.vent.trigger 'update:page', page
-    @collection.sort().each(@appendItem)

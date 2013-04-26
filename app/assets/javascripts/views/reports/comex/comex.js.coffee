@@ -94,10 +94,10 @@ class App.Views.ComexReports extends Backbone.View
         view = new App.Views.Item(model:item, collection: items)
       else
         view = new App.Views.Item(model:item)
+        if App.colHelper.colHasDupes( _.map(items, (i) -> return i.get('code') )).indexOf(item.get('code')) > -1 then view.rowDangerClass()
       App.pushToAppendedViews(view)
       @$('#items').append(view.render().el)
       view.removeHideButton()
-      if App.colHelper.colHasDupes( _.map(items, (i) -> return i.get('code') )).indexOf(item.get('code')) > -1 then view.rowDangerClass()
 
 
 

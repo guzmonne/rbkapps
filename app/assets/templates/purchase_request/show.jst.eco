@@ -108,7 +108,7 @@
         <p class="p-element" id="authorized_by" ><%= @model.get('authorizer') %></p>
     </div>
     <div class="span2 authorized hide">
-        <label class="label label-inverse label-element"><strong>Fecha Esperada</strong></label>
+        <label class="label label-inverse label-element"><strong>Fecha Estimada</strong></label>
         <button class="btn btn-mini hideable btn-warning label-center" id="set_should_arrive_at" data-date-format="yyyy-mm-dd" data-date="">
             <i class="icon-calendar icon-white"></i>
         </button>

@@ -11,7 +11,6 @@ class App.Views.Item extends Backbone.View
     @listenTo App.vent, 'update:items:success', => @remove()
     @listenTo App.vent, 'new:report:success', => @remove()
     @array =  options['array'] if options?
-    console.log @array
 
   events:
     'click #remove-item': 'removeItem'

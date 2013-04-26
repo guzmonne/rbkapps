@@ -23,7 +23,7 @@
                     <th data-sort="authorizer" data-sort_type="string">Autorizador</th>
                     <th data-sort="created_at" data-sort_type="date">Fecha de Creado</th>
                     <th data-sort="deliver_at" data-sort_type="date">Fecha de Entrega</th>
-                    <th data-sort="should_arrive_at" data-sort_type="date">Fecha Esperada</th>
+                    <th data-sort="should_arrive_at" data-sort_type="date">Fecha Estimada</th>
                     <th data-sort="closed_at" data-sort_type="date">Fecha de Cerrado</th>
                 </tr>
             </thead>

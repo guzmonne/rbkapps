@@ -1,7 +1,6 @@
 <div class="span12" style="margin-left: 10px; margin-right: 10px;">
     <button class="close close-quotation pull-right" style="margin-right: 10px;">&times;</button>
-    <i class="<% if @model.get('selected') == true then 'authorized_image' %>"></i>
-    <div class="image"></div>
+    <i class="<% if @model.get('selected') == true then 'authorized_image' %> authorized"></i>
     <div class="row-fluid">
         <div class="span4">
             <label class="label label-inverse">Proveedor</label>
