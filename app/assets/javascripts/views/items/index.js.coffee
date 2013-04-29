@@ -18,12 +18,13 @@ class App.Views.ItemIndex extends Backbone.View
 
 ############################################### $ Events $ #############################################################
   events:
-    'click #new-item'         : 'newItem'
-    'click #fetch-items'      : 'fetchItems'
-    'click th'                : 'sortItems'
-    'click .pagination a'     : 'changePage'
-    'mouseover .page'         : 'paginationHoverIn'
-    'mouseout .page'          : 'paginationHoverOut'
+    'click #new-item'             : 'newItem'
+    'click #fetch-items'          : 'fetchItems'
+    'click th'                    : 'sortItems'
+    'click .pagination a'         : 'changePage'
+    'mouseover .page'             : 'paginationHoverIn'
+    'mouseout .page'              : 'paginationHoverOut'
+    'click ul.dropdown-menu li a' : 'generalOrder'
 ########################################################################################################################
 
 ############################################### $ Render $ #############################################################
@@ -38,11 +39,12 @@ class App.Views.ItemIndex extends Backbone.View
   paginationHoverIn: (e) ->
     page = e.currentTarget.dataset["pages"]
     @$('.page').removeClass('pagination-hover')
-    @$("[data-pages=#{page}]").addClass('pagination-hover')
+    @$("[data-pages=#{page}]").addClass('pagination-hover').css('color', '#FFFFFF')
     this
 
   paginationHoverOut: (e) ->
-    @$('.page').removeClass('pagination-hover')
+    @$('.page').removeClass('pagination-hover').css('color', 'rgb(0,136,204)')
+    @$('li a.label-info').css('color', '#FFFFFF')
     this
 
   pagination: ->
@@ -119,6 +121,30 @@ class App.Views.ItemIndex extends Backbone.View
     App.vent.trigger 'update:items:success'
     App.vent.trigger 'update:page', page
     @collection.sort().each(@appendItem)
+    @paginationHoverOut(1)
+
+  generalOrder: (e) ->
+    e.preventDefault() if e?
+    column = e.currentTarget.dataset['sort']
+    text = e.currentTarget.text
+    @$('#search-column').html("Columna: #{text}" + '<span class="caret"></span>')
+    if App.items.length == 0
+      App.items.fetch success: => @generalOrderAppend(column)
+    else
+      @generalOrderAppend(column)
+    this
+
+  generalOrderAppend: (column) =>
+    App.items.sortVar = column
+    App.items.sortVarType = 'string'
+    App.items.sortMethod = 'lTH'
+    console.log App.items
+    App.items.sort()
+    App.vent.trigger 'update:items:success'
+    App.items.page(1).forEach (item) => @appendItem(item)
+    @pagination()
+    App.vent.trigger 'update:page', 1
+    this
 ########################################################################################################################
 
 ############################################# $ Manage Items $ #########################################################

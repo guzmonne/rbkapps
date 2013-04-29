@@ -4,9 +4,9 @@ class App.Collections.Items extends Backbone.Collection
   url: '/api/items'
 
   initialize: ->
-    @sortVar      = 'id'
-    @sortMethod   = 'hTL'
-    @sortVarType  = 'integer'
+    @sortVar      = 'code'
+    @sortMethod   = 'lTH'
+    @sortVarType  = 'string'
     @perGroup     = 100
     @currentPage  = 1
 

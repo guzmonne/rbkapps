@@ -9,7 +9,7 @@
     <button id="fetch-items" class="btn btn-primary btn-small btn-info">
         Actualizar
     </button>
-    <div class="pull-right inside_well dr">
+    <div class="pull-right inside_well dropdown">
         <label class="label label-big label-info">Orden General:</label>
         <a id="search-column"
            class="btn btn-info btn-small dropdown-toggle"
@@ -18,7 +18,7 @@
            data-column="">
             Columna <span class="caret"></span>
         </a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" role="menu" aria-labelledby="Columnas">
             <li><a href="#" data-sort="code">Codigo</a></li>
             <li><a href="#" data-sort="brand">Marca</a></li>
             <li><a href="#" data-sort="season">Temporada</a></li>
