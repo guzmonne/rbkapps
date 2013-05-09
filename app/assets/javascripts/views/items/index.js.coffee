@@ -8,6 +8,7 @@ class App.Views.ItemIndex extends Backbone.View
 
 ############################################## $ Initialize $ ##########################################################
   initialize: ->
+    @fh = new App.Mixins.Form
     @collection = App.items
     @fetchItems = _.debounce(@fetchItems, 300)
     @listenTo App.vent, 'update:page', (page) =>
@@ -25,6 +26,10 @@ class App.Views.ItemIndex extends Backbone.View
     'mouseover .page'             : 'paginationHoverIn'
     'mouseout .page'              : 'paginationHoverOut'
     'click ul.dropdown-menu li a' : 'generalOrder'
+    'focus #search-input'         : 'searchTypeahead'
+    'click #search-button'        : 'searchItem'
+    'click #search-undo'          : 'searchUndo'
+    'keydown :input'              : 'keyDownManager'
 ########################################################################################################################
 
 ############################################### $ Render $ #############################################################
@@ -127,7 +132,7 @@ class App.Views.ItemIndex extends Backbone.View
     e.preventDefault() if e?
     column = e.currentTarget.dataset['sort']
     text = e.currentTarget.text
-    @$('#search-column').html("Columna: #{text}" + '<span class="caret"></span>')
+    @$('#search-column').html("Columna: #{text}  " + '<span class="caret"></span>')
     if App.items.length == 0
       App.items.fetch success: => @generalOrderAppend(column)
     else
@@ -138,7 +143,6 @@ class App.Views.ItemIndex extends Backbone.View
     App.items.sortVar = column
     App.items.sortVarType = 'string'
     App.items.sortMethod = 'lTH'
-    console.log App.items
     App.items.sort()
     App.vent.trigger 'update:items:success'
     App.items.page(1).forEach (item) => @appendItem(item)
@@ -168,3 +172,56 @@ class App.Views.ItemIndex extends Backbone.View
       @pagination()
       @update(1)
     this
+########################################################################################################################
+
+########################################### $ Search Type Ahead $ ######################################################
+  searchTypeahead: ->
+    if App.items.length == 0 then return @fh.displayFlash("alert", "No se han cargado elementos en la tabla.")
+    @$('#search-input').typeahead items: 20, source: => @searchValues()
+    this
+
+  searchValues: ->
+    array = []
+    for element in App.items.pluckDistinct('code')
+      array.push element if element?
+    return array
+########################################################################################################################
+
+############################################### $ Search Item $ ########################################################
+  searchItem: (e) ->
+    e.preventDefault() if e?
+    @$('#notice').html('')
+    if App.items.length == 0 then return @fh.displayFlash("alert", "No se han cargado elementos en la tabla.")
+    code = @$('#search-input').val()
+    items = App.items.where({code: code})
+    if items.length == 0 then return @fh.displayFlash('alert', "No se han encontrado artículos que contengan el codigo: #{code}")
+    @$('#search-input').val('')
+    App.vent.trigger 'update:items:success'
+    @$('#search-undo').show()
+    @$('#fetch-items').hide()
+    for item in items
+      @appendItem(item)
+    @pagination()
+    return this
+
+  searchUndo: (e) ->
+    e.preventDefault() if e?
+    @$('#search-undo').hide()
+    @$('#fetch-items').show()
+    @pagination()
+    @update(1)
+
+  keyDownManager: (e) ->
+    switch e.keyCode
+      when 13 # Enter
+        switch e.currentTarget.id
+          when "search-input"
+            @searchItem()
+            break
+    this
+
+
+
+
+
+

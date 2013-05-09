@@ -1,7 +1,7 @@
 <div class="well">
     <i id="stamp" class="pr_status-<%= @model.get('state').replace(' ', '-' ) %> pull-right"></i>
     <h1>
-        Solicitud de Compra #<%= @model.id %> - <label class="label <%= if @model.get('state') == 'Pedido Realizado' then 'label-success' else 'label-info' %> label-status label-<%= @model.get('state').split(' ').join('-') %>">
+        Solicitud de Compra #<%= @model.id %> - <label class="label label-status label-<%= @model.get('state').replace(' ', '-' ) %>">
         <%= @model.get('state') %>
     </label>
     </h1>
@@ -145,9 +145,9 @@
     <div class="span12" id="quotations"></div>
 </div>
 <!--###################################################################################-->
-<hr>
 <!--##################################### Notas #######################################-->
-<div class="row-fluid" style="width: 98%;">
+<div class="row-fluid notes_section" style="width: 98%;">
+    <hr>
     <label class="label label-inverse label-element" style="margin-left: 10px;" for="notes">Notas</label>
     <div class="span12">
         <div id="notes"></div>
@@ -157,9 +157,9 @@
             Agregar Nota
         </button>
     </div>
+    <hr>
 </div>
 <!--###################################################################################-->
-<hr>
 <div class="row-fluid">
     <div class="span12">
         <div class="form-actions">
@@ -207,7 +207,7 @@
     </div>
     <div class="modal-body">
         <p class="delivery_note">Ingrese su Comentario:</p>
-        <textarea class="delivery_note" id="delivery_note"></textarea>
+        <textarea class="delivery_note" id="delivery_note" rows="4" style="width: 95%;"></textarea>
     </div>
     <div class="modal-footer">
         <a href="#" id="confirm_note" class="btn btn-primary btn-large pull-left delivery_note closeRequest">OK</a>

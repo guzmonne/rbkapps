@@ -4,9 +4,10 @@ class App.Routers.PurchaseRequest extends Backbone.Router
     @listenTo App.vent, "purchase_requests:show", (model) => @setPurchaseOrder(model)
 
   routes:
-    'purchase_request/show/:id': 'show'
-    'purchase_request/new': 'create'
-    'purchase_request/index': 'index'
+    'purchase_request/show/:id' : 'show'
+    'purchase_request/new'      : 'create'
+    'purchase_request/index'    : 'index'
+    'purchase_order/index'      : 'purchaseOrderIndex'
 
   index: ->
     view = new App.Views.PurchaseRequestIndex(collection: App.purchaseRequests)

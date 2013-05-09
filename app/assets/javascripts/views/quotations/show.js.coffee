@@ -88,13 +88,13 @@ class App.Views.ShowQuotation extends Backbone.View
     this
 ########################################################################################################################
 
-########################################### $ Hide Close Button $ ######################################################
-  paintSelected: ->
+########################################### $ Approve Quotation $ ######################################################
+  approveQuotation: ->
     setTimeout =>
-      @$('.image').html('<img src="/assets/aprobado.png" style="float:right;">')
-      $(@el).effect("shake")
-      #$(@el).effect("bounce", { times:5 }, 500)
-    , 800
+      @$('.authorized').show()
+    , 600
+    $(@el).effect("bounce", { times:10 }, 1000)
     @$('.select-quotation-button').remove()
+    @$('#create-purchase-order').show()
     this
 ########################################################################################################################

@@ -29,20 +29,20 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
     console.log @fiveDays
     $(@el).html(@template())
     @$('.datepicker').datepicker({format: 'dd-mm-yyyy'}).on 'changeDate', (e) =>
-    @$('.datepicker').datepicker({format: 'yyyy-mm-dd', onRender: -> console.log "onRender" }).on 'changeDate', (e) =>
+    @$('.datepicker').datepicker({format: 'yyyy-mm-dd' }).on 'changeDate', (e) =>
       @$(e.target).datepicker('hide')
-      @$('#notice').html('')
-      date = @formHelper.addDays(e.date, 1).split('-')
-      console.log date
-      if @fiveDays[0] < date[0]
-        return @$('#detail').focus()
-      else if @fiveDays[1] < date[1]
-        return @$('#detail').focus()
-      else if @fiveDays[2] < date[2]
-        return @$('#detail').focus()
-      else
-        @$(e.target).val('')
-        return @formHelper.displayFlash('alert', 'Debe dar por lo menos 5 días a partir de hoy a la Fecha de Entrega. Por favor corrijala.', 100000)
+#      @$('#notice').html('')
+#      date = @formHelper.addDays(e.date, 1).split('-')
+#      console.log date
+#      if @fiveDays[0] < date[0]
+#        return @$('#detail').focus()
+#      else if @fiveDays[1] < date[1]
+#        return @$('#detail').focus()
+#      else if @fiveDays[2] < date[2]
+#        return @$('#detail').focus()
+#      else
+#        @$(e.target).val('')
+#        return @formHelper.displayFlash('alert', 'Debe dar por lo menos 5 días a partir de hoy a la Fecha de Entrega. Por favor corrijala.', 100000)
     this
 ########################################################################################################################
 
@@ -122,9 +122,12 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
     if @$('#detail').val() == ''
       @highlightError('detail')
       alert.push('El contenido de su pedido no puede quedar vacío.')
-    @formHelper.displayListFlash('danger', alert, 0)
     $("html, body").animate({ scrollTop: 0 }, "slow")
-    if alert.length > 0 then return true else return false
+    if alert.length > 0
+      @formHelper.displayListFlash('danger', alert, 0)
+      return true
+    else
+      return false
 ########################################################################################################################
 
 ########################################## $ Higlight Error $ ##########################################################

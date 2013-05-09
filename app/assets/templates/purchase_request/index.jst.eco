@@ -19,8 +19,8 @@
                     <th data-sort="user_name" data-sort_type="string">Creado por</th>
                     <th data-sort="use" data-sort_type="string">Uso del Material</th>
                     <th data-sort="state" data-sort_type="string">Estado</th>
-                    <th data-sort="approved_by" data-sort_type="string">Aprobador</th>
-                    <th data-sort="authorizer" data-sort_type="string">Autorizador</th>
+                    <th data-sort="approved_by" data-sort_type="string">Visto por</th>
+                    <th data-sort="authorizer" data-sort_type="string">Aprobador</th>
                     <th data-sort="created_at" data-sort_type="date">Fecha de Creado</th>
                     <th data-sort="deliver_at" data-sort_type="date">Fecha de Entrega</th>
                     <th data-sort="should_arrive_at" data-sort_type="date">Fecha Estimada</th>

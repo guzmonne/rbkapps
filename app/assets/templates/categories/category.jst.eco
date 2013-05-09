@@ -1,0 +1,10 @@
+<% usedSubCategories = [] %>
+<% @collection.sortVar = 'category2' %>
+<% @collection.sort() %>
+<tr><td rowspan="<%= @collection.length + 1 %>"><%= @collection.models[0].get('category1') %></td></tr>
+        <% @collection.forEach (model) => : %>
+            <%= if usedSubCategories.indexOf(model.get('category2')) == -1 then console.log "Pongo la sub";"<tr><td rowspan=#{@collection.where({category2: model.get('category2')}).length + 1}>#{model.get('category2')}</td></tr>'>" %>
+            <% usedSubCategories.push(model.get('category2')) %>
+            <% console.log usedSubCategories %>
+            <tr><td><%= model.get('category3') %></td></tr>
+        <% end %>

@@ -57,31 +57,42 @@
         </div>
     </div>
     <div class="control-group" id="control-location_id">
-        <label class="control-label" for="location_id">ID de Local</label>
+        <label class="control-label" for="location">Ubicación</label>
         <div class="controls">
-            <input type="number" id="location_id" placeholder="ID de Local"><br>
+            <select id="location">
+                <option value="empty">Seleccione una opción</option>
+                <% App.formHelpers.where({column: 'location'}).forEach (model) -> : %>
+                <option><%= model.get('value') %></option>
+                <% end %>
+            </select>
+            <br>
         </div>
     </div>
     <div class="control-group" id="control-admin">
-        <label class="control-label" for="location_id">Permisos</label>
+        <label class="control-label">Permisos</label>
         <div class="controls">
             <label class="checkbox">
-                <input type="checkbox" id="admin" value = true> admin?
+                <input type="checkbox" id="admin" value = true> Admin
             </label>
         </div>
         <div class="controls">
             <label class="checkbox">
-                <input type="checkbox" id="comex" value = true> comex?
+                <input type="checkbox" id="comex" value = true> Comex
             </label>
         </div>
         <div class="controls">
             <label class="checkbox">
-                <input type="checkbox" id="compras" value = true> compras?
+                <input type="checkbox" id="compras" value = true> Compras
             </label>
         </div>
         <div class="controls">
             <label class="checkbox">
-                <input type="checkbox" id="director" value = true> Gerente?
+                <input type="checkbox" id="director" value = true> Gerente
+            </label>
+        </div>
+        <div class="controls">
+            <label class="checkbox">
+                <input type="checkbox" id="maintenance" value = true> Mantenimiento
             </label>
         </div>
     </div>

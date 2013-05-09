@@ -1,11 +1,11 @@
 <div class="well">
-    <h1>Crear Nueva  Solicitud de Servicio</h1>
+    <h1>Nueva Solicitud de Servicio</h1>
 </div>
 <form id="create-service-request" class="form-horizontal">
     <!--############################## Notice ##################################-->
     <div id="notice"></div>
     <!--############################## Categorias ##############################-->
-    <div class="control-group box">
+    <div class="control-group" style="background-color: #f5f5f5;padding: 10px 0 10px 0">
         <label class="control-label" for="category">Categoría</label>
         <div class="controls">
             <select id="category" class="input-xlarge">
@@ -23,34 +23,14 @@
     <div class="control-group">
         <label class="control-label" for="title">Título</label>
         <div class="controls">
-            <input type="text" id="title" placeholder="Título" class="input-xxlarge">
+            <input type="text" id="title" placeholder="Título" class="span8">
         </div>
     </div>
     <!--############################## Descripción ##############################-->
     <div class="control-group">
         <label class="control-label" for="description">Descripción</label>
         <div class="controls">
-            <textarea id="description" rows="3" class="input-xxlarge"></textarea>
-        </div>
-    </div>
-    <!--############################## Notas #################################-->
-    <div class="control-group">
-        <label class="control-label" for="notes">Notas</label>
-        <div class="controls">
-            <textarea id="notes" rows="3" class="input-xxlarge" style="margin-bottom: 10px;" readonly></textarea>
-            <br>
-            <button id="add-note" class="btn btn-info btn-mini">
-                <i class="icon-font icon-white"></i>
-                Nueva Nota
-            </button>
-            <button id="edit-note" class="btn btn-warning btn-mini">
-                <i class="icon-pencil icon-white"></i>
-                Editar Nota
-            </button>
-            <button id="remove-note" class="btn btn-danger btn-mini">
-                <i class="icon-remove icon-white"></i>
-                Eliminar Nota
-            </button>
+            <textarea id="description" rows="3" class="span8"></textarea>
         </div>
     </div>
     <!--############################## Asignado a ##############################-->
@@ -58,7 +38,9 @@
         <label class="control-label" for="asigned_to"> Asignado a </label>
         <div class="controls">
             <select id="asigned_to" class="input-xlarge">
-                <option>Seleccione un Administrador</option>
+                <% App.users.where({maintenance: true}).forEach (model) -> : %>
+                <option value="<%= model.id %>"><%= model.get('name') %></option>
+                <% end %>
             </select>
         </div>
     </div>
@@ -86,6 +68,19 @@
             </select>
         </div>
     </div>
+    <!--############################## Notas #################################-->
+    <div class="control-group">
+        <label class="control-label" for="notes">Notas</label>
+        <div class="controls">
+            <div id="notes"></div>
+            <textarea id="new-note" rows="3" class="span8" style="margin-bottom: 10px;"></textarea>
+            <br/>
+            <button id="add-note" class="btn btn-info btn-mini">
+                <i class="icon-plus icon-white"></i>
+                Agregar Nota
+            </button>
+        </div>
+    </div>
     <!--############################## Botones ################################-->
     <div class="row-fluid">
         <div class="span12">
@@ -96,3 +91,17 @@
         </div>
     </div>
 </form>
+<div class="modal hide fade" tabindex="-1" role="dialog" id="insert_note_modal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h3>Nueva Nota</h3>
+    </div>
+    <div class="modal-body">
+        <p class="service_request_note">Contenido:</p>
+        <textarea class="service_request_note" id="service_request_note" rows="4" style="width: 95%;"></textarea>
+    </div>
+    <div class="modal-footer">
+        <a href="#" id="confirm_note" class="btn btn-primary btn-large pull-left">OK</a>
+        <a href="#" id="cancel_note" class="btn btn-inverse btn-large pull-right">Cancelar</a>
+    </div>
+</div>

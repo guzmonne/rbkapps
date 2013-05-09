@@ -43,7 +43,7 @@
             <tr>
                 <td><span class="label label-success"><i class="icon-play icon-white"></i></span></td>
                 <td><strong>Ubicación:</strong></td>
-                <td><%= @user.get('location_id') %></td>
+                <td><%= @user.get('location') %></td>
             </tr>
             </tbody>
         </table>

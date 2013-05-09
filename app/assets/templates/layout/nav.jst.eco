@@ -62,17 +62,35 @@
                         Nueva Solicitud de Compra
                     </a>
                 </li>
-                <li class="admin hide">
+                <li class="admin maintenance hide">
+                    <a href="#" id="nav-service-request-index">
+                        <i class="icon-wrench"></i>
+                        Solicitudes de Servicio
+                    </a>
+                </li>
+                <li class="admin maintenance hide">
                     <a href="#" id="nav-service-request">
                         <i class="icon-plus"></i>
                         <i class="icon-wrench"></i>
-                        Nuevo Solicitud de Servicio
+                        Nueva Solicitud de Servicio
                     </a>
                 </li>
                 <li class="admin compras hide">
                     <a href="#" id="nav-suppliers">
                         <i class="icon-shopping-cart"></i>
                         Proveedores
+                    </a>
+                </li>
+                <li class="admin maintenance hide">
+                    <a href="#" id="nav-categories">
+                        <i class="sprite-share_alt"></i>
+                        Categorias
+                    </a>
+                </li>
+                <li class="admin compras hide">
+                    <a href="#" id="nav-purchase_orders">
+                        <i class="sprite-shopping_bag"></i>
+                        Ordenes de Compra
                     </a>
                 </li>
             </ul>

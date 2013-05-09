@@ -1,6 +1,7 @@
 class Quotation < ActiveRecord::Base
   belongs_to :supplier
   belongs_to :purchase_request
+  has_one    :purchase_order
 
   attr_accessible :detail,
                   :iva,

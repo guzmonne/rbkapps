@@ -7,3 +7,4 @@ class App.Routers.Nav extends Backbone.Router
     App.closeView(App.navView) unless App.navView == null
     App.setAndRenderContentViews([view], true)
     this
+

@@ -7,9 +7,9 @@ class App.Views.NoteShow extends Backbone.View
 ################################################### $ Initialize $ #####################################################
   initialize: ->
     @model.set('user', App.users.getNameFromId(@model.get('user_id')))
-    updatedAt = @model.get('updated_at').split('T')
-    date = updatedAt[0]
-    time = updatedAt[1].split('-')[0]
+    if @model.get('updated_at')? then updatedAt = @model.get('updated_at').split('T') else updatedAt = null
+    if updatedAt == null then date = Date.parse('today').toString('dd-MM-yyyy') else date = updatedAt[0]
+    if updatedAt == null then time = Date.parse('now').toString('hh:mm') else time = updatedAt[1].split('-')[0]
     @model.set('date', date)
     @model.set('time', time)
     #@listenTo App.vent, "note:show:block", => @blockView()
@@ -39,5 +39,11 @@ class App.Views.NoteShow extends Backbone.View
 ################################################## $ Remove View $ #####################################################
   hideCloseButton: (e) ->
     @$('.close-note').hide()
+    this
+########################################################################################################################
+
+################################################## $ Span8 $ ###########################################################
+  sizeSpan8: (e) ->
+    $(@el).addClass('span8')
     this
 ########################################################################################################################

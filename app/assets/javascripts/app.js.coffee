@@ -12,6 +12,7 @@ window.App =
   session           : null
   navView           : null
   purchaseRequests  : null
+  purchaseOrders    : null
   items             : null
   deliveries        : null
   invoices          : null
@@ -20,6 +21,7 @@ window.App =
   started           : null
   d_i               : null
   suppliers         : null
+  categories        : null
   contentViews      : []
   appendedViews     : []
 
@@ -32,6 +34,7 @@ window.App =
     @teams.reset($('#team-container').data('teams'))
     @session          = new App.Models.Session()
     @purchaseRequests = new App.Collections.PurchaseRequests()
+    @purchaseOrders   = new App.Collections.PurchaseOrders()
     @items            = new App.Collections.Items()
     @deliveries       = new App.Collections.Deliveries()
     @invoices         = new App.Collections.Invoices()
@@ -40,6 +43,7 @@ window.App =
     @d_i              = new App.Collections.DeliveriesItems()
     @suppliers        = new App.Collections.Suppliers()
     @suppliers.reset($('#suppliers-container').data('suppliers'))
+    @categories       = new App.Collections.Categories()
     @colHelper        = new App.Mixins.Collections()
     App.start()
 
@@ -61,6 +65,7 @@ window.App =
     new App.Routers.Nav()
     new App.Routers.User()
     new App.Routers.PurchaseRequest()
+    new App.Routers.PurchaseOrder()
     new App.Routers.Teams()
     new App.Routers.Item()
     new App.Routers.Delivery()

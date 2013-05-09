@@ -595,3 +595,45 @@ div.inside_well label{
   line-height: 16px;
   margin-top: 0px;
 }
+
+.vertical-text {
+  display: inline-block;
+  overflow: hidden;
+  width: 1.5em;
+}
+.vertical-text__inner {
+  display: inline-block;
+  white-space: nowrap;
+  line-height: 1.5;
+  transform: translate(0,100%) rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform-origin: 0 0;
+}
+
+.vertical-text__inner:after {
+  content: "";
+  display: block;
+  margin: -1.5em 0 100%;
+}
+
+.border-left{
+  text-align: center;
+  border-left-style: dotted;
+  border-left-color: #bdbdbd;
+  border-left-width: 1px;
+}
+
+.cat0 {
+  background-color: #f5f5f5;
+}
+
+#categories td {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dfdfdf;
+  vertical-align: middle;
+  empty-cells: show;
+}
+

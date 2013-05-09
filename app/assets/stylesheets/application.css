@@ -14,5 +14,6 @@
  *= require select2
  *= require datepicker
  *= require bootstrap-wysihtml5
+ *= require glicons
  *= require_tree .
 */

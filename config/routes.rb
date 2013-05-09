@@ -16,6 +16,7 @@ Rbkapps::Application.routes.draw do
     resources :notes
     resources :suppliers
     resources :quotations
+    resources :categories
   end
 
   match '*path', to: 'main#index'

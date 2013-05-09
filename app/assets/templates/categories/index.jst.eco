@@ -1,0 +1,43 @@
+<div class="well">
+    <h1>
+        Categorías
+    </h1>
+    <button id="fetch-categories" class="btn btn-primary btn-small btn-info">
+        Actualizar
+    </button>
+</div>
+<div id="notice"></div>
+<div class="row-fluid">
+    <div class="span12">
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>Categoría</th>
+                    <th>Sub-Categoría</th>
+                    <th>Tercer Categoría</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" id="category1" placeholder="Categoría" class="span10">
+                        <button class="btn btn-small btn-success center_select" id="add-category" style="vertical-align: super;">
+                            <i class="icon-plus icon-white"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <input type="text" id="category2" placeholder="Sub-Categoría" class="span10">
+                        <button class="btn btn-small btn-success center_select" id="add-sub-category" style="vertical-align: super;">
+                            <i class="icon-plus icon-white"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <input type="text" id="category3" placeholder="Tercer Categoría" class="span10">
+                        <button class="btn btn-small btn-success center_select" id="add-third-category" style="vertical-align: super;">
+                            <i class="icon-plus icon-white"></i>
+                        </button>
+                    </td>
+                </tr>
+            </thead>
+            <tbody id="categories"></tbody>
+        </table>
+    </div>
+</div>

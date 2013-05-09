@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130424182402) do
+ActiveRecord::Schema.define(:version => 20130503125822) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "category1"
+    t.string   "category2"
+    t.string   "category3"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "deliveries", :force => true do |t|
     t.string   "courier"
@@ -82,6 +90,13 @@ ActiveRecord::Schema.define(:version => 20130424182402) do
     t.datetime "updated_at",                   :null => false
   end
 
+  create_table "purchase_orders", :force => true do |t|
+    t.integer  "quotation_id"
+    t.text     "observations"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "purchase_request_lines", :force => true do |t|
     t.integer  "purchase_request_id"
     t.string   "description"
@@ -149,7 +164,6 @@ ActiveRecord::Schema.define(:version => 20130424182402) do
     t.string   "position"
     t.string   "phone"
     t.string   "cellphone"
-    t.integer  "location_id"
     t.integer  "team_id"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
@@ -158,6 +172,8 @@ ActiveRecord::Schema.define(:version => 20130424182402) do
     t.boolean  "comex"
     t.boolean  "compras"
     t.boolean  "director"
+    t.boolean  "maintenance"
+    t.string   "location"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

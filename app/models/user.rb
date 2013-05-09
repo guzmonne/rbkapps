@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   attr_accessible :name,
                   :email,
                   :cellphone,
-                  :location_id,
+                  :location,
                   :password_confirmation,
                   :password,
                   :phone,
@@ -15,7 +15,9 @@ class User < ActiveRecord::Base
                   :team_id,
                   :admin,
                   :comex,
-                  :compras
+                  :compras,
+                  :maintenance,
+                  :director
 
   before_save do |user|
     user.email = email.downcase
@@ -28,8 +30,6 @@ class User < ActiveRecord::Base
   validates :email, presence: {:message => "no puede quedar en blanco"},
             format: { with: VALID_EMAIL_REGEX, :message => "e-mail invalido" },
             uniqueness: { case_sensitive: false, :message => "la direccion ya esta en uso" }
-  validates :password, length: { minimum: 6, :message => "debe tener por lo menos 6 caracteres" }
-  validates :password_confirmation, presence: {:message => "no puede quedar en blanco"}
 
   private
 

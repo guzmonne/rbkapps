@@ -1,6 +1,11 @@
 <div class="span12" style="margin-left: 10px; margin-right: 10px;">
     <button class="close close-quotation pull-right" style="margin-right: 10px;">&times;</button>
-    <i class="<% if @model.get('selected') == true then 'authorized_image' %> authorized"></i>
+    <i class="<% unless @model.get('selected') == true then 'hide' %> authorized_image authorized"></i>
+    <button class="btn btn-small btn-success pull-right <% unless @model.get('selected') == true then 'hide' %>"
+            id="create-purchase-order"
+            style="padding: 10px;margin-top: 24px;margin-right: 32px;">
+        <i class="icon-plus icon-white"></i> Crear Orden de Compra
+    </button>
     <div class="row-fluid">
         <div class="span4">
             <label class="label label-inverse">Proveedor</label>

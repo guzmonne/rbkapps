@@ -22,6 +22,8 @@ class App.Views.Nav extends Backbone.View
     'click #nav-comex-reports'          : 'comexReports'
     'click #nav-service-request'        : 'createServiceRequest'
     'click #nav-suppliers'              : 'suppliersIndex'
+    'click #nav-purchase_orders'        : 'purchaseOrdersIndex'
+    'click #nav-categories'             : 'categoriesIndex'
 
   render: ->
     $(@el).html(@template(user: @model))
@@ -104,8 +106,16 @@ class App.Views.Nav extends Backbone.View
 
   createServiceRequest: (e) ->
     e.preventDefault()
-    Backbone.history.navigate 'service_requests/index', trigger: true
+    Backbone.history.navigate 'service_requests/create', trigger: true
 
   suppliersIndex: (e) ->
     e.preventDefault()
     Backbone.history.navigate 'suppliers/index', trigger: true
+
+  purchaseOrdersIndex: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate 'purchase_order/index', trigger: true
+
+  categoriesIndex: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate 'categories/index', trigger: true

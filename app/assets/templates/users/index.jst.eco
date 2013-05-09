@@ -10,18 +10,20 @@
     <div class="span12">
         <table class="table table-striped table-hover">
             <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>E-mail</th>
-                <th>Telefono</th>
-                <th>Celular</th>
-                <th>Cargo</th>
-                <th>Equipo</th>
-                <th>admin?</th>
-                <th>comex?</th>
-                <th>compras?</th>
-                <th>Gerente?</th>
-            </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <th>E-mail</th>
+                    <th>Telefono</th>
+                    <th>Celular</th>
+                    <th>Cargo</th>
+                    <th>Equipo</th>
+                    <th>Ubicación</th>
+                    <th><div class="vertical-text"><div class="vertical-text__inner">Admin</div></div></th>
+                    <th><div class="vertical-text"><div class="vertical-text__inner">Comex</div></div></th>
+                    <th><div class="vertical-text"><div class="vertical-text__inner">Compras</div></div></th>
+                    <th><div class="vertical-text"><div class="vertical-text__inner">Gerente</div></div></th>
+                    <th><div class="vertical-text"><div class="vertical-text__inner">Mant.</div></div></th>
+                </tr>
             </thead>
             <tbody id="users">
 

@@ -2,9 +2,11 @@
 <td><%= @model.get('email') %></td>
 <td><%= @model.get('phone') %></td>
 <td><%= @model.get('cellphone') %></td>
-<td><%= @model.get('position') %></td>
-<td><%= App.teams.get(@model.get('team_id')).get('name') if @model.get('team_id')? %></td>
-<td class="admin"></td>
-<td class="comex"></td>
-<td class="compras"></td>
-<td class="director"></td>
+<td style="max-width: 150px;"><%= @model.get('position') %></td>
+<td style="max-width: 80px;"><%= App.teams.get(@model.get('team_id')).get('name') if @model.get('team_id')? %></td>
+<td><%= @model.get('location') %></td>
+<td class="admin border-left"></td>
+<td class="comex border-left"></td>
+<td class="compras border-left"></td>
+<td class="director border-left"></td>
+<td class="maintenance border-left"></td>

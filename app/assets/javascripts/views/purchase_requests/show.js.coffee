@@ -74,9 +74,9 @@ class App.Views.PurchaseRequestShow extends Backbone.View
         view = new App.Views.ShowQuotation(model: model)
         App.pushToAppendedViews(view)
         @$('#accepted-quotation').append(view.render().el).hide().slideDown('slow')
-        @$('.authorized').show()
+        #@$('.authorized').show()
         view.hideCloseButton()
-        view.paintSelected()
+        view.approveQuotation()
     this
 ########################################################################################################################
 
@@ -95,9 +95,18 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     # Si el estado del pedido es "Rechazado"
     @rejectedView()
     # Notas adjuntas a la Orden de Compras
-    @notes.fetch data: {table_name: 'purchase_request', table_name_id : @model.id}, success: => @notes.each @renderNote
+    @notes.fetch data: {table_name: 'purchase_request', table_name_id : @model.id}, success: =>
+      if @notes.length == 0
+       if @model.get('state') == 'Cerrado' or @model.get('state') == 'Rechazado' then @$('.notes_section').hide()
+      @notes.each @renderNote
     # Cotizaciones adjuntas a la Orden de Compras
-    @model.quotations.fetch data: {purchase_request_id: @model.id}, success: => @model.quotations.each (model) => @appendQuotation(model)
+    @model.quotations.fetch data: {purchase_request_id: @model.id}, success: =>
+      if @model.quotations.length == 0
+        if @model.get('state') == 'Cerrado' or @model.get('state') == 'Rechazado'
+          @$('#quotations-label').hide()
+          @$('hr.compras').hide()
+      @model.quotations.each (model) =>
+        @appendQuotation(model)
     # si la orden de compra se encuentra en algun estado que no permita edicion
     @uneditableQuotation()
     # Si el usuario es gerente y el estado es "Esperando Autorización"
@@ -151,6 +160,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
       @$('#state').text('Cerrado')
       @$('.well label').text('Cerrado')
       @$('.hideable').hide()
+      @$('#new-note').hide()
     this
 
   rejectedView: ->
@@ -215,6 +225,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     if newState == 'Pedido Realizado'
       unless Date.parse($('#should_arrive_at').text()) > 0
         @fm.displayFlash('warning', "ATENCION! El campo 'Fecha Esperada' esta vacío. Por favor completelo.", 20000)
+    if newState == 'Cerrado' then return @delivered(false)
     if @uneditable_quotation_states.indexOf(newState) > -1
       @$('#new-quotation').hide()
       @$('.close-quotation').hide()
@@ -269,9 +280,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
 ########################################### $ Approve Request $ ########################################################
   approveRequest: (e) ->
     e.preventDefault() if e?
-    console.log "Approve Request"
     @model.save {state: 'Visto', approver: App.user.id},  success: =>
-      console.log @model.get('state')
       $("html, body").animate({ scrollTop: 0 }, "fast")
       $('.well').effect("bounce", { times:7 }, 500);
       @fm.displayFlash('success', 'El Pedido de Compra ha sido Visto y se ha notificado al departamento de Compras.', 10000)
@@ -305,7 +314,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
     @model.save {state: state}, success: =>
       @fm.displayFlash('success', "El estado ha cambiado a #{state}", 2500)
       @$('.label-status').text(state)
-      @$('h1 label').removeClass().addClass("label label-info label-status label-#{state}")
+      @$('h1 label').removeClass().addClass("label label-info label-status label-#{state.replace(' ', '-' )}")
       @$('#state').text(state)
 ########################################################################################################################
 
@@ -366,6 +375,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
 ######################################## $ Create New Quotation $ ######################################################
   createNewQuotation: (e) ->
     e.preventDefault() if e?
+    #$("html, body").animate({ scrollTop: 600 }, "fast")
     model = new App.Models.Quotation()
     model.set('purchase_request_id', @model.id)
     view = new App.Views.CreateQuotation(model: model)
@@ -422,29 +432,19 @@ class App.Views.PurchaseRequestShow extends Backbone.View
 ######################################### $ Clean SHould Arrive At $ ###################################################
   closeRequest: (e) ->
     e.preventDefault if e?
-    switch e.currentTarget.id
+    text = e.currentTarget.id if e.currentTarget?
+    switch text
       when 'delivered'
-        @model.save {state: 'Cerrado', closed_at: new Date()}, success: =>
-          @fm.displayFlash('success', "El pedido se ha entregado correctamente y su estado es ahora: 'Cerrado'")
-          $("html, body").animate({ scrollTop: 0 }, "fast")
-          $('.well').effect("bounce", { times:5 }, 500);
-          @$('#stamp').removeClass().addClass('pr_status-Cerrado pull-right')
-          @$('#state').text('Cerrado')
-          @$('.well label').text('Cerrado')
-          @$('.btn-mini').hide()
-          @$('#nav-next-purchase-request').show()
-          @$('#nav-prev-purchase-request').show()
-          @$('#confirm_delivery_modal').modal('toggle')
-          @$('#received-purchase-request').hide()
-        break
+        @delivered()
+        return this
       when 'not_delivered'
         @$('#confirm_delivery_modal').modal('toggle')
         @$('#leave_note_modal').modal('toggle')
-        break
+        return this
       when 'leave_note'
         @$('#confirm_delivery_note_modal').modal('toggle')
         @$('#leave_note_modal').modal('toggle')
-        break
+        return this
       when 'dont_leave_note'
          @model.save {state: 'No Entregado'}, success: =>
           @$('#state').text('No Entregado')
@@ -452,7 +452,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
           @$('#leave_note_modal').modal('toggle')
           @$('#received_purchase_request').hide()
           @fm.displayFlash('alert', "El pedido no ha sido entregado correctamente. Su estado ha cambiado a 'No Entregado' y se le ha enviado una notificación al departamento de compras", 20000)
-         break
+         return this
       when 'cancel_note'
         @model.save {state: 'No Entregado'}, success: =>
           @$('#state').text('No Entregado')
@@ -460,7 +460,7 @@ class App.Views.PurchaseRequestShow extends Backbone.View
           @$('#confirm_delivery_note_modal').modal('toggle')
           @$('#received_purchase_request').hide()
           @fm.displayFlash('alert', "El pedido no ha sido entregado correctamente. Su estado ha cambiado a 'No Entregado' y se le ha enviado una notificación al departamento de compras", 20000)
-        break
+        return this
       when 'confirm_note'
         newNote = @$('#delivery_note').val()
         unless newNote == ""
@@ -483,6 +483,22 @@ class App.Views.PurchaseRequestShow extends Backbone.View
           @$('#confirm_delivery_note_modal').modal('toggle')
           @$('#received_purchase_request').hide()
           @fm.displayFlash('alert', "El pedido no ha sido entregado correctamente. Su estado ha cambiado a 'No Entregado' y se le ha enviado una notificación al departamento de compras. Puede ver su comentario en la sección de 'Notas' más abajo.", 20000)
-        break
+        return this
+    this
+
+  delivered: (modal=true) ->
+    @model.save {state: 'Cerrado', closed_at: new Date()}, success: =>
+      @fm.displayFlash('success', "El pedido se ha entregado correctamente y su estado es ahora: 'Cerrado'")
+      $("html, body").animate({ scrollTop: 0 }, "fast")
+      $('.well').effect("bounce", { times:5 }, 500);
+      @$('#stamp').removeClass().addClass('pr_status-Cerrado pull-right')
+      @$('#state').text('Cerrado')
+      @$('.well label').text('Cerrado').removeClass().addClass('label label-status label-Cerrado')
+      @$('.btn-mini').hide()
+      @$('#nav-next-purchase-request').show()
+      @$('#nav-prev-purchase-request').show()
+      @$('#confirm_delivery_modal').modal('toggle') if modal == true
+      @$('#received-purchase-request').hide()
+      @$('#new-quotation').hide()
     this
 ########################################################################################################################

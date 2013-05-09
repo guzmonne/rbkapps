@@ -24,6 +24,7 @@ class App.Views.UserCreate extends Backbone.View
     if @$('#comex').attr("checked") then comex = true else comex = false
     if @$('#compras').attr("checked") then compras = true else compras = false
     if @$('#director').attr("director") then director = true else director = false
+    if @$('#maintenance').attr("maintenance") then maintenance = true else maintenance = false
     attributes =
       user:
         name                  : @$('#name').val()
@@ -39,6 +40,7 @@ class App.Views.UserCreate extends Backbone.View
         comex                 : comex
         compras               : compras
         director              : director
+        maintenance           : maintenance
     console.log attributes
     @model.save attributes,
       success : @handleSuccess
