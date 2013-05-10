@@ -7,7 +7,7 @@ class App.Views.PurchaseRequest extends Backbone.View
     'dblclick': 'show'
 
   initialize: ->
-    @dateHelper = new App.Mixins.Date
+    @dateHelper = new App.Mixins.DateHelper
     @model.set('team', App.teams.getNameFromId(@model.get('team_id')))
     @listenTo App.vent, 'update:purchase_requests:success', => @remove()
     # Resuelvo el nombre del usuario creador

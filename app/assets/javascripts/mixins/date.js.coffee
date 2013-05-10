@@ -1,4 +1,4 @@
-class App.Mixins.Date
+class App.Mixins.DateHelper
 
   parseRailsDate: (railsDate) ->
     return if railsDate == undefined
@@ -8,3 +8,37 @@ class App.Mixins.Date
 
   dateRailsOnly: (railsDate) ->
     return @parseRailsDate(railsDate).split(' ')[0]
+
+  dateDiff: (date1, date2) ->
+    date1 = @dateToDate(date1)
+    date2 = @dateToDate(date2)
+    d = Math.abs(date1 - date2)
+    return Math.floor(d / (24 * 60 * 60 * 1000))
+
+  dateBusDiff: (date1, date2) ->
+    date1 = @dateToDate(date1)
+    date2 = @dateToDate(date2)
+    iWeeks = iDateDiff = iAdjust = 0
+    if date2 < date1 then return -1
+    iWeekday1 = date1.getDay()
+    iWeekday2 = date2.getDay()
+    if iWeekday1 == 0 then iWeekday1 = 7
+    if iWeekday2 == 0 then iWeekday2 = 7
+    if (iWeekday1 > 5) and (iWeekday2 > 5) then iAdjust = 1
+    iOriginalWeekday1 = iWeekday1
+    iOriginalWeekday2 = iWeekday2
+    if iWeekday1 > 5 then iWeekday1 = 5
+    if iWeekday2 > 5 then iWeekday2 = 5
+    sub =  ( date2.getTime() - date1.getTime() )
+    iWeeks = Math.floor( sub/604800000)
+    if (iOriginalWeekday1 <= iOriginalWeekday2)
+      iDateDiff = (iWeeks * 5) + (iWeekday2 - iWeekday1)
+    else
+      iDateDiff = ((iWeeks + 1) * 5) - (iWeekday1 - iWeekday2)
+    iDateDiff -= iAdjust
+    return (iDateDiff + 1)
+
+  dateToDate: (date) ->
+    d = date.split('-')
+    t = new Date.parse("#{d[0]}-#{d[2]}-#{d[1]}")
+    return t

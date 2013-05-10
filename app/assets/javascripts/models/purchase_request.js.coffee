@@ -7,7 +7,7 @@ class App.Models.PurchaseRequest extends Backbone.Model
 
   initialize: ->
     @quotations = new App.Collections.Quotations()
-    @dateHelper = new App.Mixins.Date()
+    @dateHelper = new App.Mixins.DateHelper()
     @lines = new App.Collections.PurchaseRequestLines([], {purchase_request_id: @id})
 
   defaults: ->

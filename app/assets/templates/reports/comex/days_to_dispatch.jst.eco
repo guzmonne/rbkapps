@@ -1,0 +1,14 @@
+<div class="span12">
+    <table class="table table-striped table-hover table-condensed">
+        <thead>
+            <tr>
+                <th data-sort="dispatch" data-sort_type="string">Tramite</th>
+                <th data-sort="guide" data-sort_type="string">Guía</th>
+                <th data-sort="arrival_date" data-sort_type="string">Fecha de Llegada</th>
+                <th data-sort="delivery_date" data-sort_type="string">Fecha de Entrega</th>
+                <th data-sort="dispatch_days" data-sort_type="string">Días para Despachar</th>
+            </tr>
+        </thead>
+        <tbody id="deliveries"></tbody>
+    </table>
+</div>

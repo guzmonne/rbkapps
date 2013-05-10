@@ -3,6 +3,7 @@ class App.Models.Delivery extends Backbone.Model
 
   initialize: (model) ->
     @invoices = new App.Collections.Invoices()
+    @dh = new App.Mixins.DateHelper
 
   fetchSubCollections: (options) ->
     if @invoices.length == 0
@@ -22,6 +23,15 @@ class App.Models.Delivery extends Backbone.Model
       else
         if options.success then return options.success(@invoices, @items)
         return this
+
+  guides: ->
+    g = "#{@get('guide')}"
+    unless @get('guide2') == '' then g = "#{g} #{@get('guide2')}"
+    unless @get('guide3') == '' then g = "#{g} #{@get('guide3')}"
+    return g
+
+  daysToDispatch: ->
+    return @dh.dateBusDiff(@get('arrival_date'), @get('delivery_date'))
 
   update: (attributes, options) ->
     $.ajax

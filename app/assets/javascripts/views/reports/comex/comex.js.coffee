@@ -1,18 +1,20 @@
 class App.Views.ComexReports extends Backbone.View
   template: JST['reports/comex/main']
   itemsStatus: JST['reports/comex/items_status']
+  daysToDispatch: JST['reports/comex/days_to_dispatch']
 
 
   events:
     'click ul.dropdown-menu li a'     : 'customSelect'
     'keydown .no_typing'              : 'noTyping'
     'keyup .no_typing'                : 'noTyping'
-    'click #run_report'               : 'runReport'
+    'click .run_report'               : 'runReport'
     'click th'                        : 'sortItems'
 
   initialize: ->
     @reportName = ''
     @collection = new App.Collections.Items
+    @deliveries = new App.Collections.Deliveries
     @fh = new App.Mixins.Form
 
   render: ->
@@ -35,7 +37,7 @@ class App.Views.ComexReports extends Backbone.View
     this
 
   showFilters: ->
-    @$('.filter').fadeOut('slow')
+    @$('.filter').hide()
     @$('#' + @reportName).fadeIn('slow')
     this
 
@@ -57,14 +59,34 @@ class App.Views.ComexReports extends Backbone.View
         @$('#report').show().append(view.render().el)
         @itemsStatusReport()
         break
+      when 'days_to_dispatch'
+        @$('#report').show().html(@daysToDispatch())
+        @$('#report').append(view.render().el)
+        @daysToDispatchReport()
+    this
+
+  daysToDispatchReport: ->
+    @deliveries.fetch success: =>
+      App.vent.trigger "loading:remove:success"
+      dispatchs = @deliveries.pluckDistinct('dispatch')
+      for dispatch in dispatchs
+        @dels = @deliveries.where({dispatch: dispatch})
+        for del, i in @dels
+          dispatchRow = "<td rowspan='#{@dels.length}'>#{dispatch}</td>"
+          guidesRow = "<td>#{del.guides()}</td>"
+          arrivalRow = "<td>#{del.get('arrival_date')}</td>"
+          deliveryRow = "<td>#{del.get('delivery_date')}</td>"
+          daysToDispatchRow = "<td>#{del.daysToDispatch()}</td>"
+          if i == 0
+            @$('#deliveries').append("<tr>#{dispatchRow}#{guidesRow}#{arrivalRow}#{deliveryRow}#{daysToDispatchRow}</tr>")
+          else
+            @$('#deliveries').append("<tr>#{guidesRow}#{arrivalRow}#{deliveryRow}#{daysToDispatchRow}</tr>")
     this
 
   itemsStatusReport: ->
     if @$('#brand').val() == '' then brand = null else brand = @$('#brand').val()
     if @$('#season').val() == '' then season = null else season = @$('#season').val()
     if @$('#entry').val() == '' then entry = null else entry = @$('#entry').val()
-    # items = new App.Collections.Items()
-    # items.fetch success: =>
     @collection.fetch success: =>
       if brand == null
         if season == null
