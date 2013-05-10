@@ -31,6 +31,7 @@ class App.Models.Delivery extends Backbone.Model
     return g
 
   daysToDispatch: ->
+    if @get('arrival_date') == null or @get('delivery_date') == null then return '***'
     return @dh.dateBusDiff(@get('arrival_date'), @get('delivery_date'))
 
   update: (attributes, options) ->

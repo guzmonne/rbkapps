@@ -39,6 +39,7 @@ class App.Mixins.DateHelper
     return (iDateDiff + 1)
 
   dateToDate: (date) ->
+    if date == null then return -1
     d = date.split('-')
     t = new Date.parse("#{d[0]}-#{d[2]}-#{d[1]}")
     return t
