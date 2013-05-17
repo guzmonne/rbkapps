@@ -49,4 +49,57 @@ class Item < ActiveRecord::Base
     return @result
   end
 
+  def as_xls(options = {})
+    {
+        "Id" => id.to_s,
+        "Codigo" => code,
+        "Marca" => brand,
+        "Temporada" => season,
+        "Rubro" => entry,
+        "Guia" => guide,
+        "Numero de Factura" => invoice_number,
+        "Estado" => status
+    }
+  end
+
+  def guide
+    if (invoice_item = InvoiceItem.find_by_item_id(self.id)) == nil
+      return nil
+    else
+      if (invoice = Invoice.find(invoice_item.invoice_id)) == nil
+        return nil
+      else
+        if (delivery = Delivery.find(invoice.delivery_id)) == nil
+          return nil
+        else
+          return "#{delivery.guide} #{delivery.guide2} #{delivery.guide3}"
+        end
+      end
+    end
+  end
+
+  def invoice_number
+    if (invoice_item = InvoiceItem.find_by_item_id(self.id)) == nil
+      return nil
+    else
+      invoice = Invoice.find(invoice_item.invoice_id).invoice_number
+    end
+  end
+
+  def status
+    if (invoice_item = InvoiceItem.find_by_item_id(self.id)) == nil
+      return 'PENDIENTE'
+    else
+      if (invoice = Invoice.find(invoice_item.invoice_id))
+        return 'PENDIENTE'
+      else
+        if (delivery = Delivery.find(invoice.delivery_id))
+          return 'PENDIENTE'
+        else
+          return delivery.status
+        end
+      end
+    end
+  end
+
 end

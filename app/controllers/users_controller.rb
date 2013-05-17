@@ -7,7 +7,12 @@ class UsersController < ApplicationController
       @user = User.find_by_remember_token(@remember_token)
       respond_with(@user)
     else
-      respond_with User.all
+      @users = User.all
+      respond_to do |format|
+        format.json  { render :json => @users.to_json }
+        format.xls { send_data @users.to_xls, content_type: 'application/vnd.ms-excel', filename: 'users.xls' }
+      end
+      #respond_with User.all
     end
   end
 

@@ -38,4 +38,25 @@ class Delivery < ActiveRecord::Base
       return delivery
     end
   end
+
+  def as_xls(options = {})
+    {
+        "Id" => id.to_s,
+        "Tramite" => dispatch,
+        "Guias" => guides,
+        "Fecha de Llegada" => arrival_date,
+        "Fecha de Entrega" => delivery_date,
+        "Dias para despachar" => days_to_dispatch,
+    }
+  end
+
+  def guides
+    "#{self.guide} #{self.guide2} #{self.guide3}"
+  end
+
+  def days_to_dispatch
+    return nil if self.delivery_date == nil || self.arrival_date == nil
+    (self.delivery_date - self.arrival_date).round.abs
+  end
+
 end

@@ -6,14 +6,21 @@ class ItemsController < ApplicationController
       @delivery = Delivery.find(params["delivery_id"])
       respond_with @delivery.items
     else
-      #respond_with Item.all
-      @item = Item.new
       respond_with @item.items_deliveries
     end
   end
 
   def show
-    respond_with Item.find(params["id"])
+    @format = params["id"]
+    if @format == "items_status"
+      @items = Item.all
+      respond_to do |format|
+        format.json  { render :json => @item.items_deliveries }
+        format.xls { send_data @items.to_xls, content_type: 'application/vnd.ms-excel', filename: 'items_status.xls' }
+      end
+    else
+      respond_with Item.find(params["id"])
+    end
   end
 
   def create

@@ -1,11 +1,11 @@
 [class^="sprite-"],
 [class*=" sprite-"] {
     display: inline-block;
-    width: 24px;
-    height: 24px;
+    width: 14px;
+    height: 14px;
     #margin-top: 1px;
     *margin-right: .3em;
-    line-height: 24px;
+    line-height: 14px;
     vertical-align: text-top;
     background-image: url("/assets/sprites.png");
     background-position: 0px 0px;

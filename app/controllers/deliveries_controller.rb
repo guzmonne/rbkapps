@@ -12,6 +12,14 @@ class DeliveriesController < ApplicationController
   end
 
   def show
+    @report = params["id"]
+    if @report == "days_to_dispatch"
+      @deliveries = Delivery.all
+      respond_to do |format|
+        format.xls { send_data @deliveries.to_xls, content_type: 'application/vnd.ms-excel', filename: 'days_to_dispatch.xls' }
+      end
+      return
+    end
     @delivery = Delivery.find(params["id"])
     @invoices = @delivery.invoices
     array = []

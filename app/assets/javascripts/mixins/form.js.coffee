@@ -65,4 +65,4 @@ class App.Mixins.Form
       setTimeout( ->
         $('#' + flashId).fadeOut('slow', -> $('#' + flashId).remove())
       , time)
-      return @flash(type: type, message: message, id: flashId)
+      return #@flash(type: type, message: message, id: flashId)

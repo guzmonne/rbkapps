@@ -1,4 +1,3 @@
-<div class="span12">
     <table class="table table-striped table-hover table-condensed">
         <thead>
             <tr>
@@ -11,4 +10,3 @@
         </thead>
         <tbody id="deliveries"></tbody>
     </table>
-</div>

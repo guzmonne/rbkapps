@@ -36,5 +36,8 @@ gem 'jquery-rails'
 # Deploy with Capistrano
 gem 'capistrano'
 
+gem "spreadsheet", "0.6.5.8"
+gem "to_xls", :git => "https://github.com/dblock/to_xls.git", :branch => "to-xls-on-models"
+
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
