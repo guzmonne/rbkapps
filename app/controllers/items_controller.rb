@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
       @delivery = Delivery.find(params["delivery_id"])
       respond_with @delivery.items
     else
-      respond_with @item.items_deliveries
+      respond_with Item.items_deliveries
     end
   end
 

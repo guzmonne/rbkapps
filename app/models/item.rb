@@ -13,9 +13,8 @@ class Item < ActiveRecord::Base
   validates :entry, presence: {:message => "no puede quedar en blanco"}
 
 
-  def items_deliveries
+  def self.items_deliveries
     @items = Item.all(:include => [:invoices => :delivery])
-    puts @items.length
     @result = []
     @i = 0
     @items.each do |i|
@@ -44,8 +43,6 @@ class Item < ActiveRecord::Base
         next
       end
     end
-    puts @i
-    puts @result.length
     return @result
   end
 
