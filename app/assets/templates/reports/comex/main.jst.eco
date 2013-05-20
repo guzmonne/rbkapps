@@ -17,7 +17,7 @@
                 <li><a data-id="report_name" data-controller="deliveries" data-report-name="days_to_dispatch">Tiempos de Despacho</a></li>
             </ul>
         </div>
-        <a class="btn btn-inverse hide" href="/api/items/items_status.xls" style="vertical-align: text-bottom;" id="import_to_xls">
+        <a class="btn btn-inverse hide" href="/comex_reports.xls?report=items_status" style="vertical-align: text-bottom;" id="import_to_xls">
             <i class="excel_logo"></i>
             Descargar
         </a>

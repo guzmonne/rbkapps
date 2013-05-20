@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Codigo</Data></Cell>
+        <Cell><Data ss:Type="String">Marca</Data></Cell>
+        <Cell><Data ss:Type="String">Temporada</Data></Cell>
+        <Cell><Data ss:Type="String">Guia</Data></Cell>
+        <Cell><Data ss:Type="String">Numero de Factura</Data></Cell>
+        <Cell><Data ss:Type="String">Estado</Data></Cell>
+      </Row>
+      <% @items.each do |item| %>
+          <Row>
+            <Cell><Data ss:Type="Number"><%= item[:id] %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= item[:code] %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= item[:brand] %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= item[:season] %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= item[:delivery] %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= item[:invoice_number] %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= item[:status] %></Data></Cell>
+          </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

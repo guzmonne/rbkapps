@@ -99,4 +99,13 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def self.to_csv(options = {})
+    CSV.generate do |csv|
+      csv << ["Codigo", "Marca", "Temporada", "Rubro", "Guia", "Numero de Factura", "Estado"]
+      invoice_items.each do |item|
+        csv << [item["code"], item["brand"], item["season"], item["entry"], item["invoice_number"], item["delivery"], item["status"] ]
+      end
+    end
+  end
+
 end

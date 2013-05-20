@@ -19,5 +19,7 @@ Rbkapps::Application.routes.draw do
     resources :categories
   end
 
+  resources :comex_reports
+
   match '*path', to: 'main#index'
 end

@@ -1,0 +1,2 @@
+module ComexReportsHelper
+end
