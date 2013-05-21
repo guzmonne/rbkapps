@@ -56,7 +56,23 @@ class Delivery < ActiveRecord::Base
 
   def days_to_dispatch
     return nil if self.delivery_date == nil || self.arrival_date == nil
-    (self.delivery_date - self.arrival_date).round.abs
+    business_days_between(self.delivery_date, self.arrival_date)
+    #(self.delivery_date - self.arrival_date).round.abs
   end
 
+  def business_days_between(date1, date2)
+    business_days = 0
+    if date2 < date1
+      datelo = date2
+      datehi = date1
+    else
+      datelo = date1
+      datehi = date2
+    end
+    while datelo < datehi
+      business_days = business_days + 1 unless datelo.saturday? or datelo.sunday?
+      datelo = datelo + 1.day
+    end
+    business_days + 1
+  end
 end
