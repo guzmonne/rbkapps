@@ -20,6 +20,7 @@ Rbkapps::Application.routes.draw do
   end
 
   resources :comex_reports
+  resources :application_reports
 
   match '*path', to: 'main#index'
 end

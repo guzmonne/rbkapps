@@ -6,6 +6,10 @@
         <i class="icon-plus icon-white"></i>
         Nuevo Envío
     </button>
+    <a id="excel" class="btn btn-inverse btn-small" href="/comex_reports.xls?report=deliveries">
+        <i class="excel_logo"></i>
+        Descargar
+    </a>
     <button id="fetch-deliveries" class="btn btn-primary btn-small btn-info">
         Actualizar
     </button>

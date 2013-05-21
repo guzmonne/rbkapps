@@ -21,12 +21,11 @@ class App.Views.ComexReports extends Backbone.View
     @$('#import_to_xls').show()
     switch id
       when 'report_name'
-        #@reportName = e.currentTarget.dataset['reportName']
-        #@controller = e.currentTarget.dataset['controller']
+        @reportName = e.currentTarget.dataset['reportName']
         @$('#report_name').val(text)
         @showFilters()
         @$('#report').html('')
-        #@$('#import_to_xls').attr('href', "/api/#{@controller}/#{@reportName}.xls")
+        @$('#import_to_xls').attr('href', "/comex_reports.xls?report=#{@reportName}")
         break
       when 'brand', 'season', 'entry'
         @$('#' + id).val(text)

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Tramite</Data></Cell>
+        <Cell><Data ss:Type="String">Guia</Data></Cell>
+        <Cell><Data ss:Type="String">Fecha de Llegada</Data></Cell>
+        <Cell><Data ss:Type="String">Fecha de Entrega</Data></Cell>
+        <Cell><Data ss:Type="String">Dias para Despachar</Data></Cell>
+      </Row>
+      <% @deliveries.each do |d| %>
+          <Row>
+            <Cell><Data ss:Type="String"><%= d[:dispatch] %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= d.guides %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= d[:arrival_date] %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= d[:delivery_date] %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= d.days_to_dispatch %></Data></Cell>
+          </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

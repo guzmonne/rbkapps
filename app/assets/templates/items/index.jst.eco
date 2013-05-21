@@ -6,7 +6,7 @@
         <i class="icon-plus icon-white"></i>
         Nuevo Artículo
     </button>
-    <a id="excel" class="btn btn-inverse btn-small" href="/api/items.xls">
+    <a id="excel" class="btn btn-inverse btn-small" href="/comex_reports.xls?report=items_status">
         <i class="excel_logo"></i>
         Descargar
     </a>

@@ -48,6 +48,34 @@ class User < ActiveRecord::Base
     }
   end
 
+  def self.to_report
+    @users = User.all
+    @teams = Team.all
+    @result = []
+    @users.each do |u|
+      team = @teams.detect {|f| f["id"] == u["team_id"]}
+
+      @result.push({
+                    :name => u["name"],
+                    :email => u["email"],
+                    :cellphone => u["cellphone"],
+                    :location => u["location"],
+                    phone: u["phone"],
+                    position: u["position"],
+                    team: team["name"],
+                    admin: self.bool_to_yes(u["admin"]),
+                    comex: self.bool_to_yes(u["comex"]),
+                    maintenance: self.bool_to_yes(u["maintenance"]),
+                    director: self.bool_to_yes(u["director"])
+                   })
+    end
+    return @result
+  end
+
+  def self.bool_to_yes(var)
+    if var == true then return "Si" else return nil end
+  end
+
   def team
     Team.find(self.team_id).name
   end

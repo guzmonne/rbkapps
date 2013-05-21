@@ -4,13 +4,17 @@ class ComexReportsController < ApplicationController
     if @report == 'items_status'
       @items = Item.items_deliveries
       respond_to do |format|
-        format.json { render :json => Item.items_deliveries }
-        format.xls  { render :template => '/items/index', :layout => false }
+        format.xls  { render :action => 'items_status' }
       end
     elsif @report == 'days_to_dispatch'
       @deliveries = Delivery.all
       respond_to do |format|
-        format.xls { send_data @deliveries.to_xls, content_type: 'application/vnd.ms-excel', filename: 'days_to_dispatch.xls' }
+        format.xls  { render :action => 'days_to_dispatch' }
+      end
+    elsif @report == 'deliveries'
+      @deliveries = Delivery.all
+      respond_to do |format|
+        format.xls { render :action => 'deliveries' }
       end
     end
   end
