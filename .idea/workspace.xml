@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="044e0a91-8a4a-4ab7-93a4-af1de8015a06" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/application_reports_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/application_reports/users.xls.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/comex_reports/days_to_dispatch.xls.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/comex_reports/deliveries.xls.erb" />
-      <change type="MOVED" beforePath="C:\Users\gmonne.RBKURUGUAY\RubymineProjects\rbkapps\app\views\items\index.xls.erb" afterPath="$PROJECT_DIR$/app/views/comex_reports/items_status.xls.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/reports/comex/comex.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/reports/comex/comex.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/deliveries/index.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/deliveries/index.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/items/index.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/items/index.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/reports/comex/items_status.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/reports/comex/items_status.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/users/index.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/users/index.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/comex_reports_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/comex_reports_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
     </list>
     <ignored path="rbkapps.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,14 +27,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.jst.eco" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main.jst.eco" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/templates/reports/comex/main.jst.eco">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="25" selection-start="4902" selection-end="4902" vertical-scroll-proportion="0.6143667">
+            <state line="84" column="25" selection-start="4902" selection-end="4902" vertical-scroll-proportion="-6.372549">
               <folding>
                 <element signature="n#style#0;n#label#0;n#div#0;n#div#2;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#2;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Gemfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="38" selection-start="755" selection-end="755" vertical-scroll-proportion="0.77065766">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -66,7 +64,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/items/index.xls.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/views/reports/comex/comex.js.coffee" />
         <option value="$PROJECT_DIR$/app/views/comex_reports/days_to_dispatch.xls.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
@@ -82,6 +79,7 @@
         <option value="$PROJECT_DIR$/app/views/comex_reports/deliveries.xls.erb" />
         <option value="$PROJECT_DIR$/app/assets/templates/reports/comex/items_status.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/templates/reports/comex/main.jst.eco" />
+        <option value="$PROJECT_DIR$/Gemfile" />
       </list>
     </option>
   </component>
@@ -1736,13 +1734,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/items/index.jst.eco">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="21" selection-start="212" selection-end="372" vertical-scroll-proportion="0.26984128">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="32" selection-start="542" selection-end="542" vertical-scroll-proportion="0.6306914">
@@ -1839,11 +1830,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/templates/reports/comex/main.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="25" selection-start="4902" selection-end="4902" vertical-scroll-proportion="0.6143667">
+        <state line="84" column="25" selection-start="4902" selection-end="4902" vertical-scroll-proportion="-6.372549">
           <folding>
             <element signature="n#style#0;n#label#0;n#div#0;n#div#2;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#2;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="38" selection-start="755" selection-end="755" vertical-scroll-proportion="0.77065766">
+          <folding />
         </state>
       </provider>
     </entry>
