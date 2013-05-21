@@ -130,7 +130,7 @@
                 </li>
                 <li class="hover-white">
                     <a href="#" id="nav-item">
-                        <i class="t_shirt"></i>
+                        <i class="sprite-pants"></i>
                         Artículos
                     </a>
                 </li>
@@ -156,7 +156,7 @@
                 <li class="hover-white">
                     <a href="#" id="nav-new-item">
                         <i class="icon-plus"></i>
-                        <i class="t_shirt"></i>
+                        <i class="sprite-pants"></i>
                         Nuevo Artículo
                     </a>
                 </li>

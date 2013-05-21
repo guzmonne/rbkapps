@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="044e0a91-8a4a-4ab7-93a4-af1de8015a06" name="Default" comment="" />
+    <list default="true" id="044e0a91-8a4a-4ab7-93a4-af1de8015a06" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/create.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/create.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" />
+    </list>
     <ignored path="rbkapps.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,22 +27,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.jst.eco" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/templates/reports/comex/main.jst.eco">
+      <file leaf-file-name="create.jst.eco" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/templates/deliveries/create.jst.eco">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="25" selection-start="4902" selection-end="4902" vertical-scroll-proportion="-6.372549">
-              <folding>
-                <element signature="n#style#0;n#label#0;n#div#0;n#div#2;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#2;n#!!top" expanded="true" />
-              </folding>
+            <state line="10" column="47" selection-start="391" selection-end="398" vertical-scroll-proportion="-6.5384617">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Gemfile">
+      <file leaf-file-name="create.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/create.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="86" selection-start="677" selection-end="677" vertical-scroll-proportion="0.59865093">
+            <state line="58" column="31" selection-start="2877" selection-end="2877" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.js.coffee" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="87" column="5" selection-start="3547" selection-end="3547" vertical-scroll-proportion="0.6070826">
               <folding />
             </state>
           </provider>
@@ -60,10 +70,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/reports/comex/comex.js.coffee" />
-        <option value="$PROJECT_DIR$/app/views/comex_reports/days_to_dispatch.xls.erb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/assets/templates/users/index.jst.eco" />
         <option value="$PROJECT_DIR$/app/controllers/application_reports_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/views/application_reports/users.xls.erb" />
@@ -76,6 +82,10 @@
         <option value="$PROJECT_DIR$/app/assets/templates/reports/comex/items_status.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/templates/reports/comex/main.jst.eco" />
         <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" />
+        <option value="$PROJECT_DIR$/app/assets/templates/deliveries/create.jst.eco" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/create.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee" />
       </list>
     </option>
   </component>
@@ -1225,6 +1235,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="items" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1356,6 +1392,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="comex" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="deliveries" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1730,34 +1796,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="32" selection-start="542" selection-end="542" vertical-scroll-proportion="0.6306914">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/users/index.jst.eco">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="81" selection-start="316" selection-end="316" vertical-scroll-proportion="0.329806">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/mime_types.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/application_reports/users.xls.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="45" selection-start="315" selection-end="315" vertical-scroll-proportion="0.14991182">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/Usuarios.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="359" column="9" selection-start="17379" selection-end="17379" vertical-scroll-proportion="0.0">
@@ -1789,13 +1827,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/deliveries/index.jst.eco">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="8" selection-start="367" selection-end="367" vertical-scroll-proportion="-7.1923075">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/comex_reports_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="50" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0">
@@ -1824,9 +1855,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="86" selection-start="677" selection-end="677" vertical-scroll-proportion="0.59865093">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/templates/reports/comex/main.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="25" selection-start="4902" selection-end="4902" vertical-scroll-proportion="-6.372549">
+        <state line="84" column="25" selection-start="4902" selection-end="4902" vertical-scroll-proportion="0.6143667">
           <folding>
             <element signature="n#style#0;n#label#0;n#div#0;n#div#2;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#2;n#!!top" expanded="true" />
@@ -1834,9 +1872,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/deliveries/index.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="86" selection-start="677" selection-end="677" vertical-scroll-proportion="0.59865093">
+        <state line="11" column="8" selection-start="367" selection-end="367" vertical-scroll-proportion="0.029982364">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="158" column="46" selection-start="6263" selection-end="6263" vertical-scroll-proportion="0.8095238">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/deliveries/create.jst.eco">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="47" selection-start="391" selection-end="398" vertical-scroll-proportion="-6.5384617">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/create.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="31" selection-start="2877" selection-end="2877" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="5" selection-start="3547" selection-end="3547" vertical-scroll-proportion="0.6070826">
           <folding />
         </state>
       </provider>

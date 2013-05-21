@@ -85,7 +85,7 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
     @changeCourierIcon()
     @toggleGuides()
     @calculateCosts()
-    @$('.select2').select2({width: 'copy'})
+    #@$('.select2').select2({width: 'copy'})
     @model.invoices.each @renderInvoice
     @$('#loading-div').hide()
     if @model.get('status') == "CERRADO"

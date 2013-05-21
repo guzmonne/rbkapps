@@ -53,7 +53,7 @@ class App.Views.DeliveryCreate extends Backbone.View
 
 ################################################# $ Render $ ###########################################################
   render: ->
-    $(@el).html(@template()).find('.select2').select2({width: 'copy'})
+    $(@el).html(@template())#.find('.select2').select2({width: 'copy'})
     @$('.datepicker').datepicker({format: 'yyyy-mm-dd'}).on('changeDate', -> App.vent.trigger 'change:date', this)
     this
 ########################################################################################################################
