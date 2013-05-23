@@ -41,4 +41,9 @@ class ItemsController < ApplicationController
     @result = {status: :ok}
     respond_with @result
   end
+
+  def import
+    Item.import(params[:file])
+    redirect_to '/items/index'
+  end
 end

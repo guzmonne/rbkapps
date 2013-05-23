@@ -63,9 +63,11 @@ class Delivery < ActiveRecord::Base
   def business_days_between(date1, date2)
     business_days = 0
     if date2 < date1
+      date   = date2
       datelo = date2
       datehi = date1
     else
+      date   = date1
       datelo = date1
       datehi = date2
     end
@@ -73,6 +75,7 @@ class Delivery < ActiveRecord::Base
       business_days = business_days + 1 unless datelo.saturday? or datelo.sunday?
       datelo = datelo + 1.day
     end
-    business_days + 1
+    business_days + 1 unless date.saturday? or date.sunday?
+    business_days
   end
 end

@@ -30,6 +30,8 @@ class App.Views.ItemIndex extends Backbone.View
     'click #search-button'        : 'searchItem'
     'click #search-undo'          : 'searchUndo'
     'keydown :input'              : 'keyDownManager'
+    'click #massive-items'        : 'massiveItems'
+    'click #submit-massive-items' : 'submitMassiveItems'
 ########################################################################################################################
 
 ############################################### $ Render $ #############################################################
@@ -219,6 +221,24 @@ class App.Views.ItemIndex extends Backbone.View
             @searchItem()
             break
     this
+########################################################################################################################
+
+############################################### $ Search Item $ ########################################################
+  massiveItems: (e) ->
+    e.preventDefault()
+    @$('#massive-items-modal').modal('toggle');
+
+  submitMassiveItems: (e) ->
+    file = @$('#select_file').val()
+    if  file == ""
+      @fh.displayFlash('alert', "Debe seleccionar un documento CSV delimitado por comas.")
+      return @massiveItems(e)
+    unless file.split(',')[1] == 'csv' or file.split(',')[1] == 'CSV'
+      @fh.displayFlash('alert', "Solo se aceptan archivos CSV delimitado por comas.")
+      return @massiveItems(e)
+
+
+
 
 
 

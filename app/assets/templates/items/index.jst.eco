@@ -4,11 +4,13 @@
     </h1>
     <button id="new-item" class="btn btn-primary btn-small btn-success ">
         <i class="icon-plus icon-white"></i>
-        Nuevo Artículo
+    </button>
+    <button id="massive-items" class="btn btn-primary btn-small btn-success ">
+        <i class="sprite-circle_plus sprite-white"></i>
+        Carga Masiva
     </button>
     <a id="excel" class="btn btn-inverse btn-small" href="/comex_reports.xls?report=items_status">
         <i class="excel_logo"></i>
-        Descargar
     </a>
     <button id="fetch-items" class="btn btn-primary btn-small btn-info">
         Actualizar
@@ -34,13 +36,13 @@
                 margin-left: -5px;
             ">
     <div class="pull-right inside_well dropdown">
-        <label class="label label-big label-info">Orden General:</label>
+        <!--<label class="label label-big label-info">Orden General:</label>-->
         <a id="search-column"
            class="btn btn-info btn-small dropdown-toggle"
            data-toggle="dropdown"
            href="#"
            data-column="">
-            Columna <span class="caret"></span>
+            Orden General <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="Columnas">
             <li><a href="#" data-sort="code">Codigo</a></li>
@@ -79,3 +81,46 @@
         <li id="pagination-end" data-pages="1"><a href="#">Next</a></li>
     </ul>
 </div>
+<form accept-charset="UTF-8" action="/api/items/import" enctype="multipart/form-data" method="post">
+    <div id="massive-items-modal"
+         class="modal hide fade"
+         tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-header">
+            <h3>Carga Masiva de Artículos</h3>
+        </div>
+        <div class="modal-body">
+            <div id="massive-items-notice"></div>
+                <div class="control-group" id="modal-control-origin">
+                    <div class="alert alert-block alert-info">
+                        <p>
+                            <strong>Atención:</strong> Verifique que el documento CSV que
+                            va a utilizar cumpla con las siguientes condiciones:</p>
+                        <ul>
+                            <li><strong>NO</strong> contiene una fila con los títulos de las columnas</li>
+                            <li>Las columnas están ordenadas de la siguiente manera:
+                                <ol>
+                                    <li>Codigo</li>
+                                    <li>Marca</li>
+                                    <li>Temporada</li>
+                                    <li>Rubro</li>
+                                </ol>
+                            </li>
+                        </ul>
+                        <p>
+                            Si no se cumplen estos puntos se generaran errores en los artículos creados.
+                        </p>
+                    </div>
+                    <label class="control-label" for="select_file">Seleccione un archivo CSV separado por comas.:</label>
+                    <div class="controls">
+                        <input name="file" type="file" id="select_file">
+                    </div>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <input id="submit-massive-items" class="btn btn-primary btn-block btn-large" type="submit" value="Importar">
+            <!--<button id="submit-massive-items" class="btn btn-primary btn-block btn-large" type="submit">Aceptar</button>-->
+        </div>
+    </div>
+</form>

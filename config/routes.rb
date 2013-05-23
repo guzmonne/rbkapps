@@ -7,7 +7,9 @@ Rbkapps::Application.routes.draw do
     resources :purchase_requests
     resources :purchase_request_lines
     resources :teams
-    resources :items
+    resources :items do
+      collection { post :import }
+    end
     resources :deliveries
     resources :invoices
     resources :form_helpers
@@ -22,5 +24,6 @@ Rbkapps::Application.routes.draw do
   resources :comex_reports
   resources :application_reports
 
+  root to: 'main#index'
   match '*path', to: 'main#index'
 end

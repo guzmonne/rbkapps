@@ -108,4 +108,13 @@ class Item < ActiveRecord::Base
     end
   end
 
+  def self.import(file)
+    puts file
+    CSV.foreach(file.path, headers: false) do |row|
+      hash = {code: row[0], brand: row[1], season: row[2], entry: row[3]}
+      puts hash
+      Item.create! hash
+    end
+  end
+
 end
