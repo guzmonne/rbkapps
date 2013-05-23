@@ -56,13 +56,13 @@ class App.Mixins.Form
     date = new Date(myDate.getTime() + days * 24 * 60 * 60 * 1000);
     return "#{date.getFullYear()}-#{date.getMonth() + 1}-#{date.getDate()}"
 
-  displayListFlash: (type, messages, time=3000) ->
+  displayListFlash: (type, messages, time=3000, notice='#notice') ->
     flashId = @uniqueId()
     if time == 0
-      $('#notice').append( @listFlash(type: type, messages: messages, id: flashId) )
+      $(notice).append( @listFlash(type: type, messages: messages, id: flashId) )
     else
-      $('#notice').append( @listFlash(type: type, messages: messages, id: flashId) )
+      $(notice).append( @listFlash(type: type, messages: messages, id: flashId) )
       setTimeout( ->
         $('#' + flashId).fadeOut('slow', -> $('#' + flashId).remove())
       , time)
-      return #@flash(type: type, message: message, id: flashId)
+      return

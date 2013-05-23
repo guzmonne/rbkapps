@@ -32,6 +32,7 @@ class App.Views.ItemIndex extends Backbone.View
     'keydown :input'              : 'keyDownManager'
     'click #massive-items'        : 'massiveItems'
     'click #submit-massive-items' : 'submitMassiveItems'
+    'change #select_file'         : 'changeSelectFile'
 ########################################################################################################################
 
 ############################################### $ Render $ #############################################################
@@ -225,17 +226,38 @@ class App.Views.ItemIndex extends Backbone.View
 
 ############################################### $ Search Item $ ########################################################
   massiveItems: (e) ->
-    e.preventDefault()
+    e.preventDefault() if e?
     @$('#massive-items-modal').modal('toggle');
 
   submitMassiveItems: (e) ->
-    file = @$('#select_file').val()
-    if  file == ""
+    e.preventDefault()
+    file = @$(':file')[0].files[0]
+    formData = new FormData($('form')[0])
+    if  file.name == ""
       @fh.displayFlash('alert', "Debe seleccionar un documento CSV delimitado por comas.")
       return @massiveItems(e)
-    unless file.split(',')[1] == 'csv' or file.split(',')[1] == 'CSV'
-      @fh.displayFlash('alert', "Solo se aceptan archivos CSV delimitado por comas.")
-      return @massiveItems(e)
+    $.ajax({
+      url: '/api/items/import'
+      type: 'POST'
+      success: => @handleSuccess(data, status)
+      data: formData
+      cache: false
+      contentType: false
+      processData: false
+    })
+
+  handleSuccess: (data, status) ->
+    @fh.displayFlash('success', "La carga masiva se ha realizado con exito. Actualice los datos para ver los nuevos registros.", 10000)
+    @massiveItems()
+
+  changeSelectFile: (e) ->
+    file = @$(':file')[0].files[0]
+    name = file.name
+    size = file.size
+    type = file.type
+    a = [];
+    unless type == 'application/vnd.ms-excel' then a.push('Solo se aceptan archivos CSV delimitado por comas.')
+    if a.length > 0 then return @fh.displayListFlash('error', a, 3000, '#massive-items-notice')
 
 
 
