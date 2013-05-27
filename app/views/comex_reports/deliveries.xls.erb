@@ -142,6 +142,57 @@
    
       <NumberFormat ss:Format="&quot;$U&quot;\ #,##0.00"/>
   </Style>
+    <Style ss:ID="s126">
+        <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+        ss:Color="#D9D9D9"/>
+        <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+        ss:Color="#D9D9D9"/>
+        <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+        ss:Color="#D9D9D9"/>
+        <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+        ss:Color="#D9D9D9"/>
+        </Borders>
+   <NumberFormat ss:Format="&quot;USD&quot;\ #,##0.00"/>
+    </Style>
+    <Style ss:ID="s104">
+        <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+        ss:Color="#D9D9D9"/>
+        <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+        ss:Color="#D9D9D9"/>
+        <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+        ss:Color="#D9D9D9"/>
+        <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+        ss:Color="#D9D9D9"/>
+        </Borders>
+
+      <NumberFormat ss:Format="&quot;USD&quot;\ #,##0.00"/>
+    </Style>
+    <Style ss:ID="s127">
+        <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+        ss:Color="#D9D9D9"/>
+        <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+        ss:Color="#D9D9D9"/>
+        <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+        ss:Color="#D9D9D9"/>
+        <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+        ss:Color="#D9D9D9"/>
+        </Borders>
+    </Style>
+    <Style ss:ID="s106">
+        <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+        ss:Color="#D9D9D9"/>
+        <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+        ss:Color="#D9D9D9"/>
+        <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+        ss:Color="#D9D9D9"/>
+        <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+        ss:Color="#D9D9D9"/>
+        </Borders>
+    </Style>
   <Style ss:ID="s123">
       <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
       <Borders>
@@ -205,14 +256,18 @@
         <Cell ss:StyleID="s65"><Data ss:Type="String">Courier</Data></Cell>
         <Cell ss:StyleID="s66"><Data ss:Type="String">Tramite</Data></Cell>
         <Cell ss:StyleID="s66"><Data ss:Type="String">Guias</Data></Cell>
+        <Cell ss:StyleID="s66"><Data ss:Type="String">Proveedor</Data></Cell>
+        <Cell ss:StyleID="s66"><Data ss:Type="String">Origen</Data></Cell>
+        <Cell ss:StyleID="s66"><Data ss:Type="String">Rubro</Data></Cell>
         <Cell ss:StyleID="s66"><Data ss:Type="String">Flete</Data></Cell>
         <Cell ss:StyleID="s66"><Data ss:Type="String">Flete 2</Data></Cell>
         <Cell ss:StyleID="s66"><Data ss:Type="String">Flete 3</Data></Cell>
         <Cell ss:StyleID="s66"><Data ss:Type="String">G. Despacho</Data></Cell>
         <Cell ss:StyleID="s66"><Data ss:Type="String">G. DUA</Data></Cell>
         <Cell ss:StyleID="s66"><Data ss:Type="String">Tipo de Cambio</Data></Cell>
-        <Cell ss:StyleID="s66"><Data ss:Type="String">Proveedor</Data></Cell>
-        <Cell ss:StyleID="s66"><Data ss:Type="String">Origen</Data></Cell>
+        <Cell ss:StyleID="s66"><Data ss:Type="String">Costo Total USD</Data></Cell>
+        <Cell ss:StyleID="s66"><Data ss:Type="String">Total FOB</Data></Cell>
+        <Cell ss:StyleID="s66"><Data ss:Type="String">Total Unidades</Data></Cell>
         <Cell ss:StyleID="s66"><Data ss:Type="String">Salida de Origen</Data></Cell>
         <Cell ss:StyleID="s66"><Data ss:Type="String">Llegada a Uruguay</Data></Cell>
         <Cell ss:StyleID="s66"><Data ss:Type="String">Entrega</Data></Cell>
@@ -226,14 +281,18 @@
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s95" else "s86"  end %>"><Data ss:Type="String"><%= u[:courier] %></Data></Cell>
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s96" else "s90"  end %>"><Data ss:Type="String"><%= u[:dispatch] %></Data></Cell>
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s96" else "s90"  end %>"><Data ss:Type="String"><%= u.guides %></Data></Cell>
+            <Cell ss:StyleID="<%= if @i % 2 == 0 then "s96" else "s90"  end %>"><Data ss:Type="String"><%= u[:supplier] %></Data></Cell>
+            <Cell ss:StyleID="<%= if @i % 2 == 0 then "s96" else "s90"  end %>"><Data ss:Type="String"><%= u[:origin] %></Data></Cell>
+            <Cell ss:StyleID="<%= if @i % 2 == 0 then "s96" else "s90"  end %>"><Data ss:Type="String"><%= u.entry %></Data></Cell>
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s102" else "s122"  end %>"><Data ss:Type="Number"><%= u[:cargo_cost] %></Data></Cell>
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s102" else "s122"  end %>"><Data ss:Type="Number"><%= u[:cargo_cost2] %></Data></Cell>
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s102" else "s122"  end %>"><Data ss:Type="Number"><%= u[:cargo_cost3] %></Data></Cell>
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s102" else "s122"  end %>"><Data ss:Type="Number"><%= u[:dispatch_cost] %></Data></Cell>
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s102" else "s122"  end %>"><Data ss:Type="Number"><%= u[:dua_cost] %></Data></Cell>
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s102" else "s122"  end %>"><Data ss:Type="Number"><%= u[:exchange_rate] %></Data></Cell>
-            <Cell ss:StyleID="<%= if @i % 2 == 0 then "s96" else "s90"  end %>"><Data ss:Type="String"><%= u[:supplier] %></Data></Cell>
-            <Cell ss:StyleID="<%= if @i % 2 == 0 then "s96" else "s90"  end %>"><Data ss:Type="String"><%= u[:origin] %></Data></Cell>
+            <Cell ss:StyleID="<%= if @i % 2 == 0 then "s104" else "s126"  end %>"><Data ss:Type="Number"><%= u.total_cost_usd %></Data></Cell>
+            <Cell ss:StyleID="<%= if @i % 2 == 0 then "s104" else "s126"  end %>"><Data ss:Type="Number"><%= u.invoice_total_cost_and_units[1] %></Data></Cell>
+            <Cell ss:StyleID="<%= if @i % 2 == 0 then "s106" else "s127"  end %>"><Data ss:Type="Number"><%= u.invoice_total_cost_and_units[0] %></Data></Cell>
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s105" else "s123"  end %>"><Data ss:Type="<%= if u[:origin_date] == nil then "String" else "DateTime" end %>"><%= if u[:origin_date] != nil then u[:origin_date] else "***" end  %></Data></Cell>
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s105" else "s123"  end %>"><Data ss:Type="<%= if u[:arrival_date] == nil then "String" else "DateTime" end %>"><%= if u[:arrival_date] != nil then u[:arrival_date] else "***" end %></Data></Cell>
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s105" else "s123"  end %>"><Data ss:Type="<%= if u[:delivery_date] == nil then "String" else "DateTime" end %>"><%= if u[:delivery_date] != nil then u[:delivery_date] else "***" end %></Data></Cell>
@@ -244,6 +303,10 @@
         <% @i = @i + 1 %>
         <% if @i == @deliveries.length %>
               <Row>
+                <Cell ss:StyleID="s70"/>
+                <Cell ss:StyleID="s70"/>
+                <Cell ss:StyleID="s70"/>
+                <Cell ss:StyleID="s70"/>
                 <Cell ss:StyleID="s70"/>
                 <Cell ss:StyleID="s70"/>
                 <Cell ss:StyleID="s70"/>

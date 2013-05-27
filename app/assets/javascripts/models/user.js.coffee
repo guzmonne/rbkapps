@@ -25,8 +25,6 @@ class App.Models.User extends Backbone.Model
     else
       return false
 
-
-
   changePasword: (credentials) ->
     attributes =
       user:
@@ -43,7 +41,7 @@ class App.Models.User extends Backbone.Model
       error: (user, status, response) ->
         alert "Los datos no coinciden. Verífique sus datos"
 
-  save: (attributes, options) ->
+  customSave: (attributes, options) ->
     $.ajax
       url: "/api/users"
       data: attributes

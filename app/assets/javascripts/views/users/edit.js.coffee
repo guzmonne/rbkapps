@@ -1,19 +1,26 @@
-class App.Views.UserCreate extends Backbone.View
-  template: JST['users/create']
-  name: 'UserCreate'
+class App.Views.UserEdit extends Backbone.View
+  template: JST['users/edit']
+  name: 'UserEdit'
   className: 'span12'
   model = new App.Models.User()
 
   events:
-    'click #submit-create-user': 'createUser'
-    'click #clear-form': 'cleanForm'
+    'click #submit-update-user' : 'createUser'
+    'click #clear-form'         : 'cleanForm'
 
   initialize: ->
-    @model = new App.Models.User()
     @formHelper = new App.Mixins.Form()
 
   render: ->
     $(@el).html(@template(user: @model))
+    for attribute of @model.attributes
+      if @$('#' + attribute).attr('type') == 'checkbox'
+        @$('#' + attribute).attr('checked', @model.get(attribute))
+      else
+        if attribute == 'team_id'
+          @$('#team').val(App.teams.getNameFromId(@model.get('team_id')))
+        else
+          @$('#' + attribute).val(@model.get(attribute))
     this
 
   createUser: (e) ->
@@ -22,8 +29,8 @@ class App.Views.UserCreate extends Backbone.View
     if @$('#admin').attr("checked") then admin = true else admin = false
     if @$('#comex').attr("checked") then comex = true else comex = false
     if @$('#compras').attr("checked") then compras = true else compras = false
-    if @$('#director').attr("director") then director = true else director = false
-    if @$('#maintenance').attr("maintenance") then maintenance = true else maintenance = false
+    if @$('#director').attr("checked") then director = true else director = false
+    if @$('#maintenance').attr("checked") then maintenance = true else maintenance = false
     attributes =
       user:
         name                  : @$('#name').val()
@@ -40,17 +47,14 @@ class App.Views.UserCreate extends Backbone.View
         compras               : compras
         director              : director
         maintenance           : maintenance
-    console.log attributes
-    @model.customSave() attributes,
-      success : @handleSuccess
+    @model.save attributes,
+      success : @handleSuccess(attributes)
       error   : @handleError
 
-  handleSuccess: (data, status, response) =>
-    @formHelper.cleanForm('#create-user')
-    @formHelper.displayFlash('success', 'El Usuario se ha creado con exito', 10000)
-    @model.set(data)
-    App.users.add(@model)
+  handleSuccess: (attributes) =>
     $("html, body").animate({ scrollTop: 0 }, "slow")
+    @formHelper.displayFlash('success', 'Se han actualizado los datos con exito', 10000)
+    App.users.set(@model.set(attributes))
 
   handleError: (data, status, response) =>
     console.log $.parseJSON(data.responseText).errors, data, data.status

@@ -60,6 +60,39 @@ class Delivery < ActiveRecord::Base
     #(self.delivery_date - self.arrival_date).round.abs
   end
 
+  def total_cost_usd
+    if self.exchange_rate.to_f > 0
+      if self.cargo_cost.nil? then c1 = 0 else c1 = self.cargo_cost.to_f end
+      if self.cargo_cost2.nil? then c2 = 0 else c2 = self.cargo_cost2.to_f end
+      if self.cargo_cost3.nil? then c3 = 0 else c3 = self.cargo_cost3.to_f end
+      if self.dua_cost.nil? then c4 = 0 else c4 = self.dua_cost.to_f end
+      if self.dispatch_cost.nil? then c5 = 0 else c5 = self.dispatch_cost.to_f end
+      if self.exchange_rate.nil? then c6 = 0 else c6 = self.exchange_rate.to_f end
+      return ( c1 + c2 + c3 + c4 + c5 ) / c6
+    else
+      return 0
+    end
+  end
+
+  def invoice_total_cost_and_units
+    @result = [0, 0]
+    self.invoices.each do |invoice|
+      @result[0] = @result[0] + invoice.total_units
+      @result[1] = @result[1] + invoice.fob_total_cost
+    end
+    @result
+  end
+
+  def entry
+    if self.invoices.length > 0
+      if self.invoices[0].invoice_items.length
+        Item.find(self.invoices[0].invoice_items[0].item_id).entry
+      end
+    else
+      return "***"
+    end
+  end
+
   def business_days_between(date1, date2)
     business_days = 0
     if date2 < date1

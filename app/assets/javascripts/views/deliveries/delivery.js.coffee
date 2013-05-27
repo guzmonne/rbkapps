@@ -4,8 +4,8 @@ class App.Views.Delivery extends Backbone.View
   name: 'Delivery'
 
   events:
-    'dblclick': 'show'
-    'click #remove-delivery' : 'removeDelivery'
+    'dblclick'                : 'show'
+    'click #remove-delivery'  : 'removeDelivery'
 
   initialize: ->
     @listenTo App.vent, 'update:deliveries:success', => @remove()

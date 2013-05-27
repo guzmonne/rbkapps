@@ -1,9 +1,10 @@
 class App.Routers.User extends Backbone.Router
 
   routes:
-    'home'        : 'show'
-    'users/new'   : 'create'
-    'users/index' : 'index'
+    'home'            : 'show'
+    'users/new'       : 'create'
+    'users/index'     : 'index'
+    'users/edit/:id'  : 'edit'
 
   show: ->
     view = new App.Views.Loading()
@@ -28,3 +29,10 @@ class App.Routers.User extends Backbone.Router
   index: ->
     view = new App.Views.UsersIndex(collection: App.teams)
     App.setAndRenderContentViews([view])
+    this
+
+  edit: (id) ->
+    model = App.users.get(id)
+    view = new App.Views.UserEdit(model: model)
+    App.setAndRenderContentViews([view])
+    this

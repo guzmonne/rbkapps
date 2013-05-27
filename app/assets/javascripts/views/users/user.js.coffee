@@ -9,6 +9,7 @@ class App.Views.User extends Backbone.View
   events:
     'mouseover'     : 'iconWhite'
     'mouseout'      : 'iconWhite'
+    'dblclick'      : 'edit'
 
   render: ->
     $(@el).html(@template(model: @model))
@@ -26,4 +27,8 @@ class App.Views.User extends Backbone.View
 
   iconWhite: (e) ->
     @$('i').toggleClass('icon-white')
+    this
+
+  edit: ->
+    Backbone.history.navigate("users/edit/#{@model.id}", true)
     this
