@@ -1,19 +1,28 @@
 class App.Routers.ServiceRequests extends Backbone.Router
 
   routes:
-    'service_requests/create'  : 'index'
-    'categories/index'         : 'categoriesIndex'
+    'service_requests/show/:id'   : 'show'
+    'service_requests/create'     : 'create'
+    'categories/index'            : 'categoriesIndex'
 
-  index: ->
+  show: (id) ->
     view = new App.Views.Loading()
     App.setAndRenderContentViews([view])
-    if App.user.get("admin") == true
-      view = new App.Views.ServiceRequestsCreate()
-      App.setAndRenderContentViews([view])
-      this
+    if App.serviceRequests.length == 0
+      App.serviceRequests.fetch success: =>
+        model = App.serviceRequests.get(id)
+        view = new App.Views.ServiceRequestsShow(model: model)
+        App.setAndRenderContentViews([view])
     else
-      Backbone.history.navigate('home', trigger: true)
-    return this
+      model = App.serviceRequests.get(id)
+      view = new App.Views.ServiceRequestsShow(model: model)
+      App.setAndRenderContentViews([view])
+    this
+
+  create: ->
+    view = new App.Views.ServiceRequestsCreate()
+    App.setAndRenderContentViews([view])
+    this
 
   categoriesIndex: ->
     view = new App.Views.Loading()

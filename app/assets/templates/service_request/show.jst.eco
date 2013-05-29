@@ -1,0 +1,141 @@
+<div class="well">
+    <h1>Solicitud de Servicio #<%= @model.id %></h1>
+</div>
+<form id="create-service-request" class="form-horizontal">
+<div id="notice"></div>
+    <!--############################## Categorias ##############################-->
+    <div class="control-group" style="background-color: #f5f5f5;padding: 10px 0 10px 0">
+        <label class="control-label">Categoría</label>
+        <div class="controls">
+            <input type="text" id="category1" class="input-xlarge" readonly>
+            <input type="text" id="category2" class="input-xlarge" readonly>
+            <input type="text" id="category3" class="input-xlarge" readonly>
+        </div>
+    </div>
+    <!--############################## Título #################################-->
+    <div class="control-group">
+        <label class="control-label" for="title">Título</label>
+        <div class="controls">
+            <input type="text" id="title" placeholder="Título" class="span8" readonly>
+        </div>
+    </div>
+    <!--############################## Descripción ##############################-->
+    <div class="control-group">
+        <label class="control-label" for="description">Descripción</label>
+        <div class="controls">
+            <textarea id="description" rows="3" class="span8" readonly></textarea>
+        </div>
+    </div>
+    <!--############################## Creado por ##############################-->
+    <div class="control-group">
+        <label class="control-label" for="created_by"> Creado por </label>
+        <div class="controls">
+            <input type="text" id="created_by" class="input-xlarge" readonly>
+        </div>
+    </div>
+    <!--############################## Equipo ##############################-->
+    <div class="control-group">
+        <label class="control-label" for="team"> Equipo </label>
+        <div class="controls">
+            <input type="text" id="team" class="input-xlarge" readonly>
+        </div>
+    </div>
+    <!--############################## Ubicación ##############################-->
+    <div class="control-group">
+        <label class="control-label" for="location"> Ubicación </label>
+        <div class="controls">
+            <input type="text" id="location" class="input-xlarge" readonly>
+        </div>
+    </div>
+    <!--############################## Notas #################################-->
+    <div class="control-group">
+        <label class="control-label" for="notes">Notas</label>
+        <div class="controls">
+            <div id="notes"></div>
+            <textarea id="new-note" rows="3" class="span8 toggle_note" style="margin-bottom: 10px;"></textarea>
+            <br/>
+            <button id="add-note" class="btn btn-info btn-mini toggle_note">
+                <i class="icon-plus icon-white"></i>
+                Agregar Nota
+            </button>
+        </div>
+    </div>
+    <!--############################## Asignado a ##############################-->
+    <div class="control-group">
+        <label class="control-label" for="asigned_to_id"> Asignado a </label>
+        <div class="controls">
+            <select id="asigned_to_id" class="input-xlarge service_request">
+                <% App.users.where({maintenance: true}).forEach (model) -> : %>
+                <option value="<%= model.id %>"><%= model.get('name') %></option>
+                <% end %>
+            </select>
+        </div>
+    </div>
+    <!--############################## Estado ##############################-->
+    <div class="control-group">
+        <label class="control-label" for="status"> Estado </label>
+        <div class="controls">
+            <select id="status" class="input-xlarge service_request">
+                <option>Nuevo</option>
+                <option>Abierto</option>
+                <option>Cerrado</option>
+                <option>Cerrado y Verificado</option>
+                <option>Pendiente</option>
+            </select>
+        </div>
+    </div>
+    <!--############################## Fecha de Cerrado ##############################-->
+    <div class="control-group closed_at hide">
+        <label class="control-label" for="closed_at"> Fecha de Cerrado </label>
+        <div class="controls">
+            <input type="text" id="closed_at" class="input-small" readonly>
+        </div>
+    </div>
+    <!--############################## Prioridad ##############################-->
+    <div class="control-group">
+        <label class="control-label" for="priority"> Prioridad </label>
+        <div class="controls">
+            <select id="priority" class="input-xlarge service_request">
+                <option>Baja</option>
+                <option>Media</option>
+                <option>Alta</option>
+                <option>Muy Alta</option>
+                <option>Urgente</option>
+            </select>
+        </div>
+    </div>
+    <!--############################## Solucion ##############################-->
+    <div class="control-group">
+        <label class="control-label" for="solution">Solución</label>
+        <div class="controls">
+            <textarea id="solution" rows="3" class="span8 service_request"></textarea>
+        </div>
+    </div>
+    <!--############################## Botones ################################-->
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="form-actions">
+                <button id="save-service-request" class="btn btn-primary btn-large">Guardar Cambios</button>
+                <button id="edit-service-request" class="btn btn-warning btn-large closed_at hide">
+                    <i class="icon-pencil icon-white"></i>
+                    Editar Cambios
+                </button>
+                <button id="clear-form" class="btn btn-primary btn-large btn-inverse pull-right">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="modal hide fade" tabindex="-1" role="dialog" id="insert_note_modal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h3>Nueva Nota</h3>
+    </div>
+    <div class="modal-body">
+        <p class="service_request_note">Contenido:</p>
+        <textarea class="service_request_note" id="service_request_note" rows="4" style="width: 95%;"></textarea>
+    </div>
+    <div class="modal-footer">
+        <a href="#" id="confirm_note" class="btn btn-primary btn-large pull-left">OK</a>
+        <a href="#" id="cancel_note" class="btn btn-inverse btn-large pull-right">Cancelar</a>
+    </div>
+</div>

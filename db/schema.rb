@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130503125822) do
+ActiveRecord::Schema.define(:version => 20130529134141) do
 
   create_table "categories", :force => true do |t|
     t.string   "category1"
@@ -132,6 +132,22 @@ ActiveRecord::Schema.define(:version => 20130503125822) do
     t.datetime "updated_at",                                        :null => false
     t.integer  "purchase_request_id"
     t.boolean  "selected"
+  end
+
+  create_table "service_requests", :force => true do |t|
+    t.string   "status"
+    t.string   "priority"
+    t.text     "solution"
+    t.date     "closed_at"
+    t.integer  "category_id"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "asigned_to_id"
+    t.string   "location"
+    t.integer  "creator_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "modified_by"
   end
 
   create_table "suppliers", :force => true do |t|

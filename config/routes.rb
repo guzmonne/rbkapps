@@ -19,6 +19,7 @@ Rbkapps::Application.routes.draw do
     resources :suppliers
     resources :quotations
     resources :categories
+    resources :service_requests
   end
 
   resources :comex_reports

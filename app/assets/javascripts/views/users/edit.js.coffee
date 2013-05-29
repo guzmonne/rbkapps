@@ -2,7 +2,7 @@ class App.Views.UserEdit extends Backbone.View
   template: JST['users/edit']
   name: 'UserEdit'
   className: 'span12'
-  model = new App.Models.User()
+  #model = new App.Models.User()
 
   events:
     'click #submit-update-user' : 'createUser'
@@ -54,7 +54,7 @@ class App.Views.UserEdit extends Backbone.View
   handleSuccess: (attributes) =>
     $("html, body").animate({ scrollTop: 0 }, "slow")
     @formHelper.displayFlash('success', 'Se han actualizado los datos con exito', 10000)
-    App.users.set(@model.set(attributes))
+    @model.set(attributes)
 
   handleError: (data, status, response) =>
     console.log $.parseJSON(data.responseText).errors, data, data.status

@@ -99,6 +99,7 @@
                             va a utilizar cumpla con las siguientes condiciones:</p>
                         <ul>
                             <li><strong>NO</strong> contiene una fila con los títulos de las columnas</li>
+                            <li>Los datos están separados por comas ( , ) y <strong>NO</strong> están entre comillas (""). </li>
                             <li>Las columnas están ordenadas de la siguiente manera:
                                 <ol>
                                     <li>Codigo</li>

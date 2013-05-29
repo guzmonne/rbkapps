@@ -146,6 +146,7 @@
         <Cell ss:StyleID="s66"><Data ss:Type="String">Codigo</Data></Cell>
         <Cell ss:StyleID="s66"><Data ss:Type="String">Marca</Data></Cell>
         <Cell ss:StyleID="s66"><Data ss:Type="String">Temporada</Data></Cell>
+        <Cell ss:StyleID="s66"><Data ss:Type="String">Rubro</Data></Cell>
         <Cell ss:StyleID="s66"><Data ss:Type="String">Guia</Data></Cell>
         <Cell ss:StyleID="s66"><Data ss:Type="String">Numero de Factura</Data></Cell>
         <Cell ss:StyleID="s67"><Data ss:Type="String">Estado</Data></Cell>
@@ -157,6 +158,7 @@
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s96" else "s90"  end %>"><Data ss:Type="String"><%= item[:code] %></Data></Cell>
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s96" else "s90"  end %>"><Data ss:Type="String"><%= item[:brand] %></Data></Cell>
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s96" else "s90"  end %>"><Data ss:Type="String"><%= item[:season] %></Data></Cell>
+            <Cell ss:StyleID="<%= if @i % 2 == 0 then "s96" else "s90"  end %>"><Data ss:Type="String"><%= item[:entry] %></Data></Cell>
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s96" else "s90"  end %>"><Data ss:Type="String"><%= item[:delivery] %></Data></Cell>
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s96" else "s90"  end %>"><Data ss:Type="String"><%= item[:invoice_number] %></Data></Cell>
             <Cell ss:StyleID="<%= if @i % 2 == 0 then "s97" else "s91"  end %>"><Data ss:Type="String"><%= item[:status] %></Data></Cell>

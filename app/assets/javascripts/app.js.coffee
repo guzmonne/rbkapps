@@ -22,6 +22,8 @@ window.App =
   d_i               : null
   suppliers         : null
   categories        : null
+  fh                : null
+  serviceRequests   : null
   contentViews      : []
   appendedViews     : []
 
@@ -35,6 +37,7 @@ window.App =
     @session          = new App.Models.Session()
     @purchaseRequests = new App.Collections.PurchaseRequests()
     @purchaseOrders   = new App.Collections.PurchaseOrders()
+    @serviceRequests  = new App.Collections.ServiceRequests()
     @items            = new App.Collections.Items()
     @deliveries       = new App.Collections.Deliveries()
     @invoices         = new App.Collections.Invoices()
@@ -45,6 +48,8 @@ window.App =
     @suppliers.reset($('#suppliers-container').data('suppliers'))
     @categories       = new App.Collections.Categories()
     @colHelper        = new App.Mixins.Collections()
+    @fh               = new App.Mixins.Form()
+    @dh               = new App.Mixins.DateHelper()
     App.start()
 
   start: ->

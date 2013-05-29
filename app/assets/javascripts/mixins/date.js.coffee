@@ -43,3 +43,11 @@ class App.Mixins.DateHelper
     d = date.split('-')
     t = new Date.parse("#{d[0]}-#{d[2]}-#{d[1]}")
     return t
+
+  now: ->
+    d = new Date()
+    year = d.getFullYear()
+    month = d.getMonth() + 1
+    day = d.getDate()
+    if month < 10 then month = "0#{month}"
+    return "#{year}-#{month}-#{day}"
