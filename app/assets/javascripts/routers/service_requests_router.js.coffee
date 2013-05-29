@@ -1,9 +1,15 @@
 class App.Routers.ServiceRequests extends Backbone.Router
 
   routes:
+    'service_requests/index'      : 'index'
     'service_requests/show/:id'   : 'show'
     'service_requests/create'     : 'create'
     'categories/index'            : 'categoriesIndex'
+
+  index: ->
+    view = new App.Views.ServiceRequestsIndex()
+    App.setAndRenderContentViews([view])
+    this
 
   show: (id) ->
     view = new App.Views.Loading()
