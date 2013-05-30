@@ -1,0 +1,10 @@
+<td><%= @model.get("title") %></td>
+<td style="min-width: 100px;"><%= @model.get("category1") %></td>
+<td style="min-width: 130px;"><%= @model.get("category2") %></td>
+<td style="min-width: 100px;"><%= @model.get("category3") %></td>
+<td><%= @model.get("creator") %></td>
+<td><%= @model.get("location") %></td>
+<td class="priority"><%= @model.get("priority") %></td>
+<td><label class="status label"><%= @model.get("status") %></label></td>
+<td><%= App.dh.dateRailsOnly(@model.get("created_at")) %></td>
+<td><%= @model.get("closed_at") %></td>

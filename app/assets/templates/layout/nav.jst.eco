@@ -49,26 +49,26 @@
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <li>
+                <li class="admin compras hide">
                     <a href="#" id="nav-index-purchase-request">
                         <i class="icon-tags"></i>
                         Solicitudes de Compra
                     </a>
                 </li>
-                <li>
+                <li class="admin compras hide">
                     <a href="#" id="nav-purchase-request">
                         <i class="icon-plus"></i>
                         <i class="icon-tag"></i>
                         Nueva Solicitud de Compra
                     </a>
                 </li>
-                <li class="admin maintenance hide">
+                <li>
                     <a href="#" id="nav-service-request-index">
                         <i class="icon-wrench"></i>
                         Solicitudes de Servicio
                     </a>
                 </li>
-                <li class="admin maintenance hide">
+                <li>
                     <a href="#" id="nav-service-request">
                         <i class="icon-plus"></i>
                         <i class="icon-wrench"></i>
@@ -158,6 +158,20 @@
                         <i class="icon-plus"></i>
                         <i class="sprite-pants"></i>
                         Nuevo Artículo
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown admin hide" id="li-drop-admin">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="nav-drop-admin">
+                Admin
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li>
+                    <a href="#" id="nav-form_helpers">
+                        <i class="sprite-magic"></i>
+                        Form Helpers
                     </a>
                 </li>
             </ul>

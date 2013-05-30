@@ -1,0 +1,46 @@
+<div class="well">
+    <h1>Form Helpers</h1>
+</div>
+
+<div id="notice"></div>
+<div class="row-fluid">
+    <div class="span5">
+        <label class="control-label label label-inverse label-big" for="field_name" style="vertical-align: middle;margin-bottom: 15px;">Campo</label>
+        <div class="input-append dropdown">
+            <input type="text" id="field_name" class="input-xlarge no_typing" placeholder="Seleccione un Campo" style="background-color: #ffffff;">
+            <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li class="dropdown-submenu">
+                    <a>Artículos</a>
+                    <ul class="dropdown-menu">
+                        <li><a data-form_helper="brand">Marca</a></li>
+                        <li><a data-form_helper="season">Temporada</a></li>
+                        <li><a data-form_helper="entry">Rubro</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown-submenu">
+                    <a>Envios</a>
+                    <ul class="dropdown-menu">
+                        <li><a data-form_helper="supplier">Proveedor</a></li>
+                        <li><a data-form_helper="origin">Origen</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown-submenu">
+                    <a>Usuario</a>
+                    <ul class="dropdown-menu">
+                        <li><a data-form_helper="location">Ubicacion</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="span7 hide" id="values">
+        <input type="text" id="new-form_helper" placeholder="Nuevo Valor">
+        <button id="add-form_helper" class="btn btn-primary" style="vertical-align: top;">
+            <i class="icon-plus icon-white"></i>
+        </button>
+        <ul id="form_helpers"></ul>
+    </div>
+</div>

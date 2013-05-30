@@ -1,9 +1,9 @@
 window.App =
-  Models: {}
-  Collections: {}
-  Views: {}
-  Routers: {}
-  Mixins: {}
+  Models:       {}
+  Collections:  {}
+  Views:        {}
+  Routers:      {}
+  Mixins:       {}
 
   vent              : _.extend({}, Backbone.Events)
   users             : null
@@ -78,6 +78,7 @@ window.App =
     new App.Routers.Reports()
     new App.Routers.ServiceRequests()
     new App.Routers.Supplier()
+    new App.Routers.FormHelper()
     Backbone.history.start({pushState: true})
     @started = true
 
@@ -136,6 +137,7 @@ window.App =
     @user     = new App.Models.User
     @session  = new App.Models.Session
     @purchaseRequests = new App.Collections.PurchaseRequests()
+    @serviceRequests = new App.Collections.ServiceRequests()
     return @
 
 $(document).ready ->

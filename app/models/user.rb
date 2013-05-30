@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   has_many :purchase_requests
+  has_many :service_requests
   belongs_to :team
   attr_accessor :team_name
   attr_accessible :name,
@@ -76,8 +77,12 @@ class User < ActiveRecord::Base
     if var == true then return "Si" else return nil end
   end
 
-  def team
-    Team.find(self.team_id).name
+  def is_supervisor
+    if self.team.supervisor_id == self.id
+      return true
+    else
+      return false
+    end
   end
 
   private

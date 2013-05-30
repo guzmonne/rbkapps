@@ -25,6 +25,7 @@ class App.Views.Nav extends Backbone.View
     'click #nav-suppliers'              : 'suppliersIndex'
     'click #nav-purchase_orders'        : 'purchaseOrdersIndex'
     'click #nav-categories'             : 'categoriesIndex'
+    'click #nav-form_helpers'           : 'editFormHelpers'
 
   render: ->
     $(@el).html(@template(user: @model))
@@ -124,3 +125,7 @@ class App.Views.Nav extends Backbone.View
   categoriesIndex: (e) ->
     e.preventDefault()
     Backbone.history.navigate 'categories/index', trigger: true
+
+  editFormHelpers: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate 'form_helpers/edit', trigger: true

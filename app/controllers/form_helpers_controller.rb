@@ -16,4 +16,10 @@ class FormHelpersController < ApplicationController
   def update
     respond_with FormHelper.update(params["id"], params["form_helper"])
   end
+
+  def destroy
+    FormHelper.find(params["id"]).destroy
+    @result = {status: :ok}
+    respond_with @result
+  end
 end

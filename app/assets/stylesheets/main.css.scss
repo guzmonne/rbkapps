@@ -666,3 +666,12 @@ div.inside_well label{
 .filtered_label {
   font-weight: bold;
 }
+
+.important-text {
+  font-weight: bold;
+  color: rgb(139, 0, 18);
+}
+
+:disabled {
+  background-color: #f8f8f8;
+}

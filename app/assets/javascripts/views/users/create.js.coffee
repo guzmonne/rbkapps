@@ -2,7 +2,6 @@ class App.Views.UserCreate extends Backbone.View
   template: JST['users/create']
   name: 'UserCreate'
   className: 'span12'
-  model = new App.Models.User()
 
   events:
     'click #submit-create-user': 'createUser'
@@ -22,8 +21,8 @@ class App.Views.UserCreate extends Backbone.View
     if @$('#admin').attr("checked") then admin = true else admin = false
     if @$('#comex').attr("checked") then comex = true else comex = false
     if @$('#compras').attr("checked") then compras = true else compras = false
-    if @$('#director').attr("director") then director = true else director = false
-    if @$('#maintenance').attr("maintenance") then maintenance = true else maintenance = false
+    if @$('#director').attr("checked") then director = true else director = false
+    if @$('#maintenance').attr("checked") then maintenance = true else maintenance = false
     attributes =
       user:
         name                  : @$('#name').val()
@@ -32,7 +31,7 @@ class App.Views.UserCreate extends Backbone.View
         cellphone             : @$('#cellphone').val()
         position              : @$('#position').val()
         team_id               : @$('#team').find('option:selected').data('id')
-        location_id           : @$('#location_id').val()
+        location              : @$('#location').val()
         password              : @$('#password').val()
         password_confirmation : @$('#password_confirmation').val()
         admin                 : admin
@@ -40,10 +39,7 @@ class App.Views.UserCreate extends Backbone.View
         compras               : compras
         director              : director
         maintenance           : maintenance
-    console.log attributes
-    @model.customSave() attributes,
-      success : @handleSuccess
-      error   : @handleError
+    @model.save attributes, success: @handleSuccess, error: @handleError
 
   handleSuccess: (data, status, response) =>
     @formHelper.cleanForm('#create-user')

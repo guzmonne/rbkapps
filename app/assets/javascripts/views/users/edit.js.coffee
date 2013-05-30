@@ -2,7 +2,6 @@ class App.Views.UserEdit extends Backbone.View
   template: JST['users/edit']
   name: 'UserEdit'
   className: 'span12'
-  #model = new App.Models.User()
 
   events:
     'click #submit-update-user' : 'createUser'
@@ -39,7 +38,7 @@ class App.Views.UserEdit extends Backbone.View
         cellphone             : @$('#cellphone').val()
         position              : @$('#position').val()
         team_id               : @$('#team').find('option:selected').data('id')
-        location_id           : @$('#location_id').val()
+        location              : @$('#location').val()
         password              : @$('#password').val()
         password_confirmation : @$('#password_confirmation').val()
         admin                 : admin

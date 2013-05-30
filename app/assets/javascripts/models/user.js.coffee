@@ -25,6 +25,12 @@ class App.Models.User extends Backbone.Model
     else
       return false
 
+  admin: ->
+    return @get('admin')
+
+  maintenance: ->
+    return @get('maintenance')
+
   changePasword: (credentials) ->
     attributes =
       user:

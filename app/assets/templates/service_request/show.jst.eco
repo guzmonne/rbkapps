@@ -1,5 +1,20 @@
 <div class="well">
+    <label id="label-status" class="label pull-right label-big"><%= @model.id %></label>
     <h1>Solicitud de Servicio #<%= @model.id %></h1>
+    <p>
+        <div class="btn btn-mini btn-info" id="nav-prev-service-request">
+            <i class="icon-chevron-left icon-white"></i>
+            Anterior
+        </div>
+        <div class="btn btn-mini btn-inverse" id="index-service-request">
+            <i class="icon-list icon-white"></i>
+            Volver a Lista
+        </div>
+        <div class="btn btn-mini btn-info" id="nav-next-service-request">
+            Siguiente
+            <i class="icon-chevron-right icon-white"></i>
+        </div>
+    </p>
 </div>
 <form id="create-service-request" class="form-horizontal">
 <div id="notice"></div>
@@ -47,6 +62,13 @@
             <input type="text" id="location" class="input-xlarge" readonly>
         </div>
     </div>
+    <!--############################## Fecha de Creado ##############################-->
+    <div class="control-group">
+        <label class="control-label" for="created_at"> Fecha de Creado </label>
+        <div class="controls">
+            <input type="text" id="created_at" class="input-xlarge" readonly>
+        </div>
+    </div>
     <!--############################## Notas #################################-->
     <div class="control-group">
         <label class="control-label" for="notes">Notas</label>
@@ -85,10 +107,10 @@
         </div>
     </div>
     <!--############################## Fecha de Cerrado ##############################-->
-    <div class="control-group closed_at hide">
+    <div class="control-group">
         <label class="control-label" for="closed_at"> Fecha de Cerrado </label>
         <div class="controls">
-            <input type="text" id="closed_at" class="input-small" readonly>
+            <input type="text" id="closed_at" class="input-small" disabled>
         </div>
     </div>
     <!--############################## Prioridad ##############################-->
@@ -115,8 +137,8 @@
     <div class="row-fluid">
         <div class="span12">
             <div class="form-actions">
-                <button id="save-service-request" class="btn btn-primary btn-large">Guardar Cambios</button>
-                <button id="edit-service-request" class="btn btn-warning btn-large closed_at hide">
+                <button id="save-service-request" class="btn btn-primary btn-large closed">Guardar Cambios</button>
+                <button id="edit-service-request" class="btn btn-warning btn-large closed hide">
                     <i class="icon-pencil icon-white"></i>
                     Editar Cambios
                 </button>

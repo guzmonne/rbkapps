@@ -9,3 +9,10 @@ class App.Models.FormHelper extends Backbone.Model
   defaults : ->
     column: null
     value: null
+
+  destroy: ->
+    $.ajax
+      url: "/api/form_helpers/#{@id}"
+      data: {id: @id}
+      type: 'DELETE'
+      dataType: 'json'
