@@ -10,6 +10,10 @@ class App.Views.ServiceRequestsIndex extends Backbone.View
     'click #fetch-service_requests'  : 'fetchServiceRequests'
     'click #new-service-request'     : 'newServiceRequest'
     'click th'                       : 'sortServiceRequests'
+    'focus #search-input'            : 'searchTypeahead'
+    'click .drop-columns'            : 'updateSearchColumn'
+    'click #search-button'           : 'filterServiceRequests'
+    'click #search-undo'             : 'searchUndo'
 
   render: ->
     $(@el).html(@template())
@@ -76,3 +80,44 @@ class App.Views.ServiceRequestsIndex extends Backbone.View
     @collection.sort()
     App.vent.trigger 'update:purchase_requests:success'
     @collection.each(@appendServiceRequest)
+
+  updateSearchColumn: (e) ->
+    e.preventDefault() if e?
+    @$('#search-column').removeClass('btn-warning').addClass('btn-success')
+    search  = e.currentTarget.dataset["search"]
+    name    = e.currentTarget.innerHTML
+    @$('#search-column').data('column', search)
+    @$('#search-column').html( name + ' <span class="caret"></span>')
+
+  searchTypeahead: ->
+    @$('#search-input').typeahead items: 20, source: => @searchValues()
+    this
+
+  searchValues: ->
+    array = []
+    column = @$('#search-column').data('column')
+    for element in App.serviceRequests.pluckDistinct(column)
+      array.push element if element?
+    return array
+
+  filterServiceRequests: (e) ->
+    e.preventDefault()
+    filter = @$('#search-column').data('column')
+    return if filter == ""
+    object = {}
+    array  = []
+    object[filter] = @$('#search-input').val()
+    array = App.serviceRequests.where(object)
+    App.vent.trigger 'update:purchase_requests:success'
+    for model in array
+      @appendServiceRequest(model)
+    @$('#fetch-service_requests').hide()
+    @$('#search-undo').show()
+    @$('#search-column').removeClass('btn-success').addClass('btn-warning')
+
+  searchUndo: (e) ->
+    e.preventDefault()
+    @$('#search-column').removeClass('btn-warning').addClass('btn-success')
+    @$('#search-undo').hide()
+    @$('#fetch-service_requests').show()
+    App.serviceRequests.each(@appendServiceRequest)

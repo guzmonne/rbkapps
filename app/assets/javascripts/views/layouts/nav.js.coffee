@@ -32,6 +32,7 @@ class App.Views.Nav extends Backbone.View
     if @model.get('admin') ==  true then @$('.admin').show()
     if @model.get('comex') == true then @$('.comex').show()
     if @model.get('compras') == true then @$('.compras').show()
+    if @model.get('maintenance') == true then @$('.maintenance').show()
     this
 
   home: (e) ->
