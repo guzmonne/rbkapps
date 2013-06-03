@@ -675,3 +675,12 @@ div.inside_well label{
 :disabled {
   background-color: #f8f8f8;
 }
+
+.div-outer {
+  widows: 100%;
+}
+
+.div-inner {
+  width: 50%;
+  margin: 0 auto;
+}

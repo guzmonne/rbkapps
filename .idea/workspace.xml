@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="044e0a91-8a4a-4ab7-93a4-af1de8015a06" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/templates/service_request/graph.jst.eco" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/collections/service_requests.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/service_requests.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/layouts/nav.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/layouts/nav.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/service_request/index.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/service_request/index.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/users/show.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/users/show.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/users/show.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/users/show.jst.eco" />
     </list>
     <ignored path="rbkapps.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,57 +31,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.jst.eco" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/templates/service_request/index.jst.eco">
+      <file leaf-file-name="show.jst.eco" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/templates/users/show.jst.eco">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="13" selection-start="701" selection-end="701" vertical-scroll-proportion="-11.038462">
-              <folding>
-                <element signature="n#style#0;n#th#6;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-              </folding>
+            <state line="57" column="35" selection-start="2244" selection-end="2761" vertical-scroll-proportion="-11.692307">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js.coffee" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee">
+      <file leaf-file-name="show.js.coffee" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/users/show.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="46" selection-start="3945" selection-end="3945" vertical-scroll-proportion="0.5413153">
+            <state line="18" column="49" selection-start="618" selection-end="618" vertical-scroll-proportion="0.51602024">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="graph.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="42" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="graph.jst.eco" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/templates/service_request/graph.jst.eco">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="45" selection-start="74" selection-end="74" vertical-scroll-proportion="-0.65384614">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/index.js.coffee">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="215" column="0" selection-start="7447" selection-end="7725" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jst.eco" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/templates/deliveries/index.jst.eco">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="1" selection-start="479" selection-end="634" vertical-scroll-proportion="-7.6538463">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="items.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/items.js.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="271" selection-end="633" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="service_requests.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/service_requests.js.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="18" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0">
+            <state line="1" column="0" selection-start="59" selection-end="807" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -101,12 +92,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/javascripts/models/service_request.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/templates/service_request/show.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/show.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/users/create.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/users/edit.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/app.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/routers/form_helper_router.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/templates/form_helpers/edit.jst.eco" />
@@ -117,6 +102,12 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/collections/service_requests.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/templates/service_request/index.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" />
+        <option value="$PROJECT_DIR$/app/assets/templates/users/show.jst.eco" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/users/show.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/templates/service_request/graph.jst.eco" />
       </list>
     </option>
   </component>
@@ -2243,39 +2234,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/form_helpers_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="14" selection-start="386" selection-end="386" vertical-scroll-proportion="0.73913044">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/models/form_helper.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="29" selection-start="273" selection-end="273" vertical-scroll-proportion="0.5173913">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/items/item.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="655" selection-end="852" vertical-scroll-proportion="0.57173914">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbElement:/83405298/ad0c86d1-bb82-473b-84bc-3b369ebb0d40/.public.categories">
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/form_helpers/edit.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="98" selection-start="1576" selection-end="1576" vertical-scroll-proportion="0.8098434">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/create.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="105" column="34" selection-start="4909" selection-end="5233" vertical-scroll-proportion="0.54565215">
@@ -2308,34 +2266,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="44" selection-start="3322" selection-end="3333" vertical-scroll-proportion="0.7258065">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/items.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="271" selection-end="633" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/service_requests.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="18" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/deliveries/index.jst.eco">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="1" selection-start="479" selection-end="634" vertical-scroll-proportion="-7.6538463">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/templates/service_request/index.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="13" selection-start="701" selection-end="701" vertical-scroll-proportion="-11.038462">
@@ -2347,14 +2277,77 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/index.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="215" column="0" selection-start="7447" selection-end="7725" vertical-scroll-proportion="0.0">
+        <state line="215" column="0" selection-start="7447" selection-end="7725" vertical-scroll-proportion="0.3322091">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/deliveries/index.jst.eco">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="1" selection-start="479" selection-end="634" vertical-scroll-proportion="0.35097003">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/items.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="271" selection-end="633" vertical-scroll-proportion="0.34401348">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/service_requests.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="18" selection-start="560" selection-end="560" vertical-scroll-proportion="0.5862069">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="50" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.43738976">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/main.css.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="679" column="15" selection-start="14589" selection-end="14589" vertical-scroll-proportion="0.6109155">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="46" selection-start="3945" selection-end="3945" vertical-scroll-proportion="0.5413153">
+        <state line="1" column="0" selection-start="59" selection-end="807" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="42" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/users/show.jst.eco">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="35" selection-start="2244" selection-end="2761" vertical-scroll-proportion="-11.692307">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/service_request/graph.jst.eco">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="45" selection-start="74" selection-end="74" vertical-scroll-proportion="-0.65384614">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/users/show.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="49" selection-start="618" selection-end="618" vertical-scroll-proportion="0.51602024">
           <folding />
         </state>
       </provider>

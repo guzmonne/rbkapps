@@ -24,8 +24,8 @@
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                 <li>
                     <a href="#" id="nav-user">
-                        <i class="icon-user"></i>
-                        Usuario
+                        <i class="sprite-dashboard"></i>
+                        Panel de Usuario
                     </a>
                 </li>
                 <li class="admin hide">

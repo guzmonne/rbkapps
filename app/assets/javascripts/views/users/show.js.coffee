@@ -12,6 +12,11 @@ class App.Views.UserShow extends Backbone.View
 
   render: ->
     $(@el).html(@template(user: @model))
+    if App.user.maintenance()
+      @$('.well').after('<div class="row-fluid" id="maintenance"></div>')
+      view = new App.Views.ServiceRequestGraph()
+      App.pushToAppendedViews(view)
+      @$('#maintenance').append(view.render().el)
     this
 
   changePassword: (e) ->
