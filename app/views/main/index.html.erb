@@ -22,5 +22,11 @@
                 data: {
                         suppliers: Supplier.all
                 } %>
+<%= content_tag "div",
+                nil ,
+                id: "categories-container",
+                data: {
+                        categories: Category.select("id, category1, category2, category3")
+                } %>
 
 

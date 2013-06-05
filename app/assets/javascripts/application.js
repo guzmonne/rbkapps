@@ -22,6 +22,7 @@
 //= require wysihtml5
 //= require bootstrap-wysihtml5
 //= require date
+//= require chart
 //= require_tree ../templates
 //= require app
 //= require_tree ./models

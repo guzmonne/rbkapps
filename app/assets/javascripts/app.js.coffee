@@ -47,6 +47,7 @@ window.App =
     @suppliers        = new App.Collections.Suppliers()
     @suppliers.reset($('#suppliers-container').data('suppliers'))
     @categories       = new App.Collections.Categories()
+    @categories.reset($('#categories-container').data('categories'))
     @colHelper        = new App.Mixins.Collections()
     @fh               = new App.Mixins.Form()
     @dh               = new App.Mixins.DateHelper()
@@ -106,12 +107,12 @@ window.App =
 
   closeView: (view) =>
     if view?
+      view.close() if typeof(view.close) == 'function'
       view.unbind()
       view.remove()
       view.model.off() unless view.model == undefined
       view.collection.off() unless view.collection == undefined
       App.vent.off(null, null, view)
-      view.close() if view.hasOwnProperty('close')
 
   renderContentView: (view) =>
     $('#content-layout').append(view.render().el)
