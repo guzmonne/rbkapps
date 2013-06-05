@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="044e0a91-8a4a-4ab7-93a4-af1de8015a06" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/chart.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/templates/service_request/_chart_active_request_by_status.jst.eco" />
       <change type="DELETED" beforePath="C:\Users\gmonne.RBKURUGUAY\RubymineProjects\rbkapps\app\assets\templates\service_request\graph.jst.eco" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/app.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/app.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/chart.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/chart.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/models/service_request.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/models/service_request.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/users/show.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/users/show.js.coffee" />
@@ -39,10 +39,9 @@
       <file leaf-file-name="graph.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="118" column="106" selection-start="4184" selection-end="4184" vertical-scroll-proportion="0.0">
+            <state line="120" column="62" selection-start="4357" selection-end="4357" vertical-scroll-proportion="0.0">
               <folding>
-                <marker date="1370405131053" expanded="true" signature="4125:4186" placeholder="..." />
-                <marker date="1370405131053" expanded="true" signature="4585:4646" placeholder="{...}" />
+                <marker date="1370436683547" expanded="true" signature="4125:4186" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -113,11 +112,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.js.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="show.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/users/show.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="61" selection-start="338" selection-end="338" vertical-scroll-proportion="0.28330523">
+            <state line="12" column="61" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chart.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/chart.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="250" column="29" selection-start="8938" selection-end="8938" vertical-scroll-proportion="0.81710917">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -144,16 +154,16 @@
         <option value="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/assets/templates/service_request/graph.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/chart.js" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" />
         <option value="$PROJECT_DIR$/app/views/main/index.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/app.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/models/service_request.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/templates/service_request/_chart_active_request_by_category.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/templates/service_request/_chart_active_request_by_status.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/templates/users/show.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/views/users/show.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/chart.js" />
       </list>
     </option>
   </component>
@@ -2099,11 +2109,11 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19090909" sideWeight="0.7847896" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21742424" sideWeight="0.27669904" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2128788" sideWeight="0.59385115" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2128788" sideWeight="0.6100324" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2128788" sideWeight="0.394822" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38996765" sideWeight="0.5310606" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38996765" sideWeight="0.46363637" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38996765" sideWeight="0.46363637" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32795697" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2189,15 +2199,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1296" column="38" selection-start="50563" selection-end="50571" vertical-scroll-proportion="0.33333334">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -2237,16 +2238,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="6" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="106" selection-start="4184" selection-end="4184" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1370405131053" expanded="true" signature="4125:4186" placeholder="..." />
-            <marker date="1370405131053" expanded="true" signature="4585:4646" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2291,8 +2282,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/users/show.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="61" selection-start="338" selection-end="338" vertical-scroll-proportion="0.28330523">
+        <state line="12" column="61" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="120" column="62" selection-start="4357" selection-end="4357" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1370436683547" expanded="true" signature="4125:4186" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/chart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="250" column="29" selection-start="8938" selection-end="8938" vertical-scroll-proportion="0.81710917">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

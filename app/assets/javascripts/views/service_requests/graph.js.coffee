@@ -118,7 +118,7 @@ class App.Views.ServiceRequestGraph extends Backbone.View
       len = activeServicesCollection.where({category1: category}).length
       @$('#categories').append("<tr><td style='color: #ffffff;background-color: rgba(#{c1},#{c2},#{c3},0.6);'>#{category}</td><td>#{len}</td></tr>")
       @data.push {value: len, color: "rgba(#{c1},#{c2},#{c3},0.6)"}
-    chart = new Chart(ctx).Pie(@data)
+    chart = new Chart(ctx).Pie(@data,  { scaleShowValues: true, scaleFontColor : "#FFF" })
 
   startLoop: ->
     setInterval =>
