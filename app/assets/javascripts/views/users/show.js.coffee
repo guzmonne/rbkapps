@@ -12,7 +12,7 @@ class App.Views.UserShow extends Backbone.View
 
   render: ->
     $(@el).html(@template(user: @model))
-    if App.user.maintenance()
+    if App.user.maintenance() or App.user.admin()
       view = new App.Views.ServiceRequestGraph()
       App.pushToAppendedViews(view)
       @$('#panel_container').prepend(view.render().el)
