@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+<h1>La solicitud de servicio <%= @service_request.id %> se ha creado con exito!</h1>
+<p>
+  Para ver los detalles de su solicitud haga click
+  <a href="http://127.0.0.1:3001/service_requests/show/<%= @service_request.id %>">
+    aqui
+  </a>
+  .<br/>
+</p>
+<p>
+  Vea su lista completa de Ordenes de Servicio en: <a href="<%= @url %>"><%= @url %></a>.
+</p>
+<p>Un tecnico de mantenimiento se pondra en concatcto con usted en breve.</p>
+</body>
+</html>
