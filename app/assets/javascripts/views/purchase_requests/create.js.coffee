@@ -189,7 +189,6 @@ class App.Views.PurchaseRequestCreate extends Backbone.View
 ############################################## $ Key Helper Up $ #######################################################
   keyHelperUp: (e) ->
     e.preventDefault()
-    console.log e.currentTarget.id
     if e.currentTarget.id == "deliver_at"
       @$('#deliver_at').val('')
     #@$('#deliver_at').datepicker('show')

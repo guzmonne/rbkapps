@@ -87,6 +87,12 @@
                         Categorias
                     </a>
                 </li>
+                <li class="admin maintenance hide">
+                    <a href="#" id="nav-service-reports">
+                        <i class="icon-file"></i>
+                        Reportes de Servicio
+                    </a>
+                </li>
                 <li class="admin compras hide">
                     <a href="#" id="nav-purchase_orders">
                         <i class="sprite-shopping_bag"></i>

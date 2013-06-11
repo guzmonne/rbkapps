@@ -14,6 +14,7 @@ class App.Views.ServiceRequestsCreate extends Backbone.View
 
 ############################################## $ Initialize $ ##########################################################
   initialize: ->
+    @fh    = new App.Mixins.Form()
     @notes = new App.Collections.Notes()
     @model = new App.Models.ServiceRequest()
     @listenTo App.categories, 'reset', =>
@@ -32,15 +33,15 @@ class App.Views.ServiceRequestsCreate extends Backbone.View
 ######################################## $ Submit Service Request $ ####################################################
   submitServiceRequest: (e) ->
     e.preventDefault() if e?
-    #return if @validate()
-    App.fh.displayFlash("info", "Espere por favor...", 2000)
-    @$('#submit-service-request').attr('disabled', true)
-    @$('#submit-service-request').html('<i class="icon-load"></i>  Espere por favor...')
     category1 = @$('#category').val()
     category2 = @$('#category2').val()
     category3 = @$('#category3').val()
     if category2 == "" then category2 = "SSC"
     if category3 == "" then category3 = "STC"
+    return if @validate(category1, category2, category3)
+    App.fh.displayFlash("info", "Espere por favor...", 2000)
+    @$('#submit-service-request').attr('disabled', true)
+    @$('#submit-service-request').html('<i class="icon-load"></i>  Espere por favor...')
     category_id = App.categories.where({category1: category1, category2: category2, category3: category3})[0].id
     service_request =
       asigned_to_id   : @$('#asigned_to').val()
@@ -61,6 +62,31 @@ class App.Views.ServiceRequestsCreate extends Backbone.View
             Backbone.history.navigate("service_requests/show/#{@model.id}", trigger = true) if i == @notes.length
       else
         Backbone.history.navigate("service_requests/show/#{@model.id}", trigger = true)
+
+  validate: (cat1, cat2, cat3) ->
+    a = []
+    invalid = false
+    if cat1 == "Seleccione una Categoría"
+      a.push "Debe seleccionar una Categoría"
+      @$('#category').parent().parent().addClass('error') unless @$('#category').parent().parent().hasClass('error')
+    if cat2 == "Seleccione una Sub Categoría"
+      a.push "Debe seleccionar una Sub Categoría"
+      @$('#category2').parent().parent().addClass('error') unless @$('#category2').parent().parent().hasClass('error')
+    if cat3 == "Seleccione una Tercer Categoría"
+      a.push "Debe seleccionar una Tercer Categoría"
+      @$('#category3').parent().parent().addClass('error') unless @$('#category3').parent().parent().hasClass('error')
+    if @$('#title').val() == ''
+      a.push "Debe ingresar un titulo"
+      @$('#title').parent().parent().addClass('error') unless @$('#title').parent().parent().hasClass('error')
+    if a.length > 0
+      invalid = true
+      @fh.displayListFlash('error', a, 10000)
+      $("html, body").animate({ scrollTop: 0 }, "slow")
+      setTimeout ->
+        @$('.error').removeClass('error')
+      ,
+        10000
+    return invalid
 ########################################################################################################################
 
 ############################################## $ New Note $ ############################################################

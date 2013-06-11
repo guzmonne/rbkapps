@@ -86,7 +86,6 @@
         <div class="span12">
             <div class="form-actions">
                 <button id="submit-service-request" class="btn btn-primary btn-large">Enviar</button>
-                <button id="clear-form" class="btn btn-primary btn-large btn-inverse pull-right">Cancelar</button>
             </div>
         </div>
     </div>

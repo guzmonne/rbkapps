@@ -1,0 +1,22 @@
+<button class="btn btn-warning btn-small" id="show-chart" style="margin:10px;">
+    <i class="sprite-charts sprite-white"></i>
+    Mostrar Grafica
+</button>
+<canvas id="service_requests_chart" class="hide" width="400" height="250"></canvas>
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th data-sort="title" data-sort_type="string">Título</th>
+        <th data-sort="category1" data-sort_type="string">Categoría</th>
+        <th data-sort="category2" data-sort_type="string">Sub Categoría</th>
+        <th data-sort="category3" data-sort_type="string">Tercer Categoría</th>
+        <th data-sort="creator" data-sort_type="string">Creado por</th>
+        <th data-sort="location" data-sort_type="string">Ubicación</th>
+        <th data-sort="priority" data-sort_type="string" style="min-width: 80px;">Prioridad</th>
+        <th data-sort="status" data-sort_type="string">Estado</th>
+        <th data-sort="created_at" data-sort_type="date">Fecha de Creado</th>
+        <th data-sort="closed_at" data-sort_type="date">Fecha de Cerrado</th>
+    </tr>
+    </thead>
+    <tbody id="service_requests"></tbody>
+</table>

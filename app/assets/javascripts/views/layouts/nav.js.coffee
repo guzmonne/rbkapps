@@ -26,6 +26,7 @@ class App.Views.Nav extends Backbone.View
     'click #nav-purchase_orders'        : 'purchaseOrdersIndex'
     'click #nav-categories'             : 'categoriesIndex'
     'click #nav-form_helpers'           : 'editFormHelpers'
+    'click #nav-service-reports'        : 'serviceReports'
 
   render: ->
     $(@el).html(@template(user: @model))
@@ -33,6 +34,11 @@ class App.Views.Nav extends Backbone.View
     if @model.get('comex') == true then @$('.comex').show()
     if @model.get('compras') == true then @$('.compras').show()
     if @model.get('maintenance') == true then @$('.maintenance').show()
+    this
+
+  serviceReports: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate 'service_requests/reports', true
     this
 
   home: (e) ->

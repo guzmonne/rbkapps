@@ -127,10 +127,8 @@ class App.Views.ServiceRequestGraph extends Backbone.View
 
   diffColor: (c, colors, index) ->
     return c if colors.length == 1
-    console.log c
     while (colors.indexOf(c) > -1 and c > 150 )
       c = @goldenHSVtoRGB()[index]
-      console.log "new c = " + c
     return c
 
   hsvToRGB: (h, s, v) ->

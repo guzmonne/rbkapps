@@ -7,6 +7,7 @@ class App.Routers.ServiceRequests extends Backbone.Router
     'service_requests/index'      : 'index'
     'service_requests/show/:id'   : 'show'
     'service_requests/create'     : 'create'
+    'service_requests/reports'    : 'report'
     'categories/index'            : 'categoriesIndex'
 
   setServiceRequest: (model) ->
@@ -14,6 +15,11 @@ class App.Routers.ServiceRequests extends Backbone.Router
 
   index: ->
     view = new App.Views.ServiceRequestsIndex()
+    App.setAndRenderContentViews([view])
+    this
+
+  report: ->
+    view = new App.Views.ServiceRequestsReport()
     App.setAndRenderContentViews([view])
     this
 

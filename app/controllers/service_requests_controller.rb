@@ -2,6 +2,19 @@ class ServiceRequestsController < ApplicationController
   respond_to :json
 
   def index
+    if params["to"] and params["from"]
+      to = params["to"]
+      from = params["from"]
+      if to != "" and from == ""
+        return respond_with ServiceRequest.where("status = ? AND closed_at <= ?", "Cerrado", to)
+      elsif to == "" and from != ""
+        return respond_with ServiceRequest.where("status = ? AND closed_at >= ?", "Cerrado", from)
+      elsif to != "" and from != ""
+        return respond_with ServiceRequest.where("status = ? AND closed_at >= ? AND closed_at <= ?", "Cerrado", from, to)
+      elsif to == "" and from == ""
+        return respond_with ServiceRequest.where("status = ?", "Cerrado")
+      end
+    end
     respond_with ServiceRequest.for_user(params["user_id"])
   end
 
@@ -10,7 +23,12 @@ class ServiceRequestsController < ApplicationController
   end
 
   def create
-    respond_with ServiceRequest.create(params["service_request"])
+    @service_request = ServiceRequest.new(params["service_request"])
+    respond_to do |format|
+      if @service_request.save
+        format.json { render :json => @service_request, :status => :created, :location => @service_request }
+      end
+    end
   end
 
   def update
