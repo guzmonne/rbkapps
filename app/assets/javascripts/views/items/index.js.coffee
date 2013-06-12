@@ -11,6 +11,7 @@ class App.Views.ItemIndex extends Backbone.View
     @fh = new App.Mixins.Form
     @collection = App.items
     @fetchItems = _.debounce(@fetchItems, 300)
+    @headers = []
     @listenTo App.vent, 'update:page', (page) =>
       @$('.page').removeClass("label label-info")
       @$("*[data-pages='#{page}']").addClass("label label-info")
@@ -38,6 +39,8 @@ class App.Views.ItemIndex extends Backbone.View
 ############################################### $ Render $ #############################################################
   render: ->
     $(@el).html(@template())
+    for i in [0..@$('th[data-sort]').length - 1]
+      @headers.push @$(@$('th[data-sort]')[i]).data("sort")
     @update(1)
     @pagination()
     this
@@ -115,7 +118,7 @@ class App.Views.ItemIndex extends Backbone.View
       @$("th[data-sort=#{sortVar}]").append( '<i class="icon-chevron-down pull-right"></i>' )
     @update(@collection.currentPage, type, sortVar, method)
 
-  update: (page, type, sortVar, method) ->
+  update: (page, type, sortVar, method) =>
     oldSortVarType      = @collection.sortVarType
     oldSortVar          = @collection.sortVar
     oldSortMethod       = @collection.sortMethod
@@ -129,6 +132,10 @@ class App.Views.ItemIndex extends Backbone.View
     App.vent.trigger 'update:items:success'
     App.vent.trigger 'update:page', page
     @collection.sort().each(@appendItem)
+    for header in @headers
+      width = parseInt(@$("td[data-sort=#{header}]").css('width')) + 8
+      #if width < 100 then width = 100
+      @$("th[data-sort=#{header}]").width(width)
     @paginationHoverOut(1)
 
   generalOrder: (e) ->

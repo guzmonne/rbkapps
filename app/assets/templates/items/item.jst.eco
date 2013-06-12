@@ -2,14 +2,14 @@
 <% if @model.get('status') == "PROCESO" then statusClass = "warning"  %>
 <% if @model.get('status') == "ENTREGADO" then statusClass = "success"  %>
 <% if @model.get('status') == "CERRADO" then statusClass = "info"  %>
-<td><%= @model.get('code') %></td>
-<td><%= @model.get('brand') %></td>
-<td><%= @model.get('season') %></td>
-<td><%= @model.get('entry') %></td>
-<td><%= @model.get('delivery') %></td>
-<td><%= @model.get('invoice_number') %></td>
-<td><p class="label label-<%= statusClass %>"><%= @model.get('status') %></p></td>
-<td class="span1">
+<td data-sort="code"><%= @model.get('code') %></td>
+<td data-sort="brand"><%= @model.get('brand') %></td>
+<td data-sort="season"><%= @model.get('season') %></td>
+<td data-sort="entry"><%= @model.get('entry') %></td>
+<td data-sort="delivery"><%= @model.get('delivery') %></td>
+<td data-sort="invoice_number" style="max-width: 100px;"><%= @model.get('invoice_number') %></td>
+<td data-sort="status"><p class="label label-<%= statusClass %>"><%= @model.get('status') %></p></td>
+<td data-sort="delete">
     <button id="remove-item" class="btn btn-mini btn-danger" data-cid="<%= @model.cid %>">
         <i class="icon-minus icon-white"></i>
     </button>
