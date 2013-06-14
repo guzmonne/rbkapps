@@ -12,6 +12,7 @@ class App.Views.ItemIndex extends Backbone.View
     @collection = App.items
     @fetchItems = _.debounce(@fetchItems, 300)
     @headers = []
+    $(window).resize => @fixHeaders()
     @listenTo App.vent, 'update:page', (page) =>
       @$('.page').removeClass("label label-info")
       @$("*[data-pages='#{page}']").addClass("label label-info")
@@ -132,11 +133,19 @@ class App.Views.ItemIndex extends Backbone.View
     App.vent.trigger 'update:items:success'
     App.vent.trigger 'update:page', page
     @collection.sort().each(@appendItem)
-    for header in @headers
-      width = parseInt(@$("td[data-sort=#{header}]").css('width')) + 8
-      #if width < 100 then width = 100
-      @$("th[data-sort=#{header}]").width(width)
+    @fixHeaders()
     @paginationHoverOut(1)
+
+  fixHeaders: ->
+    for header, i in @headers
+      tdpadding = parseInt(@$("td[data-sort=#{header}]").css('padding'))
+      tdwidth = parseInt(@$("td[data-sort=#{header}]").css('width'))
+      @$("th[data-sort=#{header}]").css('padding', tdpadding)
+      @$("th[data-sort=#{header}]").css('width', tdwidth)
+      if (i+1) == @headers.length
+        trwidth = @$("td[data-sort=#{header}]").parent().css('width')
+        @$("th[data-sort=#{header}]").parent().parent().parent().css('width', trwidth)
+        @$('.bodycontainer').css('height', window.innerHeight - 310)
 
   generalOrder: (e) ->
     e.preventDefault() if e?

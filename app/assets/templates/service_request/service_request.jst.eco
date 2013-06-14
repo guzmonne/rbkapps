@@ -1,10 +1,10 @@
-<td><%= @model.get("title") %></td>
-<td style="min-width: 100px;"><%= @model.get("category1") %></td>
-<td style="min-width: 130px;"><%= @model.get("category2") %></td>
-<td style="min-width: 100px;"><%= @model.get("category3") %></td>
-<td><%= @model.get("creator") %></td>
-<td><%= @model.get("location") %></td>
-<td class="priority"><%= @model.get("priority") %></td>
-<td><label class="status label"><%= @model.get("status") %></label></td>
-<td><%= App.dh.dateRailsOnly(@model.get("created_at")) %></td>
-<td><%= @model.get("closed_at") %></td>
+<td data-sort="title"><%= @model.get("title") %></td>
+<td data-sort="category1" style="min-width: 100px;"><%= @model.get("category1") %></td>
+<td data-sort="category2" style="min-width: 130px;"><%= @model.get("category2") %></td>
+<td data-sort="category3" style="min-width: 100px;"><%= @model.get("category3") %></td>
+<td data-sort="creator"><%= @model.get("creator") %></td>
+<td data-sort="location"><%= @model.get("location") %></td>
+<td data-sort="priority" class="priority" style="min-width: 100px;"><%= @model.get("priority") %></td>
+<td data-sort="status"><label class="status label"><%= @model.get("status") %></label></td>
+<td data-sort="created_at" style="min-width: 100px;"><%= App.dh.dateRailsOnly(@model.get("created_at")) %></td>
+<td data-sort="closed_at" style="min-width: 100px;"><%= @model.get("closed_at") %></td>

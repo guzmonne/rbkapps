@@ -5,6 +5,10 @@ class App.Views.ServiceRequestsIndex extends Backbone.View
 
   initialize: ->
     @collection = App.serviceRequests
+    @headers = []
+    @counter = 0
+    $(window).resize => @fixHeaders()
+    @listenTo App.vent, 'service_requests:render:success', => @fixHeaders()
 
   events:
     'click #fetch-service_requests'  : 'fetchServiceRequests'
@@ -17,14 +21,32 @@ class App.Views.ServiceRequestsIndex extends Backbone.View
 
   render: ->
     $(@el).html(@template())
+    for i in [0..@$('th[data-sort]').length - 1]
+      @headers.push @$(@$('th[data-sort]')[i]).data("sort")
     if App.categories.length > 0 and App.serviceRequests.length > 0
+      @counter = 0
       App.serviceRequests.each(@appendServiceRequest)
     this
+
+  fixHeaders: ->
+    for header, i in @headers
+      tdpadding = parseInt(@$("td[data-sort=#{header}]").css('padding'))
+      tdwidth = parseInt(@$("td[data-sort=#{header}]").css('width'))
+      @$("th[data-sort=#{header}]").css('padding', tdpadding)
+      @$("th[data-sort=#{header}]").css('width', tdwidth)
+      if (i+1) == @headers.length
+        trwidth = @$("td[data-sort=#{header}]").parent().css('width')
+        @$("th[data-sort=#{header}]").parent().parent().parent().css('width', trwidth)
+        @$('.bodycontainer').css('height', window.innerHeight - 247)
 
   appendServiceRequest: (model) =>
     view = new App.Views.ServiceRequest(model: model)
     App.pushToAppendedViews(view)
     @$('#service_requests').append(view.render().el)
+    @counter = @counter + 1
+    if @counter == App.serviceRequests.length
+      App.vent.trigger 'service_requests:render:success'
+      @counter = 0
     this
 
   statusFilter: (e) ->
