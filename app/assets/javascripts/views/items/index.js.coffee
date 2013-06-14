@@ -11,6 +11,8 @@ class App.Views.ItemIndex extends Backbone.View
     @fh = new App.Mixins.Form
     @collection = App.items
     @fetchItems = _.debounce(@fetchItems, 300)
+    @headers = []
+    $(window).resize => @fixHeaders()
     @listenTo App.vent, 'update:page', (page) =>
       @$('.page').removeClass("label label-info")
       @$("*[data-pages='#{page}']").addClass("label label-info")
@@ -38,6 +40,8 @@ class App.Views.ItemIndex extends Backbone.View
 ############################################### $ Render $ #############################################################
   render: ->
     $(@el).html(@template())
+    for i in [0..@$('th[data-sort]').length - 1]
+      @headers.push @$(@$('th[data-sort]')[i]).data("sort")
     @update(1)
     @pagination()
     this
@@ -115,7 +119,7 @@ class App.Views.ItemIndex extends Backbone.View
       @$("th[data-sort=#{sortVar}]").append( '<i class="icon-chevron-down pull-right"></i>' )
     @update(@collection.currentPage, type, sortVar, method)
 
-  update: (page, type, sortVar, method) ->
+  update: (page, type, sortVar, method) =>
     oldSortVarType      = @collection.sortVarType
     oldSortVar          = @collection.sortVar
     oldSortMethod       = @collection.sortMethod
@@ -129,7 +133,19 @@ class App.Views.ItemIndex extends Backbone.View
     App.vent.trigger 'update:items:success'
     App.vent.trigger 'update:page', page
     @collection.sort().each(@appendItem)
+    @fixHeaders()
     @paginationHoverOut(1)
+
+  fixHeaders: ->
+    for header, i in @headers
+      tdpadding = parseInt(@$("td[data-sort=#{header}]").css('padding'))
+      tdwidth = parseInt(@$("td[data-sort=#{header}]").css('width'))
+      @$("th[data-sort=#{header}]").css('padding', tdpadding)
+      @$("th[data-sort=#{header}]").css('width', tdwidth)
+      if (i+1) == @headers.length
+        trwidth = @$("td[data-sort=#{header}]").parent().css('width')
+        @$("th[data-sort=#{header}]").parent().parent().parent().css('width', trwidth)
+        @$('.bodycontainer').css('height', window.innerHeight - 310)
 
   generalOrder: (e) ->
     e.preventDefault() if e?

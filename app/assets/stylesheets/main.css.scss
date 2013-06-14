@@ -689,3 +689,18 @@ canvas{
   width: 100%;
   //background-color: rgba(0, 159, 188, 0.45);
 }
+
+.scrollable {
+  overflow-y: scroll;
+}
+
+.bodycontainer {
+  //height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.table-scrollable {
+  margin: 0px;
+  padding: 0px;
+}
