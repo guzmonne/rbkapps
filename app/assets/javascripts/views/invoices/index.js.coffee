@@ -3,12 +3,6 @@ class App.Views.InvoiceIndex extends Backbone.View
   className: 'span12'
   name: 'InvoiceIndex'
 
-  initialize: ->
-    @flip = 0
-    @fetchInvoices = _.debounce(@fetchInvoices, 300);
-    @collection = App.invoices
-
-
   events:
     'click #new-invoice'      : 'createForm'
     'click #add-new-invoice'  : 'createInvoice'
@@ -19,6 +13,11 @@ class App.Views.InvoiceIndex extends Backbone.View
 
 ################################################# $ Initialize $ #######################################################
   initialize: ->
+    @flip = 0
+    @fetchInvoices = _.debounce(@fetchInvoices, 300);
+    @collection = App.invoices
+    @headers = []
+    $(window).resize => @fixHeaders() unless @collection.length == 0
     @listenTo App.vent, "minimize:invoice:success", (model) =>
       @prependInvoice(model)
     @listenTo App.vent, "remove:invoiceShow:success", (model) =>
@@ -63,6 +62,15 @@ class App.Views.InvoiceIndex extends Backbone.View
     $(@el).html(@template()).find('#invoice-form-row').hide()
     App.invoices.each(@appendInvoice)
     @$('#loading-row').hide()
+    for i in [0..@$('th[data-sort]').length - 1]
+      @headers.push @$(@$('th[data-sort]')[i]).data("sort")
+    i = 0
+    timer = setInterval( =>
+      @fixHeaders()
+      i++
+      console.log timer, i
+      clearInterval(timer) if i == 10
+    , 50)
     this
 ########################################################################################################################
 
@@ -71,6 +79,7 @@ class App.Views.InvoiceIndex extends Backbone.View
     view = new App.Views.Invoice(model: model)
     App.pushToAppendedViews(view)
     @$('#invoices').append(view.render().el)
+    @fixHeaders()
     this
 ########################################################################################################################
 
@@ -79,6 +88,7 @@ class App.Views.InvoiceIndex extends Backbone.View
     view = new App.Views.Invoice(model: model)
     App.pushToAppendedViews(view)
     @$('#invoices').prepend(view.render().el)
+    @fixHeaders()
     this
 ########################################################################################################################
 
@@ -176,3 +186,17 @@ class App.Views.InvoiceIndex extends Backbone.View
     @collection.sort()
     App.vent.trigger 'update:invoices:success'
     @collection.each(@appendInvoice)
+
+
+  fixHeaders: =>
+    for header, i in @headers
+      tdpadding = parseInt(@$("td[data-sort=#{header}]").css('padding'))
+      tdwidth = parseInt(@$("td[data-sort=#{header}]").css('width'))
+      @$("th[data-sort=#{header}]").css('padding', tdpadding)
+      @$("th[data-sort=#{header}]").css('width', tdwidth)
+      if (i+1) == @headers.length
+        trwidth = @$("td[data-sort=#{header}]").parent().css('width')
+        @$("th[data-sort=#{header}]").parent().parent().parent().css('width', trwidth)
+        @$('.bodycontainer').css('height', window.innerHeight - ($('html').outerHeight() - @$('.bodycontainer').outerHeight() ) ) unless @collection.length == 0
+
+

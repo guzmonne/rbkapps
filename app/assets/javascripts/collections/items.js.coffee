@@ -7,7 +7,7 @@ class App.Collections.Items extends Backbone.Collection
     @sortVar      = 'code'
     @sortMethod   = 'lTH'
     @sortVarType  = 'string'
-    @perGroup     = 100
+    @perGroup     = 101
     @currentPage  = 1
 
   pluckDistinct: (attribute, attributes=null) ->

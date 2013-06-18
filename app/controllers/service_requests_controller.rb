@@ -26,12 +26,8 @@ class ServiceRequestsController < ApplicationController
     @service_request = ServiceRequest.new(params["service_request"])
     respond_to do |format|
       if @service_request.save
-<<<<<<< HEAD
-=======
         # Despues de que graba
         ServiceRequestMailer.service_request_created_email(User.find(@service_request.creator_id), @service_request)
-
->>>>>>> v0.1.17
         format.json { render :json => @service_request, :status => :created, :location => @service_request }
       end
     end

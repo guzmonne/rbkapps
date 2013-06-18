@@ -8,11 +8,13 @@ class App.Views.ItemIndex extends Backbone.View
 
 ############################################## $ Initialize $ ##########################################################
   initialize: ->
+    @counter = 0
     @fh = new App.Mixins.Form
     @collection = App.items
     @fetchItems = _.debounce(@fetchItems, 300)
+    #@fixHeaders = _.debounce(@fixHeaders, 500)
     @headers = []
-    $(window).resize => @fixHeaders()
+    $(window).resize => @fixHeaders() unless @collection.length == 0
     @listenTo App.vent, 'update:page', (page) =>
       @$('.page').removeClass("label label-info")
       @$("*[data-pages='#{page}']").addClass("label label-info")
@@ -42,8 +44,15 @@ class App.Views.ItemIndex extends Backbone.View
     $(@el).html(@template())
     for i in [0..@$('th[data-sort]').length - 1]
       @headers.push @$(@$('th[data-sort]')[i]).data("sort")
-    @update(1)
+    App.vent.trigger 'update:items:success'
     @pagination()
+    @update(1)
+    i = 0
+    timer = setInterval( =>
+      @fixHeaders()
+      i++
+      clearInterval(timer) if i == 10
+    , 50)
     this
 ########################################################################################################################
 
@@ -132,11 +141,11 @@ class App.Views.ItemIndex extends Backbone.View
       @collection.setSortVariables(oldSortVarType, oldSortVar, oldSortMethod)
     App.vent.trigger 'update:items:success'
     App.vent.trigger 'update:page', page
+    @counter = 0
     @collection.sort().each(@appendItem)
-    @fixHeaders()
     @paginationHoverOut(1)
 
-  fixHeaders: ->
+  fixHeaders: =>
     for header, i in @headers
       tdpadding = parseInt(@$("td[data-sort=#{header}]").css('padding'))
       tdwidth = parseInt(@$("td[data-sort=#{header}]").css('width'))
@@ -145,7 +154,7 @@ class App.Views.ItemIndex extends Backbone.View
       if (i+1) == @headers.length
         trwidth = @$("td[data-sort=#{header}]").parent().css('width')
         @$("th[data-sort=#{header}]").parent().parent().parent().css('width', trwidth)
-        @$('.bodycontainer').css('height', window.innerHeight - 310)
+        @$('.bodycontainer').css('height', window.innerHeight - ($('html').outerHeight() - @$('.bodycontainer').outerHeight() ) ) unless @collection.length == 0
 
   generalOrder: (e) ->
     e.preventDefault() if e?
@@ -175,6 +184,7 @@ class App.Views.ItemIndex extends Backbone.View
     view = new App.Views.Item(model: model, collection: App.items)
     App.pushToAppendedViews(view)
     @$('#items').append(view.render().el)
+    @fixHeaders()
     this
 
   newItem: (e) ->

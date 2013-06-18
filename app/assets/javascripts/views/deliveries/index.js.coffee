@@ -10,6 +10,8 @@ class App.Views.DeliveryIndex extends Backbone.View
     @searchCollection = new App.Collections.Deliveries
     @lastSearch = []
     @fetchDeliveries = _.debounce(@fetchDeliveries, 300)
+    @headers = []
+    $(window).resize => @fixHeaders() unless @collection.length == 0
     @listenTo App.vent, 'update:page', (page) =>
       @$('.page').removeClass("label label-info")
       @$("*[data-pages='#{page}']").addClass("label label-info")
@@ -33,7 +35,28 @@ class App.Views.DeliveryIndex extends Backbone.View
     $(@el).html(@template())
     @update(1)
     @pagination()
+    for i in [0..@$('th[data-sort]').length - 1]
+      @headers.push @$(@$('th[data-sort]')[i]).data("sort")
+    i = 0
+    timer = setInterval( =>
+      @fixHeaders()
+      i++
+      clearInterval(timer) if i == 10
+    , 50)
     this
+
+  fixHeaders: =>
+    console.log @headers
+    for header, i in @headers
+      tdpadding = parseInt(@$("td[data-sort=#{header}]").css('padding'))
+      tdwidth = parseInt(@$("td[data-sort=#{header}]").css('width'))
+      @$("th[data-sort=#{header}]").css('padding', tdpadding)
+      @$("th[data-sort=#{header}]").css('width', tdwidth)
+      if (i+1) == @headers.length
+        trwidth = @$("td[data-sort=#{header}]").parent().css('width')
+        @$("th[data-sort=#{header}]").parent().parent().parent().css('width', trwidth)
+        @$('.bodycontainer').css('height', window.innerHeight - ($('html').outerHeight() - @$('.bodycontainer').outerHeight() ) ) unless @collection.length == 0
+
 
   paginationHoverIn: (e) ->
     page = e.currentTarget.dataset["pages"]
@@ -86,6 +109,7 @@ class App.Views.DeliveryIndex extends Backbone.View
     view = new App.Views.Delivery(model: model)
     App.pushToAppendedViews(view)
     @$('#deliveries').append(view.render().el)
+    @fixHeaders()
     this
 
   newDelivery: (e) ->

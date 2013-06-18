@@ -52,6 +52,7 @@ window.App =
     @fh               = new App.Mixins.Form()
     @dh               = new App.Mixins.DateHelper()
     App.start()
+    $('#data').remove()
 
   start: ->
     if @session.load().authenticated()
