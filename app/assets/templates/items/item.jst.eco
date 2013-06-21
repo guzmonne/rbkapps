@@ -8,7 +8,7 @@
 <td data-sort="entry"><%= @model.get('entry') %></td>
 <td data-sort="delivery"><%= @model.get('delivery') %></td>
 <td data-sort="invoice_number"><%= @model.get('invoice_number') %></td>
-<td data-sort="status"><p class="label label-<%= statusClass %>"><%= @model.get('status') %></p></td>
+<td data-sort="status"><p class="label label-<%= statusClass %>" style="font-size: 12px;margin: 0px;"><%= @model.get('status') %></p></td>
 <td data-sort="delete">
     <button id="remove-item" class="btn btn-mini btn-danger" data-cid="<%= @model.cid %>">
         <i class="icon-minus icon-white"></i>

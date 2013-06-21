@@ -1,5 +1,6 @@
 class App.Views.ServiceRequest extends Backbone.View
   template: JST['service_request/service_request']
+  template2: JST['service_request/service_request_2']
   tagName: 'tr'
   name: 'ServiceRequest'
 
@@ -55,6 +56,10 @@ class App.Views.ServiceRequest extends Backbone.View
       when "Cerrado"
         @$('.status').addClass('label-success')
         break
+    this
+
+  render2: ->
+    $(@el).html(@template2(model: @model))
     this
 
   showServiceRequest: ->

@@ -5,7 +5,7 @@
   text-align: right;
 }
 
-body { padding-top: 60px; }
+//body { padding-top: 60px; }
 
 .pagination-hover {
   color: #FFFFFF;
@@ -703,4 +703,41 @@ canvas{
 .table-scrollable {
   margin: 0px;
   padding: 0px;
+}
+
+@media print {
+
+  * {
+    text-shadow: none !important;
+    color: #000 !important;
+    box-shadow: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 13pt;
+    padding-top: 0px;
+  }
+
+  header {
+    display: none;
+  }
+
+  .btn {
+    display: none;
+  }
+
+  .well {
+    margin: 0;
+    border: none;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+}
+
+
+@page {
+  margin: 0.5cm;
 }

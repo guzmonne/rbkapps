@@ -1,6 +1,6 @@
 <div class="well" xmlns="http://www.w3.org/1999/html">
     <h1>
-        Reportes - Comex
+        Reportes - Ordenes de Servicio
     </h1>
 </div>
 <div id="notice"></div>
@@ -47,5 +47,6 @@
         </div>
     </div>
 </div>
+<hr style="margin: 0;">
 <div class="row-fluid" id="report"></div>
 

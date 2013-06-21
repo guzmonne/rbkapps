@@ -101,7 +101,6 @@
                 <option>Nuevo</option>
                 <option>Abierto</option>
                 <option>Cerrado</option>
-                <option>Cerrado y Verificado</option>
                 <option>Pendiente</option>
             </select>
         </div>

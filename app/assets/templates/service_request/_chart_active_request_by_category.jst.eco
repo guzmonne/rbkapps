@@ -12,6 +12,6 @@
             <th>Cantidad</th>
         </tr>
         </thead>
-        <tbody id="categories"></tbody>
+        <tbody id="categorias"></tbody>
     </table>
  </div>

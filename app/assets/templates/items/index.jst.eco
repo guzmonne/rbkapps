@@ -11,6 +11,7 @@
     </button>
     <a id="excel" class="btn btn-inverse btn-small" href="/comex_reports.xls?report=items_status">
         <i class="excel_logo"></i>
+        Descargar
     </a>
     <button id="fetch-items" class="btn btn-primary btn-small btn-info">
         Actualizar
@@ -66,7 +67,7 @@
                     <th data-sort="brand" data-sort_type="string">Marca</th>
                     <th data-sort="season" data-sort_type="string">Temporada</th>
                     <th data-sort="entry" data-sort_type="string">Rubro</th>
-                    <th data-sort="delivery" data-sort_type="string">Guía</th>
+                    <th data-sort="delivery" data-sort_type="integer">Guía</th>
                     <th data-sort="invoice_number" data-sort_type="string">Num. de Factura</th>
                     <th data-sort="status" data-sort_type="string">Estado</th>
                     <th data-sort="delete"></th>
@@ -74,8 +75,8 @@
             </thead>
         </table>
         <div class="bodycontainer scrollable">
-            <table class="table table-hover table-striped table-scrollable">
-                <tbody id="items"></tbody>
+            <table class="table table-hover table-striped table-condensed table-scrollable">
+                <tbody id="items" style="font-size: 12px;"></tbody>
             </table>
         </div>
     </div>

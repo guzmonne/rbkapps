@@ -2,26 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="044e0a91-8a4a-4ab7-93a4-af1de8015a06" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/templates/reports/service/closedservices.jst.eco" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/templates/reports/service/report.jst.eco" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/mixins/chart_mixin.js.coffee" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/templates/service_request/service_request_2.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/gmonne.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/gmonne.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/app.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/app.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/collections/items.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/collections/items.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/index.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/index.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/items/index.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/items/index.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/reports/service/closed_services.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/reports/service/closed_services.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/service_request.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/service_request.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/deliveries/delivery.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/deliveries/delivery.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/deliveries/index.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/deliveries/index.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/invoices/index.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/invoices/index.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/invoices/invoice.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/invoices/invoice.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/items/index.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/items/index.jst.eco" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/items/item.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/items/item.jst.eco" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/service_request/create.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/service_request/create.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/service_request/index.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/service_request/index.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/service_request/service_request.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/service_request/service_request.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/reports/service/closedservices.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/reports/service/closedservices.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/reports/service/report.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/reports/service/report.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/service_request/_chart_active_request_by_category.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/service_request/_chart_active_request_by_category.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/service_request/show.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/service_request/show.jst.eco" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/service_requests_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/service_requests_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/mailers/service_request_mailer.rb" afterPath="$PROJECT_DIR$/app/mailers/service_request_mailer.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
     </list>
     <ignored path="rbkapps.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,19 +42,104 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/items/index.js.coffee">
+      <file leaf-file-name="main.css.scss" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/main.css.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="157" column="1" selection-start="5995" selection-end="6654" vertical-scroll-proportion="0.0">
+            <state line="6" column="0" selection-start="212" selection-end="212" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js.coffee" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee">
+      <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="0" selection-start="1863" selection-end="1863" vertical-scroll-proportion="0.8172414">
+            <state line="16" column="118" selection-start="717" selection-end="717" vertical-scroll-proportion="-10.461538">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bootstrap.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/bootstrap.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="338" column="5" selection-start="4637" selection-end="4641" vertical-scroll-proportion="-12.84">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bootstrap-responsive.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/bootstrap-responsive.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="closedservices.jst.eco" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/templates/reports/service/closedservices.jst.eco">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="52" column="56" selection-start="1966" selection-end="1966" vertical-scroll-proportion="-10.423077">
+              <folding>
+                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#6;n#tr#0;n#thead#0;n#table#0;n#div#2;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="closed_services.js.coffee" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/reports/service/closed_services.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="117" column="39" selection-start="3743" selection-end="3743" vertical-scroll-proportion="0.43001688">
+              <folding>
+                <marker date="1371844311193" expanded="true" signature="1870:2086" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="1905:1961" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="1962:2022" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="1962:2022" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="2791:3037" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="2832:2888" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="2889:2961" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="2889:2961" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="2889:2961" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="3601:3766" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="3601:3766" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="3601:3799" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="3630:3691" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="4486:4713" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="4521:4582" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+                <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="service_request.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/service_request.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="62" column="4" selection-start="2514" selection-end="2514" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -78,22 +161,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/templates/service_request/service_request.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/templates/items/item.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" />
-        <option value="$PROJECT_DIR$/app/assets/templates/service_request/index.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/app.js.coffee" />
         <option value="$PROJECT_DIR$/app/controllers/service_requests_controller.rb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/collections/items.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/appñication-print.css" />
+        <option value="$PROJECT_DIR$/app/assets/templates/layout/nav.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/templates/items/index.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/templates/deliveries/delivery.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/index.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/items/index.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/templates/invoices/index.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/templates/deliveries/index.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/templates/invoices/invoice.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/print/print.css.scss" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/print/print.css" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application-responsive.css" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
+        <option value="$PROJECT_DIR$/app/assets/templates/service_request/_chart_active_request_by_category.jst.eco" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/templates/service_request/service_request_2.jst.eco" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/service_request.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/templates/reports/service/closedservices.jst.eco" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/reports/service/closed_services.js.coffee" />
       </list>
     </option>
   </component>
@@ -136,6 +219,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="RailsProjectView">
         <subPane>
           <PATH>
@@ -980,7 +1064,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -996,6 +1079,82 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mailers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1338,6 +1497,36 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="users" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1366,6 +1555,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="service_requests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="reports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1545,6 +1768,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="mixins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rbkapps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="collections" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1572,20 +1821,20 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="127" />
     <property name="JdbcConsole.Extract.Separator" value="'" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="127" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="180" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="154" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="154" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="167" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="816" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="829" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="816" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="154" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="153" />
-    <property name="Database.TableEditor.Splitter" value="0.8758865" />
+    <property name="Database.TableEditor.Splitter" value="0.8599291" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
@@ -1603,8 +1852,8 @@
     <property name="JdbcConsole.Extract.ClosingQuote" value="'" />
     <property name="JdbcConsole.Extract.IncludeHeader" value="false" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -1615,7 +1864,7 @@
       <recent name="C:\Users\gmonne.RBKURUGUAY\RubymineProjects\rbkapps\app\assets\javascripts\views\invoice_items" />
     </key>
   </component>
-  <component name="RunManager" selected="Ruby.service_request_mailer">
+  <component name="RunManager" selected="Rails.Development: rbkapps">
     <configuration default="false" name="service_request_mailer" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
       <module name="rbkapps" />
       <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -1629,7 +1878,9 @@
       <RUBY_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$PROJECT_DIR$/app/mailers/service_request_mailer.rb" />
       <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
       <RunnerSettings RunnerId="RubyDebugRunner" />
+      <RunnerSettings RunnerId="RubyRunner" />
       <ConfigurationWrapper RunnerId="RubyDebugRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
     <configuration default="true" type="RakeRunConfigurationType" factoryName="Rake">
@@ -1773,12 +2024,12 @@
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
       <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3001" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3003" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="127.0.0.1" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="DUMMY_APP" VALUE="test/dummy" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="default" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="development" />
-      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="BROWSER_URL" VALUE="http://127.0.0.1:3001" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="BROWSER_URL" VALUE="http://127.0.0.1:3003" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="true" />
       <RunnerSettings RunnerId="RubyCover" />
       <RunnerSettings RunnerId="RubyRunner" />
@@ -1868,18 +2119,18 @@
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37216827" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19090909" sideWeight="0.59385115" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21742424" sideWeight="0.27669904" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23409091" sideWeight="0.6132686" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2780303" sideWeight="0.6132686" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2128788" sideWeight="0.394822" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3867314" sideWeight="0.53712124" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3867314" sideWeight="0.45757577" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32795697" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1942,127 +2193,168 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/reports/service/report.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/service_requests_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="116" selection-start="1153" selection-end="1153" vertical-scroll-proportion="0.5447514">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/form_helpers.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/collections/items.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="21" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/app.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="23" selection-start="2047" selection-end="2047" vertical-scroll-proportion="0.96964586">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/categories/index.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="28" selection-start="646" selection-end="646" vertical-scroll-proportion="0.5275862">
-          <folding>
-            <marker date="1368793313056" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/deliveries/delivery.jst.eco">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="54" selection-start="1103" selection-end="1103" vertical-scroll-proportion="-11.769231">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/index.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="9" selection-start="1563" selection-end="1563" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/templates/items/index.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="95" selection-start="2393" selection-end="2420" vertical-scroll-proportion="-2.8076923">
-          <folding>
-            <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/invoices/index.jst.eco">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="82" selection-start="459" selection-end="459" vertical-scroll-proportion="-4.1538463">
-          <folding>
-            <element signature="n#style#0;n#table#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/items/item.jst.eco">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="3" selection-start="298" selection-end="315" vertical-scroll-proportion="-2.6153846">
+        <state line="13" column="17" selection-start="510" selection-end="510" vertical-scroll-proportion="0.39891696">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/invoices/invoice.jst.eco">
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/service_request/_chart_active_request_by_category.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="55" selection-start="428" selection-end="428" vertical-scroll-proportion="-4.576923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/deliveries/index.jst.eco">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="82" selection-start="2752" selection-end="2752" vertical-scroll-proportion="0.18165785">
+        <state line="14" column="28" selection-start="718" selection-end="718" vertical-scroll-proportion="0.41975307">
           <folding>
-            <element signature="n#style#0;n#table#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="131" selection-end="131" vertical-scroll-proportion="0.11724138">
+        <state line="338" column="5" selection-start="4637" selection-end="4641" vertical-scroll-proportion="-12.84">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/reports/comex/items_status.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="2" selection-start="1953" selection-end="1953" vertical-scroll-proportion="0.99310344">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/service_request/service_request.jst.eco">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="55" selection-start="831" selection-end="831" vertical-scroll-proportion="0.29982364">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/service_request/service_request_2.jst.eco">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="102" selection-start="538" selection-end="538" vertical-scroll-proportion="0.17989418">
+          <folding>
+            <element signature="n#style#0;n#td#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#6;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#7;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#8;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/service_request.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="4" selection-start="2514" selection-end="2514" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="118" selection-start="717" selection-end="717" vertical-scroll-proportion="-10.461538">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/bootstrap-responsive.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="21" selection-start="3452" selection-end="3452" vertical-scroll-proportion="2.8954468">
+          <folding>
+            <marker date="1371835190851" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1371835190851" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1371835190851" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/items/index.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="157" column="1" selection-start="5995" selection-end="6654" vertical-scroll-proportion="0.0">
+        <state line="16" column="4" selection-start="592" selection-end="656" vertical-scroll-proportion="0.46896553">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/main.css.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="1863" selection-end="1863" vertical-scroll-proportion="0.8172414">
+        <state line="6" column="0" selection-start="212" selection-end="212" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/reports/service/closedservices.jst.eco">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="56" selection-start="1966" selection-end="1966" vertical-scroll-proportion="-10.423077">
+          <folding>
+            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#6;n#tr#0;n#thead#0;n#table#0;n#div#2;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/reports/service/closed_services.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="117" column="39" selection-start="3743" selection-end="3743" vertical-scroll-proportion="0.43001688">
+          <folding>
+            <marker date="1371844311193" expanded="true" signature="1870:2086" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="1905:1961" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="1962:2022" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="1962:2022" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="2791:3037" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="2832:2888" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="2889:2961" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="2889:2961" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="2889:2961" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="3601:3766" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="3601:3766" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="3601:3799" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="3630:3691" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="3692:3742" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="4486:4713" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="4521:4582" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+            <marker date="1371844311193" expanded="true" signature="4583:4645" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

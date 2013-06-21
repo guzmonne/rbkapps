@@ -27,7 +27,7 @@ class ServiceRequestsController < ApplicationController
     respond_to do |format|
       if @service_request.save
         # Despues de que graba
-        ServiceRequestMailer.service_request_created_email(User.find(@service_request.creator_id), @service_request)
+        # ServiceRequestMailer.service_request_created_email(User.find(@service_request.creator_id), @service_request)
         format.json { render :json => @service_request, :status => :created, :location => @service_request }
       end
     end

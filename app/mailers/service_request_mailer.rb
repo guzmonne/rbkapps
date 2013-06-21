@@ -3,10 +3,10 @@ class ServiceRequestMailer < ActionMailer::Base
 
   def send_email(to, opts={})
     opts[:server] 		||= 'mail.rivani.com.uy'
-    opts[:from]			||= 'gmonne@rivani.com.uy'
+    opts[:from]			  ||= 'gmonne@rivani.com.uy'
     opts[:from_alias]	||= 'Guzman Monne'
     opts[:subject]		||= 'RBKApps'
-    opts[:body]			||= 'Mail de Prueba'
+    opts[:body]			  ||= 'Mail de Prueba'
 
     msg = <<END_OF_MSG
 From: #{opts[:from_alias]}<#{opts[:from]}>

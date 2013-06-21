@@ -9,6 +9,7 @@ class App.Views.ServiceRequestGraph extends Backbone.View
 
   initialize: ->
     @collection = App.serviceRequests
+    @ch = new App.Mixins.ChartHelper()
     @listenTo @collection, 'reset', =>
       @drawActiveRequestsByStatus()
       @drawActiveRequestsByCategory()
@@ -33,8 +34,7 @@ class App.Views.ServiceRequestGraph extends Backbone.View
 
   syncChart: (e) ->
     e.preventDefault() if e?
-    if e.currentTarget.dataset["chart"] == "active_request_by_status"
-      App.serviceRequests.fetch data: {user_id: App.user.id}
+    App.serviceRequests.fetch data: {user_id: App.user.id}
 
   drawActiveRequestsByStatus: ->
     ctx = @$("#service_requests_chart")[0].getContext("2d")
@@ -75,9 +75,7 @@ class App.Views.ServiceRequestGraph extends Backbone.View
         return model
     activeServicesCollection = new App.Collections.ServiceRequests()
     activeServicesCollection.reset(activeServices)
-    console.log activeServicesCollection
     categories = activeServicesCollection.pluckDistinct('category1')
-    console.log categories
     @values = []
     for category in categories
       len = activeServicesCollection.where({category1: category}).length
@@ -97,7 +95,7 @@ class App.Views.ServiceRequestGraph extends Backbone.View
 
   drawActiveRequestsByCategory: ->
     ctx = @$("#service_requests_chart_2")[0].getContext("2d")
-    @$('#categories').empty()
+    @$('#categorias').empty()
     activeServices = _.filter App.serviceRequests.models, (model) =>
       status = model.get('status')
       if status == "Nuevo" or status == "Abierto" or status == "Pendiente"
@@ -106,17 +104,19 @@ class App.Views.ServiceRequestGraph extends Backbone.View
     activeServicesCollection.reset(activeServices)
     categories = activeServicesCollection.pluckDistinct('category1')
     @data = []
-    @r = []
-    @g = []
-    @b = []
     for category in categories
-      c = @goldenHSVtoRGB()
-      @r.push c[0]; @g.push c[1]; @b.push c[2]
-      c1 = @diffColor(c[0], @r, 0)
-      c2 = @diffColor(c[1], @g, 1)
-      c3 = @diffColor(c[2], @b, 2)
+      c = @ch.randomRGB()
+      #c = @ch.goldenHSVtoRGB()
+      c1 = c[0]; c2 = c[1]; c3 = c[2]
       len = activeServicesCollection.where({category1: category}).length
-      @$('#categories').append("<tr><td style='color: #ffffff;background-color: rgba(#{c1},#{c2},#{c3},0.6);'>#{category}</td><td>#{len}</td></tr>")
+      @$('#categories').append("                                                      \
+        <tr>                                                                          \
+          <td style='color: #ffffff;background-color: rgba(#{c1},#{c2},#{c3},0.6);'>  \
+            #{category}                                                               \
+          </td>                                                                       \
+          <td>#{len}</td>                                                             \
+        </tr>"                                                                        \
+      )
       @data.push {value: len, color: "rgba(#{c1},#{c2},#{c3},0.6)"}
     chart = new Chart(ctx).Pie(@data,  { scaleShowValues: true, scaleFontColor : "#FFF" })
 
@@ -124,40 +124,3 @@ class App.Views.ServiceRequestGraph extends Backbone.View
     setInterval =>
       App.serviceRequests.fetch data: {user_id: App.user.id}
     , 30000
-
-  diffColor: (c, colors, index) ->
-    return c if colors.length == 1
-    while (colors.indexOf(c) > -1 and c > 150 )
-      c = @goldenHSVtoRGB()[index]
-    return c
-
-  hsvToRGB: (h, s, v) ->
-    h_i = parseInt(h*6)
-    f = h*6 - h_i
-    p = v * (1 - s)
-    q = v * (1 - f*s)
-    t = v * (1 - (1 - f) * s )
-    if h_i == 0
-      r = v; g = t; b = p
-    if h_i == 1
-      r = q; g = p; b = v
-    if h_i == 2
-      r = p; g = v; b = t
-    if h_i == 3
-      r = p; g = q; b = v
-    if h_i == 4
-      r = t; g = p; b = v
-    if h_i == 5
-      r = v; g = p; b = q
-    return [parseInt(r*256), parseInt(g*256), parseInt(b*256)]
-
-  goldenHSVtoRGB: ->
-    golden_ratio_conjugate = 0.618033988749895
-    h = @alea()
-    h += golden_ratio_conjugate
-    h %= 1
-    @hsvToRGB(h, 0.99, 0.99)
-
-  alea: ->
-    return Math.random()*256
-
