@@ -5,6 +5,7 @@ class App.Views.ClosedServices extends Backbone.View
 
   events:
     'click #show-chart'               : 'showChart'
+    'click #hide-chart'               : 'hideChart'
 
   initialize: (options) ->
     @reportName = ''
@@ -24,25 +25,23 @@ class App.Views.ClosedServices extends Backbone.View
     this
 
   showChart: (e) ->
-    @$('.chart-row').toggle()
     e.preventDefault()
+    @$('.chart-row').fadeIn('slow')
+    @$('#show-chart').hide()
+    @$('#hide-chart').show()
     @drawCharts()
+
+  hideChart: (e) ->
+    e.preventDefault()
+    @$('.chart-row').fadeOut('slow')
+    @$('#show-chart').show()
+    @$('#hide-chart').hide()
 
   drawCharts: ->
     @closedCategories()
     @closedLocations()
     @creationDates()
     @closedDates()
-
-  setCtx: (id, relation) ->
-    if relation > 1
-      relation = 1 / relation
-    width = @$("#" + id).parent().outerWidth()
-    height = parseInt(width * relation)
-    console.log width, height
-    @$("#" + id).attr('width', width)
-    @$("#" + id).attr('height', height)
-    return ctx = @$("#" + id)[0].getContext("2d")
 
   creationDates: ->
     @$('#creation_dates').empty()
@@ -71,7 +70,7 @@ class App.Views.ClosedServices extends Backbone.View
                       </td>
                       <td>#{len}</td>
                     </tr>")
-    ctx = @setCtx('service_requests_chart_2', 0.6)
+    ctx = @ch.setCtx('service_requests_chart_2', 0.6, this)
     new Chart(ctx).Line(@data);
 
   closedDates: ->
@@ -97,7 +96,7 @@ class App.Views.ClosedServices extends Backbone.View
                             </td>
                             <td>#{len}</td>
                           </tr>")
-    ctx = @setCtx('service_requests_chart_4', 0.6)
+    ctx = @ch.setCtx('service_requests_chart_4', 0.6, this)
     new Chart(ctx).Line(@data);
 
   closedCategories: ->
@@ -119,7 +118,7 @@ class App.Views.ClosedServices extends Backbone.View
                 <td>#{cat[1]}% </td>
               </tr>")
       @data.push {value: cat[1], color: "rgba(#{c1},#{c2},#{c3},0.6)"}
-    ctx = @setCtx('service_requests_chart', 1)
+    ctx = @ch.setCtx('service_requests_chart', 1, this)
     chart = new Chart(ctx).Pie(@data,  { scaleShowValues: true, scaleFontColor : "#FFF" })
 
   closedLocations: ->
@@ -141,7 +140,7 @@ class App.Views.ClosedServices extends Backbone.View
                       <td>#{loc[1]}%</td>
                     </tr>")
       @data.push {value: loc[1], color: "rgba(#{c1},#{c2},#{c3},0.6)"}
-    ctx = @setCtx('service_requests_chart_3', 1)
+    ctx = @ch.setCtx('service_requests_chart_3', 1, this)
     chart = new Chart(ctx).Pie(@data,  { scaleShowValues: true, scaleFontColor : "#FFF" })
 
   closedServices: ->

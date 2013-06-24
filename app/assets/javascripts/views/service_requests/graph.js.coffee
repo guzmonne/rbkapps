@@ -36,8 +36,10 @@ class App.Views.ServiceRequestGraph extends Backbone.View
     e.preventDefault() if e?
     App.serviceRequests.fetch data: {user_id: App.user.id}
 
+  rand: ->
+    return Math.floor(Math.random()*256)
+
   drawActiveRequestsByStatus: ->
-    ctx = @$("#service_requests_chart")[0].getContext("2d")
     nuevo = App.serviceRequests.where({status: "Nuevo"}).length
     abierto = App.serviceRequests.where({status: "Abierto"}).length
     pendiente = App.serviceRequests.where({status: "Pendiente"}).length
@@ -50,7 +52,6 @@ class App.Views.ServiceRequestGraph extends Backbone.View
     else
       fillColor = "rgba(0, 159, 188, 0.5)"
       strokeColor = "rgba(0, 159, 188, 1)"
-
     @data =
       labels: ["Nuevo", "Abierto", "Pendiente"]
       datasets: [
@@ -58,43 +59,13 @@ class App.Views.ServiceRequestGraph extends Backbone.View
         strokeColor   : strokeColor
         data          : [nuevo, abierto, pendiente]
       ]
+    ctx = @ch.setCtx('service_requests_chart', 0.6, this)
     chart = new Chart(ctx).Bar(@data)
     @$('.active_new').text(nuevo)
     @$('.active_open').text(abierto)
     @$('.active_pending').text(pendiente)
 
-  rand: ->
-    return Math.floor(Math.random()*256)
-
-  drawActiveRequestsByCategoryBar: ->
-    ctx = @$("#service_requests_chart_2")[0].getContext("2d")
-    @$('#categories').empty()
-    activeServices = _.filter App.serviceRequests.models, (model) =>
-      status = model.get('status')
-      if status == "Nuevo" or status == "Abierto" or status == "Pendiente"
-        return model
-    activeServicesCollection = new App.Collections.ServiceRequests()
-    activeServicesCollection.reset(activeServices)
-    categories = activeServicesCollection.pluckDistinct('category1')
-    @values = []
-    for category in categories
-      len = activeServicesCollection.where({category1: category}).length
-      @$('#categories').append("<tr><td>#{category}</td><td>#{len}</td></tr>")
-      @values.push len
-    c1 = @rand()
-    c2 = @rand()
-    c3 = @rand()
-    @data =
-      labels: categories
-      datasets: [
-        fillColor     : "rgba(#{c1},#{c2},#{c3},0.5)"
-        strokeColor   : "rgba(#{c1},#{c2},#{c3},1)"
-        data          : @values
-      ]
-    chart = new Chart(ctx).Bar(@data)
-
   drawActiveRequestsByCategory: ->
-    ctx = @$("#service_requests_chart_2")[0].getContext("2d")
     @$('#categorias').empty()
     activeServices = _.filter App.serviceRequests.models, (model) =>
       status = model.get('status')
@@ -104,23 +75,24 @@ class App.Views.ServiceRequestGraph extends Backbone.View
     activeServicesCollection.reset(activeServices)
     categories = activeServicesCollection.pluckDistinct('category1')
     @data = []
+    length = activeServicesCollection.length
     for category in categories
       c = @ch.randomRGB()
-      #c = @ch.goldenHSVtoRGB()
       c1 = c[0]; c2 = c[1]; c3 = c[2]
-      len = activeServicesCollection.where({category1: category}).length
-      @$('#categories').append("                                                      \
+      len = parseFloat((activeServicesCollection.where({category1: category}).length / length * 100).toFixed(2))
+      @$('#categorias').append("                                                      \
         <tr>                                                                          \
           <td style='color: #ffffff;background-color: rgba(#{c1},#{c2},#{c3},0.6);'>  \
             #{category}                                                               \
           </td>                                                                       \
-          <td>#{len}</td>                                                             \
+          <td>#{len}%</td>                                                             \
         </tr>"                                                                        \
       )
       @data.push {value: len, color: "rgba(#{c1},#{c2},#{c3},0.6)"}
+    ctx = @ch.setCtx('service_requests_chart_2', 1, this)
     chart = new Chart(ctx).Pie(@data,  { scaleShowValues: true, scaleFontColor : "#FFF" })
 
   startLoop: ->
-    setInterval =>
+    setInterval( =>
       App.serviceRequests.fetch data: {user_id: App.user.id}
-    , 30000
+    , 30000)

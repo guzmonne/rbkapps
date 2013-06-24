@@ -1,4 +1,4 @@
-<div class="centered">
+<div class="centered" style="margin-top: 60px;">
     <div class="row-fluid">
         <div class="span6">
             <img src="/assets/welcome.png" style="margin: 16px;"/>

@@ -26,6 +26,16 @@ class App.Mixins.ChartHelper
     [2,123,125]
   ]
 
+  setCtx: (id, relation, view) =>
+    _this = view
+    if relation > 1
+      relation = 1 / relation
+    width = _this.$("#" + id).parent().outerWidth()
+    height = parseInt(width * relation)
+    _this.$("#" + id).attr('width', width)
+    _this.$("#" + id).attr('height', height)
+    return ctx = _this.$("#" + id)[0].getContext("2d")
+
   diffColor: (c, colors, index) ->
     return c if colors.length == 1
     while (colors.indexOf(c) > -1 and c > 150 )
