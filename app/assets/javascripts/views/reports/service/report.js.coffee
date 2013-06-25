@@ -30,6 +30,7 @@ class App.Views.ServiceRequestsReport extends Backbone.View
 
   showFilters: ->
     @$('.filter').hide()
+    @$('.span7').hide()
     @$('#' + @reportName).fadeIn('slow')
     this
 
@@ -49,6 +50,12 @@ class App.Views.ServiceRequestsReport extends Backbone.View
         to = @$('#to_date').val()
         from = @$('#from_date').val()
         view = new App.Views.ClosedServices(to: to, from: from)
+        App.pushToAppendedViews(view)
+        @$('#report').html(view.render().el)
+      when 'order_evolution'
+        to = @$('#to_date_2').val()
+        from = @$('#from_date_2').val()
+        view = new App.Views.OrderEvolution(to: to, from: from)
         App.pushToAppendedViews(view)
         @$('#report').html(view.render().el)
     this

@@ -148,7 +148,7 @@ class App.Views.DeliveryShow extends App.Views.DeliveryCreate
     @model.save delivery,
       success: (data, status, response) =>
         @$('.alert').remove()
-        @formHelper.displayFlash("success", "Los datos se han actualizado con exito", 20000)
+        @formHelper.displayFlash("success", "Los datos se han actualizado con exito", 3000)
         @$('#courier').focus()
         @$('[class^="status-"]').removeClass().addClass("status-#{@model.get('status')}")
         status = @model.get('status')

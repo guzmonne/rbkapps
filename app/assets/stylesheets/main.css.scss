@@ -705,6 +705,28 @@ canvas{
   padding: 0px;
 }
 
+.bottom-fixed {
+  position: fixed;
+  bottom: 0;
+  margin: 0px;
+  padding: 0px;
+  height: 70px;
+}
+
+.fixed-bottom {
+  margin-bottom: 70px;
+}
+
+.form-actions-bottom {
+  padding: 10px 20px 20px;
+}
+
+#notice {
+  position:fixed;
+  width: 100%;
+  top: 50px;
+}
+
 @media print {
 
   * {

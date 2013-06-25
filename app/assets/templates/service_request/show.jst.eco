@@ -16,7 +16,7 @@
         </div>
     </p>
 </div>
-<form id="create-service-request" class="form-horizontal">
+<form id="create-service-request" class="form-horizontal fixed-bottom">
 <div id="notice"></div>
     <!--############################## Categorias ##############################-->
     <div class="control-group" style="background-color: #f5f5f5;padding: 10px 0 10px 0">
@@ -133,15 +133,15 @@
         </div>
     </div>
     <!--############################## Botones ################################-->
-    <div class="row-fluid">
+    <div class="row-fluid bottom-fixed">
         <div class="span12">
-            <div class="form-actions">
-                <button id="save-service-request" class="btn btn-primary btn-large closed">Guardar Cambios</button>
-                <button id="edit-service-request" class="btn btn-warning btn-large closed hide">
+            <div class="form-actions form-actions-bottom">
+                <button id="save-service-request" class="btn btn-primary closed">Guardar Cambios</button>
+                <button id="edit-service-request" class="btn btn-warning closed hide">
                     <i class="icon-pencil icon-white"></i>
                     Editar Cambios
                 </button>
-                <button id="clear-form" class="btn btn-primary btn-large btn-inverse pull-right">Cancelar</button>
+                <button id="clear-form" class="btn btn-primary btn-inverse pull-right">Cancelar</button>
             </div>
         </div>
     </div>

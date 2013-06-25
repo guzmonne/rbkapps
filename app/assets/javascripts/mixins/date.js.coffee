@@ -15,6 +15,12 @@ class App.Mixins.DateHelper
     d = Math.abs(date1 - date2)
     return Math.floor(d / (24 * 60 * 60 * 1000))
 
+  dateSmallerThan: (date1, date2) ->
+    date1 = @dateToDate(date1)
+    date2 = @dateToDate(date2)
+    d = Math.floor((date1 - date2) / (24 * 60 * 60 * 1000))
+    if d <= 0 then return true else return false
+
   dateBusDiff: (date1, date2) ->
     date1 = @dateToDate(date1)
     date2 = @dateToDate(date2)
@@ -40,6 +46,7 @@ class App.Mixins.DateHelper
 
   dateToDate: (date) ->
     if date == null then return -1
+    if date.split('T').length > 1 then date = @dateRailsOnly(date)
     d = date.split('-')
     t = new Date.parse("#{d[0]}-#{d[2]}-#{d[1]}")
     return t

@@ -68,7 +68,6 @@ class App.Views.InvoiceIndex extends Backbone.View
     timer = setInterval( =>
       @fixHeaders()
       i++
-      console.log timer, i
       clearInterval(timer) if i == 10
     , 50)
     this

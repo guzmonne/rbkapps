@@ -12,7 +12,7 @@
         <i class="icon-chevron-right icon-white"></i>
     </div>
 </div>
-<form id="create-delivery" class="form-horizontal">
+<form id="create-delivery" class="form-horizontal fixed-bottom">
 <div id="notice"></div>
 <div class="control-group" id="control-courier">
     <label class="control-label label-grey label label-inverse" for="courier">
@@ -249,13 +249,17 @@
     </div>
 </div>
 <!--###############################################################################-->
-<div class="form-actions">
-    <button id="update-delivery" class="btn btn-primary btn-large">Guardar Cambios</button>
-    <button id="edit-delivery"
-            class="btn btn-success btn-large hide">
-        <i class="icon-pencil icon-white"></i>
-        Editar Datos
-    </button>
+<div class="row-fluid bottom-fixed">
+    <div class="span12">
+        <div class="form-actions form-actions-bottom">
+            <button id="update-delivery" class="btn btn-primary">Guardar Cambios</button>
+            <button id="edit-delivery"
+            class="btn btn-success hide">
+                <i class="icon-pencil icon-white"></i>
+                Editar Datos
+            </button>
+        </div>
+    </div>
 </div>
 </form>
 <!-- Add new supplier -->

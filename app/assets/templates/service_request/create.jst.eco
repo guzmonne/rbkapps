@@ -1,7 +1,7 @@
 <div class="well">
     <h1>Nueva Solicitud de Servicio</h1>
 </div>
-<form id="create-service-request" class="form-horizontal">
+<form id="create-service-request" class="form-horizontal fixed-bottom">
     <!--############################## Notice ##################################-->
     <div id="notice"></div>
     <!--############################## Categorias ##############################-->
@@ -82,10 +82,10 @@
         </div>
     </div>
     <!--############################## Botones ################################-->
-    <div class="row-fluid">
+    <div class="row-fluid bottom-fixed">
         <div class="span12">
-            <div class="form-actions">
-                <button id="submit-service-request" class="btn btn-primary btn-large">Enviar</button>
+            <div class="form-actions form-actions-bottom">
+                <button id="submit-service-request" class="btn btn-primary">Enviar</button>
             </div>
         </div>
     </div>

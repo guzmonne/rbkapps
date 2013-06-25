@@ -1,7 +1,7 @@
 <div class="well">
     <h1>Crear Nuevo Envío</h1>
 </div>
-<form id="create-delivery" class="form-horizontal">
+<form id="create-delivery" class="form-horizontal fixed-bottom">
 <div id="notice"></div>
     <div class="control-group" id="control-courier">
         <label class="control-label label-grey label label-inverse" for="courier">
@@ -222,9 +222,13 @@
     </div>
 <!--###############################################################################-->
 </div>
-    <div class="form-actions">
-        <button id="submit-create-delivery" class="btn btn-primary btn-large">Crear Envío</button>
+<div class="row-fluid bottom-fixed">
+    <div class="span12">
+        <div class="form-actions form-actions-bottom">
+        <button id="submit-create-delivery" class="btn btn-primary">Crear Envío</button>
+        </div>
     </div>
+</div>
 </form>
 <!-- Add new supplier -->
 <form id="add-new-supplier-form" class="form-horizontal">

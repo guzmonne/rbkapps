@@ -5,17 +5,35 @@ class ServiceRequestsController < ApplicationController
     if params["to"] and params["from"]
       to = params["to"]
       from = params["from"]
-      if to != "" and from == ""
-        return respond_with ServiceRequest.where("status = ? AND closed_at <= ?", "Cerrado", to)
-      elsif to == "" and from != ""
-        return respond_with ServiceRequest.where("status = ? AND closed_at >= ?", "Cerrado", from)
-      elsif to != "" and from != ""
-        return respond_with ServiceRequest.where("status = ? AND closed_at >= ? AND closed_at <= ?", "Cerrado", from, to)
-      elsif to == "" and from == ""
-        return respond_with ServiceRequest.where("status = ?", "Cerrado")
+      if params["status"]
+        estado = params["status"]
+      else
+        estado = "Cerrado"
       end
+      if estado == "all"
+        if to != "" and from == ""
+          return respond_with ServiceRequest.where("created_at <= ?", Time.parse(to) + 1.days)
+        elsif to == "" and from != ""
+          return respond_with ServiceRequest.where("created_at >= ?", from)
+        elsif to != "" and from != ""
+          return respond_with ServiceRequest.where("created_at >= ? AND created_at <= ?", from, Time.parse(to) + 1.days)
+        elsif to == "" and from == ""
+          return respond_with ServiceRequest.all
+        end
+      else
+        if to != "" and from == ""
+          return respond_with ServiceRequest.where("status = ? AND closed_at <= ?", estado, Time.parse(to) + 1.days)
+        elsif to == "" and from != ""
+          return respond_with ServiceRequest.where("status = ? AND closed_at >= ?", estado, from)
+        elsif to != "" and from != ""
+          return respond_with ServiceRequest.where("status = ? AND closed_at >= ? AND closed_at <= ?", estado, from, Time.parse(to) + 1.days)
+        elsif to == "" and from == ""
+          return respond_with ServiceRequest.where("status = ?", estado)
+        end
+      end
+    else
+      respond_with ServiceRequest.for_user(params["user_id"])
     end
-    respond_with ServiceRequest.for_user(params["user_id"])
   end
 
   def show

@@ -305,7 +305,7 @@ class App.Views.DeliveryCreate extends Backbone.View
       App.vent.trigger "delivery:create:success"
       App.deliveries.add(@model)
       @render()
-      @formHelper.displayFlash("success", "El envío se ha creado con exito", 20000)
+      @formHelper.displayFlash("success", "El envío se ha creado con exito", 5000)
       @model          = new App.Models.Delivery
       @model.invoices = new App.Collections.Invoices
       App.closeAppendedViews()
