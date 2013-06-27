@@ -11,7 +11,8 @@ class App.Views.DeliveryIndex extends Backbone.View
     @lastSearch = []
     @fetchDeliveries = _.debounce(@fetchDeliveries, 300)
     @headers = []
-    $(window).resize => @fixHeaders() unless @collection.length == 0
+    $(window).on "resize", =>
+      @fixHeaders() unless @collection.length == 0
     @listenTo App.vent, 'update:page', (page) =>
       @$('.page').removeClass("label label-info")
       @$("*[data-pages='#{page}']").addClass("label label-info")

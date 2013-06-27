@@ -12,9 +12,9 @@ class App.Views.ItemIndex extends Backbone.View
     @fh = new App.Mixins.Form
     @collection = App.items
     @fetchItems = _.debounce(@fetchItems, 300)
-    #@fixHeaders = _.debounce(@fixHeaders, 500)
     @headers = []
-    $(window).resize => @fixHeaders() unless @collection.length == 0
+    $(window).on "resize", =>
+      @fixHeaders() unless @collection.length == 0
     @listenTo App.vent, 'update:page', (page) =>
       @$('.page').removeClass("label label-info")
       @$("*[data-pages='#{page}']").addClass("label label-info")
@@ -54,6 +54,10 @@ class App.Views.ItemIndex extends Backbone.View
       clearInterval(timer) if i == 10
     , 50)
     this
+
+  remove: ->
+    $(window).off "resize"
+    super()
 ########################################################################################################################
 
 ############################################# $ Pagination $ ###########################################################

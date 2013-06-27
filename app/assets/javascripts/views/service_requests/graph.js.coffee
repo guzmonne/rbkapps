@@ -10,9 +10,9 @@ class App.Views.ServiceRequestGraph extends Backbone.View
   initialize: ->
     @collection = App.serviceRequests
     @ch = new App.Mixins.ChartHelper()
+    @drawCharts = _.debounce(@drawCharts, 400)
     @listenTo @collection, 'reset', =>
-      @drawActiveRequestsByStatus()
-      @drawActiveRequestsByCategory()
+      @drawCharts()
     @timer = 0
 
   render: ->
@@ -28,6 +28,10 @@ class App.Views.ServiceRequestGraph extends Backbone.View
     $(@el).append(@activeRequestsByCategory())
     @drawActiveRequestsByCategory()
     this
+
+  drawCharts: ->
+    @drawActiveRequestsByStatus()
+    @drawActiveRequestsByCategory()
 
   close: ->
     clearInterval(@timer)

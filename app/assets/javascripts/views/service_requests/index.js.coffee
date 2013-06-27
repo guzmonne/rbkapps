@@ -7,7 +7,8 @@ class App.Views.ServiceRequestsIndex extends Backbone.View
     @collection = App.serviceRequests
     @headers = []
     @counter = 0
-    $(window).resize => @fixHeaders()
+    $(window).on "resize", =>
+      @fixHeaders()
     @listenTo App.vent, 'service_requests:render:success', => @fixHeaders()
 
   events:
@@ -33,6 +34,10 @@ class App.Views.ServiceRequestsIndex extends Backbone.View
       @counter = 0
       App.serviceRequests.each(@appendServiceRequest)
     this
+
+  remove: ->
+    $(window).off "resize"
+    super()
 
   fixHeaders: =>
     for header, i in @headers

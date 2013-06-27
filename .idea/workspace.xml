@@ -2,22 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="044e0a91-8a4a-4ab7-93a4-af1de8015a06" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/reports/service/order_evolution.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/templates/reports/service/order_evolution.jst.eco" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/mixins/date.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/mixins/date.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/create.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/create.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/index.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/index.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/reports/service/report.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/reports/service/report.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/deliveries/create.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/deliveries/create.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/deliveries/show.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/deliveries/show.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/reports/service/closedservices.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/reports/service/closedservices.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/reports/service/report.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/reports/service/report.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/service_request/create.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/service_request/create.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/service_request/show.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/service_request/show.jst.eco" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/service_requests_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/service_requests_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/items/index.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/items/index.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/reports/service/closed_services.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/reports/service/closed_services.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/reports/service/order_evolution.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/reports/service/order_evolution.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/reports/service/order_evolution.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/reports/service/order_evolution.jst.eco" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/templates/service_request/index.jst.eco" afterPath="$PROJECT_DIR$/app/assets/templates/service_request/index.jst.eco" />
     </list>
     <ignored path="rbkapps.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,34 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="report.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/reports/service/report.js.coffee">
+      <file leaf-file-name="index.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="31" selection-start="1587" selection-end="1587" vertical-scroll-proportion="0.0">
+            <state line="9" column="0" selection-start="244" selection-end="273" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="report.jst.eco" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/templates/reports/service/report.jst.eco">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="4" selection-start="50" selection-end="50" vertical-scroll-proportion="-1.9615384">
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#1;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#div#1;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#2;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#hr#1;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -75,39 +46,21 @@
       <file leaf-file-name="closed_services.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/reports/service/closed_services.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="110" column="101" selection-start="3461" selection-end="3461" vertical-scroll-proportion="0.0">
+            <state line="26" column="0" selection-start="622" selection-end="673" vertical-scroll-proportion="0.0">
               <folding>
-                <marker date="1372098001747" expanded="true" signature="1801:2017" placeholder="..." />
-                <marker date="1372098001747" expanded="false" signature="1836:1892" placeholder="..." />
-                <marker date="1372098001747" expanded="true" signature="1893:1953" placeholder="..." />
-                <marker date="1372098001747" expanded="true" signature="2731:2977" placeholder="..." />
-                <marker date="1372098001747" expanded="false" signature="2772:2828" placeholder="..." />
-                <marker date="1372098001747" expanded="true" signature="2829:2901" placeholder="..." />
-                <marker date="1372098001747" expanded="true" signature="3550:3748" placeholder="..." />
-                <marker date="1372098001747" expanded="false" signature="3579:3640" placeholder="..." />
-                <marker date="1372098001747" expanded="true" signature="3641:3691" placeholder="..." />
-                <marker date="1372098001747" expanded="true" signature="4444:4671" placeholder="..." />
-                <marker date="1372098001747" expanded="false" signature="4479:4540" placeholder="..." />
-                <marker date="1372098001747" expanded="true" signature="4541:4603" placeholder="..." />
+                <marker date="1372341543061" expanded="true" signature="1912:2128" placeholder="..." />
+                <marker date="1372341543061" expanded="false" signature="1947:2003" placeholder="..." />
+                <marker date="1372341543061" expanded="true" signature="2004:2064" placeholder="..." />
+                <marker date="1372341543061" expanded="true" signature="2842:3088" placeholder="..." />
+                <marker date="1372341543061" expanded="false" signature="2883:2939" placeholder="..." />
+                <marker date="1372341543061" expanded="true" signature="2940:3012" placeholder="..." />
+                <marker date="1372341543061" expanded="true" signature="3661:3859" placeholder="..." />
+                <marker date="1372341543061" expanded="false" signature="3690:3751" placeholder="..." />
+                <marker date="1372341543061" expanded="true" signature="3752:3802" placeholder="..." />
+                <marker date="1372341543061" expanded="true" signature="4555:4782" placeholder="..." />
+                <marker date="1372341543061" expanded="false" signature="4590:4651" placeholder="..." />
+                <marker date="1372341543061" expanded="true" signature="4652:4714" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="graph.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="8" selection-start="1692" selection-end="1692" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="closedservices.jst.eco" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/templates/reports/service/closedservices.jst.eco">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="49" selection-start="3220" selection-end="3220" vertical-scroll-proportion="-6.769231">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -115,62 +68,62 @@
       <file leaf-file-name="order_evolution.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/reports/service/order_evolution.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="21" selection-start="2302" selection-end="2302" vertical-scroll-proportion="0.0">
+            <state line="26" column="0" selection-start="643" selection-end="694" vertical-scroll-proportion="0.0">
               <folding>
-                <marker date="1372185549348" expanded="true" signature="1562:1667" placeholder="..." />
-                <marker date="1372185549348" expanded="true" signature="2332:2447" placeholder="..." />
-                <marker date="1372185549348" expanded="true" signature="3974:4337" placeholder="..." />
-                <marker date="1372185549348" expanded="true" signature="3997:4023" placeholder="..." />
-                <marker date="1372185549348" expanded="true" signature="4264:4290" placeholder="..." />
-                <marker date="1372185549348" expanded="true" signature="4396:5007" placeholder="..." />
-                <marker date="1372185549348" expanded="true" signature="4417:4459" placeholder="..." />
-                <marker date="1372185549348" expanded="true" signature="4491:4533" placeholder="..." />
-                <marker date="1372185549348" expanded="true" signature="4580:4622" placeholder="..." />
-                <marker date="1372185549348" expanded="true" signature="4671:4713" placeholder="..." />
-                <marker date="1372185549348" expanded="true" signature="4760:4802" placeholder="..." />
-                <marker date="1372185549348" expanded="true" signature="4847:4889" placeholder="..." />
-                <marker date="1372185549348" expanded="true" signature="4890:4995" placeholder="..." />
-                <marker date="1372185549348" expanded="true" signature="4890:4995" placeholder="..." />
+                <marker date="1372341543069" expanded="true" signature="1673:1778" placeholder="..." />
+                <marker date="1372341543069" expanded="true" signature="2443:2558" placeholder="..." />
+                <marker date="1372341543069" expanded="true" signature="4085:4448" placeholder="..." />
+                <marker date="1372341543069" expanded="true" signature="4108:4134" placeholder="..." />
+                <marker date="1372341543069" expanded="true" signature="4375:4401" placeholder="..." />
+                <marker date="1372341543069" expanded="true" signature="4507:5118" placeholder="..." />
+                <marker date="1372341543069" expanded="true" signature="4528:4570" placeholder="..." />
+                <marker date="1372341543069" expanded="true" signature="4602:4644" placeholder="..." />
+                <marker date="1372341543069" expanded="true" signature="4691:4733" placeholder="..." />
+                <marker date="1372341543069" expanded="true" signature="4782:4824" placeholder="..." />
+                <marker date="1372341543069" expanded="true" signature="4871:4913" placeholder="..." />
+                <marker date="1372341543069" expanded="true" signature="4958:5000" placeholder="..." />
+                <marker date="1372341543069" expanded="true" signature="5001:5106" placeholder="..." />
+                <marker date="1372341543069" expanded="true" signature="5001:5106" placeholder="..." />
+                <marker date="1372341543069" expanded="true" signature="5001:5106" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="order_evolution.jst.eco" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/assets/templates/reports/service/order_evolution.jst.eco">
+      <file leaf-file-name="index.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/items/index.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="32" selection-start="1058" selection-end="1058" vertical-scroll-proportion="0.12804878">
+            <state line="15" column="0" selection-start="540" selection-end="569" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="0" selection-start="755" selection-end="784" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/index.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="11" selection-start="418" selection-end="418" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jst.eco" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/templates/service_request/index.jst.eco">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="70" column="45" selection-start="3536" selection-end="3536" vertical-scroll-proportion="0.68606704">
               <folding>
-                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="service_requests_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/service_requests_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="140" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="date.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/mixins/date.js.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="44" selection-start="1743" selection-end="1743" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chart_mixin.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/mixins/chart_mixin.js.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -191,22 +144,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/reports/service/closed_services.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/templates/deliveries/create.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/main.css.scss" />
-        <option value="$PROJECT_DIR$/app/assets/templates/service_request/create.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/templates/service_request/show.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/templates/deliveries/show.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/create.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/templates/reports/service/closedservices.jst.eco" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/mixins/date.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/views/reports/service/report.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/templates/reports/service/report.jst.eco" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/views/reports/service/order_evolution.js.coffee" />
         <option value="$PROJECT_DIR$/app/controllers/service_requests_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/templates/reports/service/order_evolution.jst.eco" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/reports/service/closed_services.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/reports/service/order_evolution.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/items/index.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/views/deliveries/index.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/templates/service_request/index.jst.eco" />
       </list>
     </option>
   </component>
@@ -1553,36 +1506,6 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="users" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rbkapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rbkapps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2180,11 +2103,11 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37216827" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19090909" sideWeight="0.6132686" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21742424" sideWeight="0.27669904" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19469696" sideWeight="0.6132686" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19621213" sideWeight="0.6132686" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2128788" sideWeight="0.394822" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3867314" sideWeight="0.53712124" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3867314" sideWeight="0.45757577" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3867314" sideWeight="0.45757577" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32795697" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2249,56 +2172,20 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/create.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="307" column="81" selection-start="11980" selection-end="11980" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/show.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="90" selection-start="6467" selection-end="6467" vertical-scroll-proportion="0.32485875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/main.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="720" column="26" selection-start="15064" selection-end="15064" vertical-scroll-proportion="0.6638418">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/service_request/create.jst.eco">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="0" selection-start="4035" selection-end="4079" vertical-scroll-proportion="0.6371951">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="9" selection-start="2676" selection-end="2676" vertical-scroll-proportion="0.3322785">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbElement:/83405298/ad0c86d1-bb82-473b-84bc-3b369ebb0d40/.public.invoices">
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/reports/service/report.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="31" selection-start="1587" selection-end="1587" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="14" column="19" selection-start="551" selection-end="551" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1372191643355" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1372191643355" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1372191643355" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/templates/reports/service/report.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="4" selection-start="50" selection-end="50" vertical-scroll-proportion="-1.9615384">
+        <state line="3" column="4" selection-start="50" selection-end="50" vertical-scroll-proportion="-0.5361011">
           <folding>
             <element signature="n#style#0;n#div#1;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#!!top" expanded="true" />
@@ -2319,87 +2206,133 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/templates/reports/service/closedservices.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="49" selection-start="3220" selection-end="3220" vertical-scroll-proportion="-6.769231">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/reports/service/closed_services.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="101" selection-start="3461" selection-end="3461" vertical-scroll-proportion="0.0">
+        <state line="89" column="49" selection-start="3220" selection-end="3220" vertical-scroll-proportion="0.79012346">
           <folding>
-            <marker date="1372098001747" expanded="true" signature="1801:2017" placeholder="..." />
-            <marker date="1372098001747" expanded="false" signature="1836:1892" placeholder="..." />
-            <marker date="1372098001747" expanded="true" signature="1893:1953" placeholder="..." />
-            <marker date="1372098001747" expanded="true" signature="2731:2977" placeholder="..." />
-            <marker date="1372098001747" expanded="false" signature="2772:2828" placeholder="..." />
-            <marker date="1372098001747" expanded="true" signature="2829:2901" placeholder="..." />
-            <marker date="1372098001747" expanded="true" signature="3550:3748" placeholder="..." />
-            <marker date="1372098001747" expanded="false" signature="3579:3640" placeholder="..." />
-            <marker date="1372098001747" expanded="true" signature="3641:3691" placeholder="..." />
-            <marker date="1372098001747" expanded="true" signature="4444:4671" placeholder="..." />
-            <marker date="1372098001747" expanded="false" signature="4479:4540" placeholder="..." />
-            <marker date="1372098001747" expanded="true" signature="4541:4603" placeholder="..." />
+            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#6;n#tr#0;n#thead#0;n#table#0;n#div#2;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/graph.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/reports/service/order_evolution.jst.eco">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="8" selection-start="1692" selection-end="1692" vertical-scroll-proportion="0.0">
+        <state line="1" column="44" selection-start="68" selection-end="68" vertical-scroll-proportion="0.029982364">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/service_requests_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="140" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.43103448">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/mixins/date.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="44" selection-start="1743" selection-end="1743" vertical-scroll-proportion="0.0">
+        <state line="53" column="44" selection-start="1743" selection-end="1743" vertical-scroll-proportion="0.62731874">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/mixins/chart_mixin.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/main.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/reports/service/order_evolution.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/users/show.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="21" selection-start="2302" selection-end="2302" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1372185549348" expanded="true" signature="1562:1667" placeholder="..." />
-            <marker date="1372185549348" expanded="true" signature="2332:2447" placeholder="..." />
-            <marker date="1372185549348" expanded="true" signature="3974:4337" placeholder="..." />
-            <marker date="1372185549348" expanded="true" signature="3997:4023" placeholder="..." />
-            <marker date="1372185549348" expanded="true" signature="4264:4290" placeholder="..." />
-            <marker date="1372185549348" expanded="true" signature="4396:5007" placeholder="..." />
-            <marker date="1372185549348" expanded="true" signature="4417:4459" placeholder="..." />
-            <marker date="1372185549348" expanded="true" signature="4491:4533" placeholder="..." />
-            <marker date="1372185549348" expanded="true" signature="4580:4622" placeholder="..." />
-            <marker date="1372185549348" expanded="true" signature="4671:4713" placeholder="..." />
-            <marker date="1372185549348" expanded="true" signature="4760:4802" placeholder="..." />
-            <marker date="1372185549348" expanded="true" signature="4847:4889" placeholder="..." />
-            <marker date="1372185549348" expanded="true" signature="4890:4995" placeholder="..." />
-            <marker date="1372185549348" expanded="true" signature="4890:4995" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/service_requests_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="140" selection-start="1291" selection-end="1291" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/templates/reports/service/order_evolution.jst.eco">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/service_requests/index.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="32" selection-start="1058" selection-end="1058" vertical-scroll-proportion="0.12804878">
+        <state line="9" column="0" selection-start="244" selection-end="273" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/reports/service/closed_services.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="622" selection-end="673" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#!!top" expanded="true" />
+            <marker date="1372341543061" expanded="true" signature="1912:2128" placeholder="..." />
+            <marker date="1372341543061" expanded="false" signature="1947:2003" placeholder="..." />
+            <marker date="1372341543061" expanded="true" signature="2004:2064" placeholder="..." />
+            <marker date="1372341543061" expanded="true" signature="2842:3088" placeholder="..." />
+            <marker date="1372341543061" expanded="false" signature="2883:2939" placeholder="..." />
+            <marker date="1372341543061" expanded="true" signature="2940:3012" placeholder="..." />
+            <marker date="1372341543061" expanded="true" signature="3661:3859" placeholder="..." />
+            <marker date="1372341543061" expanded="false" signature="3690:3751" placeholder="..." />
+            <marker date="1372341543061" expanded="true" signature="3752:3802" placeholder="..." />
+            <marker date="1372341543061" expanded="true" signature="4555:4782" placeholder="..." />
+            <marker date="1372341543061" expanded="false" signature="4590:4651" placeholder="..." />
+            <marker date="1372341543061" expanded="true" signature="4652:4714" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/reports/service/report.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/items/index.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="540" selection-end="569" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/reports/service/order_evolution.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="643" selection-end="694" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1372341543069" expanded="true" signature="1673:1778" placeholder="..." />
+            <marker date="1372341543069" expanded="true" signature="2443:2558" placeholder="..." />
+            <marker date="1372341543069" expanded="true" signature="4085:4448" placeholder="..." />
+            <marker date="1372341543069" expanded="true" signature="4108:4134" placeholder="..." />
+            <marker date="1372341543069" expanded="true" signature="4375:4401" placeholder="..." />
+            <marker date="1372341543069" expanded="true" signature="4507:5118" placeholder="..." />
+            <marker date="1372341543069" expanded="true" signature="4528:4570" placeholder="..." />
+            <marker date="1372341543069" expanded="true" signature="4602:4644" placeholder="..." />
+            <marker date="1372341543069" expanded="true" signature="4691:4733" placeholder="..." />
+            <marker date="1372341543069" expanded="true" signature="4782:4824" placeholder="..." />
+            <marker date="1372341543069" expanded="true" signature="4871:4913" placeholder="..." />
+            <marker date="1372341543069" expanded="true" signature="4958:5000" placeholder="..." />
+            <marker date="1372341543069" expanded="true" signature="5001:5106" placeholder="..." />
+            <marker date="1372341543069" expanded="true" signature="5001:5106" placeholder="..." />
+            <marker date="1372341543069" expanded="true" signature="5001:5106" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/invoices/index.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="755" selection-end="784" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/views/deliveries/index.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="11" selection-start="418" selection-end="418" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/templates/service_request/index.jst.eco">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="45" selection-start="3536" selection-end="3536" vertical-scroll-proportion="0.68606704">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

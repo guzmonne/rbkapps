@@ -17,7 +17,8 @@ class App.Views.InvoiceIndex extends Backbone.View
     @fetchInvoices = _.debounce(@fetchInvoices, 300);
     @collection = App.invoices
     @headers = []
-    $(window).resize => @fixHeaders() unless @collection.length == 0
+    $(window).on "resize", =>
+      @fixHeaders() unless @collection.length == 0
     @listenTo App.vent, "minimize:invoice:success", (model) =>
       @prependInvoice(model)
     @listenTo App.vent, "remove:invoiceShow:success", (model) =>
@@ -71,6 +72,10 @@ class App.Views.InvoiceIndex extends Backbone.View
       clearInterval(timer) if i == 10
     , 50)
     this
+
+  remove: ->
+    $(window).off "resize"
+    super()
 ########################################################################################################################
 
 ############################################# $ Append Invoice $ #######################################################

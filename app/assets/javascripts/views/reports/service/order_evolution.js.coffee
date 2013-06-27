@@ -11,7 +11,7 @@ class App.Views.OrderEvolution extends Backbone.View
     @reportName = ''
     @fh = new App.Mixins.Form()
     @ch = new App.Mixins.ChartHelper()
-    $(window).resize =>
+    $(window).on "resize", =>
       @drawCharts()
     if options?
       @from = options.from
@@ -24,18 +24,22 @@ class App.Views.OrderEvolution extends Backbone.View
     @orderEvolution()
     this
 
+  remove: ->
+    $(window).off "resize"
+    super()
+
   showChart: (e) ->
     e.preventDefault()
-    @$('.chart-row').fadeIn('slow')
-    @$('#show-chart').hide()
-    @$('#hide-chart').show()
+    @$('.chart-row').removeClass('hide')
+    @$('#show-chart').addClass('hide')
+    @$('#hide-chart').removeClass('hide')
     @drawCharts()
 
   hideChart: (e) ->
     e.preventDefault()
-    @$('.chart-row').fadeOut('slow')
-    @$('#show-chart').show()
-    @$('#hide-chart').hide()
+    @$('.chart-row').addClass('hide')
+    @$('#show-chart').removeClass('hide')
+    @$('#hide-chart').addClass('hide')
 
   drawCharts: ->
     @totalsByCategory()
