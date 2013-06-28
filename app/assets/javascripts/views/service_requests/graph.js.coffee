@@ -10,31 +10,27 @@ class App.Views.ServiceRequestGraph extends Backbone.View
   initialize: ->
     @collection = App.serviceRequests
     @ch = new App.Mixins.ChartHelper()
-    @drawCharts = _.debounce(@drawCharts, 400)
     @listenTo @collection, 'reset', =>
       @drawCharts()
     @timer = 0
 
   render: ->
     $(@el).append(@activeRequestsByStatus())
-    if @collection.length == 0
-      App.serviceRequests.fetch data: {user_id: App.user.id}
-    else
-      @drawActiveRequestsByStatus()
+    App.serviceRequests.fetch data: {user_id: App.user.id}
     @timer = @startLoop()
     this
 
   render2: ->
     $(@el).append(@activeRequestsByCategory())
-    @drawActiveRequestsByCategory()
     this
 
   drawCharts: ->
     @drawActiveRequestsByStatus()
     @drawActiveRequestsByCategory()
 
-  close: ->
+  remove: ->
     clearInterval(@timer)
+    super()
 
   syncChart: (e) ->
     e.preventDefault() if e?
@@ -99,4 +95,4 @@ class App.Views.ServiceRequestGraph extends Backbone.View
   startLoop: ->
     setInterval( =>
       App.serviceRequests.fetch data: {user_id: App.user.id}
-    , 30000)
+    , 1000*60*15)
