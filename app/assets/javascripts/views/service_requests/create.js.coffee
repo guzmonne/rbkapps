@@ -17,14 +17,15 @@ class App.Views.ServiceRequestsCreate extends Backbone.View
     @fh    = new App.Mixins.Form()
     @notes = new App.Collections.Notes()
     @model = new App.Models.ServiceRequest()
-    @listenTo App.categories, 'reset', =>
-      @setCategories()
+    #@listenTo App.categories, 'reset', =>
+    #  @setCategories()
 ########################################################################################################################
 
 ############################################## $ Render $ ##############################################################
   render: ->
     $(@el).html(@template())
-    App.categories.fetch()
+    #App.categories.fetch()
+    @setCategories()
     @$('#location').val(App.user.get('location'))
     @$('#team').val(App.teams.get(App.user.get('team_id')).get('name') if App.user.get('team_id')?)
     this
